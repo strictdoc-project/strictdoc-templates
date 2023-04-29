@@ -1,4 +1,12 @@
+### StrictDoc ###
+output/
+
 ### IDE files ###
 # Idea/PyCharm
 .idea
+
+### Integration tests (LIT) ###
+tests/integration/.lit_test_times.txt
+tests/integration/**/Output/
+
 

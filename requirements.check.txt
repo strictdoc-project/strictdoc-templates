@@ -1,0 +1,9 @@
+toml
+strictdoc
+
+# Integration tests
+lit>=0.11.0.post1
+filecheck>=0.0.20
+
+# Used by the dead links checker
+requests>=2.27.1
