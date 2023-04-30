@@ -6,6 +6,7 @@ TITLE: System Overview
 
 [FREETEXT]
 Description of the system intended function (what the system does).
+
 [/FREETEXT]
 
 [/SECTION]
@@ -24,7 +25,7 @@ Derived requirement placeholder
 <<<
 
 [REQUIREMENT]
-UID: SSS-MYSYS-001
+UID: MYSYS-001
 TITLE: Inertial Data
 STATEMENT: >>>
 The system MYSYS shall provide inertial aircraft attitude

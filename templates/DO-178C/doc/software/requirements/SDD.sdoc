@@ -4,3 +4,149 @@ TITLE: Software Design Description
 [FREETEXT]
 Defines the software architecture and low level requirements, that will satisfy high level requirements.
 [/FREETEXT]
+
+[SECTION]
+TITLE: Overview
+
+[FREETEXT]
+Detailed description of how the software requirements are allocated to processors and tasks
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Architecture
+
+[FREETEXT]
+Defines the software structure to achieve the high level requirements
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Interface
+
+[FREETEXT]
+Describes input and output interfaces
+[/FREETEXT]
+
+[REQUIREMENT]
+UID: REQ-A429
+TITLE: Arinc 429 label format
+STATEMENT: >>>
+The IMU_AZ data is read from the data field in the Arinc word defined by:
+
+.. image:: ../../../_assets/A429.*
+<<<
+COMMENT: >>>
+https://fr.wikipedia.org/wiki/ARINC_429
+<<<
+
+[SECTION]
+TITLE: Low level requirements
+
+[REQUIREMENT]
+UID: LLR-001
+REFS:
+- TYPE: Parent
+  VALUE: HLR-001
+TITLE: LLR title example
+STATEMENT: >>>
+The software component **imu** shall ....
+<<<
+
+[/SECTION]
+
+[SECTION]
+TITLE: Detailed design
+
+[FREETEXT]
+.. doxygenfile:: imu.h
+   :project: DO-178C
+[/FREETEXT]
+
+[/SECTION]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Dataflow and Control flow
+
+[FREETEXT]
+Describes dataflow and control flow between software components.
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Resource limitations
+
+[FREETEXT]
+For instance time and memory.
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Scheduling
+
+[FREETEXT]
+Describes threads attributes and synchronization.
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Partitioning concerns
+
+[FREETEXT]
+Describes partitioning design concerns.
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Software components
+
+[FREETEXT]
+Detailed description of software components defined in the architecture.
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Derived requirements
+
+[FREETEXT]
+To be analysed by safety analysis process.
+[/FREETEXT]
+
+[REQUIREMENT]
+UID: LLR-002
+REFS:
+- TYPE: Parent
+  VALUE: DERIVED
+TITLE: Derived LLR example
+STATEMENT: >>>
+Derived LLR statement example.
+<<<
+
+[/SECTION]
+
+[SECTION]
+TITLE: Deactivated code
+
+[FREETEXT]
+Description of the means to deactivate some peace of the code.
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Safety related design
+
+[FREETEXT]
+Rationale of safety related design decisions
+[/FREETEXT]
+
+[/SECTION]

@@ -6,7 +6,6 @@ import re
 import sys
 from enum import Enum
 from typing import Optional
-
 if not hasattr(inspect, "getargspec"):
     inspect.getargspec = inspect.getfullargspec
 
@@ -210,3 +209,32 @@ def run(context, command):
             {command}
         """,
     )
+
+@task
+def bitfield(context,input, output, lanes, bits):
+    command = f"""bit_field --lanes {lanes} --bits {bits}   --fontsize 8  --hspace 750 --vspace 40 {input} > {output}"""
+    run_invoke(context, command)
+
+@task
+def cairosvg(context,input,output):
+    command = f"""cairosvg {input} -o {output}"""
+    run_invoke(context, command)
+
+@task
+def rtd(context):
+    strictdoc2rst(context,'templates/DO-178C/doc','templates/DO-178C')
+    doxygen(context,"templates/DO-178C/.doxygen")
+    run_invoke(context, f"""mkdir -p templates/DO-178C/rst/_assets""")
+    bitfield(context,'templates/DO-178C/_assets/A429.json','templates/DO-178C/rst/_assets/A429.svg',1,32)
+    cairosvg(context,'templates/DO-178C/rst/_assets/A429.svg','templates/DO-178C/rst/_assets/A429.pdf')
+    run_invoke(context,'find .')
+
+@task
+def strictdoc2rst(context,input,output):
+    command = f"""strictdoc export  --output-dir {output} --project-title DO-178C --format rst {input}"""
+    run_invoke(context, command)
+
+@task 
+def doxygen(context,config):
+    command = f"""doxygen {config}"""
+    run_invoke(context, command)
