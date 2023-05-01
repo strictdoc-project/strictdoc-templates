@@ -3,6 +3,8 @@ TITLE: Software Requirements Specification
 
 [FREETEXT]
 The software requirements specification is a major constituent of the technical specification (TS). It describes the functional and non functional requirements applicable to the software item.
+
+This template has been copied directly from the ECSS-E-ST-40C, p.95, section "Annex D (normative) Software requirements specification (SRS) - DRD".
 [/FREETEXT]
 
 [SECTION]
@@ -50,9 +52,9 @@ TITLE: Environmental considerations
 [FREETEXT]
 a. The SRS shall summarize:
 
-  1. the physical environment of the target system;
-  2. the hardware environment in the target system;
-  3. the operating environment in the target system;
+   1. the physical environment of the target system;
+   2. the hardware environment in the target system;
+   3. the operating environment in the target system;
 [/FREETEXT]
 
 [/SECTION]
@@ -65,8 +67,8 @@ a. The SRS shall describe in detail the product’s relationship to other system
 
 b. If the product is a component of an integrated HW–SW product, then the SRS shall:
 
-  1. summarize the essential characteristics of this larger product;
-  2. list the other HW or SW component the software interfaces with, and summarize the computer hardware and peripheral equipment to be used.
+   1. summarize the essential characteristics of this larger product;
+   2. list the other HW or SW component the software interfaces with, and summarize the computer hardware and peripheral equipment to be used.
 
 c. A block diagram may be presented showing the major components of the larger system or project, interconnections, and external interfaces.
 [/FREETEXT]
@@ -116,10 +118,10 @@ b. The SRS shall provide where applicable the link between the requirements and 
 c. Functional requirement shall be grouped by subject, in accordance with the logical model organization (e.g. per controlled subsystem).
 d. Each requirement definition should be organized according to the following:
 
-  1. General
-  2. Inputs
-  3. Outputs
-  4. Processing
+   1. General
+   2. Inputs
+   3. Outputs
+   4. Processing
 
 e. The SRS shall describe the functional requirements related to software safety and dependability.
 [/FREETEXT]
@@ -143,9 +145,9 @@ a. The SRS shall list and describe (or reference in the ICD) the software item e
 
 b. The following interfaces shall be fully described either in the SRS itself or by reference to the ICD:
 
-  1. interfaces between the software item and other software items;
-  2. interfaces between the software item and hardware products;
-  3. interfaces requirements relating to the man–machine interaction.
+   1. interfaces between the software item and other software items;
+   2. interfaces between the software item and hardware products;
+   3. interfaces requirements relating to the man–machine interaction.
 
 c. Naming convention applicable to the data and command interface shall be also described.
 
@@ -173,10 +175,10 @@ TITLE: Resources requirements
 [FREETEXT]
 a. The SRS shall describe all the resource requirements related to the software and the hardware requirements (target hardware on which the software is specified to operate), as follows:
 
-  1. List of the requirements relevant to hardware environment in which the software is specified to operate.
-  2. List of the sizing and timing requirements applicable to the software item under specification.
-  3. Description of the computer software to be used with the software under specification or incorporated into the software item (e.g. operating system and software items to be reused).
-  4. Description of the real time constraints to respect (e.g. time management with respect to the handling of input data before its loss of validity).
+   1. List of the requirements relevant to hardware environment in which the software is specified to operate.
+   2. List of the sizing and timing requirements applicable to the software item under specification.
+   3. Description of the computer software to be used with the software under specification or incorporated into the software item (e.g. operating system and software items to be reused).
+   4. Description of the real time constraints to respect (e.g. time management with respect to the handling of input data before its loss of validity).
 [/FREETEXT]
 
 [/SECTION]
@@ -189,19 +191,19 @@ a. The SRS shall list any requirements driving the design of the software item u
 
 b. Requirements applicable to the following items shall be included:
 
-  1. software standards (e.g. applicable coding standards, and development standards);
+   1. software standards (e.g. applicable coding standards, and development standards);
 
-  2. design requirements;
+   2. design requirements;
 
-  3. specific design methods to be applied to minimize the number of critical software components (see ECSS‐Q‐ST‐80 6.2.2.4);
+   3. specific design methods to be applied to minimize the number of critical software components (see ECSS‐Q‐ST‐80 6.2.2.4);
 
-  4. requirements relevant to numerical accuracy management;
+   4. requirements relevant to numerical accuracy management;
 
-  5. design requirements relevant to the “in–flight modification” of the software item;
+   5. design requirements relevant to the “in–flight modification” of the software item;
 
-  6. specific design requirements to be applied if the software is specified to be designed for intended reuse;
+   6. specific design requirements to be applied if the software is specified to be designed for intended reuse;
 
-  7. specific constraints induced by reused software (e.g. COTS, free software and open source).
+   7. specific constraints induced by reused software (e.g. COTS, free software and open source).
 [/FREETEXT]
 
 [/SECTION]
@@ -284,8 +286,8 @@ TITLE: Human factors related requirements
 [FREETEXT]
 a. The SRS shall list any requirement applicable to:
 
-  1. the personnel and to the specific software product under definition;
-  2. manual operations, human–equipment interactions, constraints on personnel, concentrated human attention areas and that are sensitive to human errors and training, and human factors engineering.
+   1. the personnel and to the specific software product under definition;
+   2. manual operations, human–equipment interactions, constraints on personnel, concentrated human attention areas and that are sensitive to human errors and training, and human factors engineering.
 [/FREETEXT]
 
 [/SECTION]
@@ -317,8 +319,8 @@ TITLE: Traceability
 [FREETEXT]
 a. The SRS shall report the traceability matrices
 
-  1. from the upper level specification requirements to the requirements contained in <5> (forward traceability table), and
-  2. from the requirements contained in <5> to the upper level applicable specification (backward traceability table).
+   1. from the upper level specification requirements to the requirements contained in <5> (forward traceability table), and
+   2. from the requirements contained in <5> to the upper level applicable specification (backward traceability table).
 
 b. In case the information in <7>a. is separately provided in the DJF, reference to this documentation shall be clearly stated.
 [/FREETEXT]
@@ -342,7 +344,7 @@ c. Diagrams, tables, data flows and explanatory text may be included.
 d. The functionality at each level should be described, to enable the reader to ’walkthrough’ e.g. the model level–by–level, function–by–function, and flow–by–flow.
 e. The behavioural view of the software logical model shall be also described in the SRS.
 
-  NOTE: This is particularly relevant for flight software applications.
+   NOTE: This is particularly relevant for flight software applications.
 [/FREETEXT]
 
 [/SECTION]
