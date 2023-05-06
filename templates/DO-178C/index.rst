@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to DO178C template documentation!
-====================================
+=========================================
 
 .. toctree::
    :numbered:

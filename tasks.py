@@ -224,10 +224,8 @@ def cairosvg(context,input,output):
 def rtd(context):
     strictdoc2rst(context,'templates/DO-178C/doc','templates/DO-178C')
     doxygen(context,"templates/DO-178C/.doxygen")
-    run_invoke(context, f"""mkdir -p templates/DO-178C/rst/_assets""")
-    bitfield(context,'templates/DO-178C/_assets/A429.json','templates/DO-178C/rst/_assets/A429.svg',1,32)
-    cairosvg(context,'templates/DO-178C/rst/_assets/A429.svg','templates/DO-178C/rst/_assets/A429.pdf')
-    run_invoke(context,'find .')
+    bitfield(context,'templates/DO-178C/_assets/A429.json','templates/DO-178C/_assets/A429.svg',1,32)
+    cairosvg(context,'templates/DO-178C/rst/_assets/A429.svg','templates/DO-178C/_assets/A429.pdf')
 
 @task
 def strictdoc2rst(context,input,output):
