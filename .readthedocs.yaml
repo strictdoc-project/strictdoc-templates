@@ -12,7 +12,7 @@ build:
     python: "3.11"
   jobs:
       pre_build:
-        - inv rtd
+        - inv readthedoc
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
    configuration: templates/DO-178C/conf.py

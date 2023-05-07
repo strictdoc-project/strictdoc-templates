@@ -8,7 +8,7 @@
 
 project = 'DO-178C'
 copyright = '2023, company'
-author = 'john doe'
+author = 'John Doe'
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------

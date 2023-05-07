@@ -32,7 +32,7 @@ Describes input and output interfaces
 
 [REQUIREMENT]
 UID: REQ-A429
-TITLE: Arinc 429 label format
+TITLE: ARINC 429 label format
 STATEMENT: >>>
 The IMU_AZ data is read from the data field in the Arinc word defined by:
 
@@ -61,7 +61,7 @@ The software component **imu** shall ....
 TITLE: Detailed design
 
 [FREETEXT]
-.. doxygenfile:: imu.h
+. doxygenfile:: imu.h
    :project: DO-178C
 [/FREETEXT]
 

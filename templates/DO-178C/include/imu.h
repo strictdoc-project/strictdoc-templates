@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 /**
- * Defines Arinc 429 word bitfield
+ * Defines ARINC 429 word bitfield
  **/
 typedef struct {
   /** parity bit **/

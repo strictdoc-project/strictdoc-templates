@@ -3,13 +3,15 @@
 This DO-178C template provides an overview of the documents required as acceptable mean of compliance.
 
 The aim of the project is also to demonstrate the use of strictdoc integrating:
-- diagrams (asciiflow)
+- diagrams
 - images
 - bitfields
-- doxygen
-- sphinx pdf and readthedoc publication
+- Doxygen
+- Generating pdf and html via Sphinx, publication to Read The Doc
 
 For this purpose, a toy example is used.
+
+Tested on Linux.
 
 Requirements:
 ```
@@ -26,10 +28,7 @@ apt install texlive-fonts-recommended
 apt install texlive-latex-extra
 ```
 
-To rebuild spinx html and pdf:
-ninja
-
 known limitations:
 - requirement shall have a title to get proper sphinx cross reference.
-- autodoxygenfile not supported by strictdoc
-- assets ``img.*`` not displayed by strictdoc
+- Doxygen directives not yet supported by strictdoc 0.0.40, in the backlog
+- assets ``img.*`` not displayed by strictdoc 0.0.40, in the backlog.

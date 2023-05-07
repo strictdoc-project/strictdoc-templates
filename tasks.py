@@ -6,6 +6,7 @@ import re
 import sys
 from enum import Enum
 from typing import Optional
+
 if not hasattr(inspect, "getargspec"):
     inspect.getargspec = inspect.getfullargspec
 
@@ -221,7 +222,7 @@ def cairosvg(context,input,output):
     run_invoke(context, command)
 
 @task
-def rtd(context):
+def readthedoc(context):
     strictdoc2rst(context,'templates/DO-178C/doc','templates/DO-178C')
     doxygen(context,"templates/DO-178C/.doxygen")
     bitfield(context,'templates/DO-178C/_assets/A429.json','templates/DO-178C/_assets/A429.svg',1,32)
