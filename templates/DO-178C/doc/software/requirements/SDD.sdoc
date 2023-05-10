@@ -36,7 +36,7 @@ TITLE: ARINC 429 label format
 STATEMENT: >>>
 The IMU_AZ data is read from the data field in the Arinc word defined by:
 
-.. image:: ../../../_assets/A429.*
+.. image:: /_assets/A429.*
 <<<
 COMMENT: >>>
 https://fr.wikipedia.org/wiki/ARINC_429
@@ -61,7 +61,7 @@ The software component **imu** shall ....
 TITLE: Detailed design
 
 [FREETEXT]
-. doxygenfile:: imu.h
+.. doxygenfile:: imu.h
    :project: DO-178C
 [/FREETEXT]
 
