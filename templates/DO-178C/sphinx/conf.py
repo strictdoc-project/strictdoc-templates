@@ -14,7 +14,7 @@ release = '1.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['breathe','sphinx_rtd_theme']
+extensions = ['breathe', 'sphinx_rtd_theme']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -24,11 +24,11 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = "sphinx_rtd_theme"
 breathe_projects = {
-    "DO-178C" : "rst/_xml" 
+    "DO-178C": "_xml"
 }
 breathe_projects_source = {
     "DO-178C" : (
-        "include",["imu.h"]
+        "include", ["imu.h"]
     )
 }
 # latex_logo='projectlogo.png'
@@ -43,7 +43,9 @@ Approved by : \newline
 \end{titlepage}
 '''
 
-latex_elements = {     'classoptions': ',openany,oneside',
+latex_elements = {
+    'classoptions': ',openany,oneside',
     'papersize':'a4paper',
-    'maketitle': latex_maketitle}
+    'maketitle': latex_maketitle
+}
 breathe_default_project = 'DO-178C'
