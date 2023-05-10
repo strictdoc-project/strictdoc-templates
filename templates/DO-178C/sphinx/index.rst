@@ -1,52 +1,10 @@
-.. DO178C documentation master file, created by
-   sphinx-quickstart on Sun Mar 19 22:00:59 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Hello **world**
 
-Welcome to DO178C template documentation!
-=========================================
+.. doxygenfile:: imu.h
+   :project: DO-178C
 
-.. toctree::
-   :numbered:
-   :maxdepth: 3
-   :caption: Plans:
+We and our store and/or access information on a device, such as cookies and process personal data, such as unique identifiers and standard information sent by a device for personalised ads and content, ad and content measurement, and audience insights, as well as to develop and improve products. With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting. Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our privacy policy.
 
-   ./software/plans/PSAC.rst
-   ./software/plans/SVP.rst
-   ./software/plans/SCMP.rst
-   ./software/plans/SDP.rst
-   ./software/plans/SQAP.rst
+We and our store and/or access information on a device, such as cookies and process personal data, such as unique identifiers and standard information sent by a device for personalised ads and content, ad and content measurement, and audience insights, as well as to develop and improve products. With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting. Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our privacy policy.
 
-.. toctree::
-   :numbered:
-   :maxdepth: 3
-   :caption: Standards:
-
-   ./software/standard/SCS.rst
-   ./software/standard/SDS.rst
-   ./software/standard/SRS.rst
-
-.. toctree::
-   :numbered:
-   :maxdepth: 3
-   :caption: Requirements:
-
-   ./system/SR.rst
-   ./software/requirements/SRD.rst
-   ./software/requirements/SDD.rst
-
-.. toctree::
-   :numbered:
-   :maxdepth: 3
-   :caption: Verification:
-
-   ./software/verification/SVCP.rst
-   ./software/verification/SVR.rst
-   ./software/SAS.rst
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+We and our store and/or access information on a device, such as cookies and process personal data, such as unique identifiers and standard information sent by a device for personalised ads and content, ad and content measurement, and audience insights, as well as to develop and improve products. With your permission we and our partners may use precise geolocation data and identification through device scanning. You may click to consent to our and our partners’ processing as described above. Alternatively you may access more detailed information and change your preferences before consenting or to refuse consenting. Please note that some processing of your personal data may not require your consent, but you have a right to object to such processing. Your preferences will apply to this website only. You can change your preferences at any time by returning to this site or visit our privacy policy.

@@ -131,14 +131,23 @@ def build_sphinx_html(context, input_path):
     path_to_build_sphinx_html = os.path.join(os.getcwd(), "build/sphinx_html")
     command = f"""
         cd {input_path} &&
-        sphinx-build -W -b html . {path_to_build_sphinx_html}
+        sphinx-build -W -b singlehtml . {path_to_build_sphinx_html}
+    """
+    run_invoke(context, command)
+
+
+@task
+def build_sphinx_html_programmatic(context):
+    command = f"""
+        python program.py
     """
     run_invoke(context, command)
 
 
 @task
 def build_html(context):
-    strictdoc2rst(context, "doc/", "build/strictdoc-rst/")
+    # strictdoc2rst(context, "doc/", "build/strictdoc-rst/")
+    os.makedirs("build/strictdoc-rst/", exist_ok=True)
     doxygen(context, ".doxygen")
     bitfield(
         context,
@@ -159,5 +168,7 @@ def build_html(context):
 
     shutil.copyfile("sphinx/index.rst", "build/strictdoc-rst/rst/index.rst")
     shutil.copyfile("sphinx/conf.py", "build/strictdoc-rst/rst/conf.py")
+    shutil.copytree("sphinx/themes", "build/strictdoc-rst/rst/themes")
 
-    build_sphinx_html(context, input_path="build/strictdoc-rst/rst")
+    # build_sphinx_html(context, input_path="build/strictdoc-rst/rst")
+    build_sphinx_html_programmatic(context)
