@@ -60,6 +60,10 @@ The software component **imu** shall ....
 [SECTION]
 TITLE: Detailed design
 
+[FREETEXT]
+- ``[imu]`` :ref:`imu`
+[/FREETEXT]
+
 [/SECTION]
 
 [/SECTION]
