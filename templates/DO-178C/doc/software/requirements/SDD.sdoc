@@ -60,11 +60,6 @@ The software component **imu** shall ....
 [SECTION]
 TITLE: Detailed design
 
-[FREETEXT]
-. doxygenfile:: imu.h
-   :project: DO-178C
-[/FREETEXT]
-
 [/SECTION]
 
 [/SECTION]
