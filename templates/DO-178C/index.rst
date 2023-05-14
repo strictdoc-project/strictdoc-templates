@@ -34,6 +34,7 @@ Welcome to DO178C template documentation!
    ./rst/system/SR.rst
    ./rst/software/requirements/SRD.rst
    ./rst/software/requirements/SDD.rst
+   ./doc/software/requirements/DD.rst
 
 .. toctree::
    :numbered:
