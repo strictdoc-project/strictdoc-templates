@@ -39,7 +39,9 @@ The IMU_AZ data is read from the data field in the Arinc word defined by:
 .. image:: ../../../_assets/A429.*
 <<<
 COMMENT: >>>
-https://fr.wikipedia.org/wiki/ARINC_429
+Refer to `Arinc 429 definition`_
+
+.. _`Arinc 429 definition`: https://fr.wikipedia.org/wiki/ARINC_429
 <<<
 
 [SECTION]
@@ -61,7 +63,9 @@ The software component **imu** shall ....
 TITLE: Detailed design
 
 [FREETEXT]
-- ``[imu]`` :ref:`imu`
+See `IMU detailed design`_
+
+.. _IMU detailed design: https://strictdoc-templates.readthedocs.io/en/latest/doc/software/requirements/DD.html#imu-detailed-design
 [/FREETEXT]
 
 [/SECTION]
