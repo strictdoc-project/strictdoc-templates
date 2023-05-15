@@ -1,0 +1,1082 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8"/>
+
+  <link rel="shortcut icon" href="../../../../../../assets/favicon.ico" type="image/x-icon"/>
+
+  
+  
+  <link rel="stylesheet" href="../../../../../../assets/base.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/layout.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/content.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/node.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/requirement.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/requirement__temporary.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/element.css"/>
+  <link rel="stylesheet" href="../../../../../../assets/form.css"/>
+  
+  <link rel="stylesheet" href="../../../../../../assets/requirement-tree.css"/>
+
+
+  
+  <script type="text/javascript" src="../../../../../../assets/viewtype_menu.js"></script>
+  <script type="text/javascript" src="../../../../../../assets/toc.js"></script>
+  
+  
+  
+
+
+  <title>Software Design Description - Traceability</title>
+
+  
+</head>
+
+<body data-viewtype="traceability" data-turbo="false">
+<script>document.body.dataset.toc_state = sessionStorage.getItem('tocState') || 'open';</script><div class="layout" id="layout">
+
+    <nav class="layout_nav">
+      <div class="nav">
+
+
+
+  <a
+    data-link="index"
+    class="nav_button"
+    href="../../../../../../index.html"
+    title="Project index">
+    <svg class="svg_icon" width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <line x1="9" y1="4" x2="7" y2="4"></line>
+  <line x1="12" y1="9" x2="12" y2="7"></line>
+  <line x1="6" y1="10" x2="10" y2="6"></line>
+  <circle cx="4" cy="12" r="2.25"></circle>
+  <circle cx="12" cy="4" r="2.25"></circle>
+  <circle cx="4" cy="4" r="2.25"></circle>
+  <circle cx="12" cy="12" r="2.25"></circle>
+</svg>
+  </a></div>
+    </nav>
+
+    <div class="layout_toc">
+      
+  
+
+
+
+<div class="toc_panel">
+
+<div
+  data-testid="toc-handler"
+  js-toc-handler='true' 
+  class="toc_handler nav_button"
+>
+  <svg class="svg_icon" width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <line class="horz" x1="2" y1="12" x2="14" y2="12" id="q3"></line>
+            <line x1="2" y1="8" x2="14" y2="8" id="q2"></line>
+            <line class="horz" x1="2" y1="4" x2="14" y2="4" id="q1"></line>
+            <line class="arrw" x1="2" y1="8" x2="8" y2="14" id="q33"></line>
+            <line class="arrw" x1="2" y1="8" x2="8" y2="2" id="q11"></line>
+</svg>
+</div>
+
+<turbo-frame
+  id="frame-toc"
+  style="display: contents"
+  js-collapsible_list='true' 
+  data-controller="collapsible_list"
+>
+
+  <div class="toc_panel__overlay">
+    <div class="toc_panel__control">
+      <div
+        js-collapsible_list-control='true' 
+      ></div>
+    </div>
+  </div>
+
+  <div
+    js-collapsible_list-container='true' 
+    class="toc_panel__content"
+  >
+
+    <ul
+      data-testid="toc-list"
+      js-collapsible_list-list='true' 
+      class="toc"
+    ><li><a href="#1-Overview" data-turbo="false">
+              <span class="section-number">1</span>
+              Overview
+            </a></li><li><a href="#2-Architecture" data-turbo="false">
+              <span class="section-number">2</span>
+              Architecture
+            </a></li><li><a href="#3-Interface" data-turbo="false">
+              <span class="section-number">3</span>
+              Interface
+            </a><ul><li><a href="#3.1-Low-level-requirements" data-turbo="false">
+              <span class="section-number">3.1</span>
+              Low level requirements
+            </a><ul><li>
+        <a href="#3.1.1-LLR-001" data-turbo="false">
+          <span class="section-number">3.1.1</span>LLR title example</a></li></ul>
+            </li><li><a href="#3.2-Detailed-design" data-turbo="false">
+              <span class="section-number">3.2</span>
+              Detailed design
+            </a></li></ul>
+            </li><li><a href="#4-Dataflow-and-Control-flow" data-turbo="false">
+              <span class="section-number">4</span>
+              Dataflow and Control flow
+            </a></li><li><a href="#5-Resource-limitations" data-turbo="false">
+              <span class="section-number">5</span>
+              Resource limitations
+            </a></li><li><a href="#6-Scheduling" data-turbo="false">
+              <span class="section-number">6</span>
+              Scheduling
+            </a></li><li><a href="#7-Partitioning-concerns" data-turbo="false">
+              <span class="section-number">7</span>
+              Partitioning concerns
+            </a></li><li><a href="#8-Software-components" data-turbo="false">
+              <span class="section-number">8</span>
+              Software components
+            </a></li><li><a href="#9-Derived-requirements" data-turbo="false">
+              <span class="section-number">9</span>
+              Derived requirements
+            </a><ul><li>
+        <a href="#9.1-LLR-002" data-turbo="false">
+          <span class="section-number">9.1</span>Derived LLR example</a></li></ul>
+            </li><li><a href="#10-Deactivated-code" data-turbo="false">
+              <span class="section-number">10</span>
+              Deactivated code
+            </a></li><li><a href="#11-Safety-related-design" data-turbo="false">
+              <span class="section-number">11</span>
+              Safety related design
+            </a></li></ul>
+  </div>
+</turbo-frame>
+</div>
+
+    </div>
+
+    <header class="layout_header">
+      
+<div class="header">
+  <div class="header__document">
+  <svg class="svg_icon" width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d=" M13,13 L13,8 C13,7.5 12.6,7 12,7 L9,7 C8.5,7 8,6.5 8,6 L8,3 C8,2.5 7.5,2 7,2 L4,2 C3.5,2 3,2.5 3,3 L3,13 C3,13.5 3.5,14 4,14 L12,14 C12.6,14 13,13.5 13,13 Z M13,9 L13,8 C13,7.5 13,7 12.5,6.5 L8.5,2.5 C8,2 7.5,2 7,2 L6,2"></path>
+</svg>
+  <turbo-frame id="document_title">
+<div
+  class="header__document_title"
+  title="Software Design Description"
+>
+  Software Design Description
+</div>
+</turbo-frame>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" class="sc-gLvsXj bpkaBy"><path stroke="currentColor" d="M12.5 4.5l-5 11" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  <div class="viewtype">
+  <div
+    id="viewtype_handler"
+    class="viewtype__handler"
+    aria-expanded="false"
+    aria-controls="viewtype_menu"
+  >
+    <span>Traceability</span>
+    <svg class="svg_icon" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" >
+  <path d="M5 10l3 3 3-3M5 6l3-3 3 3"></path>
+</svg>
+  </div>
+  <menu
+    id="viewtype_menu"
+    class="viewtype__menu"
+    aria-hidden="true"
+    aria-labelledby="viewtype_handler"
+  >
+    <li class="viewtype__menu_header">VIEWS</li>
+    <li>
+      <a
+        data-viewtype_link="document"
+        class="viewtype__menu_item"
+        title="Go to Document view"
+        href="../../../../../../strictdoc-templates/templates/DO-178C/doc/software/requirements/SDD.html">
+        Document</a>
+    </li>
+    <li>
+      <a
+        data-viewtype_link="table"
+        class="viewtype__menu_item"
+        title="Go to Table view"
+        href="../../../../../../strictdoc-templates/templates/DO-178C/doc/software/requirements/SDD-TABLE.html">
+        Table</a>
+    </li>
+    <li>
+      <a
+        data-viewtype_link="traceability"
+        class="viewtype__menu_item"
+        title="Go to Traceability view"
+        href="../../../../../../strictdoc-templates/templates/DO-178C/doc/software/requirements/SDD-TRACE.html">
+        Traceability</a>
+    </li>
+    <li>
+      <a
+        data-viewtype_link="deep_traceability"
+        class="viewtype__menu_item"
+        title="Go to Deep Traceability view"
+        href="../../../../../../strictdoc-templates/templates/DO-178C/doc/software/requirements/SDD-DEEP-TRACE.html">
+      Deep traceability</a>
+    </li>
+  </menu>
+</div>
+</div>
+</div>
+
+    </header>
+
+    <main class="layout_main" id="pan_with_space">
+      
+
+      <div class="content">
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="1-Overview"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="1"
+>1.&nbsp;Overview</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Detailed description of how the software requirements are allocated to processors and tasks</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="2-Architecture"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="2"
+>2.&nbsp;Architecture</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Defines the software structure to achieve the high level requirements</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="3-Interface"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="3"
+>3.&nbsp;Interface</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Describes input and output interfaces</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="3.1-Low-level-requirements"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="3.1"
+>3.1.&nbsp;Low level requirements</sdoc-section-title>
+  
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+          <div class="content_item" data-role="parents">
+
+<ul class="requirement-tree requirement-tree_left"><li class="requirement-tree_branch">
+    <div class="requirement-tree_node">
+      
+
+  <sdoc-node
+    node-style="card"
+    node-role="requirement"
+    data-testid="node-requirement"
+  >
+
+    
+    <sdoc-anchor id="2.1.1-HLR-001"></sdoc-anchor>
+
+    
+    
+
+
+
+
+
+
+
+<sdoc-requirement
+  requirement-view="simple"
+  data-level="2.1.1"
+  data-testid="requirement-style-simple"
+>
+  
+  
+  
+  <sdoc-requirement-title>
+    
+        2.1.1.&nbsp;HLR title example</sdoc-requirement-title>
+  
+    <sdoc-requirement-field-label>UID:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-type="singleline" data-field-label="UID">
+      HLR-001
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>parent links:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="parent links">
+      <ul class="requirement__link">
+        <li>
+          <a data-turbo="false" class="requirement__link-parent" href="../../../../../../strictdoc-templates/templates/DO-178C/doc/system/SR-TRACE.html#2.2-MYSYS-001">
+            <span class="requirement__parent-uid">MYSYS-001</span>
+            Inertial Data
+          </a>
+        </li>
+      </ul>
+    </sdoc-requirement-field>
+    <sdoc-requirement-field-label>child links:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="child links">
+      <ul class="requirement__link">
+        <li>
+          <a data-turbo="false" class="requirement__link-child" href="#3.1.1-LLR-001">
+            <span class="requirement__child-uid">LLR-001</span>
+            LLR title example
+          </a>
+        </li>
+      </ul>
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>statement:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="statement">
+      <div class="document">
+<p>HLR statement example</p>
+</div>
+
+    </sdoc-requirement-field>
+  
+  
+  
+  
+
+</sdoc-requirement>
+
+
+  </sdoc-node>
+    </div>
+
+  </li></ul></div>
+
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="requirement"
+    data-testid="node-requirement"
+  >
+
+    
+    <sdoc-anchor id="3.1.1-LLR-001"></sdoc-anchor>
+
+    
+    
+
+
+
+
+
+
+
+<sdoc-requirement
+  requirement-view="simple"
+  data-level="3.1.1"
+  data-testid="requirement-style-simple"
+>
+  
+  
+  
+  <sdoc-requirement-title>
+    
+        3.1.1.&nbsp;LLR title example</sdoc-requirement-title>
+  
+    <sdoc-requirement-field-label>UID:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-type="singleline" data-field-label="UID">
+      LLR-001
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>parent links:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="parent links">
+      <ul class="requirement__link">
+        <li>
+          <a data-turbo="false" class="requirement__link-parent" href="../../../../../../strictdoc-templates/templates/DO-178C/doc/software/requirements/SRD-TRACE.html#2.1.1-HLR-001">
+            <span class="requirement__parent-uid">HLR-001</span>
+            HLR title example
+          </a>
+        </li>
+      </ul>
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>statement:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="statement">
+      <div class="document">
+<p>The software component <strong>imu</strong> shall ....</p>
+</div>
+
+    </sdoc-requirement-field>
+  
+  
+  
+  
+
+</sdoc-requirement>
+
+
+  </sdoc-node>
+
+          </div>
+
+          <div class="content_item" data-role="children">
+</div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="3.2-Detailed-design"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="3.2"
+>3.2.&nbsp;Detailed design</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="4-Dataflow-and-Control-flow"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="4"
+>4.&nbsp;Dataflow and Control flow</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Describes dataflow and control flow between software components.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="5-Resource-limitations"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="5"
+>5.&nbsp;Resource limitations</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>For instance time and memory.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="6-Scheduling"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="6"
+>6.&nbsp;Scheduling</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Describes threads attributes and synchronization.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="7-Partitioning-concerns"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="7"
+>7.&nbsp;Partitioning concerns</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Describes partitioning design concerns.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="8-Software-components"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="8"
+>8.&nbsp;Software components</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Detailed description of software components defined in the architecture.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="9-Derived-requirements"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="9"
+>9.&nbsp;Derived requirements</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>To be analysed by safety analysis process.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+          <div class="content_item" data-role="parents">
+
+<ul class="requirement-tree requirement-tree_left"><li class="requirement-tree_branch">
+    <div class="requirement-tree_node">
+      
+
+  <sdoc-node
+    node-style="card"
+    node-role="requirement"
+    data-testid="node-requirement"
+  >
+
+    
+    <sdoc-anchor id="2.1-DERIVED"></sdoc-anchor>
+
+    
+    
+
+
+
+
+
+
+
+<sdoc-requirement
+  requirement-view="simple"
+  data-level="2.1"
+  data-testid="requirement-style-simple"
+>
+  
+  
+  
+  <sdoc-requirement-title>
+    
+        2.1.&nbsp;Derived Requirement Placeholder</sdoc-requirement-title>
+  
+    <sdoc-requirement-field-label>UID:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-type="singleline" data-field-label="UID">
+      DERIVED
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>child links:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="child links">
+      <ul class="requirement__link">
+        <li>
+          <a data-turbo="false" class="requirement__link-child" href="#9.1-LLR-002">
+            <span class="requirement__child-uid">LLR-002</span>
+            Derived LLR example
+          </a>
+        </li>
+      </ul>
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>statement:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="statement">
+      <div class="document">
+<p>All software requirements linked to this DERIVED requirement shall be analysed by safety assessment process.</p>
+</div>
+
+    </sdoc-requirement-field>
+  <sdoc-requirement-field-label>rationale:</sdoc-requirement-field-label>
+  <sdoc-requirement-field data-field-label="rationale">
+    <div class="document">
+<p>Derived requirement placeholder</p>
+</div>
+
+  </sdoc-requirement-field>
+  
+  
+  
+
+</sdoc-requirement>
+
+
+  </sdoc-node>
+    </div>
+
+  </li></ul></div>
+
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="requirement"
+    data-testid="node-requirement"
+  >
+
+    
+    <sdoc-anchor id="9.1-LLR-002"></sdoc-anchor>
+
+    
+    
+
+
+
+
+
+
+
+<sdoc-requirement
+  requirement-view="simple"
+  data-level="9.1"
+  data-testid="requirement-style-simple"
+>
+  
+  
+  
+  <sdoc-requirement-title>
+    
+        9.1.&nbsp;Derived LLR example</sdoc-requirement-title>
+  
+    <sdoc-requirement-field-label>UID:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-type="singleline" data-field-label="UID">
+      LLR-002
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>parent links:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="parent links">
+      <ul class="requirement__link">
+        <li>
+          <a data-turbo="false" class="requirement__link-parent" href="../../../../../../strictdoc-templates/templates/DO-178C/doc/system/SR-TRACE.html#2.1-DERIVED">
+            <span class="requirement__parent-uid">DERIVED</span>
+            Derived Requirement Placeholder
+          </a>
+        </li>
+      </ul>
+    </sdoc-requirement-field>
+  
+  
+    <sdoc-requirement-field-label>statement:</sdoc-requirement-field-label>
+    <sdoc-requirement-field data-field-label="statement">
+      <div class="document">
+<p>Derived LLR statement example.</p>
+</div>
+
+    </sdoc-requirement-field>
+  
+  
+  
+  
+
+</sdoc-requirement>
+
+
+  </sdoc-node>
+
+          </div>
+
+          <div class="content_item" data-role="children">
+</div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="10-Deactivated-code"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="10"
+>10.&nbsp;Deactivated code</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Description of the means to deactivate some peace of the code.</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+        <section class="content_section">
+
+          <div class="content_item" data-role="parents"></div>
+          <div class="content_item" data-role="current">
+            
+
+  <sdoc-node
+    node-style="card"
+    node-role="section"
+    data-testid="node-section"
+  >
+
+    
+    <sdoc-anchor id="11-Safety-related-design"></sdoc-anchor>
+
+    
+    
+
+
+<sdoc-section>
+  
+<sdoc-section-title
+  data-level="11"
+>11.&nbsp;Safety related design</sdoc-section-title>
+  <sdoc-section-text>
+    <div class="document">
+<p>Rationale of safety related design decisions</p>
+</div>
+
+  </sdoc-section-text>
+</sdoc-section>
+
+
+  </sdoc-node>
+
+          </div>
+          <div class="content_item" data-role="children"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="layout_footer">
+    
+      <div class="footer">
+        Built with
+        <a
+          class="strictdoc__link"
+          href="https://github.com/strictdoc-project/strictdoc"
+          target="_blank"
+        >StrictDoc</a>
+        <a
+          class="strictdoc__version"
+          href="https://github.com/strictdoc-project/strictdoc/releases/tag/0.0.40"
+          target="_blank"
+        >
+          <svg height="16" viewBox="0 0 16 16" version="1.1" width="16" >
+            <path fill-rule="evenodd" d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z"></path>
+          </svg>
+          0.0.40
+        </a>
+      </div>
+    
+    </footer>
+
+    <aside class="layout_aside">
+      
+    </aside>
+
+  </div>
+  
+  <div id="modal"></div>
+  <div id="confirm"></div>
+  
+</body>
+</html>
