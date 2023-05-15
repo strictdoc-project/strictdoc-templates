@@ -1,0 +1,4 @@
+RUN: %strictdoc export %project_root/templates/ECSS-E-ST-40C | filecheck %s --dump-input=fail
+
+CHECK: Published: Software Requirements Specification
+CHECK: Export completed.
