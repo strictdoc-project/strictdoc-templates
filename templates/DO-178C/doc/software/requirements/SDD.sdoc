@@ -30,20 +30,6 @@ TITLE: Interface
 Describes input and output interfaces
 [/FREETEXT]
 
-[REQUIREMENT]
-UID: REQ-A429
-TITLE: ARINC 429 label format
-STATEMENT: >>>
-The IMU_AZ data is read from the data field in the Arinc word defined by:
-
-.. image:: ../../../_assets/A429.*
-<<<
-COMMENT: >>>
-Refer to `Arinc 429 definition`_
-
-.. _`Arinc 429 definition`: https://fr.wikipedia.org/wiki/ARINC_429
-<<<
-
 [SECTION]
 TITLE: Low level requirements
 
@@ -63,9 +49,7 @@ The software component **imu** shall ....
 TITLE: Detailed design
 
 [FREETEXT]
-See `IMU detailed design`_
 
-.. _IMU detailed design: https://strictdoc-templates.readthedocs.io/en/latest/doc/software/requirements/DD.html#imu-detailed-design
 [/FREETEXT]
 
 [/SECTION]
