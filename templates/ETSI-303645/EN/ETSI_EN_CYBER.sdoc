@@ -228,4 +228,153 @@ storage for each state.
 UID: ETSI-CYBER_2_References
 TITLE: References
 
+[SECTION]
+TITLE: Normative References
+
+[FREETEXT]
+References are either specific (identified by date of publication and/or edition number or version number) or
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the
+referenced document (including any amendments) applies.
+
+Referenced documents which are not found to be publicly available in the expected location might be found at
+https://docbox.etsi.org/Reference/.
+
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee
+their long term validity.
+
+The following referenced documents are necessary for the application of the present document.
+
+Not applicable.
+
+[/FREETEXT]
+
+[/SECTION]
+
+[SECTION]
+TITLE: Informative References
+
+[FREETEXT]
+References are either specific (identified by date of publication and/or edition number or version number) or
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the
+referenced document (including any amendments) applies.
+
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee
+their long term validity.
+
+The following referenced documents are not necessary for the application of the present document but they assist the
+user with regard to a particular subject area.
+
+[i.1] ETSI TR 103 305-3: "CYBER; Critical Security Controls for Effective Cyber Defence; Part 3:
+Service Sector Implementations".
+
+[i.2] ETSI TR 103 309: "CYBER; Secure by Default - platform security technology".
+
+[i.3] NIST Special Publication 800-63B: "Digital Identity Guidelines - Authentication and Lifecycle
+Management".
+
+NOTE: Available at https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf.
+[i.4] ISO/IEC 29147: "Information technology - Security techniques - Vulnerability Disclosure".
+
+NOTE: Available at https://www.iso.org/standard/45170.html.
+
+[i.5] OASIS: "CSAF Common Vulnerability Reporting Framework (CVRF)".
+
+NOTE: Available at http://docs.oasis-open.org/csaf/csaf-cvrf/v1.2/csaf-cvrf-v1.2.html.
+
+[i.6] ETSI TR 103 331: "CYBER; Structured threat information sharing".
+
+[i.7] Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the
+protection of natural persons with regard to the processing of personal data and on the free
+movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).
+
+[i.8] ENISA: "Baseline Security Recommendations for IoT in the context of Critical Information
+Infrastructures", November 2017, ISBN: 978-92-9204-236-3, doi: 10.2824/03228.
+
+NOTE: Available at https://op.europa.eu/en/publication-detail/-/publication/c37f8196-d96f-11e7-a506-
+01aa75ed71a1/language-en/format-PDF/source-117211901.
+
+[i.9] UK Department for Digital, Culture, Media and Sport: "Secure by Design: Improving the cyber
+security of consumer Internet of Things Report", March 2018.
+
+NOTE: Available at https://www.gov.uk/government/collections/secure-by-design.
+[i.10] IoT Security Foundation: "IoT Security Compliance Framework", Release 2 December 2018.
+
+NOTE: Available at https://www.iotsecurityfoundation.org/wp-content/uploads/2018/12/IoTSF-IoT-Security-
+Compliance-Framework-Release-2.0-December-2018.pdf.
+
+[i.11] GSMA: "GSMA IoT Security Guidelines and Assessment".
+
+NOTE: Available at https://www.gsma.com/iot/iot-security/iot-security-guidelines/.
+
+[i.12] ETSI TR 103 533: "SmartM2M; Security; Standards Landscape and best practices".
+
+[i.13] Commission Notice: The "Blue Guide" on the implementation of EU products rules 2016 (Text
+with EEA relevance), 2016/C 272/01.
+
+NOTE: Available in the Official Journal of the European Union, https://eur-lex.europa.eu/legal-
+content/EN/ALL/?uri=OJ:C:2016:272:TOC.
+
+[i.14] Copper Horse: "Mapping Security & Privacy in the Internet of Things".
+
+NOTE: Available at https://iotsecuritymapping.uk/.
+[i.15] ENISA: "Baseline Security Recommendations for IoT - Interactive Tool".
+
+NOTE: Available at https://www.enisa.europa.eu/topics/iot-and-smart-infrastructures/iot/baseline-security-
+recommendations-for-iot-interactive-tool.
+
+[i.16] IoT Security Foundation: "Understanding the Contemporary Use of Vulnerability Disclosure in
+Consumer Internet of Things Product Companies".
+
+NOTE: Available at https://www.iotsecurityfoundation.org/wp-content/uploads/2018/11/Vulnerability-
+Disclosure-Design-v4.pdf.
+
+[i.17] F-Secure: "IoT threats: Explosion of 'smart' devices filling up homes leads to increasing risks".
+
+NOTE: Available at https://blog.f-secure.com/iot-threats/.
+[i.18] W3C: "Web of Things at W3C".
+
+NOTE: Available at https://www.w3.org/WoT/.
+[i.19] ETSI TS 103 701: "CYBER; Cybersecurity assessment for consumer IoT products".
+
+NOTE: It is under development.
+
+[i.20] DIN SPEC 27072: "Information Technology - IoT capable devices - Minimum requirements for
+Information security".
+
+[i.21] GSMA: "Coordinated Vulnerability Disclosure (CVD) Programme".
+NOTE: Available at https://www.gsma.com/security/gsma-coordinated-vulnerability-disclosure-programme/.
+
+[i.22] IoT Security Foundation: "Vulnerability Disclosure - Best Practice Guidelines".
+
+NOTE: Available at https://www.iotsecurityfoundation.org/wp-content/uploads/2017/12/Vulnerability-
+Disclosure_WG4_2017.pdf.
+
+[i.23] OWASP Internet of Things (IoT) Top 10 2018.
+
+NOTE: Available at https://www.owasp.org/index.php/OWASP_Internet_of_Things_Project#tab=IoT_Top_10.
+
+[i.24] IEEE 802.15.4™-2015: "IEEE Standard for Low-Rate Wireless Networks".
+
+NOTE: Available at https://standards.ieee.org/content/ieee-standards/en/standard/802_15_4-2015.html.
+
+[i.25] ETSI TS 102 221: "Smart Cards; UICC-Terminal interface; Physical and logical characteristics".
+
+[i.26] GSMA: "SGP.22 Technical Specification v2.2.1".
+
+[i.27] ISO/IEC 27005:2018: "Information technology - Security techniques - Information security risk
+management".
+
+NOTE: Available at https://www.iso.org/standard/75281.html.
+[i.28] Microsoft® Corporation: "The STRIDE Threat Model".
+
+NOTE: Available at https://msdn.microsoft.com/en-us/library/ee823878(v=cs.20).aspx.
+
+[i.29] ETSI TR 121 905: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal
+Mobile Telecommunications System (UMTS); LTE; Vocabulary for 3GPP Specifications (3GPP
+TR 21.905)".
+
+[/FREETEXT]
+
+[/SECTION]
+
 [/SECTION]
