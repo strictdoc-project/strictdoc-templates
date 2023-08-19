@@ -701,3 +701,20 @@ For the purposes of the present document, the following abbreviations apply:
 [/SECTION]
 
 [/SECTION]
+
+[SECTION]
+TITLE: Reporting implementation
+
+[FREETEXT]
+The implementation of provisions in the present document is informed by risk assessment and threat modelling (such as
+ISO/IEC 27005:2018 [i.27] and STRIDE Threat Model [i.28]); this is performed by the device manufacturer and/or
+other relevant entities and is out of scope of the present document. For certain use cases and following risk assessment,
+it can be appropriate to apply additional provisions as well as those contained within the present document.
+
+The present document sets a security baseline; however, due to the broad landscape of consumer IoT it is recognized
+that the applicability of provisions is dependent on each device. The present document provides a degree of flexibility
+through the use of non-mandatory "should" provisions (recommendations).
+
+[/FREETEXT]
+
+[/SECTION]
