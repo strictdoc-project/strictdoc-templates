@@ -342,6 +342,7 @@ NOTE: It is under development.
 Information security".
 
 [i.21] GSMA: "Coordinated Vulnerability Disclosure (CVD) Programme".
+
 NOTE: Available at https://www.gsma.com/security/gsma-coordinated-vulnerability-disclosure-programme/.
 
 [i.22] IoT Security Foundation: "Vulnerability Disclosure - Best Practice Guidelines".
@@ -716,5 +717,39 @@ that the applicability of provisions is dependent on each device. The present do
 through the use of non-mandatory "should" provisions (recommendations).
 
 [/FREETEXT]
+
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_4-1
+TITLE: Provision 4-1
+STATEMENT: >>>
+A justification shall be recorded for each recommendation in the present document that is considered to
+be not applicable for or not fulfilled by the consumer IoT device.
+<<<
+COMMENT: >>>
+Table B.1 provides a schema to record these justifications in a structured manner. This is to allow other stakeholders
+(e.g. assurance assessors, members of the supply chain, security researchers or retailers) to determine whether
+provisions have been applied correctly and appropriately.
+
+EXAMPLE 1: The manufacturer publishes a completed version of table B.1 alongside the product description on
+their website.
+
+EXAMPLE 2: The manufacturer completes table B.1 for internal record keeping. Sometime later, an external
+assurance organization assesses a product against the present document and requests information
+relating to the product's security design. The manufacturer can easily provide this information as it
+is contained within table B.1.
+
+Cases where a provision is not applicable or not fulfilled by the consumer IoT device can include:
+
+| * when a device is a constrained device in such a way that implementation of certain security measures is not possible or not appropriate to the identified risk (security or privacy);
+| 
+| * where the functionality described in the provision is not included (e.g. a device that only presents data without requiring authentication).
+|
+
+EXAMPLE 3: A window sensor with a limited battery life sends alerts via a remote associated service when
+triggered and is controlled via a hub. Due to its limited battery life and processing power compared
+to other consumer IoT devices, it is a constrained device. In addition, because the user controls the
+device via a hub, the user does not need to use passwords, or other authentication mechanisms, to
+directly authenticate to the device.
+<<<
 
 [/SECTION]
