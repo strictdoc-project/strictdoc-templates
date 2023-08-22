@@ -857,6 +857,36 @@ threat of "resource exhaustion" and denial of service attacks.
 [SECTION]
 TITLE: Implement a means to manage reports of vulnerabilities
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.2-1
+TITLE: Provision 5.2-1
+STATEMENT: >>>
+The manufacturer shall make a vulnerability disclosure policy publicly available. This policy shall
+include, at a minimum:
+
+* contact information for the reporting of issues; and
+* information on timelines for:
+
+  #) initial acknowledgement of receipt; and
+  #) status updates until the resolution of the reported issues.
+<<<
+COMMENT: >>>
+A vulnerability disclosure policy clearly specifies the process through which security researchers and others are able to
+report issues. Such policy can be updated as necessary to further ensure transparency and clarity in the dealings of the
+manufacturer with security researchers, and vice versa.
+
+Coordinated Vulnerability Disclosure (CVD) is a set of processes for dealing with disclosures about potential security
+vulnerabilities and to support the remediation of these vulnerabilities. CVD is standardized by the International
+Organization for Standardization (ISO) in the ISO/IEC 29147 [i.4] on vulnerability disclosure and has been proven to
+be successful in some large software companies around the world.
+
+In the IoT industry, CVD is currently not well-established [i.16] as some companies are reticent about dealing with
+security researchers. Here, CVD provides companies a framework to manage this process. This gives security
+researchers an avenue to inform companies of security issues, puts companies ahead of the threat of malicious
+exploitation and gives companies an opportunity to respond to and resolve vulnerabilities in advance of a public
+disclosure.
+<<<
+
 [/SECTION]
 
 [/SECTION]
