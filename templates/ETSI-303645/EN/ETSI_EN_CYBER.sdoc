@@ -1829,6 +1829,17 @@ with the common defaults already specified and with appropriate security options
 on by default.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.12-2
+TITLE: Provision 5.12-2
+STATEMENT: >>>
+The manufacturer should provide users with guidance on how to securely set up their device.
+<<<
+COMMENT: >>>
+However, the ideal is for a process that involves the minimum of human intervention and which achieves a secure
+configuration automatically.
+<<<
+
 [/SECTION]
 
 [/SECTION]
