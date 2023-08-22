@@ -1439,6 +1439,20 @@ other field of application.
 
 [/FREETEXT]
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-1
+TITLE: Provision 5.6-1
+STATEMENT: >>>
+All unused network and logical interfaces shall be disabled.
+<<<
+COMMENT: >>>
+EXAMPLE 1: An administrative UI that is supposed to be accessed from the LAN is not accessible from the
+WAN by default.
+
+EXAMPLE 2: A Direct Firmware Update (DFU) service exposed over Bluetooth® Low Energy is used for
+development but not expected to be used in production. It is disabled in the final product.
+<<<
+
 [/SECTION]
 
 [/SECTION]
