@@ -1613,6 +1613,14 @@ unable to successfully perform this or if the attacker is able to repeatedly cau
 [SECTION]
 TITLE: Ensure that personal data is secure
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.8-1
+TITLE: Provision 5.8-1
+STATEMENT: >>>
+The confidentiality of personal data transiting between a device and a service, especially associated
+services, should be protected, with best practice cryptography.
+<<<
+
 [/SECTION]
 
 [/SECTION]
