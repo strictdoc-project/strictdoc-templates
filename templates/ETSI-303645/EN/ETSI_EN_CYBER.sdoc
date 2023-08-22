@@ -1047,6 +1047,22 @@ require a new conformity assessment. More information on the impact of software 
 context of the EU Product Legislation can be found in the Blue Guide [i.13].
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-5
+TITLE: Provision 5.3-5
+STATEMENT: >>>
+The device should check after initialization, and then periodically, whether security updates are
+available.
+<<<
+COMMENT: >>>
+EXAMPLE 6: The user could be shown the existence of updates via the interface with which the device is
+initialized.
+
+EXAMPLE 7: A device checks for available updates daily at a randomized time.
+
+For some products, it can be more appropriate for the associated service, rather than the device, to perform such checks.
+<<<
+
 [/SECTION]
 
 [/SECTION]
