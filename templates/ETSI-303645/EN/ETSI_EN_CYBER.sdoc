@@ -1238,6 +1238,32 @@ updates or the availability of software updates.
 [SECTION]
 TITLE: Securely store sensitive security parameters
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.4-1
+TITLE: Provision 5.4-1
+STATEMENT: >>>
+Sensitive security parameters in persistent storage shall be stored securely by the device.
+<<<
+COMMENT: >>>
+Secure storage mechanisms can be used to secure sensitive security parameters. Appropriate mechanisms include those
+provided by a Trusted Execution Environment (TEE), encrypted storage associated with the hardware, Secure Elements
+(SE) or Dedicated Security Components (DSC), and processing capabilities of software running on a UICC, according
+to ETSI TR 121 905 [i.29], ETSI TS 102 221 [i.25]/embedded UICC according to GSMA SGP.22 Technical
+Specification v2.2.1 [i.26].
+
+NOTE: This provision applies to persistent storage, but manufacturers can also implement similar approaches for
+sensitive security parameters in memory.
+
+EXAMPLE 1: The root keys involved in authorization and access to licensed radio frequencies (e.g. LTE-m
+cellular access) are stored in a UICC.
+
+EXAMPLE 2: A remote controlled door-lock using a Trusted Execution Environment (TEE) to store and access
+the sensitive security parameters.
+
+EXAMPLE 3: A wireless thermostat stores the credentials for the wireless network in a tamper protected
+microcontroller rather than in external flash storage.
+<<<
+
 [/SECTION]
 
 [/SECTION]
