@@ -787,6 +787,21 @@ protect the device or an associated service. Device security can further be stre
 identities.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.1-2
+TITLE: Provision 5.1-2
+STATEMENT: >>>
+Where pre-installed unique per device passwords are used, these shall be generated with a mechanism
+that reduces the risk of automated attacks against a class or type of device.
+<<<
+COMMENT: >>>
+EXAMPLE 2: Pre-installed passwords are sufficiently randomized.
+
+As a counter-example, passwords with incremental counters (such as "password1", "password2" and so on) are easily
+guessable. Further, using a password that is related in an obvious way to public information (sent over the air or within
+a network), such as MAC address or Wi-Fi ® SSID, can allow for password retrieval using automated means.
+<<<
+
 [/SECTION]
 
 [/SECTION]
