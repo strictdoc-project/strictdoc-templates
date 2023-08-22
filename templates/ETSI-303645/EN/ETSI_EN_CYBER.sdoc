@@ -1656,4 +1656,17 @@ Clause 6 of the present document contains provisions specific to protecting pers
 
 [/SECTION]
 
+[SECTION]
+TITLE: Make systems resilient to outages
+
+[FREETEXT]
+The aim of the provisions in the present clause is to ensure that IoT services are kept up and running as the adoption of
+IoT devices across all aspects of a consumer's life increases, including in functions that are relevant to personal safety. It
+is important to note that safety-related regulations can apply, but the key is to avoid making outages the cause of impact
+on the user and to design products and services that provide a level of resilience to these challenges.
+
+[/FREETEXT]
+
+[/SECTION]
+
 [/SECTION]
