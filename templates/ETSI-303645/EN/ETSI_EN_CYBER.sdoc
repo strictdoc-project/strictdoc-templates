@@ -1015,6 +1015,38 @@ the device. If an update is difficult to apply, then that increases the chance t
 device, leaving it in a vulnerable state.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-4
+TITLE: Provision 5.3-4
+STATEMENT: >>>
+Automatic mechanisms should be used for software updates.
+<<<
+COMMENT: >>>
+If an automatic update fails, then a user can, in some circumstances, no longer be able to use a device. Detection
+mechanisms such as watchdogs and the use of dual-bank flash or recovery partitions can ensure that the device returns
+to either a known good version or the factory state.
+
+Security updates can be provided for devices in a preventative manner, as part of automatic updates, which can remove
+security vulnerabilities before they are exploited. Managing this can be complex, especially if there are parallel
+associated service updates, device updates and other service updates to deal with. Therefore, a clear management and
+deployment plan is beneficial to the manufacturer, as is transparency to consumers about the current state of update
+support.
+
+In many cases, publishing software updates involves multiple dependencies on other organizations such as
+manufacturers that produce sub-components; however, this is not a reason to withhold updates. It can be useful for the
+manufacturer to consider the entire software supply chain in the development and deployment of security updates.
+
+It is often advisable not to bundle security updates with more complex software updates, such as feature updates. A
+feature update that introduces new functionality can trigger additional requirements and delay delivery of the update to
+devices.
+
+EXAMPLE 5: Under the EU Product Legislation, a feature update could change the intended use of a device and
+thus turn it into a new product, requiring a new conformity assessment to be conducted. However,
+a software update with limited impact could be considered a maintenance update which would not
+require a new conformity assessment. More information on the impact of software updates in the
+context of the EU Product Legislation can be found in the Blue Guide [i.13].
+<<<
+
 [/SECTION]
 
 [/SECTION]
