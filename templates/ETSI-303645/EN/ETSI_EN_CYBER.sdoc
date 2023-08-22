@@ -945,4 +945,19 @@ according to ETSI TR 103 331 [i.6].
 
 [/SECTION]
 
+[SECTION]
+TITLE: Keep software updated
+
+[FREETEXT]
+Developing and deploying security updates in a timely manner is one of the most important actions a manufacturer can
+take to protect its customers and the wider technical ecosystem. It is good practice that all software is kept updated and
+well maintained.
+
+Each provision from 5.3-3 to 5.3-12 is dependent upon an update mechanism being implemented, as per
+provision 5.3-1 or 5.3-2.
+
+[/FREETEXT]
+
+[/SECTION]
+
 [/SECTION]
