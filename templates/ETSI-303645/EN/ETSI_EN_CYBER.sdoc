@@ -1641,6 +1641,19 @@ can be influenced by the manufacturer. These services typically are not operated
 NOTE 3: Confidentiality protection often includes integrity protection according to best practice cryptography.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.8-3
+TITLE: Provision 5.8-3
+STATEMENT: >>>
+All external sensing capabilities of the device shall be documented in an accessible way that is clear
+and transparent for the user.
+<<<
+COMMENT: >>>
+EXAMPLE: An external sensing capability can be an optic or acoustic sensor.
+
+Clause 6 of the present document contains provisions specific to protecting personal data.
+<<<
+
 [/SECTION]
 
 [/SECTION]
