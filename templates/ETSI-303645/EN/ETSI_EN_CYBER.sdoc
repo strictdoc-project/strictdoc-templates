@@ -1508,6 +1508,16 @@ EXAMPLE 6: The manufacturer does not provision the device with any background pr
 commands, programs or tools that are not required for the intended use.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-6
+TITLE: Provision 5.6-6
+STATEMENT: >>>
+Code should be minimized to the functionality necessary for the service/device to operate.
+<<<
+COMMENT: >>>
+EXAMPLE 7: "Dead" or unused code is removed and not considered to be benign.
+<<<
+
 [/SECTION]
 
 [/SECTION]
