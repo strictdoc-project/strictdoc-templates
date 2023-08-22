@@ -1078,6 +1078,13 @@ update is deployed and subsequently found to cause issues, manufacturers can ask
 order that those devices are not affected.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-7
+TITLE: Provision 5.3-7
+STATEMENT: >>>
+The device shall use best practice cryptography to facilitate secure update mechanisms.
+<<<
+
 [/SECTION]
 
 [/SECTION]
