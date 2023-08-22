@@ -1470,6 +1470,21 @@ information could be information about the device configuration, kernel version 
 version.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-3
+TITLE: Provision 5.6-3
+STATEMENT: >>>
+Device hardware should not unnecessarily expose physical interfaces to attack.
+<<<
+COMMENT: >>>
+Physical interfaces can be used by an attacker to compromise firmware or memory on a device. "Unnecessarily" refers
+to the manufacturer's assessment of the benefits of an open interface, used for user functionality or for debugging
+purposes.
+
+EXAMPLE 4: A micro-USB port meant to be used to power the device only is physically configured so as not to
+also allow command or debug operations.
+<<<
+
 [/SECTION]
 
 [/SECTION]
