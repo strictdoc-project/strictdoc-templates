@@ -1388,6 +1388,14 @@ EXAMPLE 2: Security-relevant changes include permission management, configuratio
 password changes.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-6
+TITLE: Provision 5.5-6
+STATEMENT: >>>
+Critical security parameters should be encrypted in transit, with such encryption appropriate to the
+properties of the technology, risk and usage.
+<<<
+
 [/SECTION]
 
 [/SECTION]
