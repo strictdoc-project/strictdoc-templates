@@ -900,6 +900,49 @@ notification of the issue. A hardware fix can take considerably longer to addres
 that has to be deployed to devices can take time to roll out compared with a server software fix.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.2-3
+TITLE: Provision 5.2-3
+STATEMENT: >>>
+Manufacturers should continually monitor for, identify and rectify security vulnerabilities within
+products and services they sell, produce, have produced and services they operate during the defined support period.
+<<<
+COMMENT: >>>
+NOTE 1: Manufacturers are expected to exercise due care for all software and hardware components used in the
+product, this includes due care related to the selected third parties that provide associated services to
+support the functions of the product.
+
+Software solutions often contain open source and third party software components. Creating and maintaining list of all
+software components and their sub-components is a pre-requisite to be able to monitor for product vulnerabilities.
+Various tools exist to scan source code and binaries and build a so-called Software Bill of Materials (SBOM), which
+identifies third party components and the versions used in the product. This information is then used to monitor for the
+associated security and licensing risks of each identified software component.
+
+Vulnerabilities are expected to be reported directly to the affected stakeholders in the first instance. If that is not
+possible, vulnerabilities can be reported to national authorities. Manufacturers are also encouraged to share information
+with competent industry bodies, such as the GSMA [i.21] and the IoT Security Foundation. Guidance on Coordinated
+Vulnerability Disclosure is available from the IoT Security Foundation [i.22] which references ISO/IEC 29147 [i.4].
+
+This is expected to be performed for devices within their defined support period. However, manufacturers can continue
+this outside that period and release security updates to rectify vulnerabilities.
+
+Manufacturers that provide IoT products have a duty of care to consumers and third parties who can be harmed by their
+failure to have a CVD programme in place. Additionally, companies that share this information through industry bodies
+can assist others who can be suffering from the same problem.
+
+Disclosures can comprise different approaches depending on the circumstances:
+
+* Vulnerabilities related to single products or services: the problem is expected to be reported directly to the affected stakeholder (usually the device manufacturer, IoT service provider or mobile application developer).  The source of these reports can be security researchers or industry peers.
+
+* Systemic vulnerabilities: a stakeholder, such as a device manufacturer, can discover a problem that is potentially systemic. Whilst fixing it in the device manufacturer's own product is crucial, there is significant benefit to industry and consumers from sharing this information. Similarly, security researchers can also seek to report such systemic vulnerabilities. For systemic vulnerabilities, a relevant competent industry body can coordinate a wider scale response.
+
+NOTE 2: The Common Vulnerability Reporting Framework (CVRF) [i.5] can also be useful to exchange
+information on security vulnerabilities.
+
+Cyber security threat information sharing can support organizations in developing and producing secure products
+according to ETSI TR 103 331 [i.6].
+<<<
+
 [/SECTION]
 
 [/SECTION]
