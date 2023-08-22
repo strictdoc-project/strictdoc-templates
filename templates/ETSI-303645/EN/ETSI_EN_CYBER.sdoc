@@ -1518,6 +1518,25 @@ COMMENT: >>>
 EXAMPLE 7: "Dead" or unused code is removed and not considered to be benign.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-7
+TITLE: Provision 5.6-7
+STATEMENT: >>>
+Software should run with least necessary privileges, taking account of both security and functionality.
+<<<
+COMMENT: >>>
+EXAMPLE 8: Minimal daemons/processes run with "root" privileges. In particular the processes that use network
+interfaces require unprivileged users rather than requiring a "root" user.
+
+EXAMPLE 9: Applications running on a device that includes a multi-user operating system (e.g. Linux® ) use
+different users for each component or service.
+
+Software attacks on devices that aim to corrupt memory can be mitigated through mechanisms such as stack canaries,
+Address Space Layout Randomization (ASLR). The manufacturer can use platform security features where they are
+available to help further reduce the risk. Reducing privileges that they run at and minimizing code also helps to mitigate
+this risk.
+<<<
+
 [/SECTION]
 
 [/SECTION]
