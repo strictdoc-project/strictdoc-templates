@@ -1549,6 +1549,18 @@ limit whether data in memory on the device can be executed. Suitable mechanisms 
 or MPUs, executable space protection (e.g. NX bits), memory tagging, and trusted execution environments.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-9
+TITLE: Provision 5.6-9
+STATEMENT: >>>
+The manufacturer should follow secure development processes for software deployed on the device.
+<<<
+COMMENT: >>>
+Secure development processes, including using version control, or enabling security-related compiler options (e.g. stack
+protection) can help ensure software artefacts are more secure. Manufacturers can use these options when using
+toolchains that support them.
+<<<
+
 [/SECTION]
 
 [/SECTION]
