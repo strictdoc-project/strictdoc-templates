@@ -1496,6 +1496,18 @@ EXAMPLE 5: A UART serial interface is disabled through the bootloader software o
 prompt and no interactive menu is available due to this disabling.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-5
+TITLE: Provision 5.6-5
+STATEMENT: >>>
+The manufacturer should only enable software services that are used or required for the intended use or
+operation of the device.
+<<<
+COMMENT: >>>
+EXAMPLE 6: The manufacturer does not provision the device with any background processes, kernel extensions,
+commands, programs or tools that are not required for the intended use.
+<<<
+
 [/SECTION]
 
 [/SECTION]
