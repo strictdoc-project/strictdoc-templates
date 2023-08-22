@@ -760,6 +760,33 @@ TITLE: Cyber security provisions for consumer IoT
 [SECTION]
 TITLE: No universal default passwords
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.1-1
+TITLE: Provision 5.1-1
+STATEMENT: >>>
+Where passwords are used and in any state other than the factory default, all consumer IoT device
+passwords shall be unique per device or defined by the user.
+<<<
+COMMENT: >>>
+NOTE: There are many mechanisms used for performing authentication, and passwords are not the only
+mechanism for authenticating a user to a device. However if they are used, following best practice on
+passwords is encouraged according to NIST Special Publication 800-63B [i.3]. Using passwords for
+machine to machine authentication is generally not appropriate.
+
+Many consumer IoT devices are sold with universal default usernames and passwords (such as "admin, admin") for user
+interfaces through to network protocols. Continued usage of universal default values has been the source of many
+security issues in IoT [i.17] and the practice needs to be discontinued. The above provision can be achieved by the use
+of pre-installed passwords that are unique per device and/or by requiring the user to choose a password that follows best
+practice as part of initialization, or by some other method that does not use passwords.
+
+EXAMPLE 1: During initialization a device generates certificates that are used to authenticate a user to the
+device via an associated service like a mobile application.
+
+To increase security, multi-factor authentication, such as use of a password plus OTP procedure, can be used to better
+protect the device or an associated service. Device security can further be strengthened by having unique and immutable
+identities.
+<<<
+
 [/SECTION]
 
 [/SECTION]
