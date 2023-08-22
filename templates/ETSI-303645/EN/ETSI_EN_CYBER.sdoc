@@ -1290,6 +1290,26 @@ will often be found within source-code, which is well-known bad practice. Simple
 obscure or encrypt this hard-coded information can be trivially broken.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.4-4
+TITLE: Provision 5.4-4
+STATEMENT: >>>
+Any critical security parameters used for integrity and authenticity checks of software updates and for
+protection of communication with associated services in device software shall be unique per device and shall be
+produced with a mechanism that reduces the risk of automated attacks against classes of devices.
+<<<
+COMMENT: >>>
+EXAMPLE 5: A different symmetric key is deployed on every device of the same product class for generating
+and verifying message authentication codes for software updates.
+
+EXAMPLE 6: The device uses the manufacturer's public key to verify a software update. This is not a critical
+security parameter and does not need to be unique per device.
+
+Provisioning a device with unique critical security parameters helps to protect the integrity and authenticity of software
+updates as well as the communication of the device with associated services. If global critical security parameters are
+used, their disclosure can enable wide-scale attacks on other IoT devices such as to enable the creation of botnets.
+<<<
+
 [/SECTION]
 
 [/SECTION]
