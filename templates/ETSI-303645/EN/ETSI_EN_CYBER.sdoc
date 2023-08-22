@@ -1948,4 +1948,12 @@ If telemetry data is collected from consumer IoT devices and services, the proce
 should be kept to the minimum necessary for the intended functionality.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_6-5
+TITLE: Provision 6-5
+STATEMENT: >>>
+If telemetry data is collected from consumer IoT devices and services, consumers shall be provided with
+information on what telemetry data is collected, how it is being used, by whom, and for what purposes.
+<<<
+
 [/SECTION]
