@@ -1917,4 +1917,16 @@ data is processed, how it is being used, by whom, and for what purposes, for eac
 to third parties that can be involved, including advertisers.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_6-2
+TITLE: Provision 6-2
+STATEMENT: >>>
+Where personal data is processed on the basis of consumers' consent, this consent shall be obtained in a
+valid way.
+<<<
+COMMENT: >>>
+Obtaining consent "in a valid way" normally involves giving consumers a free, obvious and explicit opt-in choice of
+whether their personal data can be used for a specified purpose.
+<<<
+
 [/SECTION]
