@@ -1583,6 +1583,31 @@ alternatives providing baseline levels of security assurance proportionate to th
 device.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.7-2
+TITLE: Provision 5.7-2
+STATEMENT: >>>
+If an unauthorized change is detected to the software, the device should alert the user and/or
+administrator to the issue and should not connect to wider networks than those necessary to perform the alerting
+function.
+<<<
+COMMENT: >>>
+The ability to recover remotely from unauthorized changes can rely on a known good state, such as locally storing a
+known good version to enable safe recovery and updating of the device. This will avoid denial of service and costly
+recalls or maintenance visits, whilst managing the risk of potential takeover of the device by an attacker subverting
+update or other network communications mechanisms.
+
+If a consumer IoT device detects an unauthorized change to its software, it will be able to inform the right stakeholder.
+In some cases, devices can have the ability to be in administration mode.
+
+EXAMPLE: A thermostat in a room can have a user mode; this mode prevents changing of other settings. If an
+unauthorized change to software is detected, an alert to the administrator is appropriate, as the
+administrator has the ability to act on the alert (whereas a user does not).
+
+NOTE: An attack that forces a device to revert to a known good state can introduce a DoS risk if the device is
+unable to successfully perform this or if the attacker is able to repeatedly cause this effect.
+<<<
+
 [/SECTION]
 
 [/SECTION]
