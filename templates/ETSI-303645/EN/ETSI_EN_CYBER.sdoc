@@ -977,6 +977,31 @@ EXAMPLE 2: On devices with several microcontrollers (e.g. one for communication 
 some of them might not be updateable.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-2
+TITLE: Provision 5.3-2
+STATEMENT: >>>
+When the device is not a constrained device, it shall have an update mechanism for the secure
+installation of updates.
+<<<
+COMMENT: >>>
+NOTE 2: There are cases where provision 5.3-1 applies even where 5.3-2 does not.
+
+"Securely updateable" and "secure installation" means that there are adequate measures to prevent an attacker misusing
+the update mechanism.
+
+EXAMPLE 3: Measures can include the use of authentic software update servers, integrity protected
+communications channels, verifying the authenticity and integrity of software updates. It is
+recognized that there are great variances in software update mechanisms and what constitutes
+"installation".
+
+EXAMPLE 4: An anti-rollback policy based on version checking can be used to prevent downgrade attacks.
+
+Update mechanisms can range from the device downloading the update directly from a remote server, transmitted from
+a mobile application or transferred over a USB or other physical interface. If an attacker compromises this mechanism,
+it allows for a malicious version of the software to be installed on the device.
+<<<
+
 [/SECTION]
 
 [/SECTION]
