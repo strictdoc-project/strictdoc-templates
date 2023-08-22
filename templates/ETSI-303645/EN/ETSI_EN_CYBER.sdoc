@@ -1103,6 +1103,32 @@ manufacturer, and an IoT service platform operator. Collaboration between these 
 ensures appropriate timeliness of the software update.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-9
+TITLE: Provision 5.3-9
+STATEMENT: >>>
+The device should verify the authenticity and integrity of software updates.
+<<<
+COMMENT: >>>
+A common approach for confirming that an update is valid is to verify its integrity and authenticity. This can be done on
+the device; however, constrained devices can have power limitations that make performing cryptographic operations
+costly. In such cases, verification can be performed by another device that is trusted to perform this verification. The
+verified update would then be sent over a secure channel to the device. Performing verification of updates at a hub and
+then on the device, can reduce the risk of compromise.
+
+It is good practice for a device to act upon the detection of an invalid and potentially malicious update. Beyond rejecting
+the update, and without limitation, it can report the incident to an appropriate service and/or inform the user. In addition,
+mitigating controls can be put in place to prevent an attacker from bypassing or misusing an update mechanism. Giving
+the attacker as little information as possible as part of the update mechanism reduces their ability to exploit it.
+
+EXAMPLE 9: When a device detects that an update could not be delivered or applied successfully (by failing
+integrity or authentication checks), the device can mitigate information leakage by not providing
+any information about the failure to the initiator of the update process. However, the device can
+generate a log entry and deliver notification of the log entry to a trusted peer (e.g. a device
+administrator) over a secure channel, so that the occurrence of the incident is known and the owner
+or administrator of the device can make an appropriate response.
+<<<
+
 [/SECTION]
 
 [/SECTION]
