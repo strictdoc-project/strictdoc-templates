@@ -1895,3 +1895,17 @@ telemetry.
 [/SECTION]
 
 [/SECTION]
+
+[SECTION]
+TITLE: Data protection provisions for consumer IoT
+
+[FREETEXT]
+Many consumer IoT devices process personal data. It is expected that manufacturers provide features within consumer
+IoT devices that support the protection of such personal data. In addition, there exist laws and regulations that relate to
+the protection of personal data in consumer IoT devices (for example the GDPR [i.7]). The present document intends to
+help manufacturers of consumer IoT devices provide a number of features for the protection of personal data from a
+strictly technical perspective.
+
+[/FREETEXT]
+
+[/SECTION]
