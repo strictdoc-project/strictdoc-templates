@@ -1777,6 +1777,13 @@ minimal complexity.
 Such functionality can potentially present an attack vector.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.11-3
+TITLE: Provision 5.11-3
+STATEMENT: >>>
+Users should be given clear instructions on how to delete their personal data.
+<<<
+
 [/SECTION]
 
 [/SECTION]
