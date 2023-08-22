@@ -1784,6 +1784,33 @@ STATEMENT: >>>
 Users should be given clear instructions on how to delete their personal data.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.11-4
+TITLE: Provision 5.11-1
+STATEMENT: >>>
+Users should be provided with clear confirmation that personal data has been deleted from services,
+devices and applications.
+<<<
+COMMENT: >>>
+Consumer IoT devices often change ownership and will eventually be recycled or disposed of. Mechanisms can be
+provided that allow the consumer to remain in control and remove personal data from services, devices and
+applications. When a consumer wishes to completely remove their personal data, they also expect retrospective deletion
+of backup copies.
+
+Deleting personal data from a device or service is often not simply achieved by resetting a device back to its factory
+default state. There are many use cases where the consumer is not the owner of a device, but wishes to delete their own
+personal data from the device and all associated services such as cloud services or mobile applications.
+
+EXAMPLE: A user can have temporary usage of consumer IoT products within a rented apartment. Carrying
+out a factory reset of the product can remove configuration settings or disable the device to the
+detriment of the apartment owner and a future user. A factory reset, deleting all data from the IoT
+device, would not be an appropriate way to delete the personal data of a single user in a shared use
+context such as this.
+
+NOTE 2: Annex A of the present document contains an example model of device states including data storage for
+each state.
+<<<
+
 [/SECTION]
 
 [/SECTION]
