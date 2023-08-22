@@ -1827,7 +1827,14 @@ COMMENT: >>>
 EXAMPLE: The user uses a wizard to setup the device where a subset of configuration options is presented
 with the common defaults already specified and with appropriate security options already turned
 on by default.
-<<<
+Security issues caused by consumer confusion or misconfiguration can be reduced and sometimes eliminated by
+properly addressing complexity and poor design in user interfaces. Clear guidance to users on how to configure devices
+securely can also reduce their exposure to threats.
+In the general case, the average overhead of securely setting up a device is higher than the average overhead of
+checking whether a device is securely setup. The check of a secure setup, from a process standpoint, can be undertaken
+in large part by the manufacturer through an automated process that communicates with the device remotely. Part of
+such an automated process could include validation of the device's capacity to establish a secure communication
+channel<<<
 
 [REQUIREMENT]
 UID: ETSI-CYBER-Provision_5.12-2
@@ -1858,6 +1865,11 @@ in large part by the manufacturer through an automated process that communicates
 such an automated process could include validation of the device's capacity to establish a secure communication
 channel.
 <<<
+
+[/SECTION]
+
+[SECTION]
+TITLE: Validate input data
 
 [/SECTION]
 
