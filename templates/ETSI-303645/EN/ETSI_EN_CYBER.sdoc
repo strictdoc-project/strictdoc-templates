@@ -1063,6 +1063,21 @@ EXAMPLE 7: A device checks for available updates daily at a randomized time.
 For some products, it can be more appropriate for the associated service, rather than the device, to perform such checks.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-6
+TITLE: Provision 5.3-6
+STATEMENT: >>>
+If the device supports automatic updates and/or update notifications, these should be enabled in the
+initialized state and configurable so that the user can enable, disable, or postpone installation of security updates and/or
+update notifications.
+<<<
+COMMENT: >>>
+It is important from a consumer rights and ownership perspective that the user is in control of whether or not they
+receive updates. There are good reasons why a user may choose not to update, including security. In addition, if an
+update is deployed and subsequently found to cause issues, manufacturers can ask users to not upgrade their software in
+order that those devices are not affected.
+<<<
+
 [/SECTION]
 
 [/SECTION]
