@@ -1002,6 +1002,19 @@ a mobile application or transferred over a USB or other physical interface. If a
 it allows for a malicious version of the software to be installed on the device.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-3
+TITLE: Provision 5.3-3
+STATEMENT: >>>
+An update shall be simple for the user to apply.
+<<<
+COMMENT: >>>
+The degree of simplicity depends on the design and intended usage of the device. An update that is simple to apply will
+be automatically applied, initiated using an associated service (such as a mobile application), or via a web interface on
+the device. If an update is difficult to apply, then that increases the chance that a user will repeatedly defer updating the
+device, leaving it in a vulnerable state.
+<<<
+
 [/SECTION]
 
 [/SECTION]
