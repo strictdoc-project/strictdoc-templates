@@ -1816,6 +1816,19 @@ each state.
 [SECTION]
 TITLE: Make installation and maintenance of devices easy
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.12-1
+TITLE: Provision 5.12-1
+STATEMENT: >>>
+Installation and maintenance of consumer IoT should involve minimal decisions by the user and
+should follow security best practice on usability.
+<<<
+COMMENT: >>>
+EXAMPLE: The user uses a wizard to setup the device where a subset of configuration options is presented
+with the common defaults already specified and with appropriate security options already turned
+on by default.
+<<<
+
 [/SECTION]
 
 [/SECTION]
