@@ -1430,4 +1430,15 @@ is strongly encouraged.
 
 [/SECTION]
 
+[SECTION]
+TITLE: Minimize exposed attack surfaces
+
+[FREETEXT]
+The "principle of least privilege" is a foundation stone of good security engineering, applicable to IoT as much as in any
+other field of application.
+
+[/FREETEXT]
+
+[/SECTION]
+
 [/SECTION]
