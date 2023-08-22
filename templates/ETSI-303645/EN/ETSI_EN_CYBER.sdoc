@@ -1373,6 +1373,21 @@ The device can be compromised via vulnerabilities in network services. A suitabl
 protect against unauthorized access and can contribute to defence-in-depth in the device.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-5
+TITLE: Provision 5.5-5
+STATEMENT: >>>
+Device functionality that allows security-relevant changes in configuration via a network interface shall
+only be accessible after authentication. The exception is for network service protocols that are relied upon by the device
+and where the manufacturer cannot guarantee what configuration will be required for the device to operate.
+<<<
+COMMENT: >>>
+NOTE 3: Protocols that are an exception include ARP, DHCP, DNS, ICMP, and NTP.
+
+EXAMPLE 2: Security-relevant changes include permission management, configuration of network keys and
+password changes.
+<<<
+
 [/SECTION]
 
 [/SECTION]
