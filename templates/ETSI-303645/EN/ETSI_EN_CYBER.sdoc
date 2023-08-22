@@ -887,6 +887,19 @@ exploitation and gives companies an opportunity to respond to and resolve vulner
 disclosure.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.2-2
+TITLE: Provision 5.2-2
+STATEMENT: >>>
+Disclosed vulnerabilities should be acted on in a timely manner.
+<<<
+COMMENT: >>>
+A "timely manner" for acting on vulnerabilities varies considerably and is incident-specific; however, conventionally,
+the vulnerability process is completed within 90 days for a software solution, including availability of patches and
+notification of the issue. A hardware fix can take considerably longer to address than a software fix. Additionally, a fix
+that has to be deployed to devices can take time to roll out compared with a server software fix.
+<<<
+
 [/SECTION]
 
 [/SECTION]
