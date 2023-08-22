@@ -1929,4 +1929,15 @@ Obtaining consent "in a valid way" normally involves giving consumers a free, ob
 whether their personal data can be used for a specified purpose.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_6-3
+TITLE: Provision 6-3
+STATEMENT: >>>
+Consumers who gave consent for the processing of their personal data shall have the capability to
+withdraw it at any time.
+<<<
+COMMENT: >>>
+Consumers expect to be able to preserve their privacy by configuring IoT device and service functionality appropriately.
+<<<
+
 [/SECTION]
