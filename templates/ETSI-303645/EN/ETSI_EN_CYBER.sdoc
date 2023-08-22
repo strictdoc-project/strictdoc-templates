@@ -1183,6 +1183,17 @@ EXAMPLE 12: During an update, a watch will continue to display the time, a home 
 maintain a reasonable temperature and a Smart Lock will continue to lock and unlock a door.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-13
+TITLE: Provision 5.3-13
+STATEMENT: >>>
+The manufacturer shall publish, in an accessible way that is clear and transparent to the user, the
+defined support period.
+<<<
+COMMENT: >>>
+When purchasing a product, the consumer expects this period of software update support to be made clear.
+<<<
+
 [/SECTION]
 
 [/SECTION]
