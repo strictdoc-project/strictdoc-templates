@@ -1687,6 +1687,34 @@ NOTE: "Recovering cleanly" normally involves resuming connectivity and functiona
 state.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.9-3
+TITLE: Provision 5.9-3
+STATEMENT: >>>
+The consumer IoT device should connect to networks in an expected, operational and stable state and
+in an orderly fashion, taking the capability of the infrastructure into consideration.
+<<<
+COMMENT: >>>
+EXAMPLE 1: A Smart Home loses connection to the internet following a power outage. When the network
+connection is restored, the devices in the home reconnect after a randomized delay to minimize
+network utilization.
+
+EXAMPLE 2: After making an update available, the manufacturer notifies devices in batches to prevent them all
+simultaneously downloading the update.
+
+IoT systems and devices are relied upon by consumers for increasingly important use cases that can be safety-relevant
+or life-impacting. Keeping services running locally if there is a loss of network is one of the measures that can be taken
+to increase resilience. Other measures can include building redundancy into associated services as well as mitigations
+against Distributed Denial of Service (DDoS) attacks or signalling storms, which can be caused by mass-reconnections
+of devices following an outage. It is expected that the level of resilience necessary is proportionate and determined by
+usage, with consideration given to others that rely on the system, service or device given that an outage can have a
+wider impact than expected.
+
+Orderly reconnection means in a manner that takes explicit steps to avoid simultaneous requests, such as for software
+updates or reconnections, from a large number of IoT devices. Such explicit steps can include the introduction of a
+random delay before a reconnection attempt according to an incremental back-off mechanism.
+<<<
+
 [/SECTION]
 
 [/SECTION]
