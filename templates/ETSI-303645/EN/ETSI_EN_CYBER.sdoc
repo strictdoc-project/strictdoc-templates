@@ -1416,6 +1416,18 @@ often done using protocols or algorithms at least as strong as the key material 
 such as the need for close proximity, are available.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-8
+TITLE: Provision 5.5-8
+STATEMENT: >>>
+he manufacturer shall follow secure management processes for critical security parameters that relate
+to the device.
+<<<
+COMMENT: >>>
+The use of open, peer-reviewed standards for critical security parameters (commonly referred to as "key management")
+is strongly encouraged.
+<<<
+
 [/SECTION]
 
 [/SECTION]
