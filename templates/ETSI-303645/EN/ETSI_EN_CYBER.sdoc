@@ -958,6 +958,25 @@ provision 5.3-1 or 5.3-2.
 
 [/FREETEXT]
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-1
+TITLE: Provision 5.3-1
+STATEMENT: >>>
+All software components in consumer IoT devices should be securely updateable.
+<<<
+COMMENT: >>>
+NOTE 1: Managing software updates successfully generally relies on communication of version information for
+software components between the device and the manufacturer.
+
+Not all software on a device will be updateable.
+
+EXAMPLE 1: The first stage boot loader on a device is written once to device storage and from then on is
+immutable.
+
+EXAMPLE 2: On devices with several microcontrollers (e.g. one for communication and one for the application)
+some of them might not be updateable.
+<<<
+
 [/SECTION]
 
 [/SECTION]
