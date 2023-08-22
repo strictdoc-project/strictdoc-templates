@@ -1908,4 +1908,13 @@ strictly technical perspective.
 
 [/FREETEXT]
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_6-1
+TITLE: Provision 6-1
+STATEMENT: >>>
+The manufacturer shall provide consumers with clear and transparent information about what personal
+data is processed, how it is being used, by whom, and for what purposes, for each device and service. This also applies
+to third parties that can be involved, including advertisers.
+<<<
+
 [/SECTION]
