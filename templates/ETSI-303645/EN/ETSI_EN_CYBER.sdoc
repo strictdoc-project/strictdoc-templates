@@ -1485,6 +1485,17 @@ EXAMPLE 4: A micro-USB port meant to be used to power the device only is physica
 also allow command or debug operations.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-4
+TITLE: Provision 5.6-4
+STATEMENT: >>>
+Where a debug interface is physically accessible, it shall be disabled in software.
+<<<
+COMMENT: >>>
+EXAMPLE 5: A UART serial interface is disabled through the bootloader software on the device. No logon
+prompt and no interactive menu is available due to this disabling.
+<<<
+
 [/SECTION]
 
 [/SECTION]
