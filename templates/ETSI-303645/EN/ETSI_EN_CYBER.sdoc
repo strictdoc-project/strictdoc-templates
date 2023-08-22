@@ -1203,6 +1203,19 @@ software updates, the period and method of hardware replacement support and a de
 published by the manufacturer in an accessible way that is clear and transparent to the user.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-15
+TITLE: Provision 5.3-15
+STATEMENT: >>>
+For constrained devices that cannot have their software updated, the product should be isolable and
+the hardware replaceable.
+<<<
+COMMENT: >>>
+There are some situations where devices cannot be patched. For constrained devices a replacement plan needs to be in
+place and be clearly communicated to the consumer. This plan would typically detail a schedule for when technologies
+will need to be replaced and, where applicable, when support for hardware and software ends.
+<<<
+
 [/SECTION]
 
 [/SECTION]
