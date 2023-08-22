@@ -1940,4 +1940,12 @@ COMMENT: >>>
 Consumers expect to be able to preserve their privacy by configuring IoT device and service functionality appropriately.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_6-4
+TITLE: Provision 6-4
+STATEMENT: >>>
+If telemetry data is collected from consumer IoT devices and services, the processing of personal data
+should be kept to the minimum necessary for the intended functionality.
+<<<
+
 [/SECTION]
