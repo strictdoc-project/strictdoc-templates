@@ -810,6 +810,29 @@ Authentication mechanisms used to authenticate users against a device shall use 
 cryptography, appropriate to the properties of the technology, risk and usage.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.1-4
+TITLE: Provision 5.1-4
+STATEMENT: >>>
+Where a user can authenticate against a device, the device shall provide to the user or an administrator
+a simple mechanism to change the authentication value used.
+<<<
+COMMENT: >>>
+EXAMPLE 3: For biometric authentication values the device manufacturer allows this change in authentication
+value through retraining against a new biometric.
+
+EXAMPLE 4: A parent in a household creates an account on the device for their child and selects and manages
+the PIN or password that the child uses. The parent is an administrator on the device and can
+restrict the child from changing the PIN or password.
+
+EXAMPLE 5: To make it simple for the user to change a password, the manufacturer designs the password
+change process in a way that it requires a minimal number of steps. The manufacturer explains the
+process in a user manual and in a video tutorial.
+
+An authentication mechanism used for authenticating users, whether it be a fingerprint, password or other token, needs
+to have its value changeable. This is easier when this mechanism is part of the normal usage flow of the device.
+<<<
+
 [/SECTION]
 
 [/SECTION]
