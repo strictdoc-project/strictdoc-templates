@@ -1396,6 +1396,26 @@ Critical security parameters should be encrypted in transit, with such encryptio
 properties of the technology, risk and usage.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-7
+TITLE: Provision 5.5-7
+STATEMENT: >>>
+The consumer IoT device shall protect the confidentiality of critical security parameters that are
+communicated via remotely accessible network interfaces.
+<<<
+COMMENT: >>>
+Many different methods exist for enrolment and authentication. Some authentication values are provided by out-of-band
+authentication mechanisms, such as a QR code, and some are human-readable, such as a password.
+
+Where an authentication mechanism uses unique values per authentication attempt (e.g. in a challenge-response
+mechanism or when using one time passwords as a second factor), the response is not the authentication value itself.
+
+However, it is still good practice to apply confidentiality protection to those values.
+Confidentiality protection can be achieved using an encrypted communication channel or payload encryption. This is
+often done using protocols or algorithms at least as strong as the key material transmitted, however other mitigations,
+such as the need for close proximity, are available.
+<<<
+
 [/SECTION]
 
 [/SECTION]
