@@ -1327,6 +1327,21 @@ the usage context. As security is ever-evolving it is difficult to give prescrip
 security measures without the risk of such advice quickly becoming obsolete.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-2
+TITLE: Provision 5.5-2
+STATEMENT: >>>
+The consumer IoT device should use reviewed or evaluated implementations to deliver network and
+security functionalities, particularly in the field of cryptography.
+<<<
+COMMENT: >>>
+Reviews and evaluations can involve an independent internal or external entity.
+
+EXAMPLE 1: Distributed software libraries within the development and test community, certified software
+modules, and hardware equipment crypto-service providers (such as the Secure Element and Trust
+Execution Environment) are all reviewed or evaluated.
+<<<
+
 [/SECTION]
 
 [/SECTION]
