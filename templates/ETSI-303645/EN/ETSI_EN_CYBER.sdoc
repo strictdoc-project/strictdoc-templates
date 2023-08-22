@@ -1453,6 +1453,23 @@ EXAMPLE 2: A Direct Firmware Update (DFU) service exposed over Bluetooth® Low E
 development but not expected to be used in production. It is disabled in the final product.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-2
+TITLE: Provision 5.6-2
+STATEMENT: >>>
+In the initialized state, the network interfaces of the device shall minimize the unauthenticated
+disclosure of security-relevant information.
+<<<
+COMMENT: >>>
+Security-relevant information can be exposed over a network interface as part of the initialization process. When
+security-relevant information is shared by a device when establishing a connection, it can be used by attackers to
+identify vulnerable devices.
+
+EXAMPLE 3: When finding vulnerable devices throughout the whole IP address space, security-relevant
+information could be information about the device configuration, kernel version or software
+version.
+<<<
+
 [/SECTION]
 
 [/SECTION]
