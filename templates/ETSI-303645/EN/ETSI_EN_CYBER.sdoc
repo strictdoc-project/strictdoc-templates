@@ -1342,6 +1342,19 @@ modules, and hardware equipment crypto-service providers (such as the Secure Ele
 Execution Environment) are all reviewed or evaluated.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-3
+TITLE: Provision 5.5-3
+STATEMENT: >>>
+Cryptographic algorithms and primitives should be updateable.
+<<<
+COMMENT: >>>
+NOTE 1: This is also known as "cryptoagility".
+
+For devices that cannot be updated, it is important that the intended lifetime of the device does not exceed the
+recommended usage lifetime of cryptographic algorithms used by the device (including key sizes).
+<<<
+
 [/SECTION]
 
 [/SECTION]
