@@ -1157,6 +1157,32 @@ EXAMPLE 10: The manufacturer informs the user that an update is required via a n
 or via an email.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-12
+TITLE: Provision 5.3-12
+STATEMENT: >>>
+The device should notify the user when the application of a software update will disrupt the basic
+functioning of the device.
+<<<
+COMMENT: >>>
+NOTE 5: This is not necessary if a notification is made by an associated service.
+
+This notification can include extra detail, such as the approximate expected duration for which the device will be
+offline.
+
+EXAMPLE 11: A notification includes information about the urgency and approximate expected duration of
+downtime.
+
+It can be critical for users that a device continues to operate during an update. This is why the provision above
+recommends to notify the user when an update will disrupt functionality where possible. Particularly, devices that fulfil
+a safety-relevant function are expected not to turn completely off in the case of an update; some minimal system
+functional capability is expected. Disruption to functionality can become a critical safety issue for some types of
+devices and systems if not considered or managed correctly.
+
+EXAMPLE 12: During an update, a watch will continue to display the time, a home thermostat will continue to
+maintain a reasonable temperature and a Smart Lock will continue to lock and unlock a door.
+<<<
+
 [/SECTION]
 
 [/SECTION]
