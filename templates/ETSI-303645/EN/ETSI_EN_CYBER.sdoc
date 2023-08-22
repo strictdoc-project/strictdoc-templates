@@ -1194,6 +1194,15 @@ COMMENT: >>>
 When purchasing a product, the consumer expects this period of software update support to be made clear.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-14
+TITLE: Provision 5.3-14
+STATEMENT: >>>
+For constrained devices that cannot have their software updated, the rationale for the absence of
+software updates, the period and method of hardware replacement support and a defined support period should be
+published by the manufacturer in an accessible way that is clear and transparent to the user.
+<<<
+
 [/SECTION]
 
 [/SECTION]
