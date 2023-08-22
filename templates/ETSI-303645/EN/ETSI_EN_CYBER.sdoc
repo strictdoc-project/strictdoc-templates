@@ -833,6 +833,25 @@ An authentication mechanism used for authenticating users, whether it be a finge
 to have its value changeable. This is easier when this mechanism is part of the normal usage flow of the device.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.1-5
+TITLE: Provision 5.1-5
+STATEMENT: >>>
+When the device is not a constrained device, it shall have a mechanism available which makes brute-
+force attacks on authentication mechanisms via network interfaces impracticable.
+<<<
+COMMENT: >>>
+EXAMPLE 6: A device has a limitation on the number of authentication attempts within a certain time interval. It
+also uses increasing time intervals between attempts.
+
+EXAMPLE 7: The client application is able to lock an account or to delay additional authentication attempts after
+a limited number of failed authentication attempts.
+
+This provision addresses attacks that perform "credential stuffing" or exhaust an entire key-space. It is important that
+these types of attacks are detected by the consumer IoT device and defended against, whilst guarding against a related
+threat of "resource exhaustion" and denial of service attacks.
+<<<
+
 [/SECTION]
 
 [/SECTION]
