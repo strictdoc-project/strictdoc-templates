@@ -1315,6 +1315,18 @@ used, their disclosure can enable wide-scale attacks on other IoT devices such a
 [SECTION]
 TITLE: Communicate securely
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-1
+TITLE: Provision 5.5-1
+STATEMENT: >>>
+The consumer IoT device shall use best practice cryptography to communicate securely.
+<<<
+COMMENT: >>>
+Appropriateness of security controls and the use of best practice cryptography is dependent on many factors including
+the usage context. As security is ever-evolving it is difficult to give prescriptive advice about cryptography or other
+security measures without the risk of such advice quickly becoming obsolete.
+<<<
+
 [/SECTION]
 
 [/SECTION]
