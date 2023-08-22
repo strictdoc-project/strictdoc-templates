@@ -1758,6 +1758,25 @@ NOTE 1: User data in this context means all individual data which is stored on t
 data, user configuration and cryptographic material such as user passwords or keys.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.11-2
+TITLE: Provision 5.11-2
+STATEMENT: >>>
+The consumer should be provided with functionality on the device such that personal data can be
+removed from associated services in a simple manner.
+<<<
+COMMENT: >>>
+Such functionality is intended for situations when there is a transfer of ownership, when the consumer wishes to delete
+personal data, when the consumer wishes to remove a service from the device and/or when the consumer wishes to
+dispose of the device. It is expected that such functionality is compliant to applicable data protection law, including the
+GDPR [i.7].
+
+Removing personal data "easily" means that minimal steps are required to complete that action that each involve
+minimal complexity.
+
+Such functionality can potentially present an attack vector.
+<<<
+
 [/SECTION]
 
 [/SECTION]
