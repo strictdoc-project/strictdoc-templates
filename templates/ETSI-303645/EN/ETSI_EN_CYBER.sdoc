@@ -1216,6 +1216,23 @@ place and be clearly communicated to the consumer. This plan would typically det
 will need to be replaced and, where applicable, when support for hardware and software ends.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-16
+TITLE: Provision 5.3-16
+STATEMENT: >>>
+The model designation of the consumer IoT device shall be clearly recognizable, either by labelling
+on the device or via a physical interface.
+<<<
+COMMENT: >>>
+This is often performed by communicating with a device over a logical interface, however it can also be part of a UI.
+
+EXAMPLE 13: A device has a HTTP (or HTTPS when appropriate) API that reports the model designation (after
+user authentication).
+
+Knowledge of the specific designation of the device is often required to check the defined support period of software
+updates or the availability of software updates.
+<<<
+
 [/SECTION]
 
 [/SECTION]
