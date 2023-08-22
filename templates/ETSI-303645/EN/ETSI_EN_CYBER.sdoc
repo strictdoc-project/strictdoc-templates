@@ -1871,6 +1871,27 @@ channel.
 [SECTION]
 TITLE: Validate input data
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.13-1
+TITLE: Provision 5.13-1
+STATEMENT: >>>
+The consumer IoT device software shall validate data input via user interfaces or transferred via
+Application Programming Interfaces (APIs) or between networks in services and devices.
+<<<
+COMMENT: >>>
+Systems can be subverted by incorrectly formatted data or code transferred across different types of interface.
+Automated tools such as fuzzers can be used by attackers or testers to exploit potential gaps and weaknesses that
+emerge as a result of not validating data.
+
+EXAMPLE 1: The device receives data that is not of the expected type, for example executable code rather than
+user inputted text. The software on the device has been written so that the input is parameterized or
+"escaped", preventing this code from being run.
+
+EXAMPLE 2: Out of range data is received by a temperature sensor, rather than trying to process this input it
+identifies that it is outside of the possible bounds and is discarded and the event is captured in
+telemetry.
+<<<
+
 [/SECTION]
 
 [/SECTION]
