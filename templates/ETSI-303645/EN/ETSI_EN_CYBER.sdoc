@@ -1264,6 +1264,18 @@ EXAMPLE 3: A wireless thermostat stores the credentials for the wireless network
 microcontroller rather than in external flash storage.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.4-2
+TITLE: Provision 5.4-2
+STATEMENT: >>>
+Where a hard-coded unique per device identity is used in a device for security purposes, it shall be
+implemented in such a way that it resists tampering by means such as physical, electrical or software.
+<<<
+COMMENT: >>>
+EXAMPLE 4: A master key used for network access that is unique to the device is stored in UICC which is
+compliant to relevant ETSI standards (see, for example ETSI TS 102 221 [i.25]).
+<<<
+
 [/SECTION]
 
 [/SECTION]
