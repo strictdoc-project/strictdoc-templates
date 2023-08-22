@@ -1085,6 +1085,24 @@ STATEMENT: >>>
 The device shall use best practice cryptography to facilitate secure update mechanisms.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-8
+TITLE: Provision 5.3-8
+STATEMENT: >>>
+Security updates shall be timely.
+<<<
+COMMENT: >>>
+"Timely" in the context of security updates can vary, depending on the particular issue and fix, as well as other factors
+such as the ability to reach a device or constrained device considerations. It is important that a security update that fixes
+a critical vulnerability (i.e. one with potentially adverse effects of a large scale) is handled with appropriate priority by
+the manufacturer. Due to the complex structure of modern software and the ubiquity of communication platforms,
+multiple stakeholders can be involved in a security update.
+
+EXAMPLE 8: A particular software update involves a third party vendor of software libraries, an IoT device
+manufacturer, and an IoT service platform operator. Collaboration between these stakeholders
+ensures appropriate timeliness of the software update.
+<<<
+
 [/SECTION]
 
 [/SECTION]
