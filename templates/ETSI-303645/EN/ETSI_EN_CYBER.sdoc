@@ -1675,6 +1675,18 @@ Resilience should be built in to consumer IoT devices and services, taking into 
 of outages of data networks and power.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.9-2
+TITLE: Provision 5.9-2
+STATEMENT: >>>
+Consumer IoT devices should remain operating and locally functional in the case of a loss of network
+access and should recover cleanly in the case of restoration of a loss of power.
+<<<
+COMMENT: >>>
+NOTE: "Recovering cleanly" normally involves resuming connectivity and functionality in the same or improved
+state.
+<<<
+
 [/SECTION]
 
 [/SECTION]
