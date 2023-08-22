@@ -1720,6 +1720,27 @@ random delay before a reconnection attempt according to an incremental back-off 
 [SECTION]
 TITLE: Examine system telemetry data
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.10-1
+TITLE: Provision 5.10-1
+STATEMENT: >>>
+If telemetry data is collected from consumer IoT devices and services, such as usage and measurement
+data, it should be examined for security anomalies.
+<<<
+COMMENT: >>>
+EXAMPLE 1: Security anomalies can be represented by a deviation from normal behaviour of the device, as
+expressed by the monitored indicators, for example an abnormal increase of failed login attempts.
+
+EXAMPLE 2: Telemetry from multiple devices allows a manufacturer to notice that updates are failing due to
+invalid software update authenticity checks.
+
+Examining telemetry, including log data, is useful for security evaluation and allows for unusual circumstances to be
+identified early and dealt with, minimizing security risk and allowing quick mitigation of problems.
+
+Clause 6 of the present document contains provisions specific to protecting personal data when telemetry data is
+collected.
+<<<
+
 [/SECTION]
 
 [/SECTION]
