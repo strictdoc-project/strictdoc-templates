@@ -1355,6 +1355,24 @@ For devices that cannot be updated, it is important that the intended lifetime o
 recommended usage lifetime of cryptographic algorithms used by the device (including key sizes).
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.5-4
+TITLE: Provision 5.5-4
+STATEMENT: >>>
+Access to device functionality via a network interface in the initialized state should only be possible
+after authentication on that interface.
+<<<
+COMMENT: >>>
+NOTE 2: Functionality can vary significantly on the use case and can encompass a range of things, including access
+to personal data and device actuators.
+
+There are devices that provide public, open data for example in the Web of Things [i.18]. These devices are accessible
+without authentication to provide open access to all.
+
+The device can be compromised via vulnerabilities in network services. A suitable authentication mechanism can
+protect against unauthorized access and can contribute to defence-in-depth in the device.
+<<<
+
 [/SECTION]
 
 [/SECTION]
