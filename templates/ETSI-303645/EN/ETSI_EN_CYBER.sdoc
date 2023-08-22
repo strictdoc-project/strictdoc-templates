@@ -1537,6 +1537,18 @@ available to help further reduce the risk. Reducing privileges that they run at 
 this risk.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.6-8
+TITLE: Provision 5.6-8
+STATEMENT: >>>
+The device should include a hardware-level access control mechanism for memory.
+<<<
+COMMENT: >>>
+Software exploits often use the lack of access control in memory to execute malicious code. Access control mechanisms
+limit whether data in memory on the device can be executed. Suitable mechanisms include technologies such as MMUs
+or MPUs, executable space protection (e.g. NX bits), memory tagging, and trusted execution environments.
+<<<
+
 [/SECTION]
 
 [/SECTION]
