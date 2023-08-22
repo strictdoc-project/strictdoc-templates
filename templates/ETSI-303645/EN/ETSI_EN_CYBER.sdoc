@@ -1276,6 +1276,20 @@ EXAMPLE 4: A master key used for network access that is unique to the device is 
 compliant to relevant ETSI standards (see, for example ETSI TS 102 221 [i.25]).
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.4-3
+TITLE: Provision 5.4-3
+STATEMENT: >>>
+Hard-coded critical security parameters in device software source code shall not be used.
+<<<
+COMMENT: >>>
+Reverse engineering of devices and applications can easily discover credentials such as hard-coded usernames and
+passwords in software. These credentials can also be API keys that allow usage of security-sensitive functions in a
+remote service, or private keys used in the security of protocols that the device uses to communicate. Such credentials
+will often be found within source-code, which is well-known bad practice. Simple obfuscation methods also used to
+obscure or encrypt this hard-coded information can be trivially broken.
+<<<
+
 [/SECTION]
 
 [/SECTION]
