@@ -1129,6 +1129,22 @@ administrator) over a secure channel, so that the occurrence of the incident is 
 or administrator of the device can make an appropriate response.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-10
+TITLE: Provision 5.3-10
+STATEMENT: >>>
+Where updates are delivered over a network interface, the device shall verify the authenticity and
+integrity of each update via a trust relationship.
+<<<
+COMMENT: >>>
+NOTE 3: Valid trust relationships include: authenticated communication channels, presence on a network that
+requires the device to possess a critical security parameter or password to join, digital signature based
+verification of the update, or confirmation by the user.
+
+NOTE 4: The validation of the trust relationship is essential to ensure that a non-authorized entity (e.g. device
+management platform or device) cannot install malicious code.
+<<<
+
 [/SECTION]
 
 [/SECTION]
