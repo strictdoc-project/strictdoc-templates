@@ -1667,6 +1667,14 @@ on the user and to design products and services that provide a level of resilien
 
 [/FREETEXT]
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.9-1
+TITLE: Provision 5.9-1
+STATEMENT: >>>
+Resilience should be built in to consumer IoT devices and services, taking into account the possibility
+of outages of data networks and power.
+<<<
+
 [/SECTION]
 
 [/SECTION]
