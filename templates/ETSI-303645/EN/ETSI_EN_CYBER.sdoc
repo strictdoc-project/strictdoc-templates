@@ -1145,6 +1145,18 @@ NOTE 4: The validation of the trust relationship is essential to ensure that a n
 management platform or device) cannot install malicious code.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.3-11
+TITLE: Provision 5.3-11
+STATEMENT: >>>
+The manufacturer should inform the user in a recognizable and apparent manner that a security update
+is required together with information on the risks mitigated by that update.
+<<<
+COMMENT: >>>
+EXAMPLE 10: The manufacturer informs the user that an update is required via a notification on the user interface
+or via an email.
+<<<
+
 [/SECTION]
 
 [/SECTION]
