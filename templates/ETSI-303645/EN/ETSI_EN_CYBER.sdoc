@@ -1566,6 +1566,23 @@ toolchains that support them.
 [SECTION]
 TITLE: Ensure software integrity
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.7-1
+TITLE: Provision 5.7-1
+STATEMENT: >>>
+The consumer IoT device should verify its software using secure boot mechanisms.
+<<<
+COMMENT: >>>
+A hardware root of trust is one way to provide strong attestation as part of a secure boot mechanism. A hardware root of
+trust is a component of a system from which all other components derive their "trust" - i.e. the source of cryptographic
+trust within that system. To fulfil its function, the hardware root of trust is reliable and resistant to both physical and
+logical tampering, as there is no mechanism to determine that the component has failed or been altered. By utilizing a
+hardware root of trust, a device can have confidence in results of cryptographic functions, such as those utilized for
+secure boot. A hardware root of trust can be either backed by mechanisms used for secure storage of credentials or other
+alternatives providing baseline levels of security assurance proportionate to the required level of security for a given
+device.
+<<<
+
 [/SECTION]
 
 [/SECTION]
