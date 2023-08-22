@@ -802,6 +802,14 @@ guessable. Further, using a password that is related in an obvious way to public
 a network), such as MAC address or Wi-Fi ® SSID, can allow for password retrieval using automated means.
 <<<
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.1-3
+TITLE: Provision 5.1-3
+STATEMENT: >>>
+Authentication mechanisms used to authenticate users against a device shall use best practice
+cryptography, appropriate to the properties of the technology, risk and usage.
+<<<
+
 [/SECTION]
 
 [/SECTION]
