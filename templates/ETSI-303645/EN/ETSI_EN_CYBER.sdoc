@@ -1746,6 +1746,18 @@ collected.
 [SECTION]
 TITLE: Make it easy for users to delete user data
 
+[REQUIREMENT]
+UID: ETSI-CYBER-Provision_5.11-1
+TITLE: Provision 5.11-1
+STATEMENT: >>>
+The user shall be provided with functionality such that user data can be erased from the device in a
+simple manner.
+<<<
+COMMENT: >>>
+NOTE 1: User data in this context means all individual data which is stored on the IoT device including personal
+data, user configuration and cryptographic material such as user passwords or keys.
+<<<
+
 [/SECTION]
 
 [/SECTION]
