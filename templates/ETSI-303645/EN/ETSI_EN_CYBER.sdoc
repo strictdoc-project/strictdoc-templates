@@ -543,6 +543,12 @@ network interface
 owner
   user who owns or who purchased the device.
 
+personal data
+  any information relating to an identified or identifiable natural person.
+
+  NOTE: This term is used to align with well-known terminology but has no legal meaning within the present
+  document.
+
 [/FREETEXT]
 
 [/SECTION]
