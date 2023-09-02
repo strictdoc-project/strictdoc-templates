@@ -390,7 +390,10 @@ For the purposes of the present document, the following terms apply:
 [/FREETEXT]
 
 [FREETEXT]
-TBD.
+administrator
+  user who has the highest-privilege level possible for a user of the device, which can mean they are able
+  to change any configuration related to the intended functionality.
+
 [/FREETEXT]
 
 [/SECTION]
