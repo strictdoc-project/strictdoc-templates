@@ -419,6 +419,20 @@ authentication value
   character string. When the authentication mechanism is a biometric fingerprint recognition, the
   authentication value can be the index fingerprint of the left hand.
 
+best practice cryptography
+  cryptography that is suitable for the corresponding use case and has no indications of a
+  feasible attack with current readily available techniques.
+
+  NOTE 1: This does not refer only to the cryptographic primitives used, but also implementation, key generation and
+  handling of keys.
+
+  NOTE 2: Multiple organizations, such as SDOs and public authorities, maintain guides and catalogues of
+  cryptographic methods that can be used.
+
+  EXAMPLE: The device manufacturer uses a communication protocol and cryptographic library provided with
+  the IoT platform and where that library and protocol have been assessed against feasible attacks,
+  such as replay.
+
 [/FREETEXT]
 
 [/SECTION]
