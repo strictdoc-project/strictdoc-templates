@@ -563,6 +563,9 @@ public security parameter
 
   EXAMPLE 2: Public components of certificates.
 
+remotely accessible
+  intended to be accessible from outside the local network.
+
 [/FREETEXT]
 
 [/SECTION]
