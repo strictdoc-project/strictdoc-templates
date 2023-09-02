@@ -404,6 +404,14 @@ associated services
   EXAMPLE 2: A device transmits telemetry data to a third-party service chosen by the device manufacturer. This
   service is an associated service.
 
+authentication mechanism
+  method used to prove the authenticity of an entity.
+
+  NOTE: An "entity" can be either a user or machine.
+
+  EXAMPLE: An authentication mechanism can be the requesting of a password, scanning a QR code, or use of a
+  biometric fingerprint scanner.
+
 [/FREETEXT]
 
 [/SECTION]
