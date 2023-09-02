@@ -549,6 +549,12 @@ personal data
   NOTE: This term is used to align with well-known terminology but has no legal meaning within the present
   document.
 
+physical interface
+  physical port or air interface (such as radio, audio or optical) used to communicate with the device
+  at the physical layer.
+
+  EXAMPLE: Radios, ethernet ports, serial interfaces such as USB, and those used for debugging.
+
 [/FREETEXT]
 
 [/SECTION]
