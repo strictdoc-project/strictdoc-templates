@@ -528,6 +528,15 @@ logical interface
   software implementation that utilizes a network interface to communicate over the network via
   channels or ports.
 
+manufacturer
+  relevant economic operator in the supply chain (including the device manufacturer).
+
+  NOTE: This definition acknowledges the variety of actors involved in the consumer IoT ecosystem and the
+  complex ways by which they can share responsibilities. Beyond the device manufacturer, such entities
+  can also be, for example and depending on a specific case at hand: importers, distributors, integrators,
+  component and platform providers, software providers, IT and telecommunications service providers,
+  managed service providers and providers of associated services.
+
 [/FREETEXT]
 
 [/SECTION]
