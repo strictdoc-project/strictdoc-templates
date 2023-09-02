@@ -555,6 +555,14 @@ physical interface
 
   EXAMPLE: Radios, ethernet ports, serial interfaces such as USB, and those used for debugging.
 
+public security parameter
+  security related public information whose modification can compromise the security of a
+  security module.
+
+  EXAMPLE 1: A public key to verify the authenticity/integrity of software updates.
+
+  EXAMPLE 2: Public components of certificates.
+
 [/FREETEXT]
 
 [/SECTION]
