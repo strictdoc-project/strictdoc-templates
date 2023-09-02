@@ -524,6 +524,10 @@ isolable
   EXAMPLE: A Smart Fridge has a touchscreen-based interface that is network-connected. This interface can be
   removed without stopping the fridge from keeping the contents chilled.
 
+logical interface
+  software implementation that utilizes a network interface to communicate over the network via
+  channels or ports.
+
 [/FREETEXT]
 
 [/SECTION]
