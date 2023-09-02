@@ -412,6 +412,13 @@ authentication mechanism
   EXAMPLE: An authentication mechanism can be the requesting of a password, scanning a QR code, or use of a
   biometric fingerprint scanner.
 
+authentication value
+  individual value of an attribute used by an authentication mechanism.
+
+  EXAMPLE: When the authentication mechanism is to request a password, the authentication value can be a
+  character string. When the authentication mechanism is a biometric fingerprint recognition, the
+  authentication value can be the index fingerprint of the left hand.
+
 [/FREETEXT]
 
 [/SECTION]
