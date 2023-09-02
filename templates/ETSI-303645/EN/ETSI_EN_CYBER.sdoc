@@ -516,6 +516,14 @@ initialized state
 IoT product
   consumer IoT device and its associated services.
 
+isolable
+  able to be removed from the network it is connected to, where any functionality loss caused is related only to
+  that connectivity and not to its main function; alternatively, able to be placed in a self-contained environment with other
+  devices if and only if the integrity of devices within that environment can be ensured.
+
+  EXAMPLE: A Smart Fridge has a touchscreen-based interface that is network-connected. This interface can be
+  removed without stopping the fridge from keeping the contents chilled.
+
 [/FREETEXT]
 
 [/SECTION]
