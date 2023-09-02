@@ -506,6 +506,10 @@ factory default
 
   NOTE: This includes the physical device and software (including firmware) that is present on it after assembly.
 
+initialization
+  process that activates the network connectivity of the device for operation and optionally sets
+  authentication features for a user or for network access.
+
 [/FREETEXT]
 
 [/SECTION]
