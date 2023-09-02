@@ -394,6 +394,16 @@ administrator
   user who has the highest-privilege level possible for a user of the device, which can mean they are able
   to change any configuration related to the intended functionality.
 
+associated services
+  digital services that, together with the device, are part of the overall consumer IoT product and that
+  are typically required to provide the product's intended functionality.
+
+  EXAMPLE 1: Associated services can include mobile applications, cloud computing/storage and third party
+  Application Programming Interfaces (APIs).
+
+  EXAMPLE 2: A device transmits telemetry data to a third-party service chosen by the device manufacturer. This
+  service is an associated service.
+
 [/FREETEXT]
 
 [/SECTION]
