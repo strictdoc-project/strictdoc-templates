@@ -537,6 +537,9 @@ manufacturer
   component and platform providers, software providers, IT and telecommunications service providers,
   managed service providers and providers of associated services.
 
+network interface
+  physical interface that can be used to access the functionality of consumer IoT via a network.
+
 [/FREETEXT]
 
 [/SECTION]
