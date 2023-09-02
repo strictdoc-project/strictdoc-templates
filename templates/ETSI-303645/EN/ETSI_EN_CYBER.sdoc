@@ -477,6 +477,13 @@ consumer IoT device
   NOTE 2: Consumer IoT devices are often available for the consumer to purchase in retail environments. Consumer
   IoT devices can also be commissioned and/or installed professionally.
 
+critical security parameter
+  security-related secret information whose disclosure or modification can compromise the
+  security of a security module.
+
+  EXAMPLE: Secret cryptographic keys, authentication values such as passwords, PINs, private components of
+  certificates.
+
 [/FREETEXT]
 
 [/SECTION]
