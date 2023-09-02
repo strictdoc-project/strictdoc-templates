@@ -135,3 +135,53 @@ provisions).
 
 [/SECTION]
 
+[SECTION]
+LEVEL: None
+TITLE: Introduction
+
+[FREETEXT]
+As more devices in the home connect to the Internet, the cyber security of the Internet of Things (IoT) becomes a
+growing concern. People entrust their personal data to an increasing number of online devices and services. Products
+and appliances that have traditionally been offline are now connected and need to be designed to withstand cyber
+threats.
+
+The present document brings together widely considered good practice in security for Internet-connected consumer
+devices in a set of high-level outcome-focused provisions. The objective of the present document is to support all
+parties involved in the development and manufacturing of consumer IoT with guidance on securing their products.
+The provisions are primarily outcome-focused, rather than prescriptive, giving organizations the flexibility to innovate
+and implement security solutions appropriate for their products.
+
+The present document is not intended to solve all security challenges associated with consumer IoT. It also does not
+focus on protecting against attacks that are prolonged/sophisticated or that require sustained physical access to the
+device. Rather, the focus is on the technical controls and organizational policies that matter most in addressing the most
+significant and widespread security shortcomings. Overall, a baseline level of security is considered; this is intended to
+protect against elementary attacks on fundamental design weaknesses (such as the use of easily guessable passwords).
+
+The present document provides a set of baseline provisions applicable to all consumer IoT devices. It is intended to be
+complemented by other standards defining more specific provisions and fully testable and/or verifiable requirements for
+specific devices which, together with the present document, will facilitate the development of assurance schemes.
+
+Many consumer IoT devices and their associated services process and store personal data, the present document can
+help in ensuring that these are compliant with the General Data Protection Regulation (GDPR) [i.7]. Security by design
+is an important principle that is endorsed by the present document.
+
+ETSI TS 103 701 [i.19] provides guidance on how to assess and assure IoT products against provisions within the
+present document.
+
+The provisions in the present document have been developed following a review of published standards,
+recommendations and guidance on IoT security and privacy, including: ETSI TR 103 305-3 [i.1], ETSI
+TR 103 309 [i.2], ENISA Baseline Security Recommendations [i.8], UK Department for Digital, Culture, Media and
+Sport (DCMS) Secure by Design Report [i.9], IoT Security Foundation Compliance Framework [i.10], GSMA IoT
+Security Guidelines and Assessment [i.11], ETSI TR 103 533 [i.12], DIN SPEC 27072 [i.20] and OWASP Internet of
+Things [i.23].
+
+NOTE: Mappings of the landscape of IoT security standards, recommendations and guidance are available in
+ENISA Baseline Security Recommendations for IoT - Interactive Tool [i.15] and in Copper Horse
+Mapping Security & Privacy in the Internet of Things [i.14].
+
+As consumer IoT products become increasingly secure, it is envisioned that future revisions of the present document
+will mandate provisions that are currently recommendations in the present document.
+[/FREETEXT]
+
+[/SECTION]
+
