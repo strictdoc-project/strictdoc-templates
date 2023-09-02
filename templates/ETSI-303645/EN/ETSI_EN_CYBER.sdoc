@@ -501,6 +501,11 @@ device manufacturer
   entity that creates an assembled final consumer IoT product, which is likely to contain the
   products and components of many other suppliers.
 
+factory default
+  state of the device after factory reset or after final production/assembly.
+
+  NOTE: This includes the physical device and software (including firmware) that is present on it after assembly.
+
 [/FREETEXT]
 
 [/SECTION]
