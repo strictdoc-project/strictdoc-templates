@@ -433,6 +433,33 @@ best practice cryptography
   the IoT platform and where that library and protocol have been assessed against feasible attacks,
   such as replay.
 
+constrained device
+  device which has physical limitations in either the ability to process data, the ability to
+  communicate data, the ability to store data or the ability to interact with the user, due to restrictions that arise from its
+  intended use.
+
+  NOTE 1: Physical limitations can be due to power supply, battery life, processing power, physical access, limited
+  functionality, limited memory or limited network bandwidth. These limitations can require a constrained
+  device to be supported by another device, such as a base station or companion device.
+
+  EXAMPLE 1: A window sensor's battery cannot be charged or changed by the user; this is a constrained device.
+
+  EXAMPLE 2: The device cannot have its software updated due to storage limitations, resulting in hardware
+  replacement or network isolation being the only options to manage a security vulnerability.
+
+  EXAMPLE 3: A low-powered device uses a battery to enable it to be deployed in a range of locations.
+  Performing high power cryptographic operations would quickly reduce the battery life, so it relies
+  on a base station or hub to perform validations on updates.
+
+  EXAMPLE 4: The device has no display screen to validate binding codes for Bluetooth pairing.
+
+  EXAMPLE 5: The device has no ability to input, such as via a keyboard, authentication information.
+
+  NOTE 2: A device that has a wired power supply and can support IP-based protocols and the cryptographic
+  primitives used by those protocols is not constrained.
+
+  EXAMPLE 6: A device is mains powered and communicates primarily using TLS (Transport Layer Security).
+
 [/FREETEXT]
 
 [/SECTION]
