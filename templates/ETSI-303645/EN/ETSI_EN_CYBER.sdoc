@@ -5,3 +5,39 @@ REQ_PREFIX: ETSI-CYBER
 [FREETEXT]
 Reformatted from: https://www.etsi.org/deliver/etsi_en/303600_303699/303645/02.01.01_60/en_303645v020101p.pdf
 [/FREETEXT]
+
+[FREETEXT]
+::
+
+  CYBER;
+  Cyber Security for Consumer Internet of Things:
+  Baseline Requirements
+  
+  Reference: REN/CYBER-0048
+  Keywords: cybersecurity, IoT, privacy
+
+  ETSI
+  650 Route des Lucioles
+  F-06921 Sophia Antipolis Cedex - FRANCE
+  
+  :Tel.: +33 4 92 94 42 00
+  :Fax:  +33 4 93 65 47 16
+
+################
+Important notice
+################
+
+The present document can be downloaded from: http://www.etsi.org/standards-search
+
+The present document may be made available in electronic versions and/or in print. The content of any electronic and/or
+print versions of the present document shall not be modified without the prior written authorization of ETSI. In case of any
+existing or perceived difference in contents between such versions and/or in print, the prevailing version of an ETSI
+deliverable is the one made publicly available in PDF format at www.etsi.org/deliver.
+
+Users of the present document should be aware that the document may be subject to revision or change of status.
+Information on the current status of this and other ETSI documents is available at
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+
+If you find errors in the present document, please send your comment to one of the following services:
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+[/FREETEXT]
