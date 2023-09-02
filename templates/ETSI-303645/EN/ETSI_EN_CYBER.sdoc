@@ -484,6 +484,12 @@ critical security parameter
   EXAMPLE: Secret cryptographic keys, authentication values such as passwords, PINs, private components of
   certificates.
 
+debug interface
+  physical interface used by the manufacturer to communicate with the device during development or to
+  perform triage of issues with the device and that is not used as part of the consumer-facing functionality.
+
+  EXAMPLE: Test points, UART, SWD, JTAG.
+
 [/FREETEXT]
 
 [/SECTION]
