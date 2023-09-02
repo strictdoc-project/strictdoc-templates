@@ -490,6 +490,13 @@ debug interface
 
   EXAMPLE: Test points, UART, SWD, JTAG.
 
+defined support period
+  minimum length of time, expressed as a period or by an end-date, for which a manufacturer
+  will provide security updates.
+
+  NOTE: This definition focuses on security aspects and not other aspects related to product support such as
+  warranty.
+
 [/FREETEXT]
 
 [/SECTION]
