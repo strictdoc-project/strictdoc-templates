@@ -589,6 +589,13 @@ software service
   EXAMPLE: A runtime for the programming language used within the device software or a daemon that
   exposes an API used by the device software, e.g. a cryptographic module's API.
 
+telemetry
+  data from a device that can provide information to help the manufacturer identify issues or information
+  related to device usage.
+
+  EXAMPLE: A consumer IoT device reports software malfunctions to the manufacturer enabling them to
+  identify and remedy the cause.
+
 [/FREETEXT]
 
 [/SECTION]
