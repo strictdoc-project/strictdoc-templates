@@ -573,6 +573,13 @@ security module
   trusted execution environment, and software within the operating system that enforces security
   such as user separation and the update mechanism. These all make up the security module.
 
+security update
+  software update that addresses security vulnerabilities either discovered by or reported to the
+  manufacturer.
+
+  NOTE: Software updates can be purely security updates if the severity of the vulnerability requires a higher
+  priority fix.
+
 [/FREETEXT]
 
 [/SECTION]
