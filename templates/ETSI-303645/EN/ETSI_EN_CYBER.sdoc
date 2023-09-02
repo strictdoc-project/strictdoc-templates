@@ -497,6 +497,10 @@ defined support period
   NOTE: This definition focuses on security aspects and not other aspects related to product support such as
   warranty.
 
+device manufacturer
+  entity that creates an assembled final consumer IoT product, which is likely to contain the
+  products and components of many other suppliers.
+
 [/FREETEXT]
 
 [/SECTION]
