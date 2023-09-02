@@ -596,6 +596,9 @@ telemetry
   EXAMPLE: A consumer IoT device reports software malfunctions to the manufacturer enabling them to
   identify and remedy the cause.
 
+unique per device
+  unique for each individual device of a given product class or type.
+
 [/FREETEXT]
 
 [/SECTION]
