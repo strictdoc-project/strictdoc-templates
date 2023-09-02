@@ -185,3 +185,42 @@ will mandate provisions that are currently recommendations in the present docume
 
 [/SECTION]
 
+[SECTION]
+UID: ETSI-CYBER_1_Scope
+TITLE: Scope
+
+[FREETEXT]
+The present document specifies high-level security and data protection provisions for consumer IoT devices that are
+connected to network infrastructure (such as the Internet or home network) and their interactions with associated
+services. The associated services are out of scope. A non-exhaustive list of examples of consumer IoT devices includes:
+
+* connected children's toys and baby monitors;
+* connected smoke detectors, door locks and window sensors;
+* IoT gateways, base stations and hubs to which multiple devices connect;
+* smart cameras, TVs and speakers;
+* wearable health trackers;
+* connected home automation and alarm systems, especially their gateways and hubs;* connected appliances, such as washing machines and fridges; and
+* smart home assistants.
+
+Moreover, the present document addresses security considerations specific to constrained devices.
+
+EXAMPLE: Window contact sensors, flood sensors and energy switches are typically constrained devices.
+
+The present document provides basic guidance through examples and explanatory text for organizations involved in the
+development and manufacturing of consumer IoT on how to implement those provisions. Table B.1 provides a schema
+for the reader to give information about the implementation of the provisions.
+
+Devices that are not consumer IoT devices, for example those that are primarily intended to be used in manufacturing,
+healthcare or other industrial applications, are not in scope of the present document.
+
+The present document has been developed primarily to help protect consumers, however, other users of consumer IoT
+equally benefit from the implementation of the provisions set out here.
+Annex A (informative) of the present document has been included to provide context to clauses 4, 5 and 6 (normative).
+
+Annex A contains examples of device and reference architectures and an example model of device states including data
+storage for each state.
+
+[/FREETEXT]
+
+[/SECTION]
+
