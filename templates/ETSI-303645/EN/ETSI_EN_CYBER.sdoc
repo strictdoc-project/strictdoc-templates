@@ -580,6 +580,9 @@ security update
   NOTE: Software updates can be purely security updates if the severity of the vulnerability requires a higher
   priority fix.
 
+sensitive security parameters
+  critical security parameters and public security parameters.
+
 [/FREETEXT]
 
 [/SECTION]
