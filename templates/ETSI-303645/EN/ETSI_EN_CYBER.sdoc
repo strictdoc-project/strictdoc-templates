@@ -460,6 +460,13 @@ constrained device
 
   EXAMPLE 6: A device is mains powered and communicates primarily using TLS (Transport Layer Security).
 
+consumer
+  natural person who is acting for purposes that are outside her/his trade, business, craft or profession.
+
+  NOTE: Organizations, including businesses of any size, use consumer IoT. For example, Smart TVs are
+  frequently deployed in meeting rooms, and home security kits can protect the premises of small
+  businesses.
+
 [/FREETEXT]
 
 [/SECTION]
