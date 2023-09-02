@@ -467,6 +467,16 @@ consumer
   frequently deployed in meeting rooms, and home security kits can protect the premises of small
   businesses.
 
+consumer IoT device
+  network-connected (and network-connectable) device that has relationships to associated
+  services and are used by the consumer typically in the home or as electronic wearables.
+
+  NOTE 1: Consumer IoT devices are commonly also used in business contexts. These devices remain classified as
+  consumer IoT devices.
+
+  NOTE 2: Consumer IoT devices are often available for the consumer to purchase in retail environments. Consumer
+  IoT devices can also be commissioned and/or installed professionally.
+
 [/FREETEXT]
 
 [/SECTION]
