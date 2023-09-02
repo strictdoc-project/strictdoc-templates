@@ -583,6 +583,12 @@ security update
 sensitive security parameters
   critical security parameters and public security parameters.
 
+software service
+  software component of a device that is used to support functionality.
+
+  EXAMPLE: A runtime for the programming language used within the device software or a daemon that
+  exposes an API used by the device software, e.g. a cryptographic module's API.
+
 [/FREETEXT]
 
 [/SECTION]
