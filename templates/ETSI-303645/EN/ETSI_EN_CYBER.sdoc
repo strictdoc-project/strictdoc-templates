@@ -540,6 +540,9 @@ manufacturer
 network interface
   physical interface that can be used to access the functionality of consumer IoT via a network.
 
+owner
+  user who owns or who purchased the device.
+
 [/FREETEXT]
 
 [/SECTION]
