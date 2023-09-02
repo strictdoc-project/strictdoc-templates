@@ -510,6 +510,9 @@ initialization
   process that activates the network connectivity of the device for operation and optionally sets
   authentication features for a user or for network access.
 
+initialized state
+  state of the device after initialization.
+
 [/FREETEXT]
 
 [/SECTION]
