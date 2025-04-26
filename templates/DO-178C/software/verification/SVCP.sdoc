@@ -4,34 +4,38 @@ TITLE: Software Verification Case and Procedure
 [SECTION]
 TITLE: Review and analysis procedures
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Details the scope and depth of review and analysis procedures
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: High Level Tests (HLT)
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Description of test case and procedures linked to high level requirements, typically referred a black box tests. The software under test is typically the integrated executable. The test shall exercise software external interfaces.
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Test cases
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Details test cases environment, input, expected results, pass/fail criteria.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Test procedures
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Test envionment to run step by step instructions to run test cases. Describes how test results are evaluated.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -40,27 +44,30 @@ Test envionment to run step by step instructions to run test cases. Describes ho
 [SECTION]
 TITLE: Low Level Tests (LLT)
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Description of test case and procedures linked to low level requirements, typically referred as unit tests.
 The software under test is a software unit where dependencies are stubbed.
 The test shall exercise the software unit specified in detailed design document.
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Test cases
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Details test cases environment, input, expected results, pass/fail criteria.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Test procedures
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Test envionment to run step by step instructions to run test cases. Describes how test results are evaluated.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 

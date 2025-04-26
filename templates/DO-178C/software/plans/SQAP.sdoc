@@ -1,9 +1,10 @@
 [DOCUMENT]
 TITLE: Software Quality Assurance Plan
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Establishes methods used to satisfy software quality assurance process. It includes description of improvement, quality metrics
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Environment

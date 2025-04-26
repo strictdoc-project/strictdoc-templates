@@ -1,6 +1,7 @@
 [DOCUMENT]
 TITLE: Software Design Standard
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Defines design method and tools, architecture and design constraints, complexity limitations (maximum number of nested call, recursion, multi threading synchronization...).
-[/FREETEXT]
+<<<

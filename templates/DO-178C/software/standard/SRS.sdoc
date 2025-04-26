@@ -1,6 +1,7 @@
 [DOCUMENT]
 TITLE: Software Requirement Standard
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Defines method, notation, tools to develop requirements, method of derived requirement safety assessment.
-[/FREETEXT]
+<<<

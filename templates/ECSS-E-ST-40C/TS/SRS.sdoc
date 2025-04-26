@@ -1,36 +1,40 @@
 [DOCUMENT]
 TITLE: Software Requirements Specification
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The software requirements specification is a major constituent of the technical specification (TS). It describes the functional and non functional requirements applicable to the software item.
 
 This template has been copied directly from the ECSS-E-ST-40C, p.95, section "Annex D (normative) Software requirements specification (SRS) - DRD".
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Introduction
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall contain a description of the purpose, objective, content and the reason prompting its preparation.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Applicable and reference documents
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list the applicable and reference documents to support the generation of the document.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Terms, definitions and abbreviated terms
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall include any additional terms, definition or abbreviated terms used.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -40,29 +44,32 @@ TITLE: Software overview
 [SECTION]
 TITLE: Function and purpose
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe the purpose of the product.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Environmental considerations
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall summarize:
 
    1. the physical environment of the target system;
    2. the hardware environment in the target system;
    3. the operating environment in the target system;
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Relation to other systems
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe in detail the product’s relationship to other systems.
 
 b. If the product is a component of an integrated HW–SW product, then the SRS shall:
@@ -71,17 +78,18 @@ b. If the product is a component of an integrated HW–SW product, then the SRS 
    2. list the other HW or SW component the software interfaces with, and summarize the computer hardware and peripheral equipment to be used.
 
 c. A block diagram may be presented showing the major components of the larger system or project, interconnections, and external interfaces.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Constraints
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe any items that limit the developer’s options for building the software.
 b. The SRS should provide background information and seek to justify the constraints.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -93,7 +101,8 @@ TITLE: Requirements
 [SECTION]
 TITLE: General
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 NOTE The following provisions apply to the software requirements listed in the SRS, as specified in <5.2> to <5.17> below.
 
 c. Each requirement shall be uniquely identified.
@@ -105,14 +114,15 @@ e. The traceability information of each requirement derived from higher level do
 NOTE: The documented trace can be provided automatically by tools when models are used to express requirements.
 
 f. Requirements may be characterized, for example as essential or not, with a priority level to prepare incremental delivery, stable or not.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Functional requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe the capabilities to be provided by the software item under definition.
 b. The SRS shall provide where applicable the link between the requirements and the system states and modes.
 c. Functional requirement shall be grouped by subject, in accordance with the logical model organization (e.g. per controlled subsystem).
@@ -124,23 +134,25 @@ d. Each requirement definition should be organized according to the following:
    4. Processing
 
 e. The SRS shall describe the functional requirements related to software safety and dependability.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Performance requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any specific requirement to the specified performance of software item under definition.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Interface requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list and describe (or reference in the ICD) the software item external interfaces.
 
 b. The following interfaces shall be fully described either in the SRS itself or by reference to the ICD:
@@ -152,41 +164,44 @@ b. The following interfaces shall be fully described either in the SRS itself or
 c. Naming convention applicable to the data and command interface shall be also described.
 
 d. The definition of each interface shall include at least the provided service, the description (name, type, dimension), the range and the initial value.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Operational requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any specific requirement related to the operation of the software in its intended environment.
 
 b. The information specified in <5.5>a. should include, at least, any specified operational mode and mode transition for the software, and, in case of man–machine interaction, the intended use scenarios.
 
 c. Diagrams may be used to show the intended operations and related modes–transitions.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Resources requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe all the resource requirements related to the software and the hardware requirements (target hardware on which the software is specified to operate), as follows:
 
    1. List of the requirements relevant to hardware environment in which the software is specified to operate.
    2. List of the sizing and timing requirements applicable to the software item under specification.
    3. Description of the computer software to be used with the software under specification or incorporated into the software item (e.g. operating system and software items to be reused).
    4. Description of the real time constraints to respect (e.g. time management with respect to the handling of input data before its loss of validity).
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Design requirements and implementation constraints
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any requirements driving the design of the software item under specification and any identified implementation constraint.
 
 b. Requirements applicable to the following items shall be included:
@@ -204,100 +219,110 @@ b. Requirements applicable to the following items shall be included:
    6. specific design requirements to be applied if the software is specified to be designed for intended reuse;
 
    7. specific constraints induced by reused software (e.g. COTS, free software and open source).
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Security and privacy requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe any security and privacy requirement applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Portability requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any portability requirement applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Software quality requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any quality requirement applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Software reliability requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any reliability requirement applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Software maintainability requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any maintainability requirement applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Software safety requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any safety requirement applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Software configuration and delivery requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The SRS shall list any requirement applicable to the selected delivery medium and any software configuration applicable to the software item.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Data definition and database requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The SRS shall list any requirement related to specific data format or structure to be exchanged with other systems or any database requirements allowing to take into account e.g. for a flight software, the mission and product specific constraints.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Human factors related requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall list any requirement applicable to:
 
    1. the personnel and to the specific software product under definition;
    2. manual operations, human–equipment interactions, constraints on personnel, concentrated human attention areas and that are sensitive to human errors and training, and human factors engineering.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Adaptation and installation requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. This SRS shall list any requirement applicable to adaptation data and to specific installation.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -306,31 +331,34 @@ a. This SRS shall list any requirement applicable to adaptation data and to spec
 [SECTION]
 TITLE: Validation requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall describe, per each uniquely identified requirement in <5>, the validation approach.
 b. A validation matrix (requirements to validation approach correlation table) shall be utilized to describe the validation approach applicable to each requirement.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Traceability
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall report the traceability matrices
 
    1. from the upper level specification requirements to the requirements contained in <5> (forward traceability table), and
    2. from the requirements contained in <5> to the upper level applicable specification (backward traceability table).
 
 b. In case the information in <7>a. is separately provided in the DJF, reference to this documentation shall be clearly stated.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Logical model description
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 a. The SRS shall include a top–down description of the logical model of the software.
 
 NOTE 1: The logical model can be the result of an iterative verification process with the customer. It also supports the requirements capture, documents and formalizes the software requirements.
@@ -345,6 +373,6 @@ d. The functionality at each level should be described, to enable the reader to 
 e. The behavioural view of the software logical model shall be also described in the SRS.
 
    NOTE: This is particularly relevant for flight software applications.
-[/FREETEXT]
+<<<
 
 [/SECTION]

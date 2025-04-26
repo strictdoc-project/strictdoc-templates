@@ -1,9 +1,10 @@
 [DOCUMENT]
 TITLE: Software Accomplishment Summary
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 This is the primary item demonstrating compliance to Plan for Software Aspect of Certification.
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: System overview

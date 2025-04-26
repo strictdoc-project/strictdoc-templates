@@ -1,9 +1,10 @@
 [DOCUMENT]
 TITLE: Software Verification Plan
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Description of the verification strategy and procedures used to satisfy verification objectives, adapted to software design assurance level.
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Organisation

@@ -1,96 +1,106 @@
 [DOCUMENT]
 TITLE: Software Requirement Data
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Describes software high level requirements that will satisfy system requirements, plus derived requirements.
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: System overview
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Locates the current software component in the system. Describes the allocated system requirements and safety related aspects, and failure conditions.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: High Level Requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies all software high level requirements
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Operational and functional requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 For each operating mode, specifies what the software does.
-[/FREETEXT]
+<<<
 
 [REQUIREMENT]
 UID: HLR-001
-REFS:
-- TYPE: Parent
-  VALUE: MYSYS-001
 TITLE: HLR title example
 STATEMENT: >>>
 HLR statement example
 <<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: MYSYS-001
 
 [/SECTION]
 
 [SECTION]
 TITLE: Performance requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies expected operational performance precision and accuracy.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Timing requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies expected real time constraints, latencies, timing accuracies.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Memory and hardware resources requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies the need of hardware resources to perform the software function.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Hardware software interfaces
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies the input and output devices standards, protocols, formats, timing.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Failure detection requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies robustness strategy, and failure monitoring and reporting.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Partitioning requirements
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Specifies resource partitioning constraints and requirements.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 

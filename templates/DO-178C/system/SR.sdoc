@@ -4,9 +4,10 @@ TITLE: System Requirements
 [SECTION]
 TITLE: System Overview
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Description of the system intended function (what the system does).
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
