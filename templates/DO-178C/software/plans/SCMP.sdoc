@@ -1,9 +1,10 @@
 [DOCUMENT]
 TITLE: Software Configuration Management Plan
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Establishes methods used to achieve software configuration management process
-[/FREETEXT]
+<<<
 
 [SECTION]
 TITLE: Environment

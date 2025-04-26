@@ -2,11 +2,13 @@
 TITLE: ETSI EN 303 645 v2.1.1 (2020-06)
 REQ_PREFIX: ETSI-CYBER
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Reformatted from: https://www.etsi.org/deliver/etsi_en/303600_303699/303645/02.01.01_60/en_303645v020101p.pdf
-[/FREETEXT]
+<<<
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 ::
 
   CYBER;
@@ -40,13 +42,14 @@ https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
 
 If you find errors in the present document, please send your comment to one of the following services:
 https://portal.etsi.org/People/CommiteeSupportStaff.aspx
-[/FREETEXT]
+<<<
 
 [SECTION]
 LEVEL: None
 TITLE: Copyright Notification
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 No part may be reproduced or utilized in any form or by any means, electronic or mechanical, including photocopying
 and microfilm except as authorized by written permission of ETSI.
 The content of the PDF version shall not be modified without the written authorization of ETSI.
@@ -61,7 +64,7 @@ DECT™, PLUGTESTS™, UMTS™ and the ETSI logo are trademarks of ETSI register
 oneM2M™ logo is a trademark of ETSI registered for the benefit of its Members and of the oneM2M Partners.
 
 GSM ® and the GSM logo are trademarks registered and owned by the GSM Association.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -69,7 +72,8 @@ GSM ® and the GSM logo are trademarks registered and owned by the GSM Associati
 LEVEL: None
 TITLE: Intellectual Property Rights
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 *****************
 Essential patents
 *****************
@@ -92,7 +96,7 @@ The present document may include trademarks and/or tradenames which are asserted
 ETSI claims no ownership of these except for any which are indicated as being the property of ETSI, and conveys no
 right to use or reproduce any trademark and/or tradename. Mention of those trademarks in the present document does
 not constitute an endorsement by ETSI of products, services or organizations associated with those trademarks.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -100,7 +104,8 @@ not constitute an endorsement by ETSI of products, services or organizations ass
 LEVEL: None
 TITLE: Foreword
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 This European Standard (EN) has been produced by
 ETSI Technical Committee Cyber Security (CYBER).
 
@@ -117,7 +122,7 @@ ETSI Technical Committee Cyber Security (CYBER).
 | Date of withdrawal of any conflicting               |                   |
 | National Standard (dow):                            | 31 March 2021     |
 +-----------------------------------------------------+-------------------+
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -125,13 +130,14 @@ ETSI Technical Committee Cyber Security (CYBER).
 LEVEL: None
 TITLE: Modal verbs terminology
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 In the present document "**shall**", "**shall not**", "**should**", "**should not**", "**may**", "**need not**", "**will**", "**will not**", "**can**" and
 "**cannot**" are to be interpreted as described in clause 3.2 of the ETSI Drafting Rules (Verbal forms for the expression of
 provisions).
 
 "**must**" and "**must not**" are **NOT** allowed in ETSI deliverables except when used in direct citation.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -139,7 +145,8 @@ provisions).
 LEVEL: None
 TITLE: Introduction
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 As more devices in the home connect to the Internet, the cyber security of the Internet of Things (IoT) becomes a
 growing concern. People entrust their personal data to an increasing number of online devices and services. Products
 and appliances that have traditionally been offline are now connected and need to be designed to withstand cyber
@@ -181,7 +188,7 @@ Mapping Security & Privacy in the Internet of Things [i.14].
 
 As consumer IoT products become increasingly secure, it is envisioned that future revisions of the present document
 will mandate provisions that are currently recommendations in the present document.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -189,7 +196,8 @@ will mandate provisions that are currently recommendations in the present docume
 UID: ETSI-CYBER_1_Scope
 TITLE: Scope
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The present document specifies high-level security and data protection provisions for consumer IoT devices that are
 connected to network infrastructure (such as the Internet or home network) and their interactions with associated
 services. The associated services are out of scope. A non-exhaustive list of examples of consumer IoT devices includes:
@@ -220,7 +228,7 @@ Annex A (informative) of the present document has been included to provide conte
 Annex A contains examples of device and reference architectures and an example model of device states including data
 storage for each state.
 
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -231,7 +239,8 @@ TITLE: References
 [SECTION]
 TITLE: Normative References
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 References are either specific (identified by date of publication and/or edition number or version number) or
 non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the
 referenced document (including any amendments) applies.
@@ -246,14 +255,15 @@ The following referenced documents are necessary for the application of the pres
 
 Not applicable.
 
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Informative References
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 References are either specific (identified by date of publication and/or edition number or version number) or
 non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the
 referenced document (including any amendments) applies.
@@ -374,7 +384,7 @@ NOTE: Available at https://msdn.microsoft.com/en-us/library/ee823878(v=cs.20).as
 Mobile Telecommunications System (UMTS); LTE; Vocabulary for 3GPP Specifications (3GPP
 TR 21.905)".
 
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -386,11 +396,13 @@ TITLE: Definition of terms, symbols and abbreviations
 [SECTION]
 TITLE: Terms
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 For the purposes of the present document, the following terms apply:
-[/FREETEXT]
+<<<
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 administrator
   user who has the highest-privilege level possible for a user of the device, which can mean they are able
   to change any configuration related to the intended functionality.
@@ -603,23 +615,25 @@ unique per device
 user
   natural person or organization.
 
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Symbols
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Void.
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: Abbreviations
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 For the purposes of the present document, the following abbreviations apply:
 
 +---------+------------------------------------------------------------+
@@ -697,7 +711,7 @@ For the purposes of the present document, the following abbreviations apply:
 | WAN     | Wide Area Network                                          |
 +---------+------------------------------------------------------------+
 
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -706,7 +720,8 @@ For the purposes of the present document, the following abbreviations apply:
 [SECTION]
 TITLE: Reporting implementation
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The implementation of provisions in the present document is informed by risk assessment and threat modelling (such as
 ISO/IEC 27005:2018 [i.27] and STRIDE Threat Model [i.28]); this is performed by the device manufacturer and/or
 other relevant entities and is out of scope of the present document. For certain use cases and following risk assessment,
@@ -716,7 +731,7 @@ The present document sets a security baseline; however, due to the broad landsca
 that the applicability of provisions is dependent on each device. The present document provides a degree of flexibility
 through the use of non-mandatory "should" provisions (recommendations).
 
-[/FREETEXT]
+<<<
 
 [REQUIREMENT]
 UID: ETSI-CYBER-Provision_4-1
@@ -948,7 +963,8 @@ according to ETSI TR 103 331 [i.6].
 [SECTION]
 TITLE: Keep software updated
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Developing and deploying security updates in a timely manner is one of the most important actions a manufacturer can
 take to protect its customers and the wider technical ecosystem. It is good practice that all software is kept updated and
 well maintained.
@@ -956,7 +972,7 @@ well maintained.
 Each provision from 5.3-3 to 5.3-12 is dependent upon an update mechanism being implemented, as per
 provision 5.3-1 or 5.3-2.
 
-[/FREETEXT]
+<<<
 
 [REQUIREMENT]
 UID: ETSI-CYBER-Provision_5.3-1
@@ -1433,11 +1449,12 @@ is strongly encouraged.
 [SECTION]
 TITLE: Minimize exposed attack surfaces
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The "principle of least privilege" is a foundation stone of good security engineering, applicable to IoT as much as in any
 other field of application.
 
-[/FREETEXT]
+<<<
 
 [REQUIREMENT]
 UID: ETSI-CYBER-Provision_5.6-1
@@ -1659,13 +1676,14 @@ Clause 6 of the present document contains provisions specific to protecting pers
 [SECTION]
 TITLE: Make systems resilient to outages
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 The aim of the provisions in the present clause is to ensure that IoT services are kept up and running as the adoption of
 IoT devices across all aspects of a consumer's life increases, including in functions that are relevant to personal safety. It
 is important to note that safety-related regulations can apply, but the key is to avoid making outages the cause of impact
 on the user and to design products and services that provide a level of resilience to these challenges.
 
-[/FREETEXT]
+<<<
 
 [REQUIREMENT]
 UID: ETSI-CYBER-Provision_5.9-1
@@ -1899,14 +1917,15 @@ telemetry.
 [SECTION]
 TITLE: Data protection provisions for consumer IoT
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 Many consumer IoT devices process personal data. It is expected that manufacturers provide features within consumer
 IoT devices that support the protection of such personal data. In addition, there exist laws and regulations that relate to
 the protection of personal data in consumer IoT devices (for example the GDPR [i.7]). The present document intends to
 help manufacturers of consumer IoT devices provide a number of features for the protection of personal data from a
 strictly technical perspective.
 
-[/FREETEXT]
+<<<
 
 [REQUIREMENT]
 UID: ETSI-CYBER-Provision_6-1
@@ -1965,18 +1984,20 @@ TITLE: Annex A (informative): Basic concepts and models
 [SECTION]
 TITLE: A.1 Architecture
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 NOTE: Informative content not included
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
 [SECTION]
 TITLE: A.2 Device states
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 NOTE: Informative content not included
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
@@ -1986,9 +2007,10 @@ NOTE: Informative content not included
 LEVEL: None
 TITLE: Annex B (informative): Implementation conformance statement pro forma
 
-[FREETEXT]
+[TEXT]
+STATEMENT: >>>
 NOTE: Informative content not included
-[/FREETEXT]
+<<<
 
 [/SECTION]
 
