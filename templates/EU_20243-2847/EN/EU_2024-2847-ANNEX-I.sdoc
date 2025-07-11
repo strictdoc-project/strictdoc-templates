@@ -259,5 +259,13 @@ they may delay making public information regarding a fixed vulnerability until a
 been given the possibility to apply the relevant patch;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(5)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+put in place and enforce a policy on coordinated vulnerability disclosure;
+<<<
+
 [[/SECTION]]
 
