@@ -234,5 +234,30 @@ STATEMENT: >>>
 apply effective and regular tests and reviews of the security of the product with digital elements;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(4)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+once a security update has been made available, 
+
+share and publicly disclose information about fixed vulnerabilities, including a
+
+description of the vulnerabilities, 
+
+information allowing users to identify the product with digital elements affected, 
+
+the impacts of the vulnerabilities, 
+
+their severity and 
+
+clear and accessible information helping users to remediate the vulnerabilities; 
+
+in duly justified cases, 
+where manufacturers consider the security risks of publication to outweigh the security benefits, 
+they may delay making public information regarding a fixed vulnerability until after users have 
+been given the possibility to apply the relevant patch;
+<<<
+
 [[/SECTION]]
 
