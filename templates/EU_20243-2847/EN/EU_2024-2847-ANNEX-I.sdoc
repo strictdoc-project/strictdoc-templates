@@ -267,5 +267,19 @@ STATEMENT: >>>
 put in place and enforce a policy on coordinated vulnerability disclosure;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(6)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+take measures to facilitate the sharing of information about potential vulnerabilities 
+
+in their product with digital elements as well as 
+
+in third-party components contained in that product, 
+
+including by providing a contact address for the reporting of the vulnerabilities discovered in the product with digital elements;
+<<<
+
 [[/SECTION]]
 
