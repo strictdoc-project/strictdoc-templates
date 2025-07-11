@@ -113,5 +113,11 @@ that are intended for the use by and for children
 [[SECTION]]
 TITLE: Class II
 
+[TEXT]
+STATEMENT: >>>
+1. Hypervisors and container runtime systems that support virtualised execution of operating systems and similar 
+environments
+<<<
+
 [[/SECTION]]
 
