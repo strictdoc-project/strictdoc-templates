@@ -226,5 +226,13 @@ including by providing security updates;
 where technically feasible, new security updates shall be provided separately from functionality updates;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(3)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+apply effective and regular tests and reviews of the security of the product with digital elements;
+<<<
+
 [[/SECTION]]
 
