@@ -136,6 +136,17 @@ mitigation measures
 against denial-of-service attacks;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part I(2)i
+STATEMENT: >>>
+[On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
+products with digital elements shall]
+
+minimise the negative impact by the products themselves or connected devices on 
+
+the availability of services provided by other devices or networks;
+<<<
+
 [[/SECTION]]
 
 [[SECTION]]
