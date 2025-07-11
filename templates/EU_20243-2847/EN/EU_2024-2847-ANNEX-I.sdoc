@@ -81,6 +81,27 @@ such as by encrypting relevant data at rest or in transit by state of the art me
 and by using other technical means;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part I(2)f
+STATEMENT: >>>
+[On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
+products with digital elements shall]
+
+protect the integrity of stored, transmitted or otherwise processed 
+
+data, personal or other, 
+
+commands, 
+
+programs 
+
+and configuration 
+
+against any manipulation or modification not authorised by the user, 
+
+and report on corruptions;
+<<<
+
 [[/SECTION]]
 
 [[SECTION]]
