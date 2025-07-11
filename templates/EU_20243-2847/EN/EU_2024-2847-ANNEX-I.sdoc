@@ -281,5 +281,17 @@ in third-party components contained in that product,
 including by providing a contact address for the reporting of the vulnerabilities discovered in the product with digital elements;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(7)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+provide for mechanisms to securely distribute updates for products with digital elements 
+
+to ensure that vulnerabilities are fixed or mitigated 
+
+in a timely manner and, where applicable for security updates, in an automatic manner;
+<<<
+
 [[/SECTION]]
 
