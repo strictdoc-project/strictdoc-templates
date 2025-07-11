@@ -1,6 +1,6 @@
 [DOCUMENT]
 TITLE: EU Regulation 2024/2847 EN (20.11.2024)
-REQ_PREFIX: EU_2024-2847-
+PREFIX: EU_2024-2847-
 
 [TEXT]
 STATEMENT: >>>
@@ -24,4 +24,9 @@ Resilience Act)
 
 (Text with EEA relevance)
 <<<
+
+[[SECTION]]
+TITLE: CHAPTER I - GENERAL PROVISIONS
+
+[[/SECTION]]
 
