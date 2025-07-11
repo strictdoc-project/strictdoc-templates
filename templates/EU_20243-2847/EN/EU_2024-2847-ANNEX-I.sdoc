@@ -200,5 +200,17 @@ and, where such data can be transferred to other products or systems, ensure tha
 [[SECTION]]
 TITLE: Part II Vulnerability handling requirements
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(1)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+identify and document vulnerabilities and components contained in products with digital elements, 
+
+including by drawing up a software bill of materials in a commonly used and machine-readable format 
+
+covering at the very least the top-level dependencies of the products;
+<<<
+
 [[/SECTION]]
 
