@@ -212,5 +212,19 @@ including by drawing up a software bill of materials in a commonly used and mach
 covering at the very least the top-level dependencies of the products;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part II(2)
+STATEMENT: >>>
+[Manufacturers of products with digital elements shall]
+
+in relation to the risks posed to products with digital elements, 
+
+address and remediate vulnerabilities without delay, 
+
+including by providing security updates; 
+
+where technically feasible, new security updates shall be provided separately from functionality updates;
+<<<
+
 [[/SECTION]]
 
