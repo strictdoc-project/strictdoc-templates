@@ -158,6 +158,17 @@ be designed, developed and produced to
 limit attack surfaces, including external interfaces;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part I(2)k
+STATEMENT: >>>
+[On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
+products with digital elements shall]
+
+be designed, developed and produced to 
+
+reduce the impact of an incident using appropriate exploitation mitigation mechanisms and techniques;
+<<<
+
 [[/SECTION]]
 
 [[SECTION]]
