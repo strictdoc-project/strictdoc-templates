@@ -68,6 +68,19 @@ identity or access management systems,
 and report on possible unauthorised access;
 <<<
 
+[REQUIREMENT]
+TITLE: ANNEX I Part I(2)e
+STATEMENT: >>>
+[On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
+products with digital elements shall]
+
+protect the confidentiality of stored, transmitted or otherwise processed data, personal or other, 
+
+such as by encrypting relevant data at rest or in transit by state of the art mechanisms, 
+
+and by using other technical means;
+<<<
+
 [[/SECTION]]
 
 [[SECTION]]
