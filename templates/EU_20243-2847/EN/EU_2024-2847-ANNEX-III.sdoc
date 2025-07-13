@@ -1,0 +1,138 @@
+[DOCUMENT]
+TITLE: ANNEX III - IMPORTANT PRODUCTS WITH DIGITAL ELEMENTS
+
+[[SECTION]]
+TITLE: Class I
+
+[TEXT]
+STATEMENT: >>>
+1. Identity management systems and privileged access management software and hardware, including authentication and 
+access control readers, including biometric readers
+<<<
+
+[TEXT]
+STATEMENT: >>>
+2. Standalone and embedded browsers
+<<<
+
+[TEXT]
+STATEMENT: >>>
+3. Password managers
+<<<
+
+[TEXT]
+STATEMENT: >>>
+4. Software that searches for, removes, or quarantines malicious software
+<<<
+
+[TEXT]
+STATEMENT: >>>
+5. Products with digital elements with the function of virtual private network (VPN)
+<<<
+
+[TEXT]
+STATEMENT: >>>
+6. Network management systems
+<<<
+
+[TEXT]
+STATEMENT: >>>
+7. Security information and event management (SIEM) systems
+<<<
+
+[TEXT]
+STATEMENT: >>>
+8. Boot managers
+<<<
+
+[TEXT]
+STATEMENT: >>>
+9. Public key infrastructure and digital certificate issuance software
+<<<
+
+[TEXT]
+STATEMENT: >>>
+10. Physical and virtual network interfaces
+<<<
+
+[TEXT]
+STATEMENT: >>>
+11. Operating systems
+<<<
+
+[TEXT]
+STATEMENT: >>>
+12. Routers, modems intended for the connection to the internet, and switches
+<<<
+
+[TEXT]
+STATEMENT: >>>
+13. Microprocessors with security-related functionalities
+<<<
+
+[TEXT]
+STATEMENT: >>>
+14. Microcontrollers with security-related functionalities
+<<<
+
+[TEXT]
+STATEMENT: >>>
+15. Application specific integrated circuits (ASIC) and field-programmable gate arrays (FPGA) with security-related 
+functionalities
+<<<
+
+[TEXT]
+STATEMENT: >>>
+16. Smart home general purpose virtual assistants
+<<<
+
+[TEXT]
+STATEMENT: >>>
+17. Smart home products with security functionalities, including smart door locks, security cameras, baby monitoring 
+systems and alarm systems
+<<<
+
+[TEXT]
+STATEMENT: >>>
+18. Internet connected toys covered by 
+Directive 2009/48/EC of the European Parliament and of the Council (see NOTE) that have 
+social interactive features (e.g. speaking or filming) or that have location tracking features
+
+NOTE: Directive 2009/48/EC of the European Parliament and of the Council of 18 June 2009 on the safety of toys (OJ L 170, 30.6.2009, p. 1).
+<<<
+
+[TEXT]
+STATEMENT: >>>
+19. Personal wearable products to be worn or placed on a human body that have a health monitoring (such as tracking) 
+purpose and to which Regulation (EU) 2017/745 or (EU) No 2017/746 do not apply, or personal wearable products 
+that are intended for the use by and for children
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Class II
+
+[TEXT]
+STATEMENT: >>>
+1. Hypervisors and container runtime systems that support virtualised execution of operating systems and similar 
+environments
+<<<
+
+[TEXT]
+STATEMENT: >>>
+2. Firewalls, intrusion detection and prevention systems
+<<<
+
+[TEXT]
+STATEMENT: >>>
+3. Tamper-resistant microprocessors
+<<<
+
+[TEXT]
+STATEMENT: >>>
+4. Tamper-resistant microcontrollers
+<<<
+
+[[/SECTION]]
+
