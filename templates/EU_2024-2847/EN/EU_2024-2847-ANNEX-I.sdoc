@@ -66,7 +66,7 @@ level of cybersecurity based on the risks.
 
 [REQUIREMENT]
 MID: a689174dcf6040b696d6044a06c721f8
-UID: EU-CRA-2024-ANNEX-I-Part-I(2)a
+UID: EU-CRA-2024-ANNEX-I-Part-I-2a
 TITLE: ANNEX I Part I(2)a
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -77,6 +77,7 @@ be made available on the market without known exploitable vulnerabilities;
 
 [REQUIREMENT]
 MID: edbdfc349f504c5eb3eca036cfed3f97
+UID: EU-CRA-2024-ANNEX-I-Part-I-2b
 TITLE: ANNEX I Part I(2)b
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -91,6 +92,7 @@ including the possibility to reset the product to its original state;
 
 [REQUIREMENT]
 MID: 8065bb35c06e436989c8057e0fae16ee
+UID: EU-CRA-2024-ANNEX-I-Part-I-2c
 TITLE: ANNEX I Part I(2)c
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -110,6 +112,7 @@ and the option to temporarily postpone them;
 
 [REQUIREMENT]
 MID: bb838f10573842ada6031501e9ff86e1
+UID: EU-CRA-2024-ANNEX-I-Part-I-2d
 TITLE: ANNEX I Part I(2)d
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -128,6 +131,7 @@ and report on possible unauthorised access;
 
 [REQUIREMENT]
 MID: 20f85646459f46db8dfa9b51fdefc4d8
+UID: EU-CRA-2024-ANNEX-I-Part-I-2e
 TITLE: ANNEX I Part I(2)e
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -142,6 +146,7 @@ and by using other technical means;
 
 [REQUIREMENT]
 MID: 8942852aa75744408288e8802b329186
+UID: EU-CRA-2024-ANNEX-I-Part-I-2f
 TITLE: ANNEX I Part I(2)f
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -164,6 +169,7 @@ and report on corruptions;
 
 [REQUIREMENT]
 MID: 8171cc6faf3b4d368f8744c49d72534a
+UID: EU-CRA-2024-ANNEX-I-Part-I-2g
 TITLE: ANNEX I Part I(2)g
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -182,6 +188,7 @@ to what is necessary in relation to the intended purpose of the product with dig
 
 [REQUIREMENT]
 MID: addcd283a0d24bd1938c526296859faa
+UID: EU-CRA-2024-ANNEX-I-Part-I-2h
 TITLE: ANNEX I Part I(2)h
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -200,6 +207,7 @@ against denial-of-service attacks;
 
 [REQUIREMENT]
 MID: b4fa34cbcbc44ff5a67c3c2295dede34
+UID: EU-CRA-2024-ANNEX-I-Part-I-2i
 TITLE: ANNEX I Part I(2)i
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -212,6 +220,7 @@ the availability of services provided by other devices or networks;
 
 [REQUIREMENT]
 MID: 8efb6f8084cb4cff8f2a9fbc2818f08f
+UID: EU-CRA-2024-ANNEX-I-Part-I-2j
 TITLE: ANNEX I Part I(2)j
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -224,6 +233,7 @@ limit attack surfaces, including external interfaces;
 
 [REQUIREMENT]
 MID: 1440f6143dac447bb5c47e21fcb7a46f
+UID: EU-CRA-2024-ANNEX-I-Part-I-2k
 TITLE: ANNEX I Part I(2)k
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -236,6 +246,7 @@ reduce the impact of an incident using appropriate exploitation mitigation mecha
 
 [REQUIREMENT]
 MID: daf20cb4d39b45d1a0e9fc533c6d61c0
+UID: EU-CRA-2024-ANNEX-I-Part-I-2l
 TITLE: ANNEX I Part I(2)l
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -252,6 +263,7 @@ with an opt-out mechanism for the user;
 
 [REQUIREMENT]
 MID: 7393e04768034756a70a3441741d5f50
+UID: EU-CRA-2024-ANNEX-I-Part-I-2m
 TITLE: ANNEX I Part I(2)m
 STATEMENT: >>>
 [On the basis of the cybersecurity risk assessment referred to in Article 13(2) and where applicable, 
@@ -266,10 +278,12 @@ and, where such data can be transferred to other products or systems, ensure tha
 
 [[SECTION]]
 MID: 10f84172389944eca5c00371d8939357
+UID: EU-CRA-2024-ANNEX-I-PART-II
 TITLE: Part II Vulnerability handling requirements
 
 [REQUIREMENT]
 MID: 32805b3d43504fce99ad4102259bd228
+UID: EU-CRA-2024-ANNEX-I-Part-II-1
 TITLE: ANNEX I Part II(1)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -283,6 +297,7 @@ covering at the very least the top-level dependencies of the products;
 
 [REQUIREMENT]
 MID: 26953cea7dd0401a81caa80becc1c873
+UID: EU-CRA-2024-ANNEX-I-Part-II-2
 TITLE: ANNEX I Part II(2)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -298,6 +313,7 @@ where technically feasible, new security updates shall be provided separately fr
 
 [REQUIREMENT]
 MID: 9defca9b421040c58f7e0557fb3d2d9d
+UID: EU-CRA-2024-ANNEX-I-Part-II-3
 TITLE: ANNEX I Part II(3)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -307,6 +323,7 @@ apply effective and regular tests and reviews of the security of the product wit
 
 [REQUIREMENT]
 MID: 43b9589a2257483b83aecfe18aa01688
+UID: EU-CRA-2024-ANNEX-I-Part-II-4
 TITLE: ANNEX I Part II(4)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -333,6 +350,7 @@ been given the possibility to apply the relevant patch;
 
 [REQUIREMENT]
 MID: f03f4f5818564373a3fd10be448ef8ad
+UID: EU-CRA-2024-ANNEX-I-Part-II-5
 TITLE: ANNEX I Part II(5)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -342,6 +360,7 @@ put in place and enforce a policy on coordinated vulnerability disclosure;
 
 [REQUIREMENT]
 MID: 4bf56ac58163451c829646ef8ef8f1cc
+UID: EU-CRA-2024-ANNEX-I-Part-II-6
 TITLE: ANNEX I Part II(6)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -357,6 +376,7 @@ including by providing a contact address for the reporting of the vulnerabilitie
 
 [REQUIREMENT]
 MID: 3e9839903e9248119e07cfb72a51863d
+UID: EU-CRA-2024-ANNEX-I-Part-II-7
 TITLE: ANNEX I Part II(7)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
@@ -370,6 +390,7 @@ in a timely manner and, where applicable for security updates, in an automatic m
 
 [REQUIREMENT]
 MID: 61026619e8af4f799a713b22a2c44b05
+UID: EU-CRA-2024-ANNEX-I-Part-II-8
 TITLE: ANNEX I Part II(8)
 STATEMENT: >>>
 [Manufacturers of products with digital elements shall]
