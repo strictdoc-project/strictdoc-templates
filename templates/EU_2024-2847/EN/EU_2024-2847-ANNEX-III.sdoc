@@ -1,98 +1,166 @@
 [DOCUMENT]
+MID: 890660d83aa94cd48d10a117c3638a2a
 TITLE: ANNEX III - IMPORTANT PRODUCTS WITH DIGITAL ELEMENTS
+OPTIONS:
+  ENABLE_MID: True
+
+[GRAMMAR]
+ELEMENTS:
+- TAG: SECTION
+  PROPERTIES:
+    IS_COMPOSITE: True
+    PREFIX: None
+    VIEW_STYLE: Narrative
+  FIELDS:
+  - TITLE: MID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: LEVEL
+    TYPE: String
+    REQUIRED: False
+  - TITLE: PREFIX
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: True
+- TAG: TEXT
+  FIELDS:
+  - TITLE: MID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: True
+- TAG: REQUIREMENT
+  FIELDS:
+  - TITLE: MID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: True
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: True
 
 [[SECTION]]
+MID: c66cab0bf43a474e9cf6eb53b7b0de3c
 TITLE: Class I
 
 [TEXT]
+MID: 4b8755b953fd429aa7d8d84078da1511
 STATEMENT: >>>
 1. Identity management systems and privileged access management software and hardware, including authentication and 
 access control readers, including biometric readers
 <<<
 
 [TEXT]
+MID: 238cda464f9942ebb1acd9de9e103984
 STATEMENT: >>>
 2. Standalone and embedded browsers
 <<<
 
 [TEXT]
+MID: 62b6d2ab83ab43589dbd4322f4a43451
 STATEMENT: >>>
 3. Password managers
 <<<
 
 [TEXT]
+MID: f7628f810c6b4db0b5632753c3c927aa
 STATEMENT: >>>
 4. Software that searches for, removes, or quarantines malicious software
 <<<
 
 [TEXT]
+MID: 20b65f45a8ed4b7a99d1dbd392bf3b73
 STATEMENT: >>>
 5. Products with digital elements with the function of virtual private network (VPN)
 <<<
 
 [TEXT]
+MID: 037b9fd1752b4b1c80f4b43134fb2041
 STATEMENT: >>>
 6. Network management systems
 <<<
 
 [TEXT]
+MID: 7cd509d192e449b682ebeec0893d25ca
 STATEMENT: >>>
 7. Security information and event management (SIEM) systems
 <<<
 
 [TEXT]
+MID: 1edbf23bb22e4a4c9a62b9d12797b821
 STATEMENT: >>>
 8. Boot managers
 <<<
 
 [TEXT]
+MID: d52ea679d9e844bc81e7a840a0f64ef8
 STATEMENT: >>>
 9. Public key infrastructure and digital certificate issuance software
 <<<
 
 [TEXT]
+MID: 536a13e3b7924823a5a7862d1b2b6350
 STATEMENT: >>>
 10. Physical and virtual network interfaces
 <<<
 
 [TEXT]
+MID: 7a2ae5fbefda419f969bd472b0500aa2
 STATEMENT: >>>
 11. Operating systems
 <<<
 
 [TEXT]
+MID: 6377757a8dd2483eb6ad6c48a50a72fa
 STATEMENT: >>>
 12. Routers, modems intended for the connection to the internet, and switches
 <<<
 
 [TEXT]
+MID: 503c0108c26a4592b4ee41b1c1635f32
 STATEMENT: >>>
 13. Microprocessors with security-related functionalities
 <<<
 
 [TEXT]
+MID: 941882a878854e9c8615f1604d017778
 STATEMENT: >>>
 14. Microcontrollers with security-related functionalities
 <<<
 
 [TEXT]
+MID: 999055a9744a44b2bc74df6bf379ec4a
 STATEMENT: >>>
 15. Application specific integrated circuits (ASIC) and field-programmable gate arrays (FPGA) with security-related 
 functionalities
 <<<
 
 [TEXT]
+MID: 10d7e4a33b40425c834807df7775d2dd
 STATEMENT: >>>
 16. Smart home general purpose virtual assistants
 <<<
 
 [TEXT]
+MID: 1eb3e27a8d0a4ae5a31932d3f9c43752
 STATEMENT: >>>
 17. Smart home products with security functionalities, including smart door locks, security cameras, baby monitoring 
 systems and alarm systems
 <<<
 
 [TEXT]
+MID: 4cceea79f4c349bab3e9e45b550a8371
 STATEMENT: >>>
 18. Internet connected toys covered by 
 Directive 2009/48/EC of the European Parliament and of the Council (see NOTE) that have 
@@ -102,6 +170,7 @@ NOTE: Directive 2009/48/EC of the European Parliament and of the Council of 18 J
 <<<
 
 [TEXT]
+MID: dc55f1e3efa74a1aa19289cf09633410
 STATEMENT: >>>
 19. Personal wearable products to be worn or placed on a human body that have a health monitoring (such as tracking) 
 purpose and to which Regulation (EU) 2017/745 or (EU) No 2017/746 do not apply, or personal wearable products 
@@ -111,28 +180,32 @@ that are intended for the use by and for children
 [[/SECTION]]
 
 [[SECTION]]
+MID: fe435e14a1e147989775d0aedfe23229
 TITLE: Class II
 
 [TEXT]
+MID: 3f16b198a487468099c1411deb785789
 STATEMENT: >>>
 1. Hypervisors and container runtime systems that support virtualised execution of operating systems and similar 
 environments
 <<<
 
 [TEXT]
+MID: 8b6d3d3099f947eea63c3029e9a13d27
 STATEMENT: >>>
 2. Firewalls, intrusion detection and prevention systems
 <<<
 
 [TEXT]
+MID: e96b1a4c5f7246aeb5bf9e817e5f3b8a
 STATEMENT: >>>
 3. Tamper-resistant microprocessors
 <<<
 
 [TEXT]
+MID: f610c52cd4d34fafa60f8fd1b896fd43
 STATEMENT: >>>
 4. Tamper-resistant microcontrollers
 <<<
 
 [[/SECTION]]
-
