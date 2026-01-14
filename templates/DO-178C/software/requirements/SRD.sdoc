@@ -6,7 +6,7 @@ STATEMENT: >>>
 Describes software high level requirements that will satisfy system requirements, plus derived requirements.
 <<<
 
-[SECTION]
+[[SECTION]]
 TITLE: System overview
 
 [TEXT]
@@ -14,9 +14,9 @@ STATEMENT: >>>
 Locates the current software component in the system. Describes the allocated system requirements and safety related aspects, and failure conditions.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: High Level Requirements
 
 [TEXT]
@@ -24,7 +24,7 @@ STATEMENT: >>>
 Specifies all software high level requirements
 <<<
 
-[SECTION]
+[[SECTION]]
 TITLE: Operational and functional requirements
 
 [TEXT]
@@ -42,9 +42,9 @@ RELATIONS:
 - TYPE: Parent
   VALUE: MYSYS-001
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Performance requirements
 
 [TEXT]
@@ -52,9 +52,9 @@ STATEMENT: >>>
 Specifies expected operational performance precision and accuracy.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Timing requirements
 
 [TEXT]
@@ -62,9 +62,9 @@ STATEMENT: >>>
 Specifies expected real time constraints, latencies, timing accuracies.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Memory and hardware resources requirements
 
 [TEXT]
@@ -72,9 +72,9 @@ STATEMENT: >>>
 Specifies the need of hardware resources to perform the software function.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Hardware software interfaces
 
 [TEXT]
@@ -82,9 +82,9 @@ STATEMENT: >>>
 Specifies the input and output devices standards, protocols, formats, timing.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Failure detection requirements
 
 [TEXT]
@@ -92,9 +92,9 @@ STATEMENT: >>>
 Specifies robustness strategy, and failure monitoring and reporting.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Partitioning requirements
 
 [TEXT]
@@ -102,6 +102,6 @@ STATEMENT: >>>
 Specifies resource partitioning constraints and requirements.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
