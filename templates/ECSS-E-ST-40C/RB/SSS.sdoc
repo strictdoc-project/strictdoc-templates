@@ -14,7 +14,7 @@ The software system specification is a major component of the requirements basel
 The requirements baseline towards the supplier includes, at each recursive level, the level of requirements detail necessary for an unambiguous implementation by the supplier. As on subsequent contractual levels, the design becomes more mature, and the implementation freedom is consequently more limited. This is reflected in the specification of requirements towards subcontractors who therefore, at lower contractual levels, receive more (design, implementation) constraining requirements.
 <<<
 
-[SECTION]
+[[SECTION]]
 TITLE: Introduction
 
 [TEXT]
@@ -22,9 +22,9 @@ STATEMENT: >>>
 The SSS shall contain a description of the purpose, objective, content and the reason prompting its preparation.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Applicable and reference documents
 
 [TEXT]
@@ -32,9 +32,9 @@ STATEMENT: >>>
 a. The SRS shall list the applicable and reference documents to support the generation of the document.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Terms, definitions and abbreviated terms
 
 [TEXT]
@@ -42,12 +42,12 @@ STATEMENT: >>>
 a. The SSS shall include any additional terms, definition or abbreviated terms used.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: General description
 
-[SECTION]
+[[SECTION]]
 TITLE: Product perspective
 
 [TEXT]
@@ -57,9 +57,9 @@ a. The SSS shall describe the product in perspective with other related systems.
 b. If the product is to replace an existing system, the system shall be described and referenced.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: General capabilities
 
 [TEXT]
@@ -69,9 +69,9 @@ a. The SSS shall describe the main capabilities to be supported by the software.
    NOTE: Reference to state and mode of the system can be made.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: General constraints
 
 [TEXT]
@@ -79,9 +79,9 @@ STATEMENT: >>>
 a. The SSS shall describe any item that limits the supplier's options for designing and developing the software.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Operational environment
 
 [TEXT]
@@ -99,9 +99,9 @@ e. References to the interface requirements documents that define the external i
 f. The computer infrastructure to be used shall be also described.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Assumptions and dependencies
 
 [TEXT]
@@ -115,14 +115,14 @@ a. The SSS shall list or make reference to the existing assumptions that the spe
    NOTE 3: If the production of the system does not occur when expected, this system specification can change.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Specific requirements
 
-[SECTION]
+[[SECTION]]
 TITLE: General
 
 [TEXT]
@@ -136,9 +136,9 @@ b. When requirements are expressed as models, the supplier shall establish a way
 c. Each requirement shall be associated to a validation method and a version, as per 5.2.4.1a. and ECSS‐Q‐ST‐80, 7.2.1.3.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Capabilities requirements (5.2.2.1a.)
 
 [TEXT]
@@ -156,9 +156,9 @@ d. The HMI capability requirements shall result from the human factor engineerin
 e. The SSS shall state the capabilities to be implemented by on‐board control procedures (OBCP) (5.2.4.6)
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: System interface requirements (5.2.4.3)
 
 [TEXT]
@@ -173,9 +173,9 @@ b. The requirements of the following shall be either be listed in the SSS or ref
    4. HMI,
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Adaptation and missionization requirements (5.2.4.4)
 
 [TEXT]
@@ -183,12 +183,12 @@ STATEMENT: >>>
 a. The SSS shall list the data that can vary according to operational needs and any site–dependant data, including the system database.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Computer resource requirements (5.3.8.1)
 
-[SECTION]
+[[SECTION]]
 TITLE: Computer hardware resource requirements
 
 [TEXT]
@@ -196,9 +196,9 @@ STATEMENT: >>>
 a. The SSS shall list the requirements on the computer hardware to be used.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Computer hardware resource utilization requirements
 
 [TEXT]
@@ -206,9 +206,9 @@ STATEMENT: >>>
 a. The SSS shall list the requirements on the computer resource utilization (e.g. processor capacity and memory capacity) available for the software item (e.g. sizing and timing).
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Computer software resource requirements
 
 [TEXT]
@@ -216,11 +216,11 @@ STATEMENT: >>>
 a. The SSS shall list requirements on the software items to be used by or incorporated into the system (or constituent software product) (e.g. a specific real time operating system)
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Security requirements (5.2.2.1g.)
 
 [TEXT]
@@ -228,9 +228,9 @@ STATEMENT: >>>
 The SSS shall list the security requirements applicable to the system.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Safety requirements (5.2.4.8)
 
 [TEXT]
@@ -238,9 +238,9 @@ STATEMENT: >>>
 a. The SSS shall list the safety requirements applicable to the system.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Reliability and availability requirements (5.2.4.8)
 
 [TEXT]
@@ -248,9 +248,9 @@ STATEMENT: >>>
 The SSS shall list the reliability and availability requirements applicable to the system.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Quality requirements
 
 [TEXT]
@@ -260,9 +260,9 @@ a. The SSS shall list the quality requirements applicable to the software (e.g. 
    NOTE: When future reuse of developed software components is a requirement, the customer specifies the generic application domain of these components. This can, for example, include requirements on software architecture for given target computers and operating systems, the interfaces required for reuse and the level where reuse is required (e.g. function, sub–system, and code units).
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Design requirements and constraints (5.2.4.5)
 
 [TEXT]
@@ -290,9 +290,9 @@ b. At least, the following type of requirements shall be considered:
    10. utilization of HMI standards.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Software operations requirements (5.2.2.1c.)
 
 [TEXT]
@@ -302,9 +302,9 @@ a. The SSS shall include the system requirements for the operation of the softwa
    NOTE: The supplier’s response is provided in releasing the operational plan for execution as established in clause 5.9.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Software maintenance requirements (5.2.2.1d., e.)
 
 [TEXT]
@@ -316,9 +316,9 @@ a. The SSS shall include the system requirements for the maintenance of the soft
    NOTE 2: Due to the long lifetimes often encountered with flight software, special requirements also exist to ensure that the supporting tools (e.g. compilers, engineering tools and inflight modification tools) can support the in–orbit reprogramming during the specified lifetime.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: System and software observability requirements (5.2.2.2)
 
 [TEXT]
@@ -330,14 +330,14 @@ a. The SSS shall include the system and software requirements for the observabil
    NOTE2: In case of ACG the capability of a code generator to automatically instrument the code ‐ and to remove such code parts ‐ to cover observability requirements is considered.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Verification, validation and system integration
 
-[SECTION]
+[[SECTION]]
 TITLE: Verification and validation process requirements (5.2.3.1)
 
 [TEXT]
@@ -347,9 +347,9 @@ a. The SSS shall include the requirements needed for planning and setting up the
    NOTE: Specific customer requirements (e.g. availability or usage of customer furnished equipment like ETM, EM, FM and related ground systems) are needed in order to plan and to set up the system level verification and validation processes related to software. Furthermore, it is important to define for each testing or mission phase, or mission increment as far as applicable, any usage of hardware/software simulators , as representative flight and ground environments, for system payloads’ and experiments’ (pre‐) integration testing, hardware/software compatibility as well for acceptance testing.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Validation approach (5.2.3.2)
 
 [TEXT]
@@ -357,9 +357,9 @@ STATEMENT: >>>
 a. The SSS shall include the requirements for the validation of the software against requirements baseline and technical specification, in particular mission representative data and scenarios, and operational procedures to be used.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Validation requirements (5.2.2.1b.)
 
 [TEXT]
@@ -373,9 +373,9 @@ c. If a given requirement need not to be taken into account for the software val
    NOTE: A matrix (requirements to validation method correlation table) can be used to state the validation methods applicable to each requirement. This information can be further split into an information for validation requirements and an information for acceptance requirements, depending upon the project needs.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Verification requirements (5.2.2.1b.)
 
 [TEXT]
@@ -391,11 +391,11 @@ a. The SSS shall include requirements for
 4. the format and delivery medium of all exchanged data in the project, including the interface and the system database (5.2.4.9)
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: System models
 
 [TEXT]
@@ -405,4 +405,4 @@ a. The system models may be placed as appendix to the SSS if a specification lan
    NOTE: The system specification language intends to produce in particular the computational model, the data model, the functional model, the event model and the failure model. The models include at least the definition of the logical properties, the liveliness properties and the timeless properties. The models are exercised to verify the properties by schedulability analysis or model checking.
 <<<
 
-[/SECTION]
+[[/SECTION]]

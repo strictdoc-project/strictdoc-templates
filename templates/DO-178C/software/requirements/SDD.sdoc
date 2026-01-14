@@ -6,7 +6,7 @@ STATEMENT: >>>
 Defines the software architecture and low level requirements, that will satisfy high level requirements.
 <<<
 
-[SECTION]
+[[SECTION]]
 TITLE: Overview
 
 [TEXT]
@@ -14,9 +14,9 @@ STATEMENT: >>>
 Detailed description of how the software requirements are allocated to processors and tasks
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Architecture
 
 [TEXT]
@@ -24,9 +24,9 @@ STATEMENT: >>>
 Defines the software structure to achieve the high level requirements
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Interface
 
 [TEXT]
@@ -34,7 +34,7 @@ STATEMENT: >>>
 Describes input and output interfaces
 <<<
 
-[SECTION]
+[[SECTION]]
 TITLE: Low level requirements
 
 [REQUIREMENT]
@@ -47,9 +47,9 @@ RELATIONS:
 - TYPE: Parent
   VALUE: HLR-001
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Detailed design
 
 [TEXT]
@@ -57,11 +57,11 @@ STATEMENT: >>>
 TBD
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Dataflow and Control flow
 
 [TEXT]
@@ -69,9 +69,9 @@ STATEMENT: >>>
 Describes dataflow and control flow between software components.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Resource limitations
 
 [TEXT]
@@ -79,9 +79,9 @@ STATEMENT: >>>
 For instance time and memory.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Scheduling
 
 [TEXT]
@@ -89,9 +89,9 @@ STATEMENT: >>>
 Describes threads attributes and synchronization.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Partitioning concerns
 
 [TEXT]
@@ -99,9 +99,9 @@ STATEMENT: >>>
 Describes partitioning design concerns.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Software components
 
 [TEXT]
@@ -109,9 +109,9 @@ STATEMENT: >>>
 Detailed description of software components defined in the architecture.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Derived requirements
 
 [TEXT]
@@ -129,9 +129,9 @@ RELATIONS:
 - TYPE: Parent
   VALUE: DERIVED
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Deactivated code
 
 [TEXT]
@@ -139,9 +139,9 @@ STATEMENT: >>>
 Description of the means to deactivate some peace of the code.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Safety related design
 
 [TEXT]
@@ -149,4 +149,4 @@ STATEMENT: >>>
 Rationale of safety related design decisions
 <<<
 
-[/SECTION]
+[[/SECTION]]

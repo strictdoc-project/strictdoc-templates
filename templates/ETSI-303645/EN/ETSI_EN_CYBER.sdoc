@@ -44,7 +44,7 @@ If you find errors in the present document, please send your comment to one of t
 https://portal.etsi.org/People/CommiteeSupportStaff.aspx
 <<<
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Copyright Notification
 
@@ -66,9 +66,9 @@ oneM2M™ logo is a trademark of ETSI registered for the benefit of its Members 
 GSM ® and the GSM logo are trademarks registered and owned by the GSM Association.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Intellectual Property Rights
 
@@ -98,9 +98,9 @@ right to use or reproduce any trademark and/or tradename. Mention of those trade
 not constitute an endorsement by ETSI of products, services or organizations associated with those trademarks.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Foreword
 
@@ -124,9 +124,9 @@ ETSI Technical Committee Cyber Security (CYBER).
 +-----------------------------------------------------+-------------------+
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Modal verbs terminology
 
@@ -139,9 +139,9 @@ provisions).
 "**must**" and "**must not**" are **NOT** allowed in ETSI deliverables except when used in direct citation.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Introduction
 
@@ -190,9 +190,9 @@ As consumer IoT products become increasingly secure, it is envisioned that futur
 will mandate provisions that are currently recommendations in the present document.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 UID: ETSI-CYBER_1_Scope
 TITLE: Scope
 
@@ -230,13 +230,13 @@ storage for each state.
 
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 UID: ETSI-CYBER_2_References
 TITLE: References
 
-[SECTION]
+[[SECTION]]
 TITLE: Normative References
 
 [TEXT]
@@ -257,9 +257,9 @@ Not applicable.
 
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Informative References
 
 [TEXT]
@@ -386,14 +386,14 @@ TR 21.905)".
 
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Definition of terms, symbols and abbreviations
 
-[SECTION]
+[[SECTION]]
 TITLE: Terms
 
 [TEXT]
@@ -617,9 +617,9 @@ user
 
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Symbols
 
 [TEXT]
@@ -627,9 +627,9 @@ STATEMENT: >>>
 Void.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Abbreviations
 
 [TEXT]
@@ -713,11 +713,11 @@ For the purposes of the present document, the following abbreviations apply:
 
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Reporting implementation
 
 [TEXT]
@@ -767,12 +767,12 @@ device via a hub, the user does not need to use passwords, or other authenticati
 directly authenticate to the device.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Cyber security provisions for consumer IoT
 
-[SECTION]
+[[SECTION]]
 TITLE: No universal default passwords
 
 [REQUIREMENT]
@@ -867,9 +867,9 @@ these types of attacks are detected by the consumer IoT device and defended agai
 threat of "resource exhaustion" and denial of service attacks.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Implement a means to manage reports of vulnerabilities
 
 [REQUIREMENT]
@@ -958,9 +958,9 @@ Cyber security threat information sharing can support organizations in developin
 according to ETSI TR 103 331 [i.6].
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Keep software updated
 
 [TEXT]
@@ -1249,9 +1249,9 @@ Knowledge of the specific designation of the device is often required to check t
 updates or the availability of software updates.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Securely store sensitive security parameters
 
 [REQUIREMENT]
@@ -1326,9 +1326,9 @@ updates as well as the communication of the device with associated services. If 
 used, their disclosure can enable wide-scale attacks on other IoT devices such as to enable the creation of botnets.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Communicate securely
 
 [REQUIREMENT]
@@ -1444,9 +1444,9 @@ The use of open, peer-reviewed standards for critical security parameters (commo
 is strongly encouraged.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Minimize exposed attack surfaces
 
 [TEXT]
@@ -1578,9 +1578,9 @@ protection) can help ensure software artefacts are more secure. Manufacturers ca
 toolchains that support them.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Ensure software integrity
 
 [REQUIREMENT]
@@ -1625,9 +1625,9 @@ NOTE: An attack that forces a device to revert to a known good state can introdu
 unable to successfully perform this or if the attacker is able to repeatedly cause this effect.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Ensure that personal data is secure
 
 [REQUIREMENT]
@@ -1671,9 +1671,9 @@ EXAMPLE: An external sensing capability can be an optic or acoustic sensor.
 Clause 6 of the present document contains provisions specific to protecting personal data.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Make systems resilient to outages
 
 [TEXT]
@@ -1733,9 +1733,9 @@ updates or reconnections, from a large number of IoT devices. Such explicit step
 random delay before a reconnection attempt according to an incremental back-off mechanism.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Examine system telemetry data
 
 [REQUIREMENT]
@@ -1759,9 +1759,9 @@ Clause 6 of the present document contains provisions specific to protecting pers
 collected.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Make it easy for users to delete user data
 
 [REQUIREMENT]
@@ -1829,9 +1829,9 @@ NOTE 2: Annex A of the present document contains an example model of device stat
 each state.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Make installation and maintenance of devices easy
 
 [REQUIREMENT]
@@ -1884,9 +1884,9 @@ such an automated process could include validation of the device's capacity to e
 channel.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Validate input data
 
 [REQUIREMENT]
@@ -1910,11 +1910,11 @@ identifies that it is outside of the possible bounds and is discarded and the ev
 telemetry.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Data protection provisions for consumer IoT
 
 [TEXT]
@@ -1975,13 +1975,13 @@ If telemetry data is collected from consumer IoT devices and services, consumers
 information on what telemetry data is collected, how it is being used, by whom, and for what purposes.
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Annex A (informative): Basic concepts and models
 
-[SECTION]
+[[SECTION]]
 TITLE: A.1 Architecture
 
 [TEXT]
@@ -1989,9 +1989,9 @@ STATEMENT: >>>
 NOTE: Informative content not included
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: A.2 Device states
 
 [TEXT]
@@ -1999,11 +1999,11 @@ STATEMENT: >>>
 NOTE: Informative content not included
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 LEVEL: None
 TITLE: Annex B (informative): Implementation conformance statement pro forma
 
@@ -2012,5 +2012,5 @@ STATEMENT: >>>
 NOTE: Informative content not included
 <<<
 
-[/SECTION]
+[[/SECTION]]
 

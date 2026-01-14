@@ -6,7 +6,7 @@ STATEMENT: >>>
 This document links applicant to certification authorities
 <<<
 
-[SECTION]
+[[SECTION]]
 TITLE: System overview
 
 [TEXT]
@@ -14,9 +14,9 @@ STATEMENT: >>>
 Description of the system functions, system design, allocation to hardware and software components, safety features
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Software overview
 
 [TEXT]
@@ -24,9 +24,9 @@ STATEMENT: >>>
 Description of the software functions, safety, partitionning, redundancy, timing and scheduling, hardware resource allocation and sharing...
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Certification consideration
 
 [TEXT]
@@ -34,29 +34,29 @@ STATEMENT: >>>
 Expose the software design assurance level, software contribution to system failure conditions
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Software lifecyle
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Software lifecycle data
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Schedule
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Additional consideration
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: Supplier oversight
 
-[/SECTION]
+[[/SECTION]]

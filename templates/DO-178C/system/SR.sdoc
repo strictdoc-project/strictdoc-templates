@@ -1,7 +1,7 @@
 [DOCUMENT]
 TITLE: System Requirements
 
-[SECTION]
+[[SECTION]]
 TITLE: System Overview
 
 [TEXT]
@@ -9,9 +9,9 @@ STATEMENT: >>>
 Description of the system intended function (what the system does).
 <<<
 
-[/SECTION]
+[[/SECTION]]
 
-[SECTION]
+[[SECTION]]
 TITLE: System Requirements
 
 [REQUIREMENT]
@@ -34,4 +34,4 @@ RATIONALE: >>>
 Inertial data are required for piloting, i.e. short term aircraft control.
 <<<
 
-[/SECTION]
+[[/SECTION]]
