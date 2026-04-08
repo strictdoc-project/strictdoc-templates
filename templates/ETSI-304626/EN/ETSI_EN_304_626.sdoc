@@ -1102,7 +1102,10 @@ TITLE: Risk Transferral
 
 [TEXT]
 STATEMENT: >>>
-Some risks may be transferred partially or fully to other components of the final product, or to the user of the product. When that is the case, migitations that transfer the risk will be included as an option to fulfill a technical requirement, depending on the use case and risk factors.
+Some risks may be transferred partially or fully to other components of the final product, or to
+the user of the product. When that is the case, mitigations that transfer the risk will be
+included as an option to fulfill a technical requirement, depending on the use case and risk
+factors.
 <<<
 
 [[/SECTION]]
@@ -1119,7 +1122,10 @@ TITLE: General
 
 [TEXT]
 STATEMENT: >>>
-Some risks may be transferred partially or fully to other components of the final product, or to the user of the product. When that is the case, migitations that transfer the risk will be included as an option to fulfill a technical requirement, depending on the use case and risk factors.
+Some risks may be transferred partially or fully to other components of the final product, or to
+the user of the product. When that is the case, mitigations that transfer the risk will be
+included as an option to fulfill a technical requirement, depending on the use case and risk
+factors.
 <<<
 
 [[/SECTION]]
@@ -1131,14 +1137,20 @@ TITLE: TR-NKEV: No known exploitable vulnerabilities at first use
 UID: ETSI-OS-TR-NKEV
 TITLE: TR-NKEV
 DESCRIPTION: >>>
-Recognizing that there may be vulnerabilities discovered between the time that a product is placed on the market and the time of that product's first use, and that the product should be free from known vulnerabilities both when first made available and when first used by a consumer, the product shall be able to be updated at the time of first use to address all known exploited vulnerabilities which were discovered after the product's placement on the market and before that first use.
+Recognizing that there may be vulnerabilities discovered between the time that a product is placed
+on the market and the time of that product's first use, and that the product should be free from
+known vulnerabilities both when first made available and when first used by a consumer, the
+product shall be able to be updated at the time of first use to address all known exploited
+vulnerabilities which were discovered after the product's placement on the market and before that
+first use.
 <<<
 
 [REQUIREMENT]
 UID: ETSI-OS-MI-KEVD
 TITLE: MI-KEVD: Documentation for secure update before or during first use
 DESCRIPTION: >>>
-The product shall be accompanied by documentation describing how the product may be securely updated, including how to update the product prior to, or as part of, first use.
+The product shall be accompanied by documentation describing how the product may be securely
+updated, including how to update the product prior to, or as part of, first use.
 
 - **Applicability:** Product expected use is long enough to require updates
 - **Reference:** TR-NKEV
@@ -1174,7 +1186,11 @@ RELATIONS:
 UID: ETSI-OS-MI-KEVM
 TITLE: MI-KEVM: Documentation of mitigation of known exploitable vulnerabilities
 DESCRIPTION: >>>
-The product's development and release process shall include a process to document known exploitable vulnerabilities in the product and their fixes or mitigations. The documentation for this process shall be compliant with the process described in [3] prEN 40000-1-3: "Cybersecurity requirements for products with digital elements – Vulnerability Handling". The product shall be compliant with this requirement if it:
+The product's development and release process shall include a process to document known exploitable
+vulnerabilities in the product and their fixes or mitigations. The documentation for this process
+shall be compliant with the process described in [3] prEN 40000-1-3: "Cybersecurity requirements
+for products with digital elements – Vulnerability Handling". The product shall be compliant with
+this requirement if it:
 
 1. has no known exploitable vulnerabilities
 2. has known exploitable vulnerabilities whose age is consistent with the specification of how long vulnerabilities may go unfixed after public disclosure, as described in the vulnerability handling procedure for the product
@@ -1195,7 +1211,8 @@ RELATIONS:
 UID: ETSI-OS-MI-KEVT
 TITLE: MI-KEVT: Testing for known exploitable vulnerabilities
 DESCRIPTION: >>>
-The product shall be tested for all known exploitable vulnerabilities to demonstrate that each has been mitigated. The product shall be compliant with this requirement if it:
+The product shall be tested for all known exploitable vulnerabilities to demonstrate that each has
+been mitigated. The product shall be compliant with this requirement if it:
 
 1. has no known exploitable vulnerabilities
 2. has known exploitable vulnerabilities whose age is consistent with the specification of how long vulnerabilities may go unfixed after public disclosure, as described in the vulnerability handling procedure for the product
@@ -1216,7 +1233,9 @@ RELATIONS:
 UID: ETSI-OS-MI-SCAN
 TITLE: MI-SCAN: No easily scannable known exploitable vulnerabilities
 DESCRIPTION: >>>
-If automatable and freely-usable vulnerability scanners are available for the product, then the product shall satisfy the following with respect to the three (or fewer, if fewer than three are available) most comprehensive of such scanners:
+If automatable and freely-usable vulnerability scanners are available for the product, then the
+product shall satisfy the following with respect to the three (or fewer, if fewer than three are
+available) most comprehensive of such scanners:
 
 1. has no vulnerabilities discovered by scans
 2. has discoverable exploitable vulnerabilities whose age is consistent with the specification of how long vulnerabilities may go unfixed after public disclosure, as described in the vulnerability handling procedure for the product
@@ -1343,7 +1362,7 @@ documented as to their rationale, along with any exceptions or limitations. Any 
 flags or warnings shall be documented as to why they do not create an unacceptable risk.
 
 - **Applicability:** Product implemented in a compiled language
-- **Reference:** TR-SDDV
+- **Reference:** TR-SSDD
 - **Objective:** Secure design and development
 - **Preparation:** Document which flags should be used
 - **Activities:** Review compilation flags, warnings, and documentation for exceptions
@@ -1486,6 +1505,17 @@ UID: ETSI-OS-TR-MSAF
 TITLE: TR-MSAF
 DESCRIPTION: >>>
 The product shall appropriately mitigate risks due to memory safety errors.
+
+.. note::
+   Most memory safety mitigations have the same Verdict and Evidence:
+
+   - **Preparation:** None
+   - **Verdict:** each involved thread fails to read or write the target data and takes a segmentation fault, has error handling code executed, or is terminated in all tests => PASS, otherwise FAIL
+   - **Evidence:** error messages, log message, or the product reboots or halts
+
+   For each mitigation grouped under requirement TR-MSAF, for each field Preparation, Verdict, or
+   Evidence, if it is not specified for that test, then the above Preparation, Verdict, or Evidence
+   field shall apply.
 <<<
 
 [REQUIREMENT]
@@ -1499,7 +1529,8 @@ Both kernel and userspace threads shall reject writes beyond the end of the stac
 - **Activities:** For each of kernel and userspace, write beyond the end of the stack
 
 .. note::
-   Guidance: Two methods of exhausting stack memory include allocating a very large object on the stack, and performing an unbounded recursive function call.
+   GuidanceTwo methods of exhausting stack memory include allocating a very large object on the stack,
+   and performing an unbounded recursive function call.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1595,6 +1626,7 @@ TITLE: Types of Technical Requirements
 
 [TEXT]
 STATEMENT: >>>
+
 .. note::
    Most memory safety mitigations have the same Verdict and Evidence:
 
@@ -1602,9 +1634,10 @@ STATEMENT: >>>
    - **Verdict:** each involved thread fails to read or write the target data and takes a segmentation fault, has error handling code executed, or is terminated in all tests => PASS, otherwise FAIL
    - **Evidence:** error messages, log message, or the product reboots or halts
 
-   For each mitigation grouped under requirement TR-LMII, for each field Preparation, Verdict, or Evidence, if it is not specified for that test, then the above Preparation, Verdict, or Evidence field shall apply.
+   For each mitigation grouped under requirement TR-LMII, for each field Preparation, Verdict, or
+   Evidence, if it is not specified for that test, then the above Preparation, Verdict, or Evidence
+   field shall apply.
 <<<
-[[/SECTION]]
 
 [REQUIREMENT]
 UID: ETSI-OS-MI-MZRO-1
@@ -1661,7 +1694,7 @@ Kernel threads shall prevent execution of non-kernel code memory.
 - **Reference:** TR-LMII
 - **Objective:** Mitigate exploits that use execution of arbitrary memory
 - **Activities:** For each class of non-code memory in the kernel (e.g. stack, heap, read-only data), copy a trivial return-only function into the memory, and attempt to execute each one
-<
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: ETSI-OS-TR-LMII
@@ -1739,14 +1772,16 @@ RELATIONS:
 UID: ETSI-OS-MI-CFIN
 TITLE: MI-CFIN: Control flow integrity
 DESCRIPTION: >>>
-Both kernel and userspace threads shall protect saved function and return pointers from overwrite
+Both kernel and userspace threads shall protect saved function and return pointers from overwrite.
 
-* Reference: TR-LMII
-* Objective: Mitigate exploits by preventing overwrite of function and return pointers
-* Activities: For each of kernel and userspace, save a function pointer to the heap, overwrite it with a different function, make indirect call to the saved function pointer, then repeat but with a return address that was stored to the stack
+- **Reference:** TR-LMII
+- **Objective:** Mitigate exploits by preventing overwrite of function and return pointers
+- **Activities:** For each of kernel and userspace, save a function pointer to the heap, overwrite it with a different function, make indirect call to the saved function pointer, then repeat but with a return address that was stored to the stack
 
 .. note::
-  Guidance: This mitigation can be implemented via software (e.g. ASan) or hardware (e.g.  Pointer Authentication), or validating transitions of expected control flow graph (e.g. KCFI, Shadow Stack).
+   Guidance: This mitigation can be implemented via software (e.g. ASan) or hardware (e.g. Pointer
+   Authentication), or validating transitions of expected control flow graph (e.g. KCFI,
+   Shadow Stack).
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1756,11 +1791,12 @@ RELATIONS:
 UID: ETSI-OS-MI-MPMT
 TITLE: MI-MPMT: Memory protection using memory tagging
 DESCRIPTION: >>>
-Both kernel and userspace threads shall use hardware-supported memory tagging to reject erroneous memory accesses.
+Both kernel and userspace threads shall use hardware-supported memory tagging to reject erroneous
+memory accesses.
 
-* Reference: TR-LMII
-* Objective: Mitigate exploits by preventing memory errors
-* Activities: For each of kernel and userspace, allocate 2 adjacent memory regions with separate tags. Attempt to read and write memory with a positive offset into trailing region from leading region's tagged pointer. Attempt to read and write with negative offset into leading region using trailing region's tagged pointer. Free a region and read and write to the region using the original tagged pointer.
+- **Reference:** TR-LMII
+- **Objective:** Mitigate exploits by preventing memory errors
+- **Activities:** For each of kernel and userspace, allocate 2 adjacent memory regions with separate tags. Attempt to read and write memory with a positive offset into trailing region from leading region's tagged pointer. Attempt to read and write with negative offset into leading region using trailing region's tagged pointer. Free a region and read and write to the region using the original tagged pointer.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -2259,7 +2295,6 @@ TITLE: General
 
 [TEXT]
 STATEMENT: >>>
-TODO>>>
 TODO
 <<<
 
@@ -2370,5 +2405,7 @@ STATEMENT: >>>
 | V0.1.0      | 2025-12-23        | Mature draft for public enquiry and vote |
 +-------------+-------------------+------------------------------------------+
 <<<
+
+[[/SECTION]]
 
 [[/SECTION]]
