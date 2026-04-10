@@ -1,0 +1,4571 @@
+[DOCUMENT]
+TITLE: ETSI EN 304 626 v0.0.11 (2025-12)
+REQ_PREFIX: ETSI-OS
+
+[GRAMMAR]
+IMPORT_FROM_FILE: grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+Reformatted from: https://docbox.etsi.org/CYBER/EUSR/Open/EN-304-626_V0.1.0_2025-12-23_Operating-Systems_Mature-draft.pdf
+
+NOTE: This is an INTERIM DRAFT. It is expected to be subject to substantial changes before its target
+<<<
+
+[TEXT]
+STATEMENT: >>>
+::
+  HARMONISED EUROPEAN STANDARD
+  Draft ETSI EN 304 626 V0.0.11 (2025-12-11)
+
+  CRA; Essential cybersecurity requirements for operating systems
+  Release #
+ 
+  Reference
+  DEN/CYBER-EUS-0012
+  Keywords
+  CRA, Cybersecurity, OS
+
+  ETSI
+  650 Route des Lucioles
+  F-06921 Sophia Antipolis Cedex - FRANCE
+  
+  :Tel.: +33 4 92 94 42 00
+  :Fax:  +33 4 93 65 47 16
+  
+  Siret N° 348 623 562 00017 - APE 7112B
+  Association à but non lucratif enregistrée à la   Sous-préfecture de Grasse (06) N° w061004871
+ 
+CAUTION: This INTERIM DRAFT document is provided for information and is for future development work within the ETSI Technical Committee CYBER  Working Group EUSR only. ETSI and its Members accept no liability for any further use/implementation of this Specification. Approved and published specifications and reports shall be obtained exclusively via the ETSI Documentation Service at http://www.etsi.org/standards-search
+
+################
+Important notice
+################
+
+The present document may be made available in electronic versions and/or in print. The content of any
+electronic and/or print versions of the present document shall not be modified without the prior written
+authorization of ETSI. In case of any existing or perceived difference in contents between such versions
+and/or in print, the prevailing version of an ETSI deliverable is the one made publicly available in PDF
+format on `ETSI deliver <https://etsihq-my.sharepoint.com/personal/laure_pourcin_etsi_org/Documents/Documents/ETSI%20Operations/CYBER%20TC/31-%20WG%20EUSR/CYBER%20EUSR%20Work%20Programme/26%20-%20Operating%20Systems%20-%20Aeva%20B/ETSI%20deliver>`_ repository.
+
+Users should be aware that the present document may be revised or have its status changed, this
+information is available in the `Milestones listing <https://etsihq-my.sharepoint.com/personal/laure_pourcin_etsi_org/Documents/Documents/ETSI%20Operations/CYBER%20TC/31-%20WG%20EUSR/CYBER%20EUSR%20Work%20Programme/26%20-%20Operating%20Systems%20-%20Aeva%20B/Milestones%20listing>`_
+
+If you find errors in the present document, please send your comments to the relevant service listed under 
+`Committee Support Staff <https://etsihq-my.sharepoint.com/personal/laure_pourcin_etsi_org/Documents/Documents/ETSI%20Operations/CYBER%20TC/31-%20WG%20EUSR/CYBER%20EUSR%20Work%20Programme/26%20-%20Operating%20Systems%20-%20Aeva%20B/Committee%20Support%20Staff>`_
+
+If you find a security vulnerability in the present document, please report it through our 
+`Coordinated Vulnerability Disclosure (CVD) program. <https://etsihq-my.sharepoint.com/personal/laure_pourcin_etsi_org/Documents/Documents/ETSI%20Operations/CYBER%20TC/31-%20WG%20EUSR/CYBER%20EUSR%20Work%20Programme/26%20-%20Operating%20Systems%20-%20Aeva%20B/Coordinated%20Vulnerability%20Disclosure%20(CVD)>`_
+<<<
+
+[[SECTION]]
+LEVEL: None
+TITLE: Notice of disclaimer & limitation of liability
+
+[TEXT]
+STATEMENT: >>>
+The information provided in the present deliverable is directed solely to professionals who have the appropriate degree of experience to understand and interpret its content in accordance with generally accepted engineering or
+other professional standard and applicable regulations.
+
+No recommendation as to products and services or vendors is made or should be implied.
+
+No representation or warranty is made that this deliverable is technically accurate or sufficient or conforms to any law and/or governmental rule and/or regulation and further, no representation or warranty is made of merchantability or fitness for any particular purpose or against infringement of intellectual property rights.
+
+In no event shall ETSI be held liable for loss of profits or any other incidental or consequential damages.
+
+Any software contained in this deliverable is provided "AS IS" with no warranties, express or implied, including but not limited to, the warranties of merchantability, fitness for a particular purpose and non-infringement of intellectual property rights and ETSI shall not be held liable in any event for any damages whatsoever (including, without limitation, damages for loss of profits, business interruption, loss of information, or any other pecuniary loss) arising out of or related to the use of or inability to use the software.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Copyright Notification
+
+[TEXT]
+STATEMENT: >>>
+No part may be reproduced or utilized in any form or by any means, electronic or mechanical, including
+photocopying and microfilm except as authorized by written permission of ETSI.
+
+The content of the PDF version shall not be modified without the written authorization of ETSI.
+
+The copyright and the foregoing restriction extend to reproduction in all media.
+
+© ETSI 2025.
+All rights reserved.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Content
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Intellectual Property Rights
+
+[TEXT]
+STATEMENT: >>>
+*****************
+Essential patents
+*****************
+IPRs essential or potentially essential to normative deliverables may have been declared to ETSI. The
+declarations pertaining to these essential IPRs, if any, are publicly available for ETSI members and
+non-members, and can be found in ETSI SR 000 314: "Intellectual Property Rights (IPRs); Essential, or
+potentially Essential, IPRs notified to ETSI in respect of ETSI standards", which is available from the
+ETSI Secretariat. Latest updates are available on the `ETSI IPR online database. <https://ipr.etsi.org/>`_
+
+Pursuant to the ETSI Directives including the ETSI IPR Policy, no investigation regarding the essentiality
+of IPRs, including IPR searches, has been carried out by ETSI. No guarantee can be given as to the
+existence of other IPRs not referenced in ETSI SR 000 314 (or the updates on the ETSI Web server) which
+are, or may be, or may become, essential to the present document.
+
+**********
+Trademarks
+**********
+
+The present document may include trademarks and/or tradenames which are asserted and/or registered by
+their owners. ETSI claims no ownership of these except for any which are indicated as being the property
+of ETSI, and conveys no right to use or reproduce any trademark and/or tradename. Mention of those
+trademarks in the present document does not constitute an endorsement by ETSI of products, services or
+organizations associated with those trademarks.
+
+DECT™ , PLUGTESTS™ , UMTS™ and the ETSI logo are trademarks of ETSI registered for the benefit of its Members.
+3GPP™ , LTE™ and 5G ™ logo are trademarks of ETSI registered for the benefit of its Members and of the 3GPP
+Organizational Partners. oneM2M™ logo is a trademark of ETSI registered for the benefit of its Members and of
+the oneM2M Partners. GSM ® and the GSM logo are trademarks registered and owned by the GSM Association.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Foreword
+
+[TEXT]
+STATEMENT: >>>
+This draft Harmonised European Standard (EN) has been produced by ETSI Technical Committee Cyber
+Working Group for EUSR (CYBER-EUSR), and is now submitted for the combined Public Enquiry and Vote
+phase of the ETSI Standardisation Request deliverable Approval Procedure (SRdAP).
+
+The present document has been prepared under the Commission's standardisation request C(2025) 618 final
+to provide one voluntary means of conforming to the requirements of Regulation (EU) No 2024/2847 of the
+European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for
+products with digital elements and amending Regulations (EU) No 168/2013 and (EU) No 2019/1020 and
+Directive (EU) 2020/1828 (Cyber Resilience Act).
+
+Once the present document is cited in the Official Journal of the European Union under that Regulation,
+compliance with the normative clauses of the present document given in table A.1 confers, within the
+limits of the scope of the present document, a presumption of conformity with the corresponding
+requirements of that Regulation and associated EFTA regulations.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Modal verbs terminology
+
+[TEXT]
+STATEMENT: >>>
+In the present document "**shall**", "**shall not**", "**should**", "**should not**", "**may**",
+"**need not**", "**will**", "**will not**", "**can**" and "**cannot**" are to be interpreted as
+described in clause 3.2 of the `ETSI Drafting Rules <https://portal.etsi.org/Services/editHelp/How-to-start/ETSI-Drafting-Rules>`_
+(Verbal forms for the expression of provisions).
+
+"**must**" and "**must not**" are **NOT** allowed in ETSI deliverables except when used in direct
+citation.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Executive summary
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Introduction
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-1_Scope
+TITLE: Scope
+
+[[SECTION]]
+UID: ETSI-OS-1-1_General
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+The present document specifies security requirements and related assessment criteria regarding the
+compliance of Operating Systems with EU Regulation 2024/2847.
+
+Following harmonised standards in the design and manufacture of products may ensure that the products
+comply with corresponding EU rules.
+
+The use of harmonised standards are voluntary.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-1-2_ProductsInScope
+TITLE: Products in scope
+
+[[SECTION]]
+UID: ETSI-OS-1-2-1_General
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+Products in scope are products whose core function and intended or reasonably foreseeable use or misuse
+is as an operating system. Operating systems include software products with digital elements that provide
+an abstract interface of the underlying hardware and control the execution of software, and that may
+provide services such as computing resource management and configuration, scheduling, input-output
+control, managing data, and providing an interface through which applications interact with system
+resources and peripherals. The underlying hardware may be virtualized to some degree, as when an
+operating system is running on a hypervisor.
+
+This category includes but is not limited to:
+
+* General purpose operating systems
+
+  * Personal computing operating systems
+  * Mobile operating systems
+  * Server operating systems
+  
+* Special purpose operating systems
+
+  * Real-time operating systems
+  * Embedded operating systems
+  * Single-purpose operating systems
+
+Many products contain multiple operating systems which can affect the security functions of other
+operating system(s) in the product. For example, a Baseboard Management Controller (BMC) contains an
+operating system that can manage most or all of the hardware managed by the main system operating
+system. Radiofrequency transmission devices often have an embedded real-time operating system and the
+ability to read or write to system memory or trigger interrupts.
+
+Some of the operating systems may not always be readily available as separate products and are included
+as components of another product. Where there may be other specifications that target that product
+category, it may be more relevant to review the operating system as part of that larger system rather
+than independently via this standard.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-1-2-2_ComponentsInScope
+TITLE: Components of operating systems that are in scope
+
+[TEXT]
+STATEMENT: >>>
+The scope of this document is limited to the security-relevant parts of the operating system, including
+components that provide or are capable of modifying or controlling essential security functions of the
+operating system.
+
+The following non-exhaustive list of types of components are common to many operating systems and, when
+present, are considered security-relevant:
+
+* **Kernel**: The central component responsible for managing hardware resources and enforcing access
+  controls.
+* **Device Drivers**: Software components supplied with the operating system that interact directly with
+  hardware devices.
+* **Security Libraries**: Libraries used to provide critical security services, such as encryption,
+  authentication, and authorization.
+* **Authentication Services**: Core authentication mechanisms required for operating system
+  functionality.
+* **Privileged Processes**: Operating system processes running with elevated privileges or access to
+  sensitive resources.
+* **Software Update Mechanisms**: Systems responsible for installing and updating software components
+  supplied with the operating system.
+* **Logging and Monitoring**: Functions performed by the operating system that record security-relevant
+  events or monitor system behavior.
+* **Configuration Management**: Management of the configuration of security-relevant operating system
+  settings, including provisioning of secure-by-default configuration as appropriate to the product
+  context.
+
+Other components of operating systems often contribute to the essential security of a product and should
+be given equal consideration, as appropriate for each product's context.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-1-3_ProductsNotInScope
+TITLE: Products not in scope
+
+[TEXT]
+STATEMENT: >>>
+The present document does not apply to products that contain an operating system or are part of an
+operating system if the core purpose of the product is not that of an operating system. However, it may
+be useful as one part of the process of demonstrating compliance for a product containing or interacting
+with an operating system.
+
+The present document does not cover functions of the operating system that are not security-relevant.
+
+The present document does not cover other product categories defined in EU Regulation 2024/2847, such as
+hypervisors, container runtime systems, or boot managers, even where such products provide
+security-relevant functionality which overlaps that of an operating system.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-2_References
+TITLE: References
+
+[[SECTION]]
+TITLE: Normative References
+
+[TEXT]
+STATEMENT: >>>
+The following referenced documents are necessary for the application of the present document.
+
+- [1] prEN 40000-1-1: "Cybersecurity requirements for products with digital elements – Vocabulary".
+- [2] prEN 40000-1-2: "Cybersecurity requirements for products with digital elements - Part 1-2:
+  Principles for cyber resilience".
+- [3] prEN 40000-1-3: "Cybersecurity requirements for products with digital elements – Vulnerability
+  Handling".
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Informative References
+
+[TEXT]
+STATEMENT: >>>
+References are either specific (identified by date of publication and/or edition number or version
+number) or non-specific. For specific references, only the cited version applies. For non-specific
+references, the latest version of the referenced document (including any amendments) applies.
+
+.. note::
+  NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot
+  guarantee their long-term validity.
+
+The following referenced documents may be useful in implementing an ETSI deliverable or add to the
+reader's understanding but are not required for conformance to the present document.
+
+- [i.1] Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on
+  horizontal cybersecurity requirements for products with digital elements and amending Regulations
+  (EU) No 168/2013 and (EU) 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act).
+- [i.2] C(2025)618 – Standardisation request M/606: Commission Implementing decision of 3.2.2025 on a
+  standardisation request to CEN, CENELEC and ETSI as regards products with digital elements in
+  support of Regulation (EU) 2024/2847.
+- [i.3] ETSI EN 303 645: "CYBER; Cyber Security for Consumer Internet of Things: Baseline Requirements".
+- [i.4] ETSI TS 103 701: "Cyber Security (CYBER); Cyber Security for Consumer Internet of Things:
+  Conformance Assessment of Baseline Requirements".
+- [i.5] EN 18031 series: "Common security requirements for radio equipment" (produced by CEN/CENELEC).
+- [i.6] CEN/CLC JTC13: "Cybersecurity and Data Protection".
+- [i.7] ISO/IEC 15408: "Information security, cybersecurity and privacy protection — Evaluation criteria
+  for IT security".
+- [i.8] BSI CC-PP-0067: "Operating System Protection Profile".
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Definition of terms, symbols and abbreviations
+
+[TEXT]
+STATEMENT: >>>
+.. note::
+  Editor's Note: This Section Needs To Be Updated
+<<<
+
+[[SECTION]]
+TITLE: Terms
+
+[TEXT]
+STATEMENT: >>>
+This clause provides terms and definitions based on CEN/CLC JTC13 WG09's
+`[i.6] <https://labs.etsi.org/rep/stan4cra/en-304-626/-/blob/main/EN-304-626.md?ref_type=heads&plain=0#_ref_i.6>`_ 
+work on terms and definitions, terms and definitions provided by ETSI EN 303 645/TS 103 701 
+`[i.3] <https://labs.etsi.org/rep/stan4cra/en-304-626/-/blob/main/EN-304-626.md?ref_type=heads&plain=0#_ref_i.3>`_
+and by CEN/CLC EN 18031 `[i.5] <https://labs.etsi.org/rep/stan4cra/en-304-626/-/blob/main/EN-304-626.md?ref_type=heads&plain=0#_ref_i.5>`_
+series, and informed by terms used in the Common Criteria
+`[i.7] <https://labs.etsi.org/rep/stan4cra/en-304-626/-/blob/main/EN-304-626.md?ref_type=heads&plain=0#_ref_i.7>`_
+and the NIAP Operating System Protection Plan
+`[i.8] <https://labs.etsi.org/rep/stan4cra/en-304-626/-/blob/main/EN-304-626.md?ref_type=heads&plain=0#_ref_i.8>`_
+guide.
+
+For the purposes of the present document, the following terms apply.
+
+**Operating System (OS)** Operating System (OS) is defined in European Commission Implementing Act 2025/2392.
+
+.. note:: 
+  Editor's Note: The definition of Operating System is copied below for reference.
+  
+Software products with digital elements that provide an abstract interface of the underlying hardware
+and control the execution of software, and that may provide services such as computing resource
+management and configuration, scheduling, input-output control, managing data, and providing an
+interface through which applications interact with system resources and peripherals.
+
+**General Purpose Operating System:** class of operating system designed to support a wide variety of
+workloads consisting of concurrent applications or services.
+
+.. note::
+  NOTE: Typical characteristics of this category include support for third-party applications, support for multiple users, and security separation between users and their respective resources. General Purpose Operating Systems lack the operational constraints which define Special Purpose Operating Systems and Real Time Operating System (RTOS) that are typically used in routers, switches, and embedded devices.
+
+**Application Programming Interface (API):** specification of routines, data structures, object classes, and variables that allows an application to make use of services provided by another software component, such as a library.
+
+.. note::
+  NOTE: APIs are often provided for a set of libraries included with the platform.
+
+**system call interface:** specification for the API between the application layer and the kernel or system layer.
+
+**Input/Output (I/O):** process or function for passing data to or from a given process over a specific interface.
+
+.. note::
+  NOTE: Such I/O interfaces include, but are not limited to, serial ports, network ports, long-term storage devices including hard drives and flash drives, as well as human-interface ports such as display and audio devices.
+
+**Common Criteria (CC):** Common Criteria for Information Technology Security Evaluation (International Standard ISO/IEC 15408) `[i.7] <https://labs.etsi.org/rep/stan4cra/en-304-626/-/blob/main/EN-304-626.md?ref_type=heads&plain=0#_ref_i.7>`_.
+
+**administrator:** entity that is responsible for management activities, including setting policies that are applied by the enterprise on the operating system.
+
+.. note::
+  NOTE: This administrator could be acting remotely through a management server, from which the system receives configuration policies. An administrator can enforce settings on the system which cannot be overridden by non-administrator users.
+
+**user:** entity that is subject to configuration policies applied to the operating system by administrators.
+
+.. note::
+  NOTE: On some systems under certain configurations, a normal user can temporarily elevate privileges to that of an administrator. At that time, such a user should be considered an administrator.
+
+**user account:** identity created in an operating system with associated access controls and privileges.
+
+.. note::
+  NOTE: Users may have multiple user accounts and user accounts may have multiple users.
+
+**threat actor:** entity that can adversely affect the system through malicious or unauthorized activities.
+
+**application:** software that runs on a platform and performs tasks on behalf of the user or owner of the platform, as well as its supporting documentation.
+
+**credential:** data that establishes the identity of a user, e.g. a cryptographic key or password
+
+**Personally Identifiable Information (PII):** any information about an individual maintained by an agency, including, but not limited to, education, financial transactions, medical history, and criminal or employment history and information which can be used to distinguish or trace an individual's identity, such as their name, government-issued identity numbers, date and place of birth, biometric records, etc., including any other personal information which is linked or linkable to an individual.
+
+**sensitive data:** sensitive data may include all user or enterprise data or may be specific application data such as PII, emails, messaging, documents, calendar items, contacts, credentials, and keys.
+
+**data execution prevention:** anti-exploitation feature of modern operating systems executing on modern computer hardware, which enforces a non-execute permission on pages of memory that are not code.
+
+.. note::
+  NOTE: This prevents pages of memory from containing both data and instructions, which makes it more difficult for an attacker to introduce and execute code.
+
+**non-writable executable memory:** anti-exploitation feature of modern operating systems executing on modern computer hardware, which enforces a non-write permission on pages of memory that are code.
+
+.. note::
+  NOTE: This prevents modifying the instructions of running programs, which makes it more difficult for an attacker to introduce and execute code.
+
+**Address Space Layout Randomization (ASLR):** anti-exploitation feature which loads memory mappings into unpredictable locations.
+
+.. note::
+  NOTE: ASLR makes it more difficult for an attacker to redirect control to code that they have introduced into the address space of a process.
+
+**Common Weakness Enumeration (CWE):** community-developed list of software and hardware weaknesses that can become vulnerabilities. https://cwe.mitre.org/
+
+**elevated privilege:** level of access that allows accessing or changing security-relevant configuration, data, or functions on a system.
+
+**command shell:** text-based interface allowing execution of system programs.
+
+**process isolation:** techniques to prevent processes from accessing or changing each other's state.
+
+**attack surface:** user interfaces, target protocol interfaces and reachable data paths that can be attacked from inside or outside the system.
+
+**principle of least privilege:** design principle requiring that users, processes, and interfaces are granted only the minimum level of permission necessary to perform their legitimate functions, and nothing more.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Symbols
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Abbreviations
+
+[TEXT]
+STATEMENT: >>>
+For the purposes of the present document, the following abbreviations apply:
+
++--------------------+-------------------------------+
+| Abbreviation       | Description                   |
++--------------------+-------------------------------+
+| OS                 | Operating System              |
++--------------------+-------------------------------+
+| MMU                | Memory Management Unit        |
++--------------------+-------------------------------+
+| I/O                | Input/Output                  |
++--------------------+-------------------------------+
+
+For the purposes of the present document's risk analysis, the following abbreviations apply:
+
++--------------------+-------------------------------+
+| Abbreviation       | Description                   |
++--------------------+-------------------------------+
+| UC                 | Use Case                      |
++--------------------+-------------------------------+
+| SP                 | Security Profile              |
++--------------------+-------------------------------+
+| RF                 | Risk Factor                   |
++--------------------+-------------------------------+
+| SA                 | Security Assurance Level      |
++--------------------+-------------------------------+
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-4_ProductContext
+TITLE: Product context
+
+[TEXT]
+STATEMENT: >>>
+.. note::
+  Editor's Note: This Section Is Stable
+<<<
+
+[[SECTION]]
+TITLE: Intended purpose and reasonably foreseeable use
+
+[TEXT]
+STATEMENT: >>>
+The intended purpose of the products in scope of the present document is to provide an operating system.
+Operating systems are used across a wide range of product categories, from resource-constrained IoT
+devices to enterprise servers.
+
+Reasonably foreseeable uses include deployment in consumer, enterprise, industrial, and critical
+infrastructure contexts, often as a component of a larger product or system.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Essential functions
+
+[TEXT]
+STATEMENT: >>>
+The essential functions of the product may include functions such as: process isolation, memory isolation, I/O abstraction, device driver management, user authentication and access control, event logging, software management, device firmware management, secure updates, and more.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Product architecture
+
+[[SECTION]]
+TITLE: Overview
+
+[TEXT]
+STATEMENT: >>>
+An operating system abstracts the hardware, allocates resources, and provides services to itself and any other software on the system. It often serves as a central organizing authority that controls access to system resources by various pieces of software, dividing up available resources among the applications and its own subsystems to meet implicit or explicit goals or constraints. An operating system often uses a large part of the resources of the system it runs on, but in return it simplifies the development and deployment of the overall system.
+
+TODO: Insert pic
+
+Operating system architecture varies widely and depends on many factors, including the intended use case, the underlying platform, and the design philosophy of the developers. This overview will focus on the elements of operating system architecture that have a significant impact on the security functions and risk mitigations of an operating system.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Operating system security functions
+
+[TEXT]
+STATEMENT: >>>
+
+The security of an operating system relies heavily on properly controlling the instructions executed
+by the system processor. Instruction flow is dependent on the program instructions, any data it
+accesses, and any hardware that has the ability to change either data or which instructions are being
+executed.
+
+Example #1: a network interface adapter can write directly to system memory, potentially
+altering data values and thereby influencing the behavior of running programs or even causing
+unintended code execution.
+
+Example #2: a USB controller can raise an interrupt which can cause the interrupt controller
+to force the CPU to switch to executing interrupt handling code, altering the instruction flow.
+
+A fundamental building block of most operating systems is the principle of "privilege". Privilege
+determines which system resources or functions a program is allowed to access. The operating system
+grants a specific set of privileges to itself, its subsystems, and user-level programs, ensuring that
+each component operates within defined boundaries to maintain system security and stability.
+
+Generally, privileges are enforced using hardware features such as a memory management unit and
+processor-defined privilege levels. If the hardware does not provide these features, the operating
+system may use a best effort approach, such as relying on the compiler to generate code that is less
+likely to accidentally interfere with the functions of the operating system or other parts of the
+system. A best-effort approach is only acceptable in low-risk, low-impact use cases where all
+elements and users of the systems can be trusted to not deliberately attempt to compromise the system.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: High-level operating system architectures
+
+[TEXT]
+STATEMENT: >>>
+Operating systems architecture can vary in many ways which significantly affect security outcomes for the product. For this reason, the present document does not attempt to define specifics of operating system architecture. Some exmaples of differences include:
+
+* the proportion of operating system code executed with different privileges
+* whether application code is executed with the same privileges as the operating system
+* the method of communication between processes with different privileges
+* the degree of reliance on hardware capabilities to enforce privilege separation and process isolation
+
+Each of these design variations makes different tradeoffs between security, performance, and ease of implementation.
+
+A few common operating system architectures are described below for reference, but should not be taken normatively.
+
+**Monolithic kernel:** The operating system kernel is one executable running at the highest processor privilege level in one memory domain, providing the majority of system-wide services. Applications are in separate memory domains and have a lesser privilege level. Applications request services and resources via system calls. Often a monolithic kernel supports modules, which allows parts of the kernel of the kernel to be added or removed at run-time, but they are usually sharing the same memory domain and privilege level.
+
+**Microkernel:** The operating system kernel running at the highest processor privilege level provides a minimal set of resource allocation services, while many of the operating systems services are provided by separate executables with lower privileges.
+
+**Hybrid kernel:** A mix of microkernel and monolithic kernel, where some operating systems services are provided in the central kernel and some are provided by applications. Subsystems that do not need to be high performance and are a frequent source of vulnerabilities are often moved into applications, such as printer drivers or file systems with complex features and/or low performance requirements.
+
+**Exokernel:** The operating system does not abstract the resources of the system, it only manages resource allocation between different applications.
+
+**Unikernel:** The operating system and the application are effectively a single executable. Often this is described as a library operating system: a set of library routines that an application can include and effectively become the operating system.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Access control mechanisms
+
+[TEXT]
+STATEMENT: >>>
+Operating systems may control access to resources in different ways, including but not limited to:
+
+**Access control lists:** Each resource has a list of users or processes that are allowed to access it.
+
+**Role-based access control:** Users are assigned one or more roles, and roles have permissions associated with them.
+
+**Capabilities:** Access to a resource is linked to a token which can be passed between processes.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Resource management
+
+[TEXT]
+STATEMENT: >>>
+Operating systems may control resource management in different ways, including but not limited to imposing per-process limitations on processor time, memory allocation, storage usage, number of file descriptors, or number of process table entries.
+
+Operating systems may implement limits on the number or proportion of specific resourcs that an application or thread may use, and may group these limits by user, process, process group, or other mechanism.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Scheduling
+
+[TEXT]
+STATEMENT: >>>
+Operating systems may provide voluntary or involuntary switching between different processes, and may rely on hardware capabilities to improve or limit parallel process execution and isolation.
+
+Some common models include:
+
+**Cooperative scheduling:** Each thread runs until it voluntarily yields control of the processor to another thread. No thread is interrupted unless it explicitly yields the CPU.
+
+**Preemptive scheduling:** Threads can be involuntarily suspended by the scheduler and replaced with other threads, and they may also voluntarily yield the CPU.
+
+Operating system may perform secuduling based on many factors, such as but not limited to:
+
+* Time spent executing during a previous time period
+* Time since the thread was first marked runnable
+* Explicit priorities associated with each thread
+* Type of thread (kernel or application)
+* Resource limits
+* Performance considerations
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Operational Environment
+
+[TEXT]
+STATEMENT: >>>
+The operational environment of an operating system is highly varied. In general it includes at least a platform (virtual or physical), and may also include applications, separately shipped device drivers, device firmware, peripherals, and many other components. Operating systems may be a standalone software product on a single processor, or it may be part of suite of software products running on multiple processors. Many systems have multiple operating systems all managing different parts of the system at the same time.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Distribution of security functions
+
+[[SECTION]]
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+For each security requirement, a product may:
+
+1. Provide all necessary security functions itself
+2. Require security functions be provided by some other part of its context
+3. Provide security functions for the use of other components
+
+Most individual hardware components do not have a built-in method of secure firmware update, and rely on the presence of an operating system which can update the component's firmware securely.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Security functions provided outside the product
+
+[TEXT]
+STATEMENT: >>>
+Operating systems often rely on essential external functionality to implement their necessary security functionality.
+
+For example, many operating systems rely on hardware secure elements and a compatible boot manager prior to the beginning of the operating system's own execution in order for the operating system to execute securely.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Security functions provided to other components
+
+[TEXT]
+STATEMENT: >>>
+Operating systems often provides essential security functions to other components of the system.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Users
+
+[TEXT]
+STATEMENT: >>>
+Users of products may interact directly with the operating system, or the operating sytsem may be integrated into a product in such a way that the end user does not interact directly with any functionality of the operating system.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Use Cases
+
+[TEXT]
+STATEMENT: >>>
+.. note::
+  **Editor's Note:** The following list of use cases is an illustrative set of possible use cases selected to demonstrate the mechanics of this standard and provide clear guidance for the most common product categories.
+
+.. note::
+  **Editor's Note:** Considering that Operating Systems provide an essential functionality for all Digital Products, it is not feasible to list in detail either all extant or all potential use cases for operating systems.
+
+.. note::
+  **Editor's Note:** We anticipate that future revisions of this document may include additional use cases, such as for the following product scenarios: embedded devides, baseband management controllers, network interface cards, graphics cards, real-time applications, and special purpose operating systems.
+
+
+<<<
+
+[[SECTION]]
+UID: ETSI-OS-UC-LR
+TITLE: UC-LR: Operating system for learning and research
+
+[TEXT]
+STATEMENT: >>>
+* is not used for any purpose beyond learning and research
+* does not store any sensitive or useful data
+* security is provided entirely by the environment
+* is highly modified by the user
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-IoT-1
+TITLE: UC-IoT-1: Non-internet-connected device such as a bluetooth speaker
+
+[TEXT]
+STATEMENT: >>>
+* does not store any user-specific data
+* has no means to connect directly to a public network
+* not intended to support hardware, software, or operating system changes
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-IoT-2
+TITLE: UC-IoT-2: Internet-enabled power switch
+
+[TEXT]
+STATEMENT: >>>
+* connects to a central service, operated by the device manufacturer, for remote data processing
+* stores account information to authenticate to WiFi and to cloud service provider
+* has a minimalistic interface, such as a single button for pairing and a reset button
+* does not have accessible I/O ports
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-IoT-3
+TITLE: UC-IoT-3: Internet-connected smart home device
+
+[TEXT]
+STATEMENT: >>>
+* e.g. a thermostat, fridge, or alarm system
+* connects to a central service, operated by the device manufacturer, for remote data process
+* stores account information to authenticate to WiFi and to cloud service provider
+* does not support arbitrary file storage or end-user operating system configuration changes
+* does not have accessible I/O ports
+* may display personalized information, such as location-specific weather forecast
+* serviced by trained professionals who do not modify software or hardware outside of manufacturer specifications
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-RO-1
+TITLE: UC-RO-1: Consumer-grade home wireless router
+
+[TEXT]
+STATEMENT: >>>
+* stores account information for authentication with ISP
+* not intended for end-user hardware or software modification
+* is exposed to the open internet
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-OT-1
+TITLE: UC-OT-1: Business-grade remote door locking system
+
+[TEXT]
+STATEMENT: >>>
+* does not store any user data
+* not intended for hardware or software modification
+* is not exposed to the open internet, and is only connected to trusted networks
+* only serviced by professionals
+* does not have accessible I/O ports
+* hardware likely contains tamper-evident signals which operating system can rely on
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-MOB-1
+TITLE: UC-MOB-1: Personal mobile device
+
+[TEXT]
+STATEMENT: >>>
+* stores highly sensitive personal information
+* large number of sensors allow mass collection of sensitive personal data
+* size and cost make it a common target of theft
+* device usage is not limited to trusted locations and loss is foreseeable
+* hardware and operating system configuration not intended for modification by users
+* end-users frequently install software of uncertain provenance
+* device frequently connects to untrusted networks
+* device frequently collects user's location at all times
+* device is often always on and always connected
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-WE-1
+TITLE: UC-WE-1: Wearable health tracker
+
+[TEXT]
+STATEMENT: >>>
+* e.g. a smart watch or step tracker
+* stores information about a single user only
+* stored information may be highly sensitive, and is likely to be strictly structured (not arbitrary files)
+* does not have accessible I/O ports and is not user-modifiable
+* connects to a central service, operated by the device manufacturer, for remote data processing
+* connections are proxied by a trusted device, such as a mobile phone
+* is not exposed to a public network
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-PC-1
+TITLE: UC-PC-1: Personal computer in a fixed and generally safe location
+
+[TEXT]
+STATEMENT: >>>
+* hardware, software and operating system may be configured and modified by the end-user
+* the user may not be either highly skilled or an authorized representative of the manufacturer
+* foreseeably connects to a public network and to low-trust local networks, but is not reachable from the open internet
+* stores personal information and arbitrary files
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-PC-2
+TITLE: UC-PC-2: Enterprise workstation in a fixed and generally safe location
+
+[TEXT]
+STATEMENT: >>>
+* installed in an access-controlled workspace
+* serviced by trained professionals who may modify both software and hardware
+* connected to a public network with external mitigations, such as enterprise-grade firewalls
+* connects to trusted local networks
+* hardware likely contains tamper-evident indicators and secure elements for cryptographic storage
+* used for web browsing
+* stores business data, personal information and arbitrary files
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-LA-1
+TITLE: UC-LA-1: Personal laptop
+
+[TEXT]
+STATEMENT: >>>
+* hardware, software and operating system may be configured and modified by the end-user
+* device is a foreseeable target of theft and tampering by untrusted 3rd parties
+* stores personal information and arbitrary files
+* unrestricted connection to a public network
+* is frequently connected to untrusted networks
+* hardware likely contains tamper-evident indicators and secure elements for cryptographic storage
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-LA-2
+TITLE: UC-LA-2: Enterprise laptop
+
+[TEXT]
+STATEMENT: >>>
+* hardware, software and operating system may be configured and modified by the end-user
+* serviced by trained professionals who may modify both software and hardware
+* device is a foreseeable target of theft and tampering by untrusted 3rd parties
+* stores business data, personal information and arbitrary files
+* unrestricted connection to a public network
+* is frequently connected to untrusted networks
+* hardware likely contains tamper-evident indicators and secure elements for cryptographic storage
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-PS-1
+TITLE: UC-PS-1: Personal server
+
+[TEXT]
+STATEMENT: >>>
+* one or a small number of trusted users
+* installed in a fixed location at home or in a cohosting facility
+* connected to a public network with a firewall
+* connects to trusted local network
+* limited access permitted from a public network for specific services
+* semi-professional semi-automated management by one or a few people
+* always stationary, access to hardware interfaces unlikely
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-SE-1
+TITLE: UC-SE-1: Enterprise server in a datacenter with no user accounts
+
+[TEXT]
+STATEMENT: >>>
+* installed in a monitored and secured facility
+* serviced by trained professionals who may modify both software and hardware
+* connected to a public network with external mitigations, such as enterprise-grade firewalls
+* connects to trusted local networks
+* hardware likely contains tamper-evident indicators and secure elements for cryptographic storage
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-SE-2
+TITLE: UC-SE-2: Enterprise server in a datacenter with only trusted user accounts
+
+[TEXT]
+STATEMENT: >>>
+* Same as UC-SE-2 but with trusted users
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-UC-SE-3
+TITLE: UC-SE-3: Enterprise server in a datacenter hosting many untrusted user accounts
+
+[TEXT]
+STATEMENT: >>>
+* Same as UC-SE-2 but with untrusted users
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-5_Requirements
+TITLE: Requirements specifications
+
+[[SECTION]]
+TITLE: Notes on the structure of the Requirements
+
+[TEXT]
+STATEMENT: >>>
+.. note::
+ **Editor's Note:** The CRA requires the manufacturer to keep all the documentation necessary to show that the tests were conducted. In Article 13 Rec. 22, MSA's are granted the right to request "all the information and documentation, in paper or electronic form, necessary to demonstrate the conformity of the product with digital elements and of the processes put in place by the manufacturer with the essential cybersecurity requirements set out in Annex I." The objective of these requirements is to provide manufacturers with sufficient guidance to consistently satisfy such requests from the market authorities.
+<<<
+
+[[SECTION]]
+TITLE: Necessity of Requirements
+
+[TEXT]
+STATEMENT: >>>
+Not all requirements are necessary for all products. The mapping table at the end of each requirement enumerates the set of risk factors and product use cases for which the requirements are necessary. See Annex C for more information.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Types of Technical Requirements
+
+[TEXT]
+STATEMENT: >>>
+
+**Testable Requirements:** The essential quality of technical requirements is their capability to be verified by testing an implementation of the product. This verification ensures that the requirement can be assessed in an objective manner. If such verification is not practicable, the requirement is instead classified as a documentation requirement.
+
+**Documentation Requirements:** For documentation requirements, the manufacturer shall provide supporting documentation, including but not limited to configuration files and documented organizational policies to ensure that compliance with the standard can be demonstrated even when direct product testing is not feasible.
+
+.. note::
+  **NOTE:** Simple process requirements (e.g., a statement that something has been done, without supporting evidence) are not acceptable and should be converted into technical requirements whenever possible and documentation requirements otherwise.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Assumptions Regarding Requirements
+
+[[SECTION]]
+TITLE: Testability
+
+[TEXT]
+STATEMENT: >>>
+Manufacturers are already required to provide the ability to enable testing and collect output on the product as placed on the market, and will supply instructions for enabling and collecting test data.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Source Code
+
+[TEXT]
+STATEMENT: >>>
+The market authorities may request source code access as part of a verification process, if necessary.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Mitigations
+
+[TEXT]
+STATEMENT: >>>
+Mitigations are the technical means by which a technical requirement is satisfied. Mitigations should be tailored to the use case and take into account the foreseeable and expected skill level of the product's users, appropriate for the expected operational environment, and proportional to the foreseeable risk.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Risk Transferral
+
+[TEXT]
+STATEMENT: >>>
+Some risks may be transferred partially or fully to other components of the final product, or to
+the user of the product. When that is the case, mitigations that transfer the risk will be
+included as an option to fulfill a technical requirement, depending on the use case and risk
+factors.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Technical security requirements specifications
+
+[[SECTION]]
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+Some risks may be transferred partially or fully to other components of the final product, or to
+the user of the product. When that is the case, mitigations that transfer the risk will be
+included as an option to fulfill a technical requirement, depending on the use case and risk
+factors.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-NKEV: No known exploitable vulnerabilities at first use
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-NKEV
+TITLE: Requirement
+DESCRIPTION: >>>
+Recognizing that there may be vulnerabilities discovered between the time that a product is placed
+on the market and the time of that product's first use, and that the product should be free from
+known vulnerabilities both when first made available and when first used by a consumer, the
+product shall be able to be updated at the time of first use to address all known exploited
+vulnerabilities which were discovered after the product's placement on the market and before that
+first use.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-KEVD
+TITLE: MI-KEVD: Documentation for secure update before or during first use
+DESCRIPTION: >>>
+The product shall be accompanied by documentation describing how the product may be securely
+updated, including how to update the product prior to, or as part of, first use.
+
+- **Applicability:** Product expected use is long enough to require updates
+- **Reference:** TR-NKEV
+- **Objective:** Prevent exploitation of known exploited vulnerabilities at first use
+- **Preparation:** Examine public or private vulnerability information sources and select a recently fixed vulnerability (preferably the most recently fixed)
+- **Activities:** On a new product, carry out the initial secure update, scan the product to see if a recently fixed vulnerability has been fixed on the product, and examine the documentation for the required info
+- **Verdict:** The secure update completes successfully, the most recently fixed vulnerability is fixed, and the documentation includes all the required information => PASS, otherwise FAIL
+- **Evidence:** Documentation of vulnerability handling, documentation of how to securely update the product, the report for the selected vulnerability, description of how to scan for the vulnerability, log of vulnerability scan results
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-NKEV
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-KEVA
+TITLE: MI-KEVA: Automatic secure update before or during first use
+DESCRIPTION: >>>
+The product shall implement automatic secure update by default before or during first use.
+
+- **Applicability:** Product expected use is long enough to require updates
+- **Reference:** TR-NKEV
+- **Objective:** Prevent exploitation of known exploited vulnerabilities at first use
+- **Preparation:** Examine public or private vulnerability information sources and select a recently fixed vulnerability (preferably the most recently fixed)
+- **Activities:** Follow the instructions to install and use the product for the first time, scan the product to see if a recently fixed vulnerability has been fixed on the product, and examine the documentation for the required info
+- **Verdict:** The secure update completes successfully, the most recently fixed vulnerability is fixed, and the documentation includes all the required information => PASS, otherwise FAIL
+- **Evidence:** Documentation of vulnerability handling, documentation of how to securely update the product, the report for the selected vulnerability, description of how to scan for the vulnerability, log of vulnerability scan results
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-NKEV
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-KEVM
+TITLE: MI-KEVM: Documentation of mitigation of known exploitable vulnerabilities
+DESCRIPTION: >>>
+The product's development and release process shall include a process to document known exploitable
+vulnerabilities in the product and their fixes or mitigations. The documentation for this process
+shall be compliant with the process described in [3] prEN 40000-1-3: "Cybersecurity requirements
+for products with digital elements – Vulnerability Handling". The product shall be compliant with
+this requirement if it:
+
+1. has no known exploitable vulnerabilities
+2. has known exploitable vulnerabilities whose age is consistent with the specification of how long vulnerabilities may go unfixed after public disclosure, as described in the vulnerability handling procedure for the product
+3. for each detected vulnerability, has documentation of how the risk has been mitigated
+
+- **Reference:** TR-NKEV
+- **Objective:** Prevent exploitation of known exploited vulnerabilities at first use
+- **Preparation:** Compile a list of known exploitable vulnerabilities in the product and its components
+- **Activities:** Compare the generated list of known exploitable vulnerabilities with the documentation of the known exploitable vulnerabilities that have been fixed or mitigated in the product
+- **Verdict:** No vulnerabilities found, or all reported vulnerabilities satisfy either the age or documentation requirement => PASS, otherwise FAIL
+- **Evidence:** Documented vulnerability handling policy, list of vulnerabilities, documentation of mitigations or age of vulnerability, correlation of list of vulnerabilities with documentation of mitigations or age of vulnerability
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-NKEV
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-KEVT
+TITLE: MI-KEVT: Testing for known exploitable vulnerabilities
+DESCRIPTION: >>>
+The product shall be tested for all known exploitable vulnerabilities to demonstrate that each has
+been mitigated. The product shall be compliant with this requirement if it:
+
+1. has no known exploitable vulnerabilities
+2. has known exploitable vulnerabilities whose age is consistent with the specification of how long vulnerabilities may go unfixed after public disclosure, as described in the vulnerability handling procedure for the product
+3. for each tested vulnerability, the test result shows that the vulnerability has been mitigated
+
+- **Reference:** TR-NKEV
+- **Objective:** Prevent exploitation of known exploited vulnerabilities at first use
+- **Preparation:** Compile a list of known exploitable vulnerabilities in the product and its components, compile a list of known exploitable vulnerabilities that will be tested, collect tests for each one
+- **Activities:** On a new product, carry out a secure update, run the tests, and compare the results with the generated list of known exploitable vulnerabilities
+- **Verdict:** No vulnerabilities found, or all reported vulnerabilities satisfy either the age or mitigation requirement => PASS, otherwise FAIL
+- **Evidence:** Documented vulnerability handling policy, list of vulnerabilities, test results for each vulnerability or documentation of age of vulnerability, correlation of list of vulnerabilities with test results or documentation of age of vulnerability
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-NKEV
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SCAN
+TITLE: MI-SCAN: No easily scannable known exploitable vulnerabilities
+DESCRIPTION: >>>
+If automatable and freely-usable vulnerability scanners are available for the product, then the
+product shall satisfy the following with respect to the three (or fewer, if fewer than three are
+available) most comprehensive of such scanners:
+
+1. has no vulnerabilities discovered by scans
+2. has discoverable exploitable vulnerabilities whose age is consistent with the specification of how long vulnerabilities may go unfixed after public disclosure, as described in the vulnerability handling procedure for the product
+3. for each detected vulnerability, has publicly available documentation explaining how the risk has been mitigated
+
+- **Reference:** TR-NKEV
+- **Objective:** Prevent exploitation of known vulnerabilities at first use
+- **Preparation:** Select a set of tools meeting the requirements
+- **Activities:** On a new product, carry out a secure update, run the tools on the product, and examine the documentation for any reported vulnerabilities
+- **Verdict:** No vulnerabilities found, or all reported vulnerabilities satisfy either the age or documentation requirement => PASS, otherwise FAIL
+- **Evidence:** Documented vulnerability handling policy, list of vulnerability scanners selected, reports from each scanner, correlation of reports of discovered vulnerabilities with documentation of mitigations
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-NKEV
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-SSDD: Secure design and development
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-SSDD
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall be designed and developed in a secure manner.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SSCA
+TITLE: MI-SSCA: Static source code analysis for memory errors
+DESCRIPTION: >>>
+All security-relevant parts of the product shall be checked for memory errors using a source code
+analysis tool that detects code that may produce common memory errors, such as:
+
+* buffer overflow
+* out-of-bounds
+* use after free
+* double free
+* use of uninitialized variables
+* dereference of invalid pointer
+
+The sufficiency of the source code analysis tool and the selected manner of running it shall be
+documented. All warnings, annotations, or other method of suppressing warnings from the analysis
+tool shall be documented with a rationale for why it does not constitute an unacceptable risk.
+
+- **Reference:** TR-SSDD
+- **Objective:** Prevent unauthorized memory access
+- **Preparation:** None
+- **Activities:** Review the documentation on why the source code analysis tool is sufficient, how it is run, the source code for the product, the output of the source code analysis tool, and the documentation for any warnings or suppression of warnings
+- **Verdict:** Sufficiency documentation is acceptable, the method of running the tool is consistent with rationale, the output of source code analysis tool is consistent with the source code, all warnings or suppression of warnings have convincing documentation for why they are an acceptable risk => PASS, otherwise FAIL
+- **Evidence:** The documentation on why the source code analysis tool is sufficient, how it is run, the source code for the product, the output of the source code analysis tool, and the documentation for any warnings or suppression of warnings
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SSDD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-FZ95
+TITLE: MI-FZ95: Runtime code coverage checking with memory access error detection
+DESCRIPTION: >>>
+The product shall be checked for memory errors by running a tool that exercises the functions of
+the product in an environment that permits measuring code coverage and detecting memory access
+errors. All memory errors detected shall be documented with a rationale for why it does not
+constitute an unacceptable risk.
+
+- **Reference:** TR-SSDD
+- **Objective:** Prevent unauthorized memory access
+- **Preparation:** None
+- **Activities:** Run the tool while measuring code coverage and monitoring for memory access errors until 95% code coverage has been reached
+- **Verdict:** Code coverage was at least 95%, all reported memory errors are documented and justified => PASS, otherwise FAIL
+- **Evidence:** Logs of code coverage tool, memory error report, documentation of any memory errors
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SSDD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-IMSL
+TITLE: MI-IMSL: Implement in a memory-safe language
+DESCRIPTION: >>>
+The product's firmware and/or software shall be implemented in a memory-safe language. Any use of
+unsafe memory features shall be documented to explain why they are necessary and do not present a
+security risk.
+
+- **Reference:** TR-SSDD, TR-MSAF
+- **Objective:** Prevent unauthorized memory access
+- **Preparation:** None
+- **Activities:** Review source code to determine its language and what exceptions to memory safety exist
+- **Verdict:** Source code is in a memory-safe language and the documentation of all uses of unsafe memory features convincingly demonstrates that each one of them does not present a security risk => PASS, otherwise FAIL
+- **Evidence:** Source code, documentation of unsafe memory features
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SSDD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-BTIN
+TITLE: MI-BTIN: Boundary testing of inputs that may cause memory errors
+DESCRIPTION: >>>
+The input fields of the product that may produce memory errors in the firmware or device driver
+shall be identified. The product shall be boundary tested for all such inputs while monitoring for
+memory errors. All memory errors detected shall be documented with a rationale for why it does not
+constitute an unacceptable risk.
+
+- **Reference:** TR-SSDD, TR-MSAF
+- **Objective:** Prevent unauthorized memory access
+- **Preparation:** Identify input fields in the product that may produce memory errors
+- **Activities:** Run a tool that tests input values that test the boundaries of the input values (minimum valid, maximum valid, minimum possible, maximum possible, off-by-one, etc.) while monitoring for memory errors
+- **Verdict:** All boundary values tested and all memory errors detected are documented and justified => PASS, otherwise FAIL
+- **Evidence:** Logs of boundary testing tool, memory error report, documentation of any memory errors
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SSDD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SCFS
+TITLE: MI-SCFS: Secure compilation flags
+DESCRIPTION: >>>
+All security-relevant firmware and software shall be compiled with secure compilation flags and
+options appropriate to the target platform and language. All compilation flags used shall be
+documented as to their rationale, along with any exceptions or limitations. Any exceptions to the
+flags or warnings shall be documented as to why they do not create an unacceptable risk.
+
+- **Applicability:** Product implemented in a compiled language
+- **Reference:** TR-SSDD
+- **Objective:** Secure design and development
+- **Preparation:** Document which flags should be used
+- **Activities:** Review compilation flags, warnings, and documentation for exceptions
+- **Verdict:** Documentation of flags exists, all warnings and exceptions are documented
+- **Evidence:** Documentation of flags, build system files, documentation of warnings and exceptions
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SSDD
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-MISO: Prevent local unauthorized access of memory-addressable security-relevant data
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-MISO
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall protect memory addresses from unauthorized access by executables under the
+product's control, including the product itself. This includes system memory, storage addressable
+via memory mapping, memory for I/O devices, and anything else accessible via the memory-related
+instructions in the platform.
+
+The product does not need to protect against unauthorized access by elements of the platform it
+is running on (e.g. CPU microcode, devices on the system bus, other operating systems in the
+device, a hypervisor). Future iterations of the standard may add this requirement for appropriate
+use cases.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MMAC
+TITLE: MI-MMAC: Memory access control
+DESCRIPTION: >>>
+The product shall implement mandatory hardware-enforced access control to memory to prevent
+unauthorized access of memory.
+
+- **Applicability:** Has user accounts
+- **Reference:** TR-MISO
+- **Objective:** Prevent unauthorized memory access
+- **Preparation:** List the methods of accessing memory and the types of access control to memory
+- **Activities:** For each method of accessing memory and each type of access control to memory, attempt to use the method of accessing memory to gain access to memory that the executable is not authorized to access due to the access control
+- **Verdict:** All memory accesses fail => PASS, otherwise FAIL
+- **Evidence:** List of methods of accessing memory and types of access control, output of tests
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MISO
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-CCON
+TITLE: MI-CCON: Prevent creation of more than one user account
+DESCRIPTION: >>>
+The product shall prevent the creation of a user account if one already exists.
+
+- **Applicability:** Has user accounts
+- **Reference:** TR-MISO
+- **Objective:** Prevent unauthorized access of memory
+- **Preparation:** List all user accounts and verify there is exactly one
+- **Activities:** Attempt to create a second user account, then list user accounts again
+- **Verdict:** Creation of second user account fails and list of user accounts shows one account and is identical before and after test => PASS, otherwise FAIL
+- **Evidence:** List of user accounts before and after test, output of test
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MISO
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-UCON
+TITLE: MI-UCON: Prevent concurrent user account usage
+DESCRIPTION: >>>
+The product shall prevent a user account from logging in if another user account is already
+logged in.
+
+- **Applicability:** Has user accounts
+- **Reference:** TR-MISO
+- **Objective:** Prevent unauthorized access of memory
+- **Preparation:** Create two accounts, log in to one account, list all logged in user accounts and verify there is exactly one, list all methods of logging in to a user account
+- **Activities:** For each method of logging in to a user account, attempt to login as a second user account, then list logged in user accounts again
+- **Verdict:** Login of second user account fails or is not possible, and list of user accounts logged in shows one account and is identical before and after test => PASS, otherwise FAIL
+- **Evidence:** List of logged in user accounts before and after test, output of each test or evidence proving that logging in as a second user is impossible
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MISO
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-PMSC
+TITLE: MI-PMSC: Prevent memory leaks through microarchitectural side channels in provided executables
+DESCRIPTION: >>>
+The product shall implement mechanisms to prevent the executables it provides from leaking memory
+data to unauthorized users through known exploitable microarchitectural side channels (MASCs),
+such as via observing the time of cache access for various operations including:
+
+* speculative execution/loads/stores
+* branch prediction
+* out-of-order execution
+* shared multithreading resources
+* address translation
+* memory access patterns
+* prefetching
+
+- **Reference:** TR-MISO
+- **Objective:** Prevent unauthorized reads of memory
+- **Preparation:** List known MASC leaks on supported platform
+- **Activities:** For each type of MASC leak, run a test using the best known techniques to exploit the MASC on a system-provided executable
+- **Verdict:** All tests fail to extract data that they do not have authorization to read => PASS, otherwise FAIL
+- **Evidence:** Output of each test
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MISO
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-TRMD
+TITLE: MI-TRMD: Transfer risk of microarchitectural side channel data leaks to user
+DESCRIPTION: >>>
+The documentation provided to the user shall document the risk of microarchitectural side channel
+data leaks and give appropriate guidance to the user on how they may mitigate the risk.
+
+- **Applicability:** (for requirements that depend on a feature)
+- **Reference:** TR-MISO
+- **Objective:** Prevent unauthorized reads of memory
+- **Preparation:** None
+- **Activities:** Read documentation provided with the product
+- **Verdict:** Documentation sufficiently describes the risks and mitigations => PASS, otherwise FAIL
+- **Evidence:** Documentation provided with the product
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MISO
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-MSAF: Mitigate memory safety errors
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-MSAF
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall appropriately mitigate risks due to memory safety errors.
+
+.. note::
+   Most memory safety mitigations have the same Verdict and Evidence:
+
+   - **Preparation:** None
+   - **Verdict:** each involved thread fails to read or write the target data and takes a segmentation fault, has error handling code executed, or is terminated in all tests => PASS, otherwise FAIL
+   - **Evidence:** error messages, log message, or the product reboots or halts
+
+   For each mitigation grouped under requirement TR-MSAF, for each field Preparation, Verdict, or
+   Evidence, if it is not specified for that test, then the above Preparation, Verdict, or Evidence
+   field shall apply.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MSAF-1
+TITLE: MI-MSAF-1: Stack exhaustion detection
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject writes beyond the end of the stack.
+
+- **Reference:** TR-MSAF
+- **Objective:** Prevent thread from writing beyond end of stack
+- **Activities:** For each of kernel and userspace, write beyond the end of the stack
+
+.. note::
+   GuidanceTwo methods of exhausting stack memory include allocating a very large object on the stack,
+   and performing an unbounded recursive function call.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MSAF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MSAF-2
+TITLE: MI-MSAF-2: Stack linear buffer overflow detection
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject stack buffer writes that go beyond the end of the
+stack frame.
+
+- **Reference:** TR-MSAF
+- **Objective:** Prevent thread from writing beyond end of stack
+- **Activities:** For each of kernel and userspace, write beyond the end of the stack frame
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MSAF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MSAF-3
+TITLE: MI-MSAF-3: Array bounds checking
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject writes to fixed-size arrays that are beyond the
+end of the array.
+
+- **Reference:** TR-MSAF
+- **Objective:** Prevent thread from writing beyond the end of a fixed-size array
+- **Activities:** For each of kernel and userspace, write beyond the end of a fixed-size array
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MSAF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MSAF-4
+TITLE: MI-MSAF-4: Heap linear buffer overflow detection
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject writes beyond the bounds of allocated heap memory.
+
+- **Reference:** TR-MSAF
+- **Objective:** Prevent thread from writing beyond the end of heap memory
+- **Activities:** For each of kernel and userspace, for each type of heap memory, allocate a fixed size from each class of heap memory, write beyond it
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MSAF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MSAF-5
+TITLE: MI-MSAF-5: Heap use-after-free access prevention
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject use of allocated memory that has been freed.
+
+- **Reference:** TR-MSAF
+- **Objective:** Prevent thread from using memory that was allocated then freed
+- **Activities:** For each of kernel and userspace, allocate from heap memory, free it, then try to read it, repeat but with a write
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MSAF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MSAF-6
+TITLE: MI-MSAF-6: Heap free checking
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject freeing of memory that was allocated and previously
+freed.
+
+- **Reference:** TR-MSAF
+- **Objective:** Prevent thread from freeing memory that is already free
+- **Activities:** For each of kernel and userspace, allocate from heap memory, free it, then free again
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MSAF
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-LMII: Limit incident impact
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-LMII
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall implement appropriate mitigations to limit incident impact.
+<<<
+
+[[SECTION]]
+TITLE: Default Preparation, Verdict, and Evidence
+
+[TEXT]
+STATEMENT: >>>
+
+.. note::
+   Most memory safety mitigations have the same Verdict and Evidence:
+
+   - **Preparation:** None
+   - **Verdict:** each involved thread fails to read or write the target data and takes a segmentation fault, has error handling code executed, or is terminated in all tests => PASS, otherwise FAIL
+   - **Evidence:** error messages, log message, or the product reboots or halts
+
+   For each mitigation grouped under requirement TR-LMII, for each field Preparation, Verdict, or
+   Evidence, if it is not specified for that test, then the above Preparation, Verdict, or Evidence
+   field shall apply.
+<<<
+
+[[/SECTION]]
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MZRO-1
+TITLE: MI-MZRO-1: Stack memory zeroing
+DESCRIPTION: >>>
+Both kernel and userspace threads shall zero-initialize all stack memory before use.
+
+- **Reference:** TR-LMII
+- **Objective:** Prevent attacker from exploiting erroneous use of uninitialized stack memory
+- **Activities:** For each of kernel and userspace, sequentially call 2 functions that allocate the same amount of memory, fill the first with non-zero values and return, and during second function call, read the stack contents back
+- **Verdict:** stack contents are all zero on second call
+- **Evidence:** contents of stack before the first function return, contents of stack during the second function call
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MZRO-2
+TITLE: MI-MZRO-2: Heap memory zeroing
+DESCRIPTION: >>>
+Both kernel and userspace threads shall zero-initialize all heap memory before use.
+
+- **Reference:** TR-LMII
+- **Objective:** Prevent attacker from exploiting erroneous use of uninitialized heap memory
+- **Activities:** For each of kernel and userspace, allocate heap memory, fill with a non-zero value, free it, allocate it again in a deterministic way to get the same heap region, and read back the contents
+- **Verdict:** memory contents are all zero on second call
+- **Evidence:** contents of allocated memory before the free, contents of allocated memory after second allocation
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MRWX-1
+TITLE: MI-MRWX-1: Prevent writes to executable and read-only data memory
+DESCRIPTION: >>>
+Both kernel and userspace threads shall reject writes to executable and read-only data memory.
+
+- **Reference:** TR-LMII
+- **Objective:** Prevent writes to executable and read-only data memory
+- **Activities:** For each of kernel and userspace, for each portion of executable and non-writable data regions, write to it
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MRWX-2
+TITLE: MI-MRWX-2: Prevent execution of non-kernel code memory
+DESCRIPTION: >>>
+Kernel threads shall prevent execution of non-kernel code memory.
+
+- **Reference:** TR-LMII
+- **Objective:** Mitigate exploits that use execution of arbitrary memory
+- **Activities:** For each class of non-code memory in the kernel (e.g. stack, heap, read-only data), copy a trivial return-only function into the memory, and attempt to execute each one
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-ASLR
+TITLE: MI-ASLR: Address space layout randomization
+DESCRIPTION: >>>
+The product shall enable Address Space Layout Randomization (ASLR) by default for all
+executables, including the kernel, if any.
+
+- **Applicability:** Platform has an MMU and product implements virtual memory
+- **Reference:** TR-LMII
+- **Objective:** Exploit mitigation
+- **Preparation:** None
+- **Activities:** For every executable, examine the object file to determine if ASLR is enabled. For one non-kernel executable (if any) and one kernel executable (if any), run the executable twice and read the base addresses of the text, stack, heap, and shared libraries where applicable.
+- **Verdict:** All executables have ASLR enabled, base addresses collected for executables differ between runs => PASS, else FAIL
+- **Evidence:** Output of scan for ASLR enabled, base addresses collected
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MRCO
+TITLE: MI-MRCO: Mitigate reference counter overflow
+DESCRIPTION: >>>
+Both kernel and userspace threads shall mitigate the effects of reference counter overflows.
+
+- **Reference:** TR-LMII
+- **Objective:** Prevent exploitation of bugs in reference counting to overflow the counter to zero, causing a free and subsequent use-after-free accesses
+- **Activities:** For each of kernel and userspace, set resource reference counter to 1 less than maximum representable value, increment it twice
+- **Verdict:** reference counter does not overflow and resource is permanently pinned (no longer can be freed)
+- **Evidence:** test output showing reference counter values before and after the operation, allocation status of the resources
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-NKAM
+TITLE: MI-NKAM: Prevent unintentional kernel access to userspace memory
+DESCRIPTION: >>>
+Kernel threads shall prevent cross-privilege memory access.
+
+- **Applicability:** Product has multiple privilege levels
+- **Reference:** TR-LMII
+- **Objective:** Mitigate exploits that use kernel privileges to access arbitrary userspace memory
+- **Activities:** For each of read, write, and execute operations, use a kernel thread to attempt to use the operation on memory regions that are mapped to a different privilege level without going through dedicated memory access routines
+
+.. note::
+   Guidance: The most common privilege levels are kernel and userspace.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-PLLC
+TITLE: MI-PLLC: Prevent linked list corruption
+DESCRIPTION: >>>
+Both kernel and userspace threads shall check the consistency of the previous and next pointers
+it manipulates when adding or deleting an item to or from a linked list and reject the operation
+if they are not consistent.
+
+- **Reference:** TR-LMII
+- **Objective:** Prevent linked list corruption
+- **Activities:** For each of kernel and userspace, add or delete an item to an uninitialized list
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-CFIN
+TITLE: MI-CFIN: Control flow integrity
+DESCRIPTION: >>>
+Both kernel and userspace threads shall protect saved function and return pointers from overwrite.
+
+- **Reference:** TR-LMII
+- **Objective:** Mitigate exploits by preventing overwrite of function and return pointers
+- **Activities:** For each of kernel and userspace, save a function pointer to the heap, overwrite it with a different function, make indirect call to the saved function pointer, then repeat but with a return address that was stored to the stack
+
+.. note::
+   Guidance: This mitigation can be implemented via software (e.g. ASan) or hardware (e.g. Pointer
+   Authentication), or validating transitions of expected control flow graph (e.g. KCFI,
+   Shadow Stack).
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MPMT
+TITLE: MI-MPMT: Memory protection using memory tagging
+DESCRIPTION: >>>
+Both kernel and userspace threads shall use hardware-supported memory tagging to reject erroneous
+memory accesses.
+
+- **Reference:** TR-LMII
+- **Objective:** Mitigate exploits by preventing memory errors
+- **Activities:** For each of kernel and userspace, allocate 2 adjacent memory regions with separate tags. Attempt to read and write memory with a positive offset into trailing region from leading region's tagged pointer. Attempt to read and write with negative offset into leading region using trailing region's tagged pointer. Free a region and read and write to the region using the original tagged pointer.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMII
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-MINI: Minimize impact on other devices and services
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-MINI
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall implement appropriate mitigations to minimize impact on other devices and
+services.
+
+.. note::
+   Editor's Note: We hope that there will be additional contributions to this section in the
+   future.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MDOC
+TITLE: MI-MDOC: Document transfer of risk of minimizing impact to operating environment
+DESCRIPTION: >>>
+The product shall be accompanied by documentation informing the user of the transfer of risk for
+minimizing impact on other devices and services.
+
+- **Reference:** TR-MINI
+- **Objective:** Minimize impact on other devices and services
+- **Activities:** Examine the documentation
+- **Verdict:** Transfer of risk documented in a manner appropriate to the user => PASS, otherwise FAIL
+- **Evidence:** Documentation, analysis of documentation
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MINI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MNET
+TITLE: MI-MNET: Minimize negative impact of network transmission
+DESCRIPTION: >>>
+The product shall minimise its negative impact on other products or services via the data it
+transmits on the network. Each source of network data shall be documented, along with the ways
+it can interfere with other products or services, and methods the product uses to minimise that
+interference.
+
+- **Reference:** TR-MINI
+- **Objective:** Minimise negative impact on others
+- **Preparation:** List all sources of transmitted network data on the product
+- **Activities:** For each method of sending network data, examine the documentation of the ways it can interfere with other products or services, and what methods the product uses to minimise that interference
+- **Verdict:** Every method of sending network data is documented with ways it can interface and methods used to minimise => PASS, otherwise FAIL
+- **Evidence:** All configuration files for network services, documentation of network services and their impact and methods to minimise it, internal lists of listening ports, results of an external port scan
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MINI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-MAMP
+TITLE: MI-MAMP: Minimize negative impact of network traffic amplification
+DESCRIPTION: >>>
+The product shall mitigate abuse of network services that amplify network traffic in a manner
+that can be used to attack other devices. Each network service and its associated mitigations
+shall be documented.
+
+- **Reference:** TR-MINI
+- **Objective:** Minimise negative impact on others
+- **Preparation:** List all network services that return responses larger than the received packet without authorization of the source
+- **Activities:** For each network service, examine the documentation of the steps taken to limit access, rate-limit, or otherwise mitigate the use of the service in traffic amplification attacks
+- **Verdict:** Every method of sending network data is documented with how its impact on others has been mitigated => PASS, otherwise FAIL
+- **Evidence:** All configuration files for network services, documentation of network services and their impact and methods to minimise it, internal lists of listening ports, results of an external port scan, calculation of traffic amplification factors
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-MINI
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-SDEF: Secure by default configuration
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-SDEF
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall operate in a secure configuration by default.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-ADEF
+TITLE: MI-ADEF: Authorization required by default to access security-relevant assets
+DESCRIPTION: >>>
+The product's default state shall require appropriate authorization to access all
+security-relevant assets. Appropriate authorization depends on the use case and the asset. For
+example, an autogenerated device-specific cryptographic key should not be readable without
+appropriate authorization.
+
+- **Reference:** TR-SDEF
+- **Objective:** Find any unauthorized access to security relevant assets in default configuration
+- **Preparation:** List all interfaces allowing access to security-relevant assets
+- **Activities:** For each interface, attempt to access security-relevant assets without appropriate authorization and record whether access was allowed or not
+- **Verdict:** If every interface does not allow access without appropriate authorization => PASS, otherwise => FAIL
+- **Evidence:** List of interfaces allowing access to security-relevant assets, record of activities used to attempt unauthorized access to security-relevant assets, log of results of attempts
+- **Applicability:** if the product's intended purpose is for integration into another product, this mitigation may be implemented by the integrator
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDEF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-PDDI-1
+TITLE: MI-PDDI-1: Document how to protect access to debug and management interfaces
+DESCRIPTION: >>>
+All debug and management interfaces on the product shall be documented, and the documentation
+shall specify means to protect or disable them.
+
+- **Applicability:** This mitigation is for products intended for integration into subsequent products.
+- **Reference:** TR-SDEF
+- **Objective:** Secure by default
+- **Preparation:** Examine the documentation for how to protect or disable the debug/management interfaces of the product
+- **Activities:** Examine the product for undocumented debug/management interfaces, then follow the instructions in the documentation to disable or protect each documented interface, then attempt to access the interface without authorization
+- **Verdict:** All debug/management interfaces are documented as to how to disable or protect them, and no interfaces are accessible without authorization after following the documentation to protect or disable them => PASS, otherwise => FAIL
+- **Evidence:** Pictures of the product, list of discovered interfaces, comparison with documentation, notes as to which are documented how to disable/protect, logs of protect/disable actions, logs of attempts to access interfaces after protected or disabled
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDEF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-PDDI-2
+TITLE: MI-PDDI-2: Protect or disable physical access to debug and management interfaces
+DESCRIPTION: >>>
+All debug and management interfaces which can be accessed by an agent with physical access to
+the device the product is installed on shall be protected or disabled by default, unless necessary
+for backward compatibility. Documentation regarding the removal of such protections by an
+appropriately sophisticated user may be provided, and shall include information regarding the
+risks.
+
+- **Reference:** TR-SDEF
+- **Objective:** Secure by default
+- **Preparation:** Examine the documentation of the network- and localhost-accessible interfaces of the product and follow the instructions to mitigate the risk of any necessary unprotected or enabled interfaces
+- **Activities:** As an unprivileged process running on the system, attempt to access the system's local debug and management interfaces and make unauthorized changes. Additionally, scan accessible memory and inter-process-communication mechanisms for undocumented debug and management interfaces.
+- **Verdict:** No undocumented interfaces are found and no interfaces can be accessed without authorization other than those documented as necessary and the instructions to the user are sufficient => PASS, otherwise => FAIL
+- **Evidence:** List of interfaces, log of attempts to access
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDEF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-PDDI-3
+TITLE: MI-PDDI-3: Protect or disable local software access to debug and management interfaces
+DESCRIPTION: >>>
+All debug and management interfaces which can be accessed by processes running on the system
+shall be protected or disabled by default, unless necessary for backward compatibility.
+Documentation regarding the removal of such protections by an appropriately sophisticated user
+may be provided, and shall include information regarding the risks.
+
+- **Reference:** TR-SDEF
+- **Objective:** Secure by default
+- **Preparation:** Examine the documentation of the network- and localhost-accessible interfaces of the product and follow the instructions to mitigate the risk of any necessary unprotected or enabled interfaces
+- **Activities:** As an unprivileged process running on the system, attempt to access the system's local debug and management interfaces and make unauthorized changes. Additionally, scan accessible memory and inter-process-communication mechanisms for undocumented debug and management interfaces.
+- **Verdict:** No undocumented interfaces are found and no interfaces can be accessed without authorization other than those documented as necessary and the instructions to the user are sufficient => PASS, otherwise => FAIL
+- **Evidence:** List of interfaces, log of attempts to access
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDEF
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-PDDI-4
+TITLE: MI-PDDI-4: Protect or disable network access to debug or management interfaces
+DESCRIPTION: >>>
+All debug and management interfaces accessible via the network shall be protected or disabled by
+default, unless necessary for backward compatibility. Documentation regarding the removal of such
+protections by an appropriately sophisticated user may be provided, and shall include information
+regarding the risks.
+
+- **Reference:** TR-SDEF
+- **Objective:** Secure by default
+- **Preparation:** Examine the documentation of the network accessible interfaces of the product and follow the instructions to mitigate the risk of any necessary unprotected or enabled interfaces
+- **Activities:** Using a network scanner, scan the product for both documented and undocumented debug or remote management interfaces and determine whether they are enabled or protected
+- **Verdict:** No undocumented interfaces are found and no interfaces can be accessed without authorization other than those documented as necessary and the instructions to the user are sufficient => PASS, otherwise => FAIL
+- **Evidence:** List of interfaces, log of attempts to access
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDEF
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-SCUD: Secure updates
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-SCUD
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall be securely updateable by the user.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SCHL
+TITLE: MI-SCHL: Low security updates provided by operational environment
+DESCRIPTION: >>>
+The technical documentation provided with the product shall document that the operational
+environment shall provide a method of receiving notifications of secure updates from the
+manufacturer, retrieving the updates, verifying the updates, and applying them to the product.
+The secure update method shall satisfy the "Low" security level for the product supplying it.
+
+- **Reference:** TR-SCUD
+- **Objective:** Secure updates
+- **Activities:** Assess the documentation provided with the product
+- **Verdict:** Documentation describes requirements for the secure updates provided by the operational environment => PASS, otherwise FAIL
+- **Evidence:** Documentation and analysis of completeness
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCUD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SCHM
+TITLE: MI-SCHM: Medium security updates provided by operational environment
+DESCRIPTION: >>>
+The technical documentation provided with the product shall document that the operational
+environment shall provide a method of receiving notifications of secure updates from the
+manufacturer, retrieving the updates, verifying the updates, and applying them to the product.
+The secure update method shall satisfy the "Medium" security level for the product supplying it.
+
+- **Reference:** TR-SCUD
+- **Objective:** Secure updates
+- **Activities:** Assess the documentation provided with the product
+- **Verdict:** Documentation describes requirements for the secure updates provided by the operational environment => PASS, otherwise FAIL
+- **Evidence:** Documentation and analysis of completeness
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCUD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SCHH
+TITLE: MI-SCHH: High security updates provided by operational environment
+DESCRIPTION: >>>
+The technical documentation provided with the product shall document that the operational
+environment shall provide a method of receiving notifications of secure updates from the
+manufacturer, retrieving the updates, verifying the updates, and applying them to the product.
+The secure update method shall satisfy the "High" security level for the product supplying it.
+
+- **Reference:** TR-SCUD
+- **Objective:** Secure updates
+- **Activities:** Assess the documentation provided with the product
+- **Verdict:** Documentation describes requirements for the secure updates provided by the operational environment => PASS, otherwise FAIL
+- **Evidence:** Documentation and analysis of completeness
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCUD
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SCUD-TODO
+TITLE: 5.2.9.5 TODO
+DESCRIPTION: >>>
+.. note::
+   Editor's Note: We are waiting on an anticipated submission of additions to this section from
+   an ETSI member who has unexpectedly become unavailable.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCUD
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-AUTH: Authentication and access control
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-AUTH
+TITLE: Requirement
+DESCRIPTION: >>>
+.. note::
+   Editor's Note: We anticipate that future revisions of this document will include
+   state-of-the-art authentication requirements. This section should reference authentication
+   and access control standards.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-CDST: Confidentiality of data stored on the product
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-CDST
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall protect data stored on the product from unauthorized access.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-CDST
+TITLE: MI-CDST: Protect confidentiality of data stored on the product
+DESCRIPTION: >>>
+The product shall protect data stored on the product from unauthorized access.
+
+.. note::
+   Editor's Note: We have included only a high-level mitigation, and anticipate that more
+   detailed and specific mitigations will be added later.
+
+- **Reference:** TR-CDST
+- **Objective:** Confidentiality of data
+- **Preparation:** List all types of data that may be stored on the product that should not be readable without authorization, what methods of ensuring confidentiality are appropriate for each type, all methods of accessing that data available to an attacker based on the risk assessment, and what the allowable authorization methods are for that access method
+- **Activities:** For each type of data and each access mechanism, determine the method of ensuring confidentiality used, and attempt to read the data without authorization
+- **Verdict:** If all methods of ensuring confidentiality match the type of the data stored, and all the attempts to read confidential data without authorization fail => PASS, otherwise => FAIL
+- **Evidence:** Logs of determination of type of data and method of confidentiality and attempts to read confidential data without authorization
+
+.. note::
+   Data may be protected by the environment, permissions, encryption, salting and hashing,
+   offline storage, or hardware-backed secrets.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-CDST
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-CDTX: Confidentiality of data transmitted by product
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-CDTX
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall protect data transmitted by the product from unauthorized access.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-CDTX
+TITLE: MI-CDTX: Protect confidentiality of data transmitted by product
+DESCRIPTION: >>>
+The product shall protect data transmitted by the product from unauthorized access.
+
+.. note::
+   Editor's Note: We have included only a high-level mitigation, and anticipate that more
+   detailed and specific mitigations will be added later.
+
+- **Reference:** TR-CDTX
+- **Objective:** Confidentiality of data
+- **Preparation:** List all types of data that may be transmitted on the product that should not be readable without authorization, what methods of ensuring confidentiality are appropriate for each type, all methods of accessing that data available to an attacker based on the risk assessment, and what the allowable authorization methods are for that access method
+- **Activities:** For each type of data and each access mechanism, determine the method of ensuring confidentiality used, and attempt to read the data without authorization
+- **Verdict:** If all methods of ensuring confidentiality match the type of the data transmitted, and all the attempts to read confidential data without authorization fail => PASS, otherwise => FAIL
+- **Evidence:** Logs of determination of type of data and method of confidentiality and attempts to read confidential data without authorization
+
+.. note::
+   Data transmitted may be protected by the environment or encryption.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-CDTX
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-DOCC
+TITLE: MI-DOCC: Document transfer of risk of confidentiality of data transmitted by product
+DESCRIPTION: >>>
+The product shall be accompanied by documentation informing the user of the transfer of risk for
+protecting the confidentiality of data transmitted by the product.
+
+- **Reference:** TR-CDTX
+- **Objective:** Protect data confidentiality
+- **Activities:** Examine the documentation
+- **Verdict:** Transfer of risk documented in a manner appropriate to the user => PASS, otherwise FAIL
+- **Evidence:** Documentation, analysis of documentation
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-CDTX
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-CRYP: Encryption
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-CRYP
+TITLE: Requirement
+DESCRIPTION: >>>
+.. note::
+   Editor's Note: We anticipate that future revisions of this document will include
+   state-of-the-art encryption requirements, including references to appropriate encryption
+   standards not already included in the Agreed Cryptographic Mechanism and CRA Addendum.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-IDST: Integrity of data stored on the product
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-IDST
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall protect the integrity of data stored on the product from unauthorized
+modification and report corruption.
+
+.. note::
+   Guidance: Integrity may be protected by the environment, permissions, duplication, backups, and/or
+   checksums.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-IDST
+TITLE: MI-IDST: Protect integrity of data stored on the product
+DESCRIPTION: >>>
+The product shall protect the integrity of data stored on the product from unauthorized
+modification.
+
+.. note::
+   Editor's Note: We have included only a high-level mitigation, and anticipate that more
+   detailed and specific mitigations will be added later.
+
+- **Reference:** TR-IDST
+- **Objective:** Integrity of data
+- **Preparation:** List all types of data that may be stored on the product that should not be modifiable without authorization, what methods of protecting integrity are appropriate for each type, all methods of modifying that data available to an attacker based on the risk assessment, and what the allowable authorization methods are for that modification method
+- **Activities:** For each type of data and each access mechanism, determine the method of protecting integrity used, and attempt to modify the data without authorization
+- **Verdict:** If all methods of ensuring integrity match the type of the data stored, and all the attempts to modify protected data without authorization fail => PASS, otherwise => FAIL
+- **Evidence:** Logs of determination of type of data and method of integrity and attempts to modify protected data without authorization
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-IDST
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-DCST
+TITLE: MI-DCST: Detect corruption of data stored
+DESCRIPTION: >>>
+The product shall detect corruption of the data stored on the product.
+
+.. note::
+   Editor's Note: We have included only a high-level mitigation, and anticipate that more
+   detailed and specific mitigations will be added later.
+
+- **Reference:** TR-IDST
+- **Objective:** Integrity of data
+- **Preparation:** List all types of data that may be stored on the product whose corruption should be detected and what methods of detecting corruption are appropriate for each type
+- **Activities:** For each type of data and method of detecting corruption, corrupt the data in a way that the method will detect
+- **Verdict:** If all methods of detecting corruption match the type of the data stored, and all the corruptions of data are detected => PASS, otherwise => FAIL
+- **Evidence:** Logs of determination of type of data and corruptions of data
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-IDST
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-IDTX: Integrity of data transmitted by the product
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-IDTX
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall detect corruption of the data transmitted by the product.
+
+.. note::
+   Guidance: Integrity may be protected by the environment, permissions, duplication, backups, and/or
+   checksums.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-DCTX
+TITLE: MI-DCTX: Detect corruption of data transmitted by the product
+DESCRIPTION: >>>
+.. note::
+   Editor's Note: We have included only a high-level mitigation, and anticipate that more
+   detailed and specific mitigations will be added later.
+
+The product shall detect corruption of the data transmitted by the product.
+
+- **Reference:** TR-IDTX
+- **Objective:** Integrity of data
+- **Preparation:** List all types of data that may be transmitted by the product whose corruption should be detected and what methods of detecting corruption are appropriate for each type
+- **Activities:** For each type of data and method of detecting corruption, corrupt the data in a way that the method will detect
+- **Verdict:** If all methods of detecting corruption match the type of the data transmitted, and all the corruptions of data are detected => PASS, otherwise => FAIL
+- **Evidence:** Logs of determination of type of data and corruptions of data
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-IDTX
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-DMIN: Data Minimization
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-DMIN
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall minimize the data processed.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-DJST
+TITLE: MI-DJST: Document and justify processed data
+DESCRIPTION: >>>
+All sources of data processed by the product in its secure-by-default configuration shall be
+documented. All sources of data processed shall have a documented rationale for why its processing
+is necessary for the functioning of the product in its secure-by-default configuration.
+
+- **Reference:** TR-DMIN
+- **Objective:** Minimize data processed
+- **Preparation:** List all potential sources of data for the product. For each source of data, identify a method to detect whether the product is processing data from that source.
+- **Activities:** Using the list of sources of data, and the method to detect whether the product is processing data from that source, list all sources of data processed. Compare to the documented list.
+- **Verdict:** All sources of processed data are documented, including rationale => PASS, otherwise => FAIL
+- **Evidence:** List of sources of data, documentation of each source of data, list of sources of data processed, connection between each discovered source of processed data to its documentation
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-DMIN
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-AVAI: Availability
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-AVAI
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall protect the availability of essential and core functions.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-AVNT
+TITLE: MI-AVNT: Availability of network services
+DESCRIPTION: >>>
+The product shall protect the availability of essential and core network services through
+mitigation of denial-of-service attacks.
+
+- **Reference:** TR-AVAI
+- **Objective:** Protect availability of network functions
+- **Preparation:** List all network services and identify essential and core network services
+- **Activities:** For each essential or core network service, examine the documentation for how the product sufficiently mitigates denial-of-service attacks for its risk assessment
+- **Verdict:** Every essential or core network service is documented and the mitigations are sufficient => PASS, otherwise FAIL
+- **Evidence:** All configuration files for network services, documentation of network services and the ways to mitigate a denial-of-service attack on it, internal lists of listening ports, results of an external port scan
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-AVAI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-WDOG
+TITLE: MI-WDOG: Watchdog and self-initiated reset
+DESCRIPTION: >>>
+The product shall implement a mechanism to trigger an automatic reset when it detects that it is
+no longer able to perform its functions.
+
+- **Reference:** TR-AVAI
+- **Objective:** Availability
+- **Preparation:** Document the conditions that indicate the product cannot perform its functions
+- **Activities:** Cause each of the conditions to occur and observe whether the product resets
+- **Verdict:** Every condition triggers an automatic reset => PASS, otherwise FAIL
+- **Evidence:** Documentation, log messages
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-AVAI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-FDRP
+TITLE: MI-FDRP: Fast packet drop
+DESCRIPTION: >>>
+  TODO: Write mitigation requiring the product to do validity checks on packets from both the
+  network and the user in order of cheapest to most expensive so it can drop invalid packets with
+  as little resource usage as possible.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-AVAI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-LMEM
+TITLE: MI-LMEM: Limit memory usage
+DESCRIPTION: >>>
+  TODO: Write mitigation requiring the product limit memory usage triggered by user input via
+  network or local access.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-AVAI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-FAIR
+TITLE: MI-FAIR: Fair resource usage and prioritization
+DESCRIPTION: >>>
+  TODO: Write mitigation requiring the product implement some form of ensuring fair resource usage
+  by multiple sources of input, including the ability to prioritize some sources of input.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-AVAI
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-DOST
+TITLE: MI-DOST: Document risk transfer to operational environment for denial of service
+DESCRIPTION: >>>
+  TODO: Write mitigation documenting that the operational environment must provide denial of service
+  protection, such as an external or internal firewall, fair queueing or filtering, a proxy, etc.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-AVAI
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-LMAS: Minimize exposed interfaces
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-LMAS
+TITLE: Requirement
+DESCRIPTION: >>>
+The manufacturer shall minimize exposed interfaces in the default configuration of the product
+in all operating modes, including initial configuration, during initialization, while in use,
+while shutting down or paused, or after reset.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-JSTY
+TITLE: MI-JSTY: Document and justify exposed interfaces
+DESCRIPTION: >>>
+All exposed interfaces on the product in any state that is part of its reasonably foreseeable
+use or misuse in its secure-by-default configuration shall be documented. Every interface shall
+have a documented rationale for why its exposure is necessary for the functioning of the product
+in its secure-by-default configuration.
+
+- **Reference:** TR-LMAS
+- **Objective:** Limit attack surface
+- **Preparation:** List all types of interfaces on the product that may be exposed to an attacker, whether enabled or disabled. For each type of interface, identify a method to list all exposed interfaces of that type. List all states of the product with different exposed interfaces of the product in its secure-by-default configuration, including but not limited to initial configuration, startup, in use, idle, shutdown, and reset, if applicable. For each distinct exposed interface in each state, describe the interface and why it has to be enabled by default.
+- **Activities:** Using the list of types of interfaces, the list of states of the product, and the method to list all exposed interfaces of that type, list all exposed interfaces in each state. Compare to the documented list.
+- **Verdict:** All discovered interfaces are documented, including rationale => PASS, otherwise => FAIL
+- **Evidence:** List of types of interfaces, list of product states, documentation of each exposed interface, output of methods to list all exposed interfaces, connection between each discovered interface to its documentation
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LMAS
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-LOGG: Logging and monitoring
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-LOGG
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall record security-relevant internal events, including but not limited to changes
+to configuration and access or modification of data and functions. The product shall provide an
+opt-out mechanism.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-LOGG
+TITLE: MI-LOGG: Logging
+DESCRIPTION: >>>
+The product shall record log messages indicating security-relevant internal events in an internal
+or external log. The log messages shall not include any confidential information such as PII,
+secrets, or credentials, or any information which might reasonably be expected to include such
+items.
+
+- **Reference:** TR-LOGG
+- **Objective:** Monitoring and recording security-relevant events
+- **Preparation:** List all types of security-relevant internal events
+- **Activities:** For each type of security-relevant internal event, trigger the event
+- **Verdict:** For each triggered event, the log contains a message indicating the event, log message does not include any information likely to be confidential => PASS, otherwise FAIL
+- **Evidence:** Method of triggering events, log messages with annotations
+
+.. note::
+   One type of event whose log message must take care to not accidentally include a secret is
+   failed password authentication attempts. Since people often type their password into the
+   username field, including the username field in the log message may result in including a
+   secret in the log message.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-LOGG
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-SCDL: Secure deletion
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-SCDL
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall provide a method of deleting all user data and settings and resetting the
+product to its secure-by-default configuration.
+
+.. note::
+   Guidance; Overwriting all user-writable storage or encrypting all user data and deleting the key are
+   two secure deletion mechanisms.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-RSET
+TITLE: MI-RSET: Secure deletion via reset
+DESCRIPTION: >>>
+The product shall reset to its secure-by-default state after a power cycle or reset command.
+
+- **Applicability:** Product has the capability for the user to write data and/or settings
+- **Reference:** TR-SCDL
+- **Objective:** Secure deletion
+- **Preparation:** Document every kind of stored data or setting that may be changed by the user on the product, how to store it on the product, and how to read it from the product
+- **Activities:** For each kind of user data or setting that may be stored and changed by the user on the product, write an instance of the data or setting stored on the product that is different from the default and read it from the product; once all kinds of data have been written and read, power cycle or reset the product, and read each kind of data again
+- **Verdict:** If any data or setting is the same for both of the reads => FAIL, otherwise => PASS
+- **Evidence:** Record of each type of data or setting, what data or setting was written, what data or setting was returned by the first read, and what data or setting was returned by the second read, comparison of each one
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCDL
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-INST
+TITLE: MI-INST: Secure deletion via reinstallation
+DESCRIPTION: >>>
+The product shall reset to its secure-by-default state after a reinstallation that securely
+deletes all previous user data or settings.
+
+- **Applicability:** Product has the capability for the user to write data and/or settings
+- **Reference:** TR-SCDL
+- **Objective:** Secure deletion
+- **Preparation:** Document every kind of data or setting that may be stored and changed by the user on the product, how to store it on the product, and how to read it from the product
+- **Activities:** For each kind of user data or setting that may be stored and changed by the user on the product, write an instance of the data or setting stored on the product that is different from the default and read it from the product; once all kinds of data have been written and read, reinstall the product with the secure delete option, and read the data or settings again
+- **Verdict:** If any data or setting is the same for both of the reads => FAIL, otherwise => PASS
+- **Evidence:** Record of each type of data or setting, what data or setting was written, what data or setting was returned by the first read, and what data or setting was returned by the second read, comparison of each one
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCDL
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-DELE
+TITLE: MI-DELE: Secure deletion via secure deletion function
+DESCRIPTION: >>>
+The product shall reset to its secure-by-default state after the secure deletion function is used.
+
+.. note::
+   Editor's Note: this section should be clarified so that the method of deletion depends upon
+   the sensitivity of data stored.
+
+- **Applicability:** Product has the capability for the user to write data and/or settings
+- **Reference:** TR-SCDL
+- **Objective:** Secure deletion
+- **Preparation:** Document every kind of data or setting that may be stored and changed by the user on the product, how to store it on the product, and how to read it from the product
+- **Activities:** For each kind of user data or setting that may be stored and changed by the user on the product, write an instance of the data or setting stored on the product that is different from the default and read it from the product; once all kinds of data have been written and read, activate the secure deletion function, and read the data or settings again
+- **Verdict:** If any data or setting is the same for both of the reads => FAIL, otherwise => PASS
+- **Evidence:** Record of each type of data or setting, what data or setting was written, what data or setting was returned by the first read, and what data or setting was returned by the second read, comparison of each one
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SCDL
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-SDTR: Secure data read and transfer
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-SDTR
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall provide a method to read all data and settings from the product, and if
+provided, securely transfer data and settings to another product.
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SDRF
+TITLE: MI-SDRF: Secure data read from product
+DESCRIPTION: >>>
+The product shall provide a method by which an authorized user can securely read all data and
+settings from the product.
+
+- **Applicability:** Product has the capability for the user to write data and/or settings
+- **Reference:** TR-SDTR
+- **Objective:** Secure data read
+- **Preparation:** List all data and settings
+- **Activities:** For each kind of data or setting, read the data or setting as an authorized user, then attempt read the data or setting as an unauthorized user, if any exists
+- **Verdict:** All data and settings can be read by the authorized user, and no data or setting can be read by an unauthorized user => PASS, otherwise FAIL
+- **Evidence:** List of data and settings, log message showing success or failure of each read by the authorized user and, if applicable, the unauthorized user
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDTR
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-SDTR
+TITLE: MI-SDTR: Secure data transfer to another product
+DESCRIPTION: >>>
+If the product provides a method to transfer data and settings to another product, it shall do
+so securely.
+
+- **Applicability:** Product has the capability for the user to write data and/or settings and to transfer them to another product.
+- **Reference:** TR-SDTR
+- **Objective:** Secure data transfer
+- **Preparation:** Prepare methods by which an unauthorized user could read the data during transfer as outlined in the risk assessment
+- **Activities:** Read the data or settings, initiate the data transfer, attempt to read or alter the transferred data and settings as an unauthorized user, read the new data and settings on the target product
+- **Verdict:** No data or settings could be read or altered by an unauthorized user, and the data and settings read from the original product and target product are the same wherever technically possible => PASS, otherwise FAIL
+- **Evidence:** List of data and settings, log messages from the attempts to read or alter data as the unauthorized user, data and settings as read from the source product and as read from the target product, comparison explaining technical reasons for any differences in the two versions
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-SDTR
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: TR-VULH: Vulnerability handling
+
+[REQUIREMENT]
+UID: ETSI-OS-TR-VULH
+TITLE: Requirement
+DESCRIPTION: >>>
+The product shall have vulnerability handling processes compliant with [3] prEN 40000-1-3:
+"Cybersecurity requirements for products with digital elements – Vulnerability Handling".
+<<<
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-VULH-1
+TITLE: MI-VULH-1: Vulnerability Handling in the Product
+DESCRIPTION: >>>
+The product shall have vulnerability handling processes compliant with [3] prEN 40000-1-3:
+"Cybersecurity requirements for products with digital elements – Vulnerability Handling".
+
+- **Applicability:** (for requirements that depend on a feature)
+- **Reference:** TR-VULH
+- **Objective:** Vulnerability handling
+- **Activities:** Review documentation associated with vulnerability handling.
+- **Verdict:** Vulnerability handling documentation is compliant with [3] prEN 40000-1-3: "Cybersecurity requirements for products with digital elements – Vulnerability Handling" => PASS, otherwise FAIL
+- **Evidence:** Vulnerability handling documentation, comparison with [3] prEN 40000-1-3: "Cybersecurity requirements for products with digital elements – Vulnerability Handling"
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-VULH
+
+[REQUIREMENT]
+UID: ETSI-OS-MI-VULH-2
+TITLE: MI-VULH-2: Enabling Vulnerability Handling in Integrated Products
+DESCRIPTION: >>>
+When the product is intended for integration into subsequent products in a supply chain, system
+vulnerabilities may have a particularly high impact on the security characteristics of the final
+product. Therefore, manufacturers of operating systems intended for integration in subsequent
+products have a responsibility to enable the vulnerability handling processes of manufacturers
+which depend upon them. This is accomplished by sharing, as appropriate to the specific risks,
+details of the operating system's components to enable downstream manufacturers to participate
+in coordinated vulnerability handling procedures described in [3] prEN 40000-1-3: "Cybersecurity
+requirements for products with digital elements – Vulnerability Handling".
+
+- **Applicability:** any operating system intended for integration in subsequent products, rather than use by an end-user
+- **Reference:** TR-VULH
+- **Objective:** Vulnerability handling
+- **Activities:** Review product's SBOM for detailed lists of third-party components and verify the accuracy of identifiers of those components. If applicable and permissible, apply scanning and analysis techniques to the product to verify that the supplied SBOM is accurate and complete.
+- **Verdict:** Product's SBOM contains accurate identifiers for third-party components which can be verified from appropriate sources and unlisted third-party components are not discovered through product inspection => PASS, otherwise FAIL
+- **Evidence:** Logs from product analysis and comparison to supplied SBOM
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: ETSI-OS-TR-VULH
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-5-3_RiskMitigationSets
+TITLE: Risk Mitigation Sets
+
+[[SECTION]]
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+Each risk mitigation is only necessary for the security profiles (see clause C.6.2) that require it to treat a risk. This clause lists all mitigations that are necessary for each security profile.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-LR
+TITLE: SP-LR required mitigations
+
+[TEXT]
+STATEMENT: >>>
+None.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-IOT-1
+TITLE: SP-IoT-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+None.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-IoT-2
+TITLE: SP-IoT-2 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. SCFS
+#. MMAC
+#. ADEF
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. AUTH
+#. DOCC
+#. DJST
+#. DOST
+#. (MDOC or MAMP)
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-IoT-3
+TITLE: SP-IoT-3 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. SCFS
+#. MMAC
+#. ADEF
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. AUTH
+#. DOCC
+#. DJST
+#. DOST
+#. LMEM
+#. (MDOC or MAMP)
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-RO
+TITLE: SP-RO required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AUTH
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-OT-1
+TITLE: SP-OT-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. ADEF
+#. PDDI-1
+#. PDDI-2
+#. PDDI-4
+#. AUTH
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. (MDOC or MAMP)
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-MOB-1
+TITLE: SP-MOB-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. ADEF
+#. PDDI-2
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-WE-1
+TITLE: SP-WE-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. SCFS
+#. MMAC
+#. ADEF
+#. JSTY
+#. LOGG
+#. (KEVD or KEVA)
+#. KEVM
+#. (SUVP or SUAP or SUOE or SUAO)
+#. VULH
+#. ADEF
+#. PDDI-1
+#. PDDI-2
+#. PDDI-4
+#. AUTH
+#. DOCC
+#. DJST
+#. DOST
+#. (MDOC or MAMP)
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-PC-1
+TITLE: SP-PC-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. LMEM
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-PC-2
+TITLE: SP-PC-2 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-LA-1
+TITLE: SP-LA-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. ADEF
+#. PDDI-2
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. LMEM
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-LA-2
+TITLE: SP-LA-2 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. ADEF
+#. PDDI-2
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-PS-1
+TITLE: SP-PS-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. LMEM
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. (TRMD or PMSC)
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-SE-1
+TITLE: SP-SE-1 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-SE-2
+TITLE: SP-SE-2 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. (TRMD or PMSC)
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-SP-SE-3
+TITLE: SP-SE-3 required mitigations
+
+[TEXT]
+STATEMENT: >>>
+#. SSCA
+#. (FZ95 or BTIN or IMSL)
+#. SCFS
+#. MMAC
+#. ASLR
+#. MSAF-\*
+#. MZRO-\*
+#. MRWX-\*
+#. NKAM
+#. PLLC
+#. MRCO
+#. ADEF
+#. JSTY
+#. LOGG
+#. KEVA
+#. KEVM
+#. (KEVT or SCAN)
+#. (SUAP or SUAO)
+#. VULH
+#. PDDI-1
+#. PDDI-3
+#. PDDI-4
+#. AUTH
+#. CDTX
+#. DCTX
+#. DOCC
+#. DJST
+#. DOST
+#. AVNT
+#. FDRP
+#. LMEM
+#. FAIR
+#. MNET
+#. MAMP
+#. SUDC
+#. CDTX
+#. CRYP
+#. IDTX
+#. (TRMD or PMSC)
+#. DMIN
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-6_ConformityAssessment
+TITLE: Conformity Assessment
+
+[TEXT]
+STATEMENT: >>>
+.. note::
+   Editor's Note: It has not yet been determined by consensus among rapporteurs whether assessment guidance should be placed in Clause 5 requirements or moved to Clause 6, here. So, for now, we have opted to leave the assessment guidance adjacent to the requirement they are assessing as this provides, in our view, improved readability. They may be moved here in the future.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Annex A (informative): Mapping between the present document and CRA requirements
+
+[TEXT]
+STATEMENT: >>>
+.. note::
+  Editor's Note: The following table, which maps technical security requirements from clause 5 of the present document to essential cybersecurity requirements in Annex I of the CRA, has the purpose of assisting with the identification of missing technical security requirements.
+
++-------------------------------------------------+------------------------------------+
+| CRA requirement                                 | Technical security requirements(s) |
++-------------------------------------------------+------------------------------------+
+| No known exploitable vulnerabilities            | NKEV                               |
++-------------------------------------------------+------------------------------------+
+| Secure design, development, production          | SSDD, LMII                         |
++-------------------------------------------------+------------------------------------+
+| Secure by default configuration                 | SDEF                               |
++-------------------------------------------------+------------------------------------+
+| Secure updates                                  | SCUD                               |
++-------------------------------------------------+------------------------------------+
+| Authentication and access control mechanisms    | AUTH\*                             |
++-------------------------------------------------+------------------------------------+
+| Confidentiality protection                      | MISO, LMII, CDST, CDTX, CRYP\*     |
++-------------------------------------------------+------------------------------------+
+| Integrity protection for data and configuration | MISO, IDST, IDTX                   |
++-------------------------------------------------+------------------------------------+
+| Data minimization                               | DMIN                               |
++-------------------------------------------------+------------------------------------+
+| Availability protection                         | AVAI, LMII                         |
++-------------------------------------------------+------------------------------------+
+| Minimize impact on other devices or services    | MINI, SDEF, AVAI, SSDD, LMII       |
++-------------------------------------------------+------------------------------------+
+| Limit attack surface                            | MISO, LMAS, SSDD, LMII             |
++-------------------------------------------------+------------------------------------+
+| Exploit mitigation by limiting incident impact  | MISO, LMII, AVAI, SSDD             |
++-------------------------------------------------+------------------------------------+
+| Logging and monitoring mechanisms               | LOGG                               |
++-------------------------------------------------+------------------------------------+
+| Secure deletion and data transfer               | SCDL, SDTR                         |
++-------------------------------------------------+------------------------------------+
+| Vulnerability handling                          | VULH                               |
++-------------------------------------------------+------------------------------------+
+
+* \_waiting on cross-vertical\_
+
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Annex B (informative): Relationship between the present document and any related ETSI standards (if any)
+
+[TEXT]
+STATEMENT: >>>
+ETSI EN 303 645: "CYBER; Cyber Security for Consumer Internet of Things: Baseline Requirements [i.3] provided some terms and definitions.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Annex C (informative): Risk identification and assessment methodology
+
+[[SECTION]]
+TITLE: Assets
+
+[[SECTION]]
+TITLE: Data
+
+[TEXT]
+STATEMENT: >>>
+* Logs
+* Secrets/credentials
+* Executables (kernel, apps, libraries, etc.)
+* Configuration
+* Firmware images
+* User data
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Product functions
+
+[TEXT]
+STATEMENT: >>>
+* Resource allocation
+
+  * Memory management
+  * Scheduling
+  * Storage quotas
+  * Other resource usage limits
+
+* Isolation
+
+  * Memory protection
+  * Storage protection
+  * Other permissions
+
+* Abstract I/O
+
+  * Network stack
+  * File systems
+  * Video
+  * Sound
+  * Input devices (mouse, keyboard)
+
+* Hardware communication
+
+  * Device drivers
+
+* Power management
+* Hardware management
+
+* Configuration
+
+  * Software to run
+  * Hardware configuration
+  * I/O configuration (network, etc.)
+
+* Initialization
+
+  * Initialize hardware
+  * Start software services
+
+* Authentication
+* Authorization
+
+* Software management
+
+  * Software verification
+  * Software installation
+  * Security updates
+  * Software upgrade
+  * Software removal
+  * Firmware upgrades
+  * Load kernel modules
+
+* Logging
+* Monitoring/notifications
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Risk factors
+
+[[SECTION]]
+TITLE: General comments regarding risk factors
+
+[TEXT]
+STATEMENT: >>>
+Risk factors determine which mitigation(s) satisfy each of the technical requirements in clause 5.2.
+
+Manufacturers determine the level of each risk factor via the development of a threat model and risk profile based on the intended and foreseeable use and misuse of the operating system.
+
+Risk factors may increase the likelihood of an incident, increase the impact of an incident, or both. As a result, different mitigation strategies may be more or less relevant to different risk factors.
+
+The overall risk related to each use case should be considered, and is calculated by combining risk factors affecting both likelihood and impact of an incident.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-NUSR
+TITLE: RF-NUSR: Number of User Accounts
+
+[TEXT]
+STATEMENT: >>>
+The number of user accounts of end-users expected on the system, excluding administrator accounts.
+
+- NUSR-0: foreseeable use does not include user accounts for end-users
+- NUSR-1: foreseeable use is only one user account for an end-user
+- NUSR-2: foreseeable use of the operating system is multiple user accounts for end-users
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-CUSR
+TITLE: RF-CUSR: User Account Concurrency
+
+[TEXT]
+STATEMENT: >>>
+The number of user accounts expected to use the system concurrently, including administrator accounts if they are configurable or accessible by end-users.
+
+- CUSR-0: foreseeable use is one authenticated end-user using the device at a time, including authentication by physical access
+- CUSR-1: foreseeable use of the operating system is small number of authenticated users simultaneously active on the operating system who are trusted not to actively attempt to compromise the system
+- CUSR-2: foreseeable use of the operating system is multiple authenticated untrusted users simultaneously active on the operating system
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-PPII
+TITLE: RF-PPII: Potential for Collection of Personally Identifiable Information
+
+[TEXT]
+STATEMENT: >>>
+Potential for collection of personally identifiable information about an individual person.
+
+- PPII-0: foreseeable use includes no or incidental collection of PII
+- PPII-1: foreseeable use includes collection of moderate amounts of PII
+- PPII-2: foreseeable use includes collection of extensive amounts of PII by default
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-SNDS
+TITLE: RF-SNDS: Sensitivity of Data Stored
+
+[TEXT]
+STATEMENT: >>>
+Sensitivity of data stored, as measured by impact of loss of its integrity, confidentiality, or availability.
+
+- SNDS-0: foreseeable use includes no or incidental storage of sensitive data
+- SNDS-1: foreseeable use includes storing moderate amounts of sensitive data
+- SNDS-2: foreseeable use includes storing extensive amounts of sensitive data by default
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-SNDT
+TITLE: RF-SNDT: Sensitivity of Data Transmitted
+
+[TEXT]
+STATEMENT: >>>
+Sensitivity of data transmitted, as measured by impact of loss of its integrity, confidentiality, or availability.
+
+- SNDT-0: foreseeable use includes no or incidental transmission of sensitive data
+- SNDT-1: foreseeable use includes transmission of moderate amounts of sensitive data
+- SNDT-2: foreseeable use includes transmission of extensive amounts of sensitive data by default
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-SENF
+TITLE: RF-SENF: Sensitivity of Functions
+
+[TEXT]
+STATEMENT: >>>
+Sensitivity of functions of device, as measured by impact of loss of its integrity, confidentiality, or availability.
+
+- SENF-0: foreseeable use includes no or incidental provision of sensitive functions
+- SENF-1: foreseeable use may provide arbitrary sensitive functions
+- SENF-2: foreseeable use provides sensitive functions by default
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-PHYS
+TITLE: RF-PHYS: Physical Access by Threat Actors to the Device
+
+[TEXT]
+STATEMENT: >>>
+Exposure of the device to physical access by users.
+
+- PHYS-0: foreseeable use is only in environments without physical exposure to untrusted users
+- PHYS-1: foreseeable use includes incidental physical exposure to untrusted users
+- PHYS-2: foreseeable use includes regular physical exposure to untrusted users
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-UEIN
+TITLE: RF-UEIN: Processing of Untrusted External Inputs
+
+[TEXT]
+STATEMENT: >>>
+Exposure to untrusted external inputs that are processed by the platform.
+
+- UEIN-0: only used in environments without processing of untrusted external inputs
+- UEIN-1: may incidentally process untrusted external inputs
+- UEIN-2: used primarily to process untrusted external inputs
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-LOSS
+TITLE: RF-LOSS: Probability of Loss of the Device
+
+[TEXT]
+STATEMENT: >>>
+Likelihood of loss or theft of the device, allowing threat actors unlimited physical access to the device.
+
+- LOSS-0: foreseeable use is in a device with no or incidental loss likelihood
+- LOSS-1: foreseeable use is in a device with moderate loss likelihood
+- LOSS-2: foreseeable use is in a device with a high loss likelihood, such as devices which are common targets of theft such as mobile phones
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-HWMD
+TITLE: RF-HWMD: Hardware Modifiability by End Users
+
+[TEXT]
+STATEMENT: >>>
+Likelihood that the hardware of the platform will be changed from its secure-by-default state.
+
+- HWMD-0: foreseeable use limited to devices with hardware that is not modifiable by end-users
+- HWMD-1: foreseeable use includes hardware modifications by skilled administrators
+- HWMD-2: foreseeable use includes hardware modification by unskilled users
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-SWMD
+TITLE: RF-SWMD: Software Modifiability by End Users
+
+[TEXT]
+STATEMENT: >>>
+Likelihood that the software on the platform (including firmware) will be changed from its secure-by-default state.
+
+- SWMD-0: foreseeable use only allows the installation of trusted and verified software, such as updates
+- SWMD-1: foreseeable use allows for the installation of arbitrary software or for substantial modification of pre-installed software
+- SWMD-2: foreseeable use actively encourages and facilitates the installation of frequently malicious software
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-DVCS
+TITLE: RF-DVCS: Untrusted Peripheral Devices
+
+[TEXT]
+STATEMENT: >>>
+Likelihood of untrusted peripheral devices being attached to the platform via a connection that is a plausible attack vector, such as by USB or PCI bus.
+
+- DVCS-0: foreseeable use has no accessible peripheral ports
+- DVCS-1: foreseeable use includes only trusted and safe peripheral devices
+- DVCS-2: foreseeable use allows for arbitrary peripheral device attachment
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-TNET
+TITLE: RF-TNET: Access to a Public Network
+
+[TEXT]
+STATEMENT: >>>
+Likelihood that the device will initiate connections to public networks.
+
+- TNET-0: foreseeable use has no mechanism to reasonably connect to a public network
+- TNET-1: foreseeable use allows internet access for only highly restricted functions, such as retrieving security updates
+- TNET-2: foreseeable use allows for arbitrary access to a public network, such as by browsing the web
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-FNET
+TITLE: RF-FNET: Accessed From Untrusted Networks Including a Public Network
+
+[TEXT]
+STATEMENT: >>>
+Likelihood that the device will be exposed to incoming traffic from public networks.
+
+- FNET-0: foreseeable use is limited to trusted and private networks
+- FNET-1: foreseeable use includes untrusted local networks but not the open internet
+- FNET-2: foreseeable use includes being connected directly to the open internet
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-CONF
+TITLE: RF-CONF: Configurability
+
+[TEXT]
+STATEMENT: >>>
+Degree of security-relevant configuration change of the operating system necessary for use.
+
+- CONF-0: foreseeable use does not require storing operating system configuration changes
+- CONF-1: foreseeable use involves operating system configuration changes only by skilled administrators
+- CONF-2: foreseeable use of the operating system includes configuration changes by end-users
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-ADMN
+TITLE: RF-ADMN: Administration
+
+[TEXT]
+STATEMENT: >>>
+Availability and skill of administrators.
+
+- ADMN-0: foreseeable use does not require administration
+- ADMN-1: foreseeable use always has skilled administrators available on call
+- ADMN-2: foreseeable use may involve unskilled administrators
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-RF-SUPP
+TITLE: RF-SUPP: Support and Foreseeable Updates
+
+[TEXT]
+STATEMENT: >>>
+How long the product is expected to be in use, and whether the product is expected to be updated throughout its life cycle.
+
+- SUPP-0: foreseeable use does not require that the operating system be updated at any point in its lifecycle
+- SUPP-1: foreseeable use includes the installation of updates by end-users with access to the operating system
+- SUPP-2: foreseeable use necessitates that the manufacturer provide frequent, automatic, and/or time-sensitive updates to the product, and may reasonably include a requirement for over-the-air updates
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Assumptions
+
+[[SECTION]]
+UID: ETSI-OS-AS-PP
+TITLE: AS-PP: Proper platform
+
+[TEXT]
+STATEMENT: >>>
+The platform the product runs on is trustworthy. The OS may choose to detect and/or correct hardware errors.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-AS-PA
+TITLE: AS-PA: Proper administrator
+
+[TEXT]
+STATEMENT: >>>
+The product administrator is not intentionally hostile and is engaging in good faith efforts to administer the system properly.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-AS-LP
+TITLE: AS-LP: Attacker has limited physical access to product
+
+[TEXT]
+STATEMENT: >>>
+An attacker will have only temporary physical access to the product.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-AS-LR
+TITLE: AS-LR: Attacker has limited resources
+
+[TEXT]
+STATEMENT: >>>
+An attacker has the resources available to a small group of skilled individuals, without the backing of large corporations, nation-states, or immense wealth.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Threats and risk assessments of threats
+
+[[SECTION]]
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+The approach to listing threats is to separate them by mitigation so that they may be associated with mitigations more directly.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Risk assessment methodology
+
+[TEXT]
+STATEMENT: >>>
+Risk factor levels for each security profile are determined by reading the descriptions for each risk factor level and choosing the one that most accurately represents the highest risk for the intended purpose and reasonably foreseeable use and misuse of the product, as specified by the manufacturer.
+
+For each threat, a formula based on the risk factor levels is used to calculate the Likelihood and Impact of the threat, on a scale of Low, Medium, and High.
+
+For each threat, both likelihood and impact must be Low before the risk is considered sufficiently mitigated. If the calculated levels are not already Low, then mitigations must be applied until they are both Low. The mitigation sets that will accomplish this are listed in each threat description.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-UEVU
+TITLE: TH-UEVU: Unknown exploitable vulnerabilities
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use unknown exploitable vulnerabilities in the product implementation to get unauthorized access to product assets.
+
++-----------------------------------------+------------+----------------------------------------------+
+| Risk factors                            | Likelihood | Security profiles                            |
++-----------------------------------------+------------+----------------------------------------------+
+| max(NUSR, CUSR, SENF, PHYS, FNET) = 0   | Low        | LR, IoT-1                                    |
++-----------------------------------------+------------+----------------------------------------------+
+| all others                              | Medium     | IoT-2, IoT-3, WE-1                           |
++-----------------------------------------+------------+----------------------------------------------+
+| max(NUSR, CUSR, SENF, PHYS, FNET) = 2   | High       | RO-1, OT-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++-----------------------------------------+------------+----------------------------------------------+
+
++-----------------------------------+--------+----------------------------------------------------+
+| Risk factors                      | Impact | Security profiles                                  |
++-----------------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF) = 0         | Low    | LR, IoT-1                                          |
++-----------------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF) = 1         | Medium | IoT-2, IoT-3                                       |
++-----------------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF) = 2         | High   | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++-----------------------------------+--------+----------------------------------------------------+
+
+Requirements that mitigate this threat: SSDD, SDEF, MSAF, LMII, LMAS, LOGG
+
+Mitigations for Likelihood:
+
+* Medium to Low: SSCA, SCFS, MMAC, ADEF
+* High to Low: SSCA, (FZ95 or BTIN or IMSL), SCFS, MMAC, ASLR, MSAF-\*, MZRO-\*, MRWX-\*, NKAM, PLLC, MRCO, ADEF, JSTY
+
+Mitigations for Impact:
+
+* Medium to Low: LOGG
+* High to Low: LOGG
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-KEVU
+TITLE: TH-KEVU: Known exploitable vulnerabilities
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use known exploitable vulnerabilities in the product implementation to get unauthorized access to product assets.
+
++-----------------------+------------+------------------------------------------------------------+
+| Risk factors          | Likelihood | Security profiles                                          |
++-----------------------+------------+------------------------------------------------------------+
+| ADMN = 0 or SUPP = 0  | Low        | LR, IoT-1                                                  |
++-----------------------+------------+------------------------------------------------------------+
+| all others            | Medium     | WE-1                                                       |
++-----------------------+------------+------------------------------------------------------------+
+| ADMN = 2 & SUPP = 2   | High       | IoT-2, IoT-3, RO-1, OT-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++-----------------------+------------+------------------------------------------------------------+
+
++---------------------------+--------+----------------------------------------------------+
+| Risk factors              | Impact | Security profiles                                  |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=0   | Low    | LR, IoT-1                                          |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=1   | Medium | IoT-2, IoT-3                                       |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=2   | High   | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++---------------------------+--------+----------------------------------------------------+
+
+Requirements that mitigate this threat: NKEV, SSDD, SDEF, MSAF, LMII, LMAS, LOGG
+
+All mitigations from TH-UEVU apply (using that requirement's risk formula), in addition to:
+
+Mitigations for Likelihood:
+
+* Medium to Low: (KEVD or KEVA), KEVM, (SUVP or SUAP or SUOE or SUAO), VULH
+* High to Low: KEVA, KEVM, (KEVT or SCAN), (SUAP or SUAO), VULH
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-UAPP
+TITLE: TH-UAPP: Unauthorized access to product assets via unprotected physical interfaces in default configuration
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use unprotected debug or management interfaces to get unauthorized access to product assets via physical access in the default configuration of the product.
+
++--------------------------------------+------------+----------------------------------------+
+| Risk factors                         | Likelihood | Security profiles                      |
++--------------------------------------+------------+----------------------------------------+
+| PHYS = 0                             | Low        | LR, IoT-1                              |
++--------------------------------------+------------+----------------------------------------+
+| all others                           | Medium     | IoT-2, IoT-3, RO-1, PC-\*, PS-1, SE-\* |
++--------------------------------------+------------+----------------------------------------+
+| PHYS > 0 & max(SNDS, SNDT, SENF)=2   | High       | OT-1, MOB-1, WE-1, LA-\*               |
++--------------------------------------+------------+----------------------------------------+
+
++---------------------------+--------+----------------------------------------------------+
+| Risk factors              | Impact | Security profiles                                  |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=0   | Low    | LR, IoT-1                                          |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=1   | Medium | IoT-2, IoT-3                                       |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=2   | High   | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++---------------------------+--------+----------------------------------------------------+
+
+Requirements that mitigate this threat: SDEF, AUTH, LMAS, LOGG
+
+Mitigations for Likelihood:
+
+* Medium to Low: PDDI-1, AUTH
+* High to Low: ADEF, PDDI-2, AUTH
+
+Mitigations for Impact:
+
+* Medium to Low: LOGG
+* High to Low: JSTY, LOGG
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-UAPS
+TITLE: TH-UAPS: Unauthorized access to product assets via unprotected local software access in default configuration
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use unprotected debug or management interfaces to get unauthorized access to product assets via local software access in the default configuration of the product.
+
++-------------------------------------------------+------------+----------------------------------+
+| Risk factors                                    | Likelihood | Security profiles                |
++-------------------------------------------------+------------+----------------------------------+
+| max(NUSR, SWMD) = 0                             | Low        | LR, IoT-\*                       |
++-------------------------------------------------+------------+----------------------------------+
+| all others                                      | Medium     | RO-1, OT-1, WE-1                 |
++-------------------------------------------------+------------+----------------------------------+
+| max(NUSR, SWMD) = 2 & max(SNDS, SNDT, SENF)=2   | High       | MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++-------------------------------------------------+------------+----------------------------------+
+
++---------------------------+--------+----------------------------------------------------+
+| Risk factors              | Impact | Security profiles                                  |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=0   | Low    | LR, IoT-1                                          |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=1   | Medium | IoT-2, IoT-3                                       |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=2   | High   | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++---------------------------+--------+----------------------------------------------------+
+
+Requirements that mitigate this threat: SDEF, AUTH, LMAS, LOGG
+
+Mitigations for Likelihood:
+
+* Medium to Low: PDDI-1, AUTH
+* High to Low: ADEF, PDDI-3, AUTH
+
+Mitigations for Impact:
+
+* Medium to Low: LOGG
+* High to Low: JSTY, LOGG
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-UAPN
+TITLE: TH-UAPN: Unauthorized access to product assets via unprotected network interfaces in default configuration
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use unprotected debug or management interfaces to get unauthorized access to product assets via the network in the default configuration of the product.
+
++-------------------------------------------------+------------+----------------------------------------------------+
+| Risk factors                                    | Likelihood | Security profiles                                  |
++-------------------------------------------------+------------+----------------------------------------------------+
+| max(FNET, TNET) = 0                             | Low        | LR, IoT-1                                          |
++-------------------------------------------------+------------+----------------------------------------------------+
+| all others                                      | Medium     | IoT-2, IoT-3                                       |
++-------------------------------------------------+------------+----------------------------------------------------+
+| max(FNET, TNET) > 0 & max(SNDS, SNDT, SENF)=2   | High       | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++-------------------------------------------------+------------+----------------------------------------------------+
+
++---------------------------+--------+----------------------------------------------------+
+| Risk factors              | Impact | Security profiles                                  |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=0   | Low    | LR, IoT-1                                          |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=1   | Medium | IoT-2, IoT-3                                       |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=2   | High   | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++---------------------------+--------+----------------------------------------------------+
+
+Requirements that mitigate this threat: SDEF, AUTH, LMAS, LOGG
+
+Mitigations for Likelihood:
+
+* Medium to Low: PDDI-1, AUTH
+* High to Low: ADEF, PDDI-4, AUTH
+
+Mitigations for Impact:
+
+* Medium to Low: LOGG
+* High to Low: JSTY, LOGG
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-UADT
+TITLE: TH-UADT: Unauthorized access to confidential data transmitted
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use network access to get unauthorized access to confidential data transmitted by the product.
+
++--------------+------------+----------------------------------------+
+| Risk factors | Likelihood | Security profiles                      |
++--------------+------------+----------------------------------------+
+| TNET = 0     | Low        | LR, IoT-1                              |
++--------------+------------+----------------------------------------+
+| TNET = 1     | Medium     | IoT-2, IoT-3, OT-1, WE-1               |
++--------------+------------+----------------------------------------+
+| TNET = 2     | High       | RO-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++--------------+------------+----------------------------------------+
+
++--------------+--------+----------------------------------------------+
+| Risk factors | Impact | Security profiles                            |
++--------------+--------+----------------------------------------------+
+| SNDT = 0     | Low    | LR, IoT-1                                    |
++--------------+--------+----------------------------------------------+
+| SNDT = 1     | Medium | IoT-2, IoT-3, OT-1                           |
++--------------+--------+----------------------------------------------+
+| SNDT = 2     | High   | WE-1, RO-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++--------------+--------+----------------------------------------------+
+
+Requirements that mitigate this threat: CDTX, IDTX, DMIN
+
+Mitigations for Likelihood:
+
+* Medium to Low: DOCC
+* High to Low: CDTX, DCTX, DOCC
+
+Mitigations for Impact:
+
+* Medium to Low: DJST
+* High to Low: DJS
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-PDOS
+TITLE: TH-PDOS: Denial of service attack on product functions via user or network access
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use user or network access for a denial-of-service attack on product functions.
+
++---------------------------+------------+-----------------------------------------------------------+
+| Risk factors              | Likelihood | Security profiles                                         |
++---------------------------+------------+-----------------------------------------------------------+
+| max(NUSR, CUSR, FNET)=0   | Low        | LR, IoT-1                                                 |
++---------------------------+------------+-----------------------------------------------------------+
+| max(NUSR, CUSR, FNET)=1   | Medium     | IoT-2, IoT-3, OT-1, MOB-1, WE-1, PC-\*, LA-\*, SE-1, SE-2 |
++---------------------------+------------+-----------------------------------------------------------+
+| max(NUSR, CUSR, FNET)=2   | High       | RO-1, PS-1, SE-3                                          |
++---------------------------+------------+-----------------------------------------------------------+
+
++--------------+--------+--------------------------------------+
+| Risk factors | Impact | Security profiles                    |
++--------------+--------+--------------------------------------+
+| SENF = 0     | Low    | LR, IoT-1, IoT-2, WE-1               |
++--------------+--------+--------------------------------------+
+| SENF = 1     | Medium | IoT-3, PC-1, LA-1, PS-1              |
++--------------+--------+--------------------------------------+
+| SENF = 2     | High   | RO-1, OT-1, MOB-1, PC-2, LA-2, SE-\* |
++--------------+--------+--------------------------------------+
+
+Requirements that mitigate this threat: AUTH, AVAI, LMII, LOGG, VULH
+
+Mitigations for Likelihood:
+
+* Medium to Low: DOST
+* High to Low: DOST, VULH
+
+Mitigations for Impact:
+
+* Medium to Low: LMEM, LOGG
+* High to Low: AUTH, AVNT, FDRP, LMEM, FAIR, LOGG
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-DDOS
+TITLE: TH-DDOS: Denial of service attack on other products via exploitation of vulnerabilities or unauthorized use of product functions
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use the network to exploit vulnerabilities in the product to attack other products.
+
+Guidance: Traffic amplification attacks and other misuses of product functions are considered vulnerabilities and/or unauthorized use for the purpose of this threat.
+
+Requirements that mitigate this threat: NKEV, SSDD, SDEF, MSAF, LMII, MINI, LMAS, LOGG
+
++--------------+------------+------------------------------------------+
+| Risk factors | Likelihood | Security profiles                        |
++--------------+------------+------------------------------------------+
+| FNET = 0     | Low        | LR, IoT-1, WE-1                          |
++--------------+------------+------------------------------------------+
+| FNET = 1     | Medium     | IoT-2, IoT-3, OT-\*, MOB-1, PC-\*, LA-\* |
++--------------+------------+------------------------------------------+
+| FNET = 2     | High       | RO-1, PS-1, SE-\*                        |
++--------------+------------+------------------------------------------+
+
++--------------+--------+----------------------------------------+
+| Risk factors | Impact | Security profiles                      |
++--------------+--------+----------------------------------------+
+| TNET = 0     | Low    | LR, IoT-1                              |
++--------------+--------+----------------------------------------+
+| TNET = 1     | Medium | IoT-2, IoT-3, OT-\*, WE-1              |
++--------------+--------+----------------------------------------+
+| TNET = 2     | High   | RO-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++--------------+--------+----------------------------------------+
+
+All mitigations from TH-KEVU apply (using that requirement's risk formula), plus:
+
+Mitigations for Impact:
+
+* Medium to Low: (MDOC or MAMP)
+* High to Low: MNET, MAMP
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-MQSE
+TITLE: TH-MQSE: Masquerading authorized server
+
+[TEXT]
+STATEMENT: >>>
+Attacker may masquerade as an authorized server to get unauthorized access to product assets.
+
++--------------+--------+----------------------------------------+
+| Risk factors | Impact | Security profiles                      |
++--------------+--------+----------------------------------------+
+| TNET = 0     | Low    | LR, IoT-1                              |
++--------------+--------+----------------------------------------+
+| TNET = 1     | Medium | IoT-2, IoT-3, OT-1, WE-1               |
++--------------+--------+----------------------------------------+
+| TNET = 2     | High   | RO-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++--------------+--------+----------------------------------------+
+
++---------------------------+--------+----------------------------------------------------+
+| Risk factors              | Impact | Security profiles                                  |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=0   | Low    | LR, IoT-1                                          |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=1   | Medium | IoT-2, IoT-3                                       |
++---------------------------+--------+----------------------------------------------------+
+| max(SNDS, SNDT, SENF)=2   | High   | RO-1, OT-1, MOB-1, WE-1, PC-\*, LA-\*, PS-1, SE-\* |
++---------------------------+--------+----------------------------------------------------+
+
+Requirements that mitigate this threat: CDTX, CRYP, IDTX, AUTH, LOGG
+
+Mitigations for Likelihood:
+
+* Medium to Low: AUTH, SUDC, CDTX, CRYP, IDTX
+* High to Low: AUTH, SUDC, CDTX, CRYP, IDTX
+
+Mitigations for Impact:
+
+* Medium to Low: LOGG
+* High to Low: LOGG
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+UID: ETSI-OS-TH-LEAK
+TITLE: TH-LEAK: Data leak through side channels
+
+[TEXT]
+STATEMENT: >>>
+Attacker may use the ability to run arbitrary software on the product to get unauthorized read access to confidential data.
+
++---------------------------------+------------+------------------------------+
+| Risk factors                    | Likelihood | Security profiles            |
++---------------------------------+------------+------------------------------+
+| CUSR = 0 or max(SNDS, SNDT)=0   | Low        | LR, IoT-\*, RO-1, OT-1, WE-1 |
++---------------------------------+------------+------------------------------+
+| all others                      | Medium     | SE-1, PC-\*, LA-\*           |
++---------------------------------+------------+------------------------------+
+| CUSR = 2 & max(SNDS, SNDT)=2    | High       | PS-1, SE-2, SE-3             |
++---------------------------------+------------+------------------------------+
+
++---------------------+--------+----------------------------------------------+
+| Risk factors        | Impact | Security profiles                            |
++---------------------+--------+----------------------------------------------+
+| max(SNDS, SNDT)=0   | Low    | LR, IoT-1                                    |
++---------------------+--------+----------------------------------------------+
+| max(SNDS, SNDT)=1   | Medium | IoT-2, IoT-3, WE-1                           |
++---------------------+--------+----------------------------------------------+
+| max(SNDS, SNDT)=2   | High   | RO-1, OT-1, MOB-1, PC-\*, LA-\*, PS-1, SE-\* |
++---------------------+--------+----------------------------------------------+
+
+
+Requirements that mitigate this threat: MISO, DMIN, VULH
+
+Mitigations for Likelihood:
+
+* Medium to Low: VULH
+* High to Low: (TRMD or PMSC), VULH
+
+Mitigations for Impact:
+
+* Medium to Low: DMIN
+* High to Low: DMIN
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Mapping of use cases to risk factors
+
+[TEXT]
+STATEMENT: >>>
+
+.. note:: 
+  NOTE: The "TOTAL" field is referenced by but does not define the security assurance level assignments table in Annex C.7.3 Table 1. It is primarily a consistency check to see if the risk factors sufficiently distinguish the differences in risk tolerance between use cases.
+
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| Use case     | NUSR | CUSR| DATA| PPII| SNDS| SNDT| SENF| PHYS| UEIN| LOSS| HWMD| SWMD| DVCS| TNET| FNET| CONF| ADMN| SUPP| TOTAL |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-LR        | 0    | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0     |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-IoT-1     | 0    | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 2   | 0   | 2     |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-IoT-2     | 0    | 0   | 1   | 0   | 1   | 1   | 0   | 0   | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1   | 2   | 2   | 11    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-IoT-3     | 0    | 0   | 1   | 0   | 1   | 1   | 1   | 0   | 2   | 0   | 1   | 0   | 0   | 1   | 1   | 1   | 2   | 2   | 14    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-RO-1      | 0    | 0   | 1   | 0   | 1   | 2   | 2   | 0   | 2   | 0   | 0   | 0   | 0   | 2   | 2   | 2   | 1   | 2   | 17    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-OT-1      | 0    | 0   | 0   | 0   | 1   | 1   | 2   | 2   | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 2   | 1   | 2   | 14    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-MOB-1     | 1    | 1   | 2   | 2   | 2   | 2   | 2   | 2   | 2   | 2   | 0   | 2   | 2   | 2   | 1   | 2   | 2   | 2   | 31    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-WE-1      | 0    | 0   | 1   | 1   | 2   | 2   | 0   | 1   | 2   | 1   | 0   | 1   | 0   | 1   | 0   | 1   | 2   | 1   | 16    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-PC-1      | 1    | 1   | 2   | 1   | 2   | 2   | 1   | 0   | 2   | 0   | 2   | 2   | 1   | 2   | 1   | 2   | 2   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-PC-2      | 1    | 1   | 2   | 1   | 2   | 2   | 2   | 0   | 2   | 0   | 2   | 2   | 1   | 2   | 1   | 2   | 1   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-LA-1      | 1    | 1   | 2   | 1   | 2   | 2   | 1   | 1   | 2   | 1   | 1   | 2   | 2   | 2   | 1   | 2   | 2   | 2   | 28    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-LA-2      | 1    | 1   | 2   | 1   | 2   | 2   | 2   | 1   | 2   | 1   | 1   | 2   | 2   | 2   | 1   | 2   | 1   | 2   | 28    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-PS-1      | 2    | 2   | 2   | 0   | 2   | 2   | 1   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 2   | 2   | 1   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-SE-1      | 1    | 1   | 2   | 0   | 2   | 2   | 2   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 1   | 2   | 0   | 2   | 23    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-SE-2      | 2    | 1   | 2   | 0   | 2   | 2   | 2   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 1   | 2   | 0   | 2   | 24    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| UC-SE-3      | 2    | 2   | 2   | 0   | 2   | 2   | 2   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 2   | 2   | 0   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Security profiles and security assurance levels
+
+[[SECTION]]
+TITLE: General
+
+[TEXT]
+STATEMENT: >>>
+Security profiles are an informative resource to the assessor. Each security profile is associated with a collection of levels of risk factors. Security profiles will be mapped to specific mitigations for each security requirements necessary to treat the risk.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Mapping of security profiles to risk factors
+
+[TEXT]
+STATEMENT: >>>
+Security profiles are associated with sets of risk factor levels. Each security profile represents one or more use cases whose risks can be treated with the same set of mitigations.
+
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| Sec. Prof.   | NUSR | CUSR| DATA| PPII| SNDS| SNDT| SENF| PHYS| UEIN| LOSS| HWMD| SWMD| DVCS| TNET| FNET| CONF| ADMN| SUPP| TOTAL |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-LR        | 0    | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0     |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-IoT-1     | 0    | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 2   | 0   | 2     |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-IoT-2     | 0    | 0   | 1   | 0   | 1   | 1   | 0   | 0   | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 1   | 2   | 2   | 11    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-IoT-3     | 0    | 0   | 1   | 0   | 1   | 1   | 1   | 0   | 2   | 0   | 1   | 0   | 0   | 1   | 1   | 1   | 2   | 2   | 14    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-RO-1      | 0    | 0   | 1   | 0   | 1   | 2   | 2   | 0   | 2   | 0   | 0   | 0   | 0   | 2   | 2   | 2   | 1   | 2   | 17    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-OT-1      | 0    | 0   | 0   | 0   | 1   | 1   | 2   | 2   | 1   | 0   | 0   | 0   | 0   | 1   | 1   | 2   | 1   | 2   | 14    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-MOB-1     | 1    | 1   | 2   | 2   | 2   | 2   | 2   | 2   | 2   | 2   | 0   | 2   | 2   | 2   | 1   | 2   | 2   | 2   | 31    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-WE-1      | 0    | 0   | 1   | 1   | 2   | 2   | 0   | 1   | 2   | 1   | 0   | 1   | 0   | 1   | 0   | 1   | 2   | 1   | 16    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-PC-1      | 1    | 1   | 2   | 1   | 2   | 2   | 1   | 0   | 2   | 0   | 2   | 2   | 1   | 2   | 1   | 2   | 2   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-PC-2      | 1    | 1   | 2   | 1   | 2   | 2   | 2   | 0   | 2   | 0   | 2   | 2   | 1   | 2   | 1   | 2   | 1   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-LA-1      | 1    | 1   | 2   | 1   | 2   | 2   | 1   | 1   | 2   | 1   | 1   | 2   | 2   | 2   | 1   | 2   | 2   | 2   | 28    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-LA-2      | 1    | 1   | 2   | 1   | 2   | 2   | 2   | 1   | 2   | 1   | 1   | 2   | 2   | 2   | 1   | 2   | 1   | 2   | 28    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-PS-1      | 2    | 2   | 2   | 0   | 2   | 2   | 1   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 2   | 2   | 1   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-SE-1      | 1    | 1   | 2   | 0   | 2   | 2   | 2   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 1   | 2   | 0   | 2   | 23    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-SE-2      | 2    | 1   | 2   | 0   | 2   | 2   | 2   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 1   | 2   | 0   | 2   | 24    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+| SP-SE-3      | 2    | 2   | 2   | 0   | 2   | 2   | 2   | 0   | 2   | 0   | 1   | 2   | 1   | 2   | 2   | 2   | 0   | 2   | 26    |
++--------------+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------+
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Security assurance levels
+
+[TEXT]
+STATEMENT: >>>
+Security assurance level (SAL) is a rough categorization of the level of security assurance a product provides if it meets the requirements associated with a security profile.
+
+- **[SA-CRI]**: The product is suitable for use in highly sensitive or critical environments.
+- **[SA-HIGH]**: The product is suitable for use in environments with low risk tolerances.
+- **[SA-MED]**: The product is suitable for use in environments with medium risk tolerances. Some security tradeoffs may be made to improve usability and potential harms from unmitigated risk are widely acceptable.
+- **[SA-LOW]**: The product is suitable for use in environments with high risk tolerances. Potential harms from unmitigated risks are low or negligible, and users are unlikely to reasonably expect security updates within the product's foreseeable use.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Mapping of security profile to security assurance level
+
+[TEXT]
+STATEMENT: >>>
+Security assurance levels are informed by but not determined by the risk factor total from clause C.6.2.
+
++------------------+------------------------------------------------------------------------+----------+------+
+| Security profile | Description                                                            | RF total | SAL  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-LR            | Operating system for learning and research                             | 0        | LOW  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-IoT-1         | Non-internet-connected device such as a bluetooth speaker              | 2        | LOW  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-IoT-2         | Internet-enabled power switch                                          | 11       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-IoT-3         | Internet-connected "smart home" device                                 | 14       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-RO-1          | Consumer-grade home wireless router                                    | 17       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-OT-1          | Business-grade remote door locking system                              | 14       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-MOB-1         | Personal mobile device                                                 | 31       | HIGH |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-WE-1          | Wearable health tracker                                                | 16       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-PC-1          | Personal computer in a fixed and generally safe location               | 26       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-PC-2          | Enterprise workstation in a fixed and generally safe location          | 26       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-LA-1          | Personal laptop                                                        | 28       | HIGH |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-LA-2          | Enterprise laptop                                                      | 28       | HIGH |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-PS-1          | Personal server                                                        | 26       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-SE-1          | Enterprise server in a datacenter with no user accounts                | 23       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-SE-2          | Enterprise server in a datacenter with only trusted user accounts      | 24       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+| SP-SE-3          | Enterprise server in a datacenter hosting many untrusted user accounts | 26       | MED  |
++------------------+------------------------------------------------------------------------+----------+------+
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Risk evaluation guidance
+
+[[SECTION]]
+TITLE: Explanation of Risk Modeling Approach
+
+[TEXT]
+STATEMENT: >>>
+The risk modeling approach followed in this document can be applied to two situations:
+
+1. \_Covered\_: For Manufacturers of products with use cases that are present in the text of this document, it states the mitigations which the product shall implement and provides guidance on how to verify that the mitigations are implemented in a product. Furthermore, it describes why that unique set of mitigations is sufficient for the use case.
+
+2. \_Not Covered\_: For Manufacturers of products whose use case does not precisely match use cases covered in the present document, the methodology used herein may be further used to derive the appropriate set of mitigations for a given product, and to communicate this justification in a structured way. This could inform revisions of this document and the list of use cases over time.
+
+**Methodology:**
+
+1. Document a comprehensive range of foreseeable use cases for products of this type.
+2. For a particular use case, document the inherent and product-specific risk factors likely to affect products of that type which are not already covered by other relevant standards.
+3. For that use case, document environmental risk factors likely to affect products of that type which are not already covered by other relevant standards.
+4. Document a comprehensive list of threats. For each threat, create a formula to estimate the risk level using the risk factors.
+5. For each threat, document appropriate mitigations which should be present to mitigate the specific risk depending on the risk level. For each mitigation, also document at least one verification methodology.
+6. Create a mapping between each use case and each risk factor, assigning a proportionality score. The scoring range should start from zero, representing the inapplicability of a risk factor to a use case, and increase monotonically based on both the likelihood and severity of potential harm or impact.
+7. Develop security profiles from the use cases, which are collections of risk factor levels that can be used to fully describe the risk levels of all relevant threats. There may be one use case per security profile or multiple. There should be as many security profiles as are useful to manufacturers.
+8. Using the risk factors in the security profiles and the risk formulas and mitigations for all threats, derive the completed list of required mitigations for each security profile.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Mapping of risks to requirements
+
+[TEXT]
+STATEMENT: >>>
++--------+------------------------------------------------------------+
+| Threat | Requirements                                               |
++--------+------------------------------------------------------------+
+| UEVU   | SSDD, MSAF, LMII, LMAS, DMIN, LOGG                         |
++--------+------------------------------------------------------------+
+| KEVU   | NKEV, SSDD, MSAF, LMII, SCUD, LMAS, DMIN, AVAI, LOGG, VULH |
++--------+------------------------------------------------------------+
+| CONF   | CDST, SDEF, DMIN, LOGG                                     |
++--------+------------------------------------------------------------+
+| UADT   | CDTX, DMIN                                                 |
++--------+------------------------------------------------------------+
+| AVAI   | AUTH, AVAI, LMAS, LOGG, VULH                               |
++--------+------------------------------------------------------------+
+| PDOS   | AUTH, AVAI, LMAS, LOGG, VULH                               |
++--------+------------------------------------------------------------+
+| DDOS   | AVAI, LMII, MINI, LMAS, LOGG, VULH                         |
++--------+------------------------------------------------------------+
+| MQSE   | CDTX, CRYP, IDTX, AUTH, SCUD, LOGG                         |
++--------+------------------------------------------------------------+
+| LEAK   | MISO, DMIN, VULH                                           |
++--------+------------------------------------------------------------+
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Risk acceptance criteria
+
+[TEXT]
+STATEMENT: >>>
+If the Likelihood and Impact of a risk are already Low or have been reduced to Low by application of mitigations, then the risk is acceptable. Alternatively, the risk may be transferred to the user or the operational environment, given proper justification.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Risks not treated by the requirements
+
+[TEXT]
+STATEMENT: >>>
+For each risk untreated by the product itself, a corresponding mitigation has been created to explicitly permit the risk to be transferred to the user or operational environment. These are:
+
+- MI-KEVD
+- MI-KEVM
+- MI-MDOC
+- MI-PDDI-1
+- MI-SUDC
+- MI-SUOE
+- MI-SUAO
+- MI-SCHL
+- MI-SCHM
+- MI-SCHH
+- MI-DOCC
+- MI-DOST
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: Change history
+
+[TEXT]
+STATEMENT: >>>
+The "Change history/Change request (history)" annex shall be included in every revised or amended harmonised standard and shall contain information concerning significant changes that have been introduced by it. It shall be presented as a table.
+
+- Date: <Month year>, Version: <#>, Information about changes: <Changes made are listed in this cell>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+LEVEL: None
+TITLE: History
+
+[TEXT]
+STATEMENT: >>>
+The following table will automatically be filled in by the ETSI Secretariat.
+
+- Version: <Month year>, Date: <#>, Milestone: <Changes made>
+<<<
+
+[[/SECTION]]
