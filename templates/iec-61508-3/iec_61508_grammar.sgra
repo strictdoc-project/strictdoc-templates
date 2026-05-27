@@ -106,6 +106,47 @@ ELEMENTS:
     REQUIRED: False
   RELATIONS:
   - TYPE: Parent
+- TAG: TEST_CASE
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    TYPE: SingleChoice(Draft, Active, Obsolete)
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TEST_TYPE
+    TYPE: SingleChoice(Unit, Integration, HW-SW-Integration, Validation)
+    REQUIRED: False
+  - TITLE: PRECONDITIONS
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STEPS
+    TYPE: String
+    REQUIRED: False
+  - TITLE: EXPECTED_RESULT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: ACTUAL_RESULT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: VERDICT
+    TYPE: SingleChoice(PASS, FAIL, NOT_RUN, BLOCKED)
+    REQUIRED: False
+  - TITLE: DATE_EXECUTED
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TESTER
+    TYPE: String
+    REQUIRED: False
+  - TITLE: COMMENT
+    TYPE: String
+    REQUIRED: False
+  RELATIONS:
+  - TYPE: Parent
+    ROLE: Verifies
 - TAG: ACTION_ITEM
   FIELDS:
   - TITLE: UID
