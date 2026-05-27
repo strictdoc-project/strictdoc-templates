@@ -1,0 +1,272 @@
+[DOCUMENT]
+TITLE: Safety Requirements Specification
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Overall Safety Requirements Specification (SRS) for the
+E/E/PE safety-related system identified below. It is prepared in accordance with
+IEC 61508-1:2010, Clause 7.6 (Overall safety requirements) and specifies the
+safety functions and safety integrity requirements to be allocated to the E/E/PE
+safety-related system.
+
+Instructions for use:
+- Each safety function shall have a corresponding REQUIREMENT node with SIL_REQUIRED.
+- UIDs follow convention: SRS-xxx.
+- Traceability back to the HARA is established via RELATIONS (Parent: HAZ-xxx).
+- The SIL_1 through SIL_4 fields indicate the applicability classification
+  (HR/R/NR/--) of this requirement type at each SIL level per IEC 61508-1.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document Information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+System:          <E/E/PE safety-related system name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+HARA Reference:  <Document ID of Hazard and Risk Analysis>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: System Description and Scope
+
+[TEXT]
+STATEMENT: >>>
+Provide a description of the E/E/PE safety-related system, including:
+- System boundary (what is included and excluded)
+- Relationship to the EUC and EUC control system
+- Operational modes (Normal, Test, Maintenance, Emergency)
+- Environmental conditions (temperature, EMC, humidity, etc.)
+- Assumed operator qualifications
+- Interfaces to other systems (hardware and software)
+
+System description: <Describe the system>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Safety Functions
+
+[TEXT]
+STATEMENT: >>>
+This section specifies the safety functions to be performed by the E/E/PE
+safety-related system in accordance with IEC 61508-1:2010, Clause 7.6.2.
+Each safety function shall be traceable to one or more hazards in the HARA.
+
+For each safety function specify:
+- The hazardous event it addresses (reference to HARA)
+- The process demand / initiating condition
+- The required safe state
+- The required response time
+- The Safe Failure Fraction (SFF) target (informative at this stage)
+- The Target Failure Measure (PFH or PFD)
+<<<
+
+[REQUIREMENT]
+UID: SRS-010
+STATUS: Draft
+TITLE: <Safety Function 1 name>
+STATEMENT: >>>
+SAFETY_FUNCTION: SF-1
+The <system name> shall perform <describe the safety function: action> upon
+detection of <describe the initiating condition / process demand> within
+<response time> milliseconds, bringing the EUC to the safe state defined as
+<describe the safe state>.
+
+Required SIL: <SIL x>
+Target failure measure: PFH < <value> h⁻¹ (continuous mode) /
+                         PFD_avg < <value> (demand mode)
+Proof test interval: <value> hours (if applicable)
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+RATIONALE: >>>
+Derived from HARA, hazard HAZ-001. SIL requirement per IEC 61508-1:2010,
+Annex D Risk Graph.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: HAZ-001
+
+[REQUIREMENT]
+UID: SRS-011
+STATUS: Draft
+TITLE: <Safety Function 2 name>
+STATEMENT: >>>
+SAFETY_FUNCTION: SF-2
+The <system name> shall <describe safety function 2>.
+
+Required SIL: <SIL x>
+Target failure measure: PFH < <value> h⁻¹
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+RELATIONS:
+- TYPE: Parent
+  VALUE: HAZ-002
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Safety Integrity Requirements
+
+[[SECTION]]
+TITLE: Hardware Safety Integrity
+
+[REQUIREMENT]
+UID: SRS-020
+STATUS: Draft
+TITLE: Hardware SIL allocation
+STATEMENT: >>>
+The hardware of the E/E/PE safety-related system shall meet the hardware
+safety integrity requirements for <SIL x> as defined in
+IEC 61508-2:2010, Clause 7.4, including:
+- Safe Failure Fraction (SFF) target per Table 2 or Table 3.
+- Hardware Fault Tolerance (HFT) as required by the target SIL
+  and subsystem type (Type A or Type B).
+- Diagnostic coverage (DC) target.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis
+
+[REQUIREMENT]
+UID: SRS-021
+STATUS: Draft
+TITLE: Common Cause Failure avoidance
+STATEMENT: >>>
+The design shall include measures to avoid or control Common Cause Failures
+(CCF) in redundant hardware architectures, consistent with the requirements
+of IEC 61508-2:2010, Annex D.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Safety Integrity
+
+[REQUIREMENT]
+UID: SRS-030
+STATUS: Draft
+TITLE: Software SIL allocation
+STATEMENT: >>>
+The software of the E/E/PE safety-related system shall be designed, implemented,
+verified and validated to achieve software safety integrity consistent with
+<SIL x> as defined in IEC 61508-3:2010. The Software Safety Requirements
+Specification shall be derived from this SRS.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[REQUIREMENT]
+UID: SRS-031
+STATUS: Draft
+TITLE: Software architecture independence
+STATEMENT: >>>
+Where redundant software channels are used to achieve the required SIL, the
+software of each channel shall be designed and implemented independently to
+avoid systematic common cause failures, consistent with
+IEC 61508-3:2010, Clause 7.4.7.
+<<<
+SIL_1: NR
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Non-Safety Functional Requirements and Constraints
+
+[TEXT]
+STATEMENT: >>>
+Specify constraints on the system that are not safety functions themselves but
+are necessary to ensure the safety functions can be realised. Examples:
+- Response time constraints
+- Availability / diagnostic test interval requirements
+- Fail-safe / fail-secure behaviour
+- Environmental ratings
+- Power supply constraints
+<<<
+
+[REQUIREMENT]
+UID: SRS-040
+STATUS: Draft
+TITLE: Fail-safe state definition
+STATEMENT: >>>
+The safe state(s) of the system shall be defined and shall be achievable
+in all foreseeable failure modes of the safety-related system.
+The safe state for each safety function is:
+<SF-1>: <define safe state>
+<SF-2>: <define safe state>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+
+[REQUIREMENT]
+UID: SRS-041
+STATUS: Draft
+TITLE: Diagnostic test interval
+STATEMENT: >>>
+The on-line diagnostic test interval for the safety-related system shall not
+exceed <value> hours, to maintain the assumed diagnostic coverage and achieve
+the target PFH / PFD.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-1:2010, Clause 7.6 – Overall safety requirements.
+[2] IEC 61508-2:2010, Clause 7.4 – Hardware safety integrity.
+[3] IEC 61508-3:2010 – Software requirements.
+[4] <Document ID> – Hazard and Risk Analysis.
+[5] <Project-specific references>
+<<<
+
+[[/SECTION]]

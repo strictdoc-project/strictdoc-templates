@@ -1,0 +1,323 @@
+[DOCUMENT]
+TITLE: Software Design Specification
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Design Specification (SDS) for the software element
+of the E/E/PE safety-related system identified below. It covers both the software
+architecture design and the detailed design, in accordance with
+IEC 61508-3:2010, Clauses 7.3 and 7.4.
+
+SIL_1 through SIL_4 fields classify design requirements as HR/R/NR/--
+per IEC 61508-3:2010 Tables A.3 and A.4.
+
+Instructions for use:
+- UIDs follow convention: SDS-xxx.
+- Architecture requirements trace to SSRS via RELATIONS (Parent: SSRS-xxx).
+- Detailed design requirements trace to architecture requirements.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document Information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+SSRS Reference:  <Document ID of Software Safety Requirements Specification>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Architecture Design
+
+[TEXT]
+STATEMENT: >>>
+This section defines the software architecture in accordance with
+IEC 61508-3:2010, Clause 7.3. It shall demonstrate that the architecture
+is capable of realising the software safety requirements specified in the SSRS.
+<<<
+
+[[SECTION]]
+TITLE: Architectural Overview
+
+[REQUIREMENT]
+UID: SDS-010
+STATUS: Draft
+TITLE: Software architecture description
+STATEMENT: >>>
+The software shall be partitioned into the following modules / components:
+
+<Module 1>: <purpose and responsibilities>
+<Module 2>: <purpose and responsibilities>
+<Module 3 – Safety Monitor>: <purpose and responsibilities>
+
+The architecture shall enforce separation between safety-relevant and
+non-safety-relevant software elements through <describe partitioning
+mechanism: memory protection, separate tasks, separate processors, etc.>.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-030
+
+[REQUIREMENT]
+UID: SDS-011
+STATUS: Draft
+TITLE: Software / hardware interface definition
+STATEMENT: >>>
+The software architecture shall define all hardware interfaces, including:
+- Input signal acquisition: <describe I/O registers, interrupt handling, DMA>
+- Output signal command: <describe output registers, actuation paths>
+- Diagnostic interfaces: <describe watchdog, BITE, BIT>
+- Communication interfaces: <describe protocols, message formats>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-031
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data Flow and Control Flow
+
+[REQUIREMENT]
+UID: SDS-020
+STATUS: Draft
+TITLE: Data flow definition
+STATEMENT: >>>
+The data flow between software modules shall be defined, specifying:
+- All data items exchanged between modules
+- Data type, range, and units for each safety-relevant data item
+- Direction of data flow
+- Protection mechanisms for shared data (e.g. semaphores, double-buffering)
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-031
+
+[REQUIREMENT]
+UID: SDS-021
+STATUS: Draft
+TITLE: Control flow definition
+STATEMENT: >>>
+The control flow of the software shall be defined, including:
+- Task/thread scheduling model and priorities
+- Execution sequence for safety-critical paths
+- Interrupt handling and preemption policy
+- Timing constraints for safety-relevant tasks
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Error Handling and Fault Tolerance
+
+[REQUIREMENT]
+UID: SDS-030
+STATUS: Draft
+TITLE: Input validation architecture
+STATEMENT: >>>
+The software architecture shall include an input validation stage that
+performs the following checks before any safety-relevant processing:
+- Range check: all inputs within declared safe operating range
+- Rate-of-change check: inputs do not change faster than physically plausible
+- Cross-channel comparison (if redundant inputs are present)
+- Signal timeout detection
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Inspection
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-032
+
+[REQUIREMENT]
+UID: SDS-031
+STATUS: Draft
+TITLE: Watchdog supervision
+STATEMENT: >>>
+An independent watchdog mechanism shall supervise the correct execution
+of the safety-relevant software. The watchdog shall:
+- Require periodic servicing by all safety-critical execution paths.
+- Drive the system to a safe state if not serviced within <timeout> ms.
+- Be implemented in hardware or in a processor independent from the
+  supervised software.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-032
+
+[REQUIREMENT]
+UID: SDS-032
+STATUS: Draft
+TITLE: Safe state transition
+STATEMENT: >>>
+Upon detection of any safety-relevant fault, the software shall perform
+a controlled transition to the defined safe state, including:
+- Commanding safe output states within the required response time.
+- Inhibiting further actuation commands.
+- Logging fault information to non-volatile memory (if applicable).
+- Activating diagnostic / alarm outputs.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-032
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Detailed Design
+
+[TEXT]
+STATEMENT: >>>
+This section defines the detailed design of safety-relevant software modules in
+accordance with IEC 61508-3:2010, Clause 7.4. For each module, the following
+shall be defined:
+- Module purpose and safety responsibilities
+- Interface specification (inputs, outputs, pre/post conditions)
+- Internal logic description (pseudo-code, flowchart, or state machine)
+- Error handling behaviour
+- Resource usage (stack depth, timing budget)
+<<<
+
+[[SECTION]]
+TITLE: Module: <Safety-Critical Module Name>
+
+[REQUIREMENT]
+UID: SDS-100
+STATUS: Draft
+TITLE: <Module name> – interface specification
+STATEMENT: >>>
+Module: <Name>
+Purpose: <Describe the module's role in the safety function>
+
+Inputs:
+  <signal_name> : <type>, range [<min>..<max>], unit <unit>
+  <signal_name> : <type>, range [<min>..<max>], unit <unit>
+
+Outputs:
+  <signal_name> : <type>, range [<min>..<max>], unit <unit>
+
+Preconditions:  <Conditions that must hold before calling this module>
+Postconditions: <Guarantees provided by this module upon return>
+
+Timing budget: <max execution time> µs (worst case)
+Stack usage:   <max bytes>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RELATIONS:
+- TYPE: Parent
+  VALUE: SDS-010
+
+[REQUIREMENT]
+UID: SDS-101
+STATUS: Draft
+TITLE: <Module name> – logic description
+STATEMENT: >>>
+The processing logic of <module name> shall implement the following behaviour:
+
+<Describe using pseudo-code, structured English, or reference to a design
+diagram. For SIL 3/4 consider using a formal notation such as state tables
+or a subset of UML statecharts.>
+
+Step 1: <Acquire and validate inputs>
+Step 2: <Execute safety logic>
+Step 3: <Command outputs or signal safe state>
+Step 4: <Log diagnostic data>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RELATIONS:
+- TYPE: Parent
+  VALUE: SDS-100
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Design Verification Summary
+
+[TEXT]
+STATEMENT: >>>
+This section summarises the design verification activities planned or performed
+in accordance with IEC 61508-3:2010, Clause 7.5.
+
+Verification method  | Applicable to    | Standard reference
+---------------------|------------------|----------------------
+Walk-through         | Architecture     | Table A.5 – SIL 1-4 HR
+Inspection/Review    | Detailed design  | Table A.5 – SIL 1-4 HR
+Formal proof         | Critical modules | Table A.5 – SIL 3/4 R/HR
+Simulation           | Timing analysis  | Table A.5 – SIL 1/2 R
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-3:2010, Clause 7.3 – Software architecture design.
+[2] IEC 61508-3:2010, Clause 7.4 – Software design and development.
+[3] IEC 61508-3:2010, Tables A.3 and A.4 – Techniques and measures.
+[4] <Document ID> – Software Safety Requirements Specification.
+[5] <Project-specific references>
+<<<
+
+[[/SECTION]]

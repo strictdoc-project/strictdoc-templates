@@ -1,0 +1,434 @@
+[DOCUMENT]
+TITLE: Software Test Specification and Report
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Test Specification and Test Report for the software
+element of the E/E/PE safety-related system identified below. It is prepared in
+accordance with IEC 61508-3:2010, Clauses 7.7 (Software module testing and
+integration) and 7.8 (Programmable electronics integration testing).
+
+The document serves both as a test specification (test cases defined prior to
+execution) and a test report (results recorded after execution). Each test case
+uses a single REQUIREMENT node; the COMMENT field records the execution result.
+
+SIL_1 through SIL_4 fields classify each test technique as HR/R/NR/--
+per IEC 61508-3:2010 Table A.8.
+
+Instructions for use:
+- UIDs follow convention: STS-xxx (specification), STR-xxx (result records).
+- Each test case traces to the SSRS or SDS requirement it verifies.
+- STATUS should be set to Draft initially, then Active when the test is approved,
+  then reference results in COMMENT once executed.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document Information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+SSRS Reference:  <Document ID of Software Safety Requirements Specification>
+SDS Reference:   <Document ID of Software Design Specification>
+Test Environment: <Hardware platform, OS, toolchain, test framework version>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test Strategy
+
+[TEXT]
+STATEMENT: >>>
+Describe the overall test strategy and the levels of testing performed.
+The test levels shall address all requirements in the SSRS and SDS.
+
+Test levels:
+1. Software module (unit) testing – IEC 61508-3:2010, Clause 7.7.2
+2. Software integration testing  – IEC 61508-3:2010, Clause 7.7.3
+3. Software / hardware integration testing – IEC 61508-3:2010, Clause 7.8
+
+For each level, specify:
+- Scope and objectives
+- Entry and exit criteria
+- Test environment
+- Coverage target
+<<<
+
+[REQUIREMENT]
+UID: STS-001
+STATUS: Draft
+TITLE: Test coverage objective
+STATEMENT: >>>
+The following structural coverage levels shall be achieved for safety-relevant
+software modules:
+- SIL 1: Statement coverage ≥ 100%
+- SIL 2: Statement coverage ≥ 100%
+- SIL 3: Branch (decision) coverage ≥ 100%
+- SIL 4: MC/DC ≥ 100%
+
+Coverage tool: <specify tool and version>
+Measurement method: <describe how coverage is measured>
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: IEC 61508-3:2010, Table A.8 – Software module testing.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Module (Unit) Tests
+
+[TEXT]
+STATEMENT: >>>
+Unit tests verify the correct behaviour of individual software modules in
+isolation, consistent with IEC 61508-3:2010, Clause 7.7.2.
+Test harnesses and stubs shall be documented.
+<<<
+
+[[SECTION]]
+TITLE: Module: <Safety-Critical Module Name> – Unit Tests
+
+[REQUIREMENT]
+UID: STS-100
+STATUS: Draft
+TITLE: <Module> – Normal operation test
+STATEMENT: >>>
+Test case: Verify correct output of <module name> for valid inputs within
+the nominal operating range.
+
+Preconditions: <Initialisation state, hardware state>
+
+Input stimulus:
+  <signal_name> = <value> (<unit>)
+  <signal_name> = <value> (<unit>)
+
+Expected result:
+  <output_name> = <expected value> ± <tolerance> (<unit>)
+  Execution time ≤ <value> µs
+  No error flag set.
+
+Pass criteria: All expected results within tolerance. No unexpected
+               state transitions or outputs.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Actual result: <describe actual outputs>
+Tester: <Name>
+Deviation: <None / describe deviation and reference NCR if applicable>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-010
+
+[REQUIREMENT]
+UID: STS-101
+STATUS: Draft
+TITLE: <Module> – Input boundary value test
+STATEMENT: >>>
+Test case: Verify correct output of <module name> at input boundary values
+(minimum, maximum, and just outside valid range).
+
+Input stimulus (minimum boundary):
+  <signal_name> = <min_value> (<unit>)
+Expected result: <expected output at minimum>
+
+Input stimulus (maximum boundary):
+  <signal_name> = <max_value> (<unit>)
+Expected result: <expected output at maximum>
+
+Input stimulus (below minimum – out of range):
+  <signal_name> = <min_value - 1> (<unit>)
+Expected result: Error flag set. Output commanded to safe state.
+
+Input stimulus (above maximum – out of range):
+  <signal_name> = <max_value + 1> (<unit>)
+Expected result: Error flag set. Output commanded to safe state.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Tester: <Name>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-043
+
+[REQUIREMENT]
+UID: STS-102
+STATUS: Draft
+TITLE: <Module> – Fault injection test (input out of range)
+STATEMENT: >>>
+Test case: Verify that <module name> correctly detects and handles an
+injected input fault (corrupted value beyond valid range).
+
+Fault injection method: <direct register write / stimulus override / fault
+                         injection tool>
+Injected fault: <signal_name> forced to <fault_value> (outside valid range)
+
+Expected result:
+  - Fault detected within <detection_time> ms.
+  - System transitions to safe state.
+  - Fault flag set in diagnostic memory.
+  - No spurious output activation.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Tester: <Name>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SDS-030
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Integration Tests
+
+[TEXT]
+STATEMENT: >>>
+Integration tests verify the correct interaction between software modules,
+consistent with IEC 61508-3:2010, Clause 7.7.3.
+<<<
+
+[REQUIREMENT]
+UID: STS-200
+STATUS: Draft
+TITLE: Module interface integration test
+STATEMENT: >>>
+Test case: Verify correct data exchange across the interface between
+<Module A> and <Module B>.
+
+Preconditions: Both modules initialised. Shared data structures cleared.
+
+Test procedure:
+  Step 1: <Module A> writes <data_item> = <value> to shared memory.
+  Step 2: <Module B> reads <data_item> and processes it.
+  Step 3: Verify <Module B> output = <expected value>.
+
+Expected result: <Module B> produces correct output. No data corruption
+                 detected. Interface error counters = 0.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Tester: <Name>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SDS-020
+
+[REQUIREMENT]
+UID: STS-201
+STATUS: Draft
+TITLE: Timing and scheduling integration test
+STATEMENT: >>>
+Test case: Verify that all safety-critical tasks meet their timing constraints
+under worst-case load conditions.
+
+Test procedure:
+  Step 1: Apply maximum input stimulus rate.
+  Step 2: Inject background load (non-safety tasks at maximum rate).
+  Step 3: Measure worst-case execution time (WCET) for each safety-critical task.
+  Step 4: Verify all tasks complete within their scheduling deadline.
+
+Expected result:
+  <Task 1> WCET ≤ <deadline_1> ms
+  <Task 2> WCET ≤ <deadline_2> ms
+  No deadline overruns. Watchdog not triggered.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Measured WCET values: <report measurements>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SDS-021
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software / Hardware Integration Tests
+
+[TEXT]
+STATEMENT: >>>
+Software/hardware integration tests verify the correct behaviour of the software
+running on the target hardware platform, consistent with
+IEC 61508-3:2010, Clause 7.8.
+<<<
+
+[REQUIREMENT]
+UID: STS-300
+STATUS: Draft
+TITLE: Target hardware functional test – normal operation
+STATEMENT: >>>
+Test case: Verify correct end-to-end behaviour of the safety function on
+the target hardware platform under normal operating conditions.
+
+Test environment: <Target hardware, I/O simulator / real plant>
+
+Test procedure:
+  Step 1: Apply nominal process inputs via <I/O simulator / real signal>.
+  Step 2: Verify correct output commands within response time.
+  Step 3: Verify no spurious transitions to safe state.
+
+Expected result:
+  Safety function activated within ≤ <response_time> ms.
+  Output signal physically measured at ≥ <threshold> V / correct state.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Test configuration: <hardware revision, firmware version>
+Measured response time: <value> ms
+Tester: <Name>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-010
+
+[REQUIREMENT]
+UID: STS-301
+STATUS: Draft
+TITLE: Watchdog self-test verification
+STATEMENT: >>>
+Test case: Verify that the watchdog mechanism correctly detects software
+execution failure and drives the system to the safe state.
+
+Test procedure:
+  Step 1: Disable watchdog servicing by inhibiting the servicing task.
+  Step 2: Wait for watchdog timeout period (<timeout> ms).
+  Step 3: Verify system transitions to safe state.
+  Step 4: Verify safe outputs are in correct state.
+  Step 5: Verify fault log entry created.
+
+Expected result: Safe state reached within <timeout + margin> ms.
+                 No false recovery without explicit reset.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+COMMENT: >>>
+Result: <PASS / FAIL / NOT RUN>
+Date executed: <YYYY-MM-DD>
+Tester: <Name>
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SDS-031
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test Coverage Summary
+
+[TEXT]
+STATEMENT: >>>
+Record the structural coverage results achieved after completion of all
+module tests. Coverage shall meet the targets defined in STS-001.
+
+Module              | Statements | Branches | MC/DC  | Coverage tool
+--------------------|------------|----------|--------|---------------
+<Module 1>          |   100%     |   100%   |  N/A   | <tool>
+<Module 2>          |   100%     |   100%   |  95%   | <tool>
+<Safety Monitor>    |   100%     |   100%   |  100%  | <tool>
+
+Overall result: PASS / FAIL
+Uncovered items: <List any intentionally excluded code with justification>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Outstanding Issues and Non-Conformance Reports
+
+[TEXT]
+STATEMENT: >>>
+List all open test failures, deviations, and non-conformance reports (NCRs)
+identified during testing. All open items shall be resolved before
+software safety validation is declared complete.
+<<<
+
+[ACTION_ITEM]
+UID: NCR-001
+STATUS: Open
+TITLE: <Short description of test failure or NCR>
+STATEMENT: >>>
+Test case: <STS-xxx>
+Failure description: <Describe the observed failure>
+Impact on safety: <Describe the safety impact>
+Proposed resolution: <Describe the proposed corrective action>
+<<<
+OWNER: <Name>
+DUE_DATE: <YYYY-MM-DD>
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-3:2010, Clause 7.7 – Software module testing and integration.
+[2] IEC 61508-3:2010, Clause 7.8 – Programmable electronics integration testing.
+[3] IEC 61508-3:2010, Table A.8 – Techniques and measures for testing.
+[4] <Document ID> – Software Safety Requirements Specification.
+[5] <Document ID> – Software Design Specification.
+[6] <Project-specific references>
+<<<
+
+[[/SECTION]]

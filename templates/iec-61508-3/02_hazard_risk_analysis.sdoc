@@ -1,0 +1,186 @@
+[DOCUMENT]
+TITLE: Hazard and Risk Analysis
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document records the Hazard and Risk Analysis (HARA) for the E/E/PE safety-related
+system identified below. It is prepared in accordance with IEC 61508-1:2010, Clause 7.4
+and Annex D (Risk Graph method).
+
+The Risk Graph method (IEC 61508-1:2010, Annex D) is used as the primary method for
+SIL determination. If an alternative method (e.g. LOPA, numerical risk target) is used
+for a specific hazard, this shall be documented in the RISK_METHOD_ALT field.
+
+Risk Graph parameters:
+  C – Consequence of the hazardous event:
+      C1 = Slight injury,  C2 = Serious injury (one person),
+      C3 = Several people killed,  C4 = Many people killed.
+  F – Frequency / exposure:
+      F1 = Rare to less often,  F2 = Frequent to continuous.
+  P – Possibility of avoiding the hazard:
+      P1 = Possible,  P2 = Almost impossible.
+  W – Probability of unwanted occurrence (without protective system):
+      W1 = Very slight,  W2 = Slight,  W3 = Relatively high.
+
+Instructions for use:
+- Assign a unique UID to each HAZARD node, e.g. HAZ-001, HAZ-002, ...
+- Fill all Risk Graph parameters for each hazard.
+- The SIL_REQUIRED value shall be derived from the Risk Graph (Annex D, Figure D.1).
+- If SIL_REQUIRED is No-SIL-Required, document the justification in COMMENT.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document Information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+System:          <E/E/PE safety-related system name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: System and EUC Description
+
+[TEXT]
+STATEMENT: >>>
+Describe the Equipment Under Control (EUC) and the system under analysis.
+Include:
+- EUC boundary and intended use
+- Operational modes
+- Environmental conditions
+- Assumed operator competence
+- Interfaces to other systems
+
+EUC Description: <Describe the EUC>
+System Boundary: <Define the system boundary for this analysis>
+Operational Modes: <Normal, Test, Maintenance, Emergency>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Hazard Identification Method
+
+[TEXT]
+STATEMENT: >>>
+Describe the hazard identification method(s) used, e.g.:
+- Structured HAZOP
+- What-If analysis
+- Failure Mode and Effects Analysis (FMEA)
+- Checklist-based review
+
+Method used: <Describe method(s)>
+Team composition: <List participants and roles>
+Session dates: <YYYY-MM-DD>
+Reference documents: <List applicable drawings, P&IDs, functional specs>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Hazard Register
+
+[TEXT]
+STATEMENT: >>>
+Each hazard is described using a HAZARD node. The SIL_REQUIRED field records
+the SIL derived from the Risk Graph (IEC 61508-1:2010, Annex D, Figure D.1)
+or from the alternative method documented in RISK_METHOD_ALT.
+<<<
+
+[HAZARD]
+UID: HAZ-001
+STATUS: Draft
+TITLE: <Short hazard name>
+HAZARD_DESCRIPTION: >>>
+<Describe the hazardous event: what can go wrong, under what conditions.>
+<<<
+CAUSE: >>>
+<Root cause(s) of the hazardous event.>
+<<<
+CONSEQUENCE: >>>
+<Consequence to persons, environment or property if the hazard is not controlled.>
+<<<
+RISK_GRAPH_C: C1
+RISK_GRAPH_F: F1
+RISK_GRAPH_P: P1
+RISK_GRAPH_W: W1
+SIL_REQUIRED: --
+RISK_METHOD_ALT: >>>
+<If an alternative method is used, describe it here and reference supporting
+calculations. Leave blank if Risk Graph is used.>
+<<<
+MITIGATION: >>>
+<Describe the safety function(s) or other risk reduction measure(s) that address
+this hazard. Reference the corresponding SRS requirement UID(s).>
+<<<
+COMMENT: >>>
+<Additional notes, assumptions, or open points.>
+<<<
+
+[HAZARD]
+UID: HAZ-002
+STATUS: Draft
+TITLE: <Short hazard name>
+HAZARD_DESCRIPTION: >>>
+<Describe the hazardous event.>
+<<<
+CAUSE: >>>
+<Root cause(s).>
+<<<
+CONSEQUENCE: >>>
+<Consequence.>
+<<<
+RISK_GRAPH_C: C1
+RISK_GRAPH_F: F1
+RISK_GRAPH_P: P1
+RISK_GRAPH_W: W1
+SIL_REQUIRED: --
+MITIGATION: >>>
+<Safety function(s) addressing this hazard.>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Summary of SIL Requirements
+
+[TEXT]
+STATEMENT: >>>
+Summarise the SIL requirements allocated to each safety function identified
+from the hazard register above. This summary feeds directly into the Overall
+Safety Requirements Specification (SRS).
+
+Safety Function | Hazards Addressed | SIL Required
+<SF-1>          | HAZ-001           | <SIL x>
+<SF-2>          | HAZ-002           | <SIL x>
+
+The highest SIL requirement across all safety functions is: <SIL x>.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-1:2010, Annex D – Example of a risk graph for the determination
+    of the safety integrity level.
+[2] <Project-specific references, drawings, P&IDs>
+<<<
+
+[[/SECTION]]
