@@ -81,8 +81,8 @@ For each safety function specify:
 UID: SRS-010
 STATUS: Draft
 TITLE: <Safety Function 1 name>
-STATEMENT: >>>
 SAFETY_FUNCTION: SF-1
+STATEMENT: >>>
 The <system name> shall perform <describe the safety function: action> upon
 detection of <describe the initiating condition / process demand> within
 <response time> milliseconds, bringing the EUC to the safe state defined as
@@ -110,8 +110,8 @@ RELATIONS:
 UID: SRS-011
 STATUS: Draft
 TITLE: <Safety Function 2 name>
-STATEMENT: >>>
 SAFETY_FUNCTION: SF-2
+STATEMENT: >>>
 The <system name> shall <describe safety function 2>.
 
 Required SIL: <SIL x>

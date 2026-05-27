@@ -79,8 +79,8 @@ Each requirement shall be unambiguous, verifiable, complete, and consistent.
 UID: SSRS-010
 STATUS: Draft
 TITLE: <Software safety function 1>
-STATEMENT: >>>
 SAFETY_FUNCTION: SF-1
+STATEMENT: >>>
 The software shall <describe the software behaviour required to realise
 the safety function, including: inputs monitored, logic applied, outputs
 commanded, timing constraints>.
@@ -106,8 +106,8 @@ RELATIONS:
 UID: SSRS-011
 STATUS: Draft
 TITLE: <Software safety function 2>
-STATEMENT: >>>
 SAFETY_FUNCTION: SF-2
+STATEMENT: >>>
 The software shall <describe the software behaviour for safety function 2>.
 <<<
 SIL_1: HR

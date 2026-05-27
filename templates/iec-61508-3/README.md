@@ -19,7 +19,7 @@ IEC 61508-3:2010 and the overall safety management activities of IEC 61508-1:201
 | `06_sw_test_spec_report.sdoc` | Software Test Specification and Report (STS/STR) | IEC 61508-3:2010, §7.7–7.8 |
 | `07_sw_safety_plan.sdoc` | Software Safety Plan (SSP / SQAP) | IEC 61508-3:2010, §6.2 |
 
-The shared grammar is in `grammar/iec_61508_grammar.sgra` and is imported by all
+The shared grammar is in `iec_61508_grammar.sgra` and is imported by all
 document templates.
 
 ## Key Features
@@ -108,7 +108,7 @@ estimation methods (e.g. LOPA, numerical risk targets per IEC 61508-1 Annex C).
 
 ## Customisation
 
-The grammar file `grammar/iec_61508_grammar.sgra` can be extended to add
+The grammar file `iec_61508_grammar.sgra` can be extended to add
 project-specific fields. For example, to add an `OWNER` field or a custom
 `ASIL`-equivalent field, edit the grammar and add the field to the relevant
 element definition.
