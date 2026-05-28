@@ -1,0 +1,426 @@
+[DOCUMENT]
+TITLE: Software safety plan
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Safety Plan (SSP) for the software element of the
+E/E/PE safety-related system identified below. It is prepared in accordance with
+IEC 61508-3:2010, Clause 6.2 (Software safety management), and serves as the
+primary planning document for all software safety lifecycle activities.
+
+The SSP defines:
+- The software safety lifecycle and its phases.
+- Responsibilities and competence requirements.
+- Planning for software development, verification, and validation.
+- Configuration management and documentation control.
+- Tool qualification strategy.
+- Independence requirements.
+
+SIL_1 through SIL_4 fields classify plan requirements as HR/R/NR/--
+per IEC 61508-3:2010.
+
+Instructions for use:
+- UIDs follow convention: SSP-xxx.
+- Adjust the tool list, language, and process descriptions to match
+  the actual project environment.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+OSP Reference:   <Document ID of Overall Safety Plan>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software safety lifecycle
+
+[REQUIREMENT]
+UID: SSP-010
+STATUS: Draft
+TITLE: Software safety lifecycle definition
+STATEMENT: >>>
+The software shall be developed in accordance with the software safety lifecycle
+defined in IEC 61508-3:2010, Figure 2, comprising the following phases:
+1. Software Safety Requirements Specification
+2. Software Architecture Design
+3. Software Detailed Design and Implementation
+4. Software Module Testing
+5. Software Integration Testing
+6. Software / Hardware Integration Testing
+7. Software Validation
+
+Each phase shall have defined entry criteria, activities, deliverables,
+and exit criteria as specified in this plan.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.1.
+
+[REQUIREMENT]
+UID: SSP-011
+STATUS: Draft
+TITLE: Software safety lifecycle deliverables
+STATEMENT: >>>
+The following documents shall be produced as software safety lifecycle
+deliverables:
+- Software Safety Plan (this document)
+- Software Safety Requirements Specification (SSRS)
+- Software Design Specification (SDS)
+- Software Test Specification and Report (STS/STR)
+- Software Validation Report
+- Configuration Management Records
+- Problem Reporting and Resolution Records
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Responsibilities and competence
+
+[REQUIREMENT]
+UID: SSP-020
+STATUS: Draft
+TITLE: Software safety team roles
+STATEMENT: >>>
+The following roles are defined for software safety activities:
+
+Software Safety Manager:  <Name>
+  Responsibilities: Overall software safety management; approval of
+  safety lifecycle deliverables; liaison with functional safety assessor.
+
+Software Architect:       <Name>
+  Responsibilities: Software architecture design; architecture verification.
+
+Software Developer(s):   <Name(s)>
+  Responsibilities: Detailed design and implementation; unit testing.
+
+Software Verifier:        <Name>
+  Responsibilities: Independent verification of design and code;
+  static analysis; test coverage analysis.
+
+Functional Safety Assessor: <Name / Organisation>
+  Responsibilities: Independent assessment of software safety activities
+  and deliverables per IEC 61508-3:2010, Clause 8.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.1.
+
+[REQUIREMENT]
+UID: SSP-021
+STATUS: Draft
+TITLE: Competence requirements
+STATEMENT: >>>
+Persons assigned to software safety activities shall demonstrate competence
+appropriate to their role and to the target SIL, as evidenced by:
+- Relevant education and/or professional qualifications.
+- Experience in safety-related software development.
+- Knowledge of IEC 61508-3 and applicable coding standards.
+- Training records for project-specific tools and methods.
+
+Competence records shall be maintained for all team members.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.1 and Annex D.
+
+[REQUIREMENT]
+UID: SSP-022
+STATUS: Draft
+TITLE: Independence of verification
+STATEMENT: >>>
+Software verification activities shall be performed by persons independent
+from the software development activities, at the following level of independence:
+- SIL 1/2: Independence within the project team (different person).
+- SIL 3:   Independence within the organisation (different department or group).
+- SIL 4:   Full organisational independence (separate company or certified body).
+
+The designated independent verifier for this project is: <Name / Organisation>.
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.4 and Table 4.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Development environment and tools
+
+[REQUIREMENT]
+UID: SSP-030
+STATUS: Draft
+TITLE: Development toolchain definition
+STATEMENT: >>>
+The following tools are used in the software development lifecycle.
+Each tool is classified per IEC 61508-3:2010, Clause 7.4.4 (T1/T2/T3):
+
+T1: No tool output used in executable code, tool errors do not affect safety.
+T2: Tool validates requirements or design; errors could cause undetected failure.
+T3: Tool output included in safety-related executable; errors could cause failure.
+
+Tool                    | Version  | Class | Qualification required
+------------------------|----------|-------|------------------------
+<Compiler>              | <x.y.z>  | T3    | Yes – per IEC 61508-3 §7.4.4
+<Static analysis tool>  | <x.y.z>  | T2    | Yes – per IEC 61508-3 §7.4.4
+<Test framework>        | <x.y.z>  | T2    | Yes
+<Coverage tool>         | <x.y.z>  | T2    | Yes
+<Requirements tool>     | <x.y.z>  | T2    | Yes
+<Version control>       | <x.y.z>  | T1    | No
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.4.4.
+
+[REQUIREMENT]
+UID: SSP-031
+STATUS: Draft
+TITLE: Tool qualification strategy
+STATEMENT: >>>
+T3 and T2 tools shall be qualified before use in safety-related development.
+Qualification shall demonstrate that the tool produces correct outputs for
+inputs within the expected usage domain, using one or more of:
+a) Vendor certificate of tool qualification (e.g. TÜV-certified compiler).
+b) Tool validation tests executed against known inputs with verified outputs.
+c) Diverse independent tool used to cross-check outputs.
+
+Tool qualification records shall be maintained and referenced from the
+configuration management system.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.4.4.
+
+[REQUIREMENT]
+UID: SSP-032
+STATUS: Draft
+TITLE: Programming language and coding standard
+STATEMENT: >>>
+The software shall be implemented in: <Programming language, version>
+
+The applicable coding standard is: <e.g. MISRA C:2012>
+
+The following language features are explicitly prohibited:
+- <dynamic memory allocation after startup>
+- <unbounded recursion>
+- <use of setjmp / longjmp>
+- <implementation-defined behaviour>
+- <other project-specific prohibitions>
+
+Compliance with the coding standard shall be enforced using
+<static analysis tool> and verified during code review.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.4.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Configuration management
+
+[REQUIREMENT]
+UID: SSP-040
+STATUS: Draft
+TITLE: Configuration management system
+STATEMENT: >>>
+All software configuration items (SCIs) shall be managed using
+<version control system, e.g. Git>. The following items shall be
+placed under configuration management:
+- Software source code and header files
+- Build scripts and makefiles
+- Software safety lifecycle documents
+- Test cases and test scripts
+- Tool qualification records
+- Problem reports and resolution records
+
+Repository location: <URL or path>
+Branching strategy: <describe branching model, e.g. main/develop/feature>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.1.
+
+[REQUIREMENT]
+UID: SSP-041
+STATUS: Draft
+TITLE: Change control process
+STATEMENT: >>>
+All changes to software configuration items after the initial baseline
+shall be subject to a formal change control process:
+1. Change request raised and documented.
+2. Impact analysis performed, including safety impact assessment.
+3. Change approved by Software Safety Manager.
+4. Change implemented and verified.
+5. New baseline created and documented.
+
+Changes with potential safety impact shall be reviewed by the
+independent verifier before the new baseline is approved.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[REQUIREMENT]
+UID: SSP-042
+STATUS: Draft
+TITLE: Baseline identification
+STATEMENT: >>>
+A software baseline shall be established at the completion of each
+safety lifecycle phase. Each baseline shall be identified by:
+- Unique baseline identifier (e.g. SW-BL-001)
+- Date and version of each configuration item included
+- Reference to the phase exit review record
+
+The safety validation baseline shall be the basis for the released
+software product.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Problem reporting and resolution
+
+[REQUIREMENT]
+UID: SSP-050
+STATUS: Draft
+TITLE: Problem reporting process
+STATEMENT: >>>
+All defects, failures, and non-conformances discovered during any
+software safety lifecycle phase shall be recorded in a Problem Report (PR).
+Each PR shall include:
+- Unique identifier
+- Date and phase of discovery
+- Description of the problem
+- Severity classification (Safety-Critical / Major / Minor)
+- Status (Open / Under Investigation / Resolved / Closed)
+- Resolution description and verification
+
+Problem reports shall be tracked to closure before software safety
+validation is declared complete.
+
+PR tracking system: <tool / document reference>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.1.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software safety reviews
+
+[REQUIREMENT]
+UID: SSP-060
+STATUS: Draft
+TITLE: Phase exit reviews
+STATEMENT: >>>
+A formal phase exit review shall be conducted at the completion of each
+software safety lifecycle phase. The review shall verify that:
+- All phase deliverables have been produced and are consistent.
+- All entry criteria for the next phase are satisfied.
+- All open problem reports are at an acceptable status.
+- Traceability between phases is maintained.
+
+Review records shall include: attendees, date, findings, action items,
+and pass/fail decision.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.5.
+
+[REQUIREMENT]
+UID: SSP-061
+STATUS: Draft
+TITLE: Design and code reviews
+STATEMENT: >>>
+Formal reviews (walk-throughs or inspections) shall be conducted for:
+- Software architecture design (before detailed design commences)
+- Detailed design for safety-critical modules
+- Source code for safety-critical modules
+
+Review participants shall include at least one person independent from
+the author. Review findings shall be recorded and tracked to closure.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.5 – Walk-through / inspection (HR SIL 1-4).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-3:2010, Clause 6.2 – Software safety management.
+[2] IEC 61508-3:2010, Clause 7.4.4 – Software tools.
+[3] IEC 61508-3:2010, Annex D – Competence of persons.
+[4] <Document ID> – Overall Safety Plan.
+[5] <Project-specific references>
+<<<
+
+[[/SECTION]]

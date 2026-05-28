@@ -1,0 +1,340 @@
+[DOCUMENT]
+TITLE: Software test specification and report
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Test Specification and Test Report for the software
+element of the E/E/PE safety-related system identified below. It is prepared in
+accordance with IEC 61508-3:2010, Clauses 7.7 (Software module testing and
+integration) and 7.8 (Programmable electronics integration testing).
+
+Each test case is recorded as a TEST_CASE node. The RELATIONS field uses
+ROLE: Verifies to establish explicit traceability to the SSRS or SDS requirement
+being verified. This allows StrictDoc to generate a dedicated verification
+traceability matrix distinct from the hierarchical parent-child relationships.
+
+TEST_TYPE values:
+  Unit             - single software module in isolation
+  Integration      - interaction between software modules
+  HW-SW-Integration - software on target hardware
+  Validation       - end-to-end safety function validation
+
+VERDICT values: PASS / FAIL / NOT_RUN / BLOCKED
+
+Instructions for use:
+- UIDs follow convention: TC-xxx.
+- Fill ACTUAL_RESULT and VERDICT after test execution.
+- Leave VERDICT as NOT_RUN before execution.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+SSRS Reference:  <Document ID of Software Safety Requirements Specification>
+SDS Reference:   <Document ID of Software Design Specification>
+Test Environment: <Hardware platform, OS, toolchain, test framework version>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test strategy
+
+[TEXT]
+STATEMENT: >>>
+Test levels:
+1. Unit testing        - IEC 61508-3:2010, Clause 7.7.2
+2. Integration testing - IEC 61508-3:2010, Clause 7.7.3
+3. HW-SW integration   - IEC 61508-3:2010, Clause 7.8
+
+Coverage target per SIL (IEC 61508-3:2010 Table A.8):
+  SIL 1/2: Statement coverage >= 100%
+  SIL 3:   Branch coverage >= 100%
+  SIL 4:   MC/DC >= 100%
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Unit tests
+
+[TEST_CASE]
+UID: TC-001
+STATUS: Draft
+TITLE: <Module> - normal operation
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+<Initial state of the module under test and required initialisation.>
+<<<
+STEPS: >>>
+Step 1: Set inputs: <signal_name> = <value> (<unit>)
+Step 2: Execute module
+Step 3: Read outputs
+<<<
+EXPECTED_RESULT: >>>
+<output_name> = <expected value> +/- <tolerance>
+Execution time <= <value> us
+No error flag set.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-010
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: TC-002
+STATUS: Draft
+TITLE: <Module> - boundary value at minimum
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+<Same initial state as TC-001.>
+<<<
+STEPS: >>>
+Step 1: Set input to minimum valid value
+Step 2: Execute module
+Step 3: Read outputs
+<<<
+EXPECTED_RESULT: >>>
+Output matches expected value at lower boundary.
+No error flag set.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-010
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: TC-003
+STATUS: Draft
+TITLE: <Module> - input out of range (fault injection)
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+<Initial state. Fault injection via direct variable override.>
+<<<
+STEPS: >>>
+Step 1: Force input to value outside valid range
+Step 2: Execute module
+Step 3: Read outputs and error flags
+<<<
+EXPECTED_RESULT: >>>
+Safe state commanded (output DE-ENERGISED).
+Error flag set within one execution cycle.
+No spurious output activation.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-021
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Integration tests
+
+[TEST_CASE]
+UID: TC-100
+STATUS: Draft
+TITLE: Module interface - data exchange
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+Both modules initialised. Shared data structures cleared.
+<<<
+STEPS: >>>
+Step 1: Module A writes <data_item> = <value> to shared structure
+Step 2: Trigger Module B execution
+Step 3: Read Module B output
+<<<
+EXPECTED_RESULT: >>>
+Module B output = <expected value>.
+Interface error counter = 0.
+No data corruption.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: TC-101
+STATUS: Draft
+TITLE: Timing - safety task meets deadline under full load
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+All non-safety tasks running at maximum stimulus rate.
+<<<
+STEPS: >>>
+Step 1: Apply maximum input stimulus rate
+Step 2: Run non-safety tasks at maximum load
+Step 3: Measure WCET of safety-critical task over 1000 cycles
+Step 4: Verify all cycles complete within deadline
+<<<
+EXPECTED_RESULT: >>>
+Safety task WCET <= <deadline> ms in all 1000 cycles.
+No watchdog trigger. No deadline overruns.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-020
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: HW-SW integration tests
+
+[TEST_CASE]
+UID: TC-200
+STATUS: Draft
+TITLE: Safety function - end-to-end trip on target hardware
+TEST_TYPE: HW-SW-Integration
+PRECONDITIONS: >>>
+Target hardware powered. Firmware loaded (release build).
+I/O simulator connected. System in NORMAL state.
+<<<
+STEPS: >>>
+Step 1: Apply nominal input (below trip threshold). Verify no trip.
+Step 2: Step input to trip threshold value.
+Step 3: Measure time from step to safe state activation.
+Step 4: Verify output physically in safe state.
+<<<
+EXPECTED_RESULT: >>>
+No trip below threshold.
+Safe state activated within <= <response_time> ms.
+SAFETY_STATE = TRIPPED.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-010
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: TC-201
+STATUS: Draft
+TITLE: Watchdog - safe state on execution failure
+TEST_TYPE: HW-SW-Integration
+PRECONDITIONS: >>>
+Target hardware powered. Firmware loaded. System in NORMAL state.
+<<<
+STEPS: >>>
+Step 1: Inhibit watchdog servicing via debug interface
+Step 2: Wait watchdog timeout + 50 ms margin
+Step 3: Measure output state
+Step 4: Verify fault log in non-volatile memory
+<<<
+EXPECTED_RESULT: >>>
+Output physically in safe state.
+MCU reset observed.
+Fault log entry created.
+<<<
+ACTUAL_RESULT: >>>
+<Fill after execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SSRS-020
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test coverage summary
+
+[TEXT]
+STATEMENT: >>>
+Module              | Statements | Branches | MC/DC  | Tool
+--------------------|------------|----------|--------|--------
+<Module 1>          | <xx%>      | <xx%>    | N/A    | <tool>
+<Safety Module>     | <xx%>      | <xx%>    | <xx%>  | <tool>
+
+Overall result: <PASS / FAIL>
+Uncovered items: <None / describe with justification>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Outstanding issues
+
+[ACTION_ITEM]
+UID: NCR-001
+STATUS: Open
+TITLE: <Short description of open issue>
+STATEMENT: >>>
+Test case: <TC-xxx>
+Failure description: <Describe observed failure>
+Safety impact: <Describe impact>
+Proposed resolution: <Describe corrective action>
+<<<
+OWNER: <Name>
+DUE_DATE: <YYYY-MM-DD>
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-3:2010, Clause 7.7 - Software module testing and integration.
+[2] IEC 61508-3:2010, Clause 7.8 - Programmable electronics integration testing.
+[3] IEC 61508-3:2010, Table A.8 - Techniques and measures for testing.
+[4] <Document ID> - Software Safety Requirements Specification.
+[5] <Document ID> - Software Design Specification.
+<<<
+
+[[/SECTION]]

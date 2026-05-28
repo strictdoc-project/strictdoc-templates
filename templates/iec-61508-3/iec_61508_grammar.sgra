@@ -1,0 +1,174 @@
+[GRAMMAR]
+ELEMENTS:
+- TAG: SECTION
+  PROPERTIES:
+    IS_COMPOSITE: True
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: LEVEL
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: True
+  RELATIONS:
+  - TYPE: Parent
+- TAG: TEXT
+  FIELDS:
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: False
+- TAG: REQUIREMENT
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    TYPE: SingleChoice(Draft, Active, Obsolete, Rejected)
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: SAFETY_FUNCTION
+    TYPE: String
+    REQUIRED: False
+  - TITLE: SIL_1
+    TYPE: SingleChoice(HR, R, NR, --)
+    REQUIRED: False
+  - TITLE: SIL_2
+    TYPE: SingleChoice(HR, R, NR, --)
+    REQUIRED: False
+  - TITLE: SIL_3
+    TYPE: SingleChoice(HR, R, NR, --)
+    REQUIRED: False
+  - TITLE: SIL_4
+    TYPE: SingleChoice(HR, R, NR, --)
+    REQUIRED: False
+  - TITLE: VERIFICATION_METHOD
+    TYPE: MultipleChoice(Analysis, Testing, Inspection, Simulation, FormalProof)
+    REQUIRED: False
+  - TITLE: RATIONALE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: COMMENT
+    TYPE: String
+    REQUIRED: False
+  RELATIONS:
+  - TYPE: Parent
+- TAG: HAZARD
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    TYPE: SingleChoice(Draft, Active, Mitigated, Residual, Closed)
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: HAZARD_DESCRIPTION
+    TYPE: String
+    REQUIRED: False
+  - TITLE: CAUSE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: CONSEQUENCE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: RISK_GRAPH_C
+    TYPE: SingleChoice(C1, C2, C3, C4)
+    REQUIRED: False
+  - TITLE: RISK_GRAPH_F
+    TYPE: SingleChoice(F1, F2)
+    REQUIRED: False
+  - TITLE: RISK_GRAPH_P
+    TYPE: SingleChoice(P1, P2)
+    REQUIRED: False
+  - TITLE: RISK_GRAPH_W
+    TYPE: SingleChoice(W1, W2, W3)
+    REQUIRED: False
+  - TITLE: SIL_REQUIRED
+    TYPE: SingleChoice(--, SIL1, SIL2, SIL3, SIL4, No-SIL-Required)
+    REQUIRED: False
+  - TITLE: RISK_METHOD_ALT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: MITIGATION
+    TYPE: String
+    REQUIRED: False
+  - TITLE: COMMENT
+    TYPE: String
+    REQUIRED: False
+  RELATIONS:
+  - TYPE: Parent
+- TAG: TEST_CASE
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    TYPE: SingleChoice(Draft, Active, Obsolete)
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TEST_TYPE
+    TYPE: SingleChoice(Unit, Integration, HW-SW-Integration, Validation)
+    REQUIRED: False
+  - TITLE: PRECONDITIONS
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STEPS
+    TYPE: String
+    REQUIRED: False
+  - TITLE: EXPECTED_RESULT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: ACTUAL_RESULT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: VERDICT
+    TYPE: SingleChoice(PASS, FAIL, NOT_RUN, BLOCKED)
+    REQUIRED: False
+  - TITLE: DATE_EXECUTED
+    TYPE: String
+    REQUIRED: False
+  - TITLE: TESTER
+    TYPE: String
+    REQUIRED: False
+  - TITLE: COMMENT
+    TYPE: String
+    REQUIRED: False
+  RELATIONS:
+  - TYPE: Parent
+    ROLE: Verifies
+- TAG: ACTION_ITEM
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATUS
+    TYPE: SingleChoice(Open, Closed, Deferred)
+    REQUIRED: False
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: False
+  - TITLE: OWNER
+    TYPE: String
+    REQUIRED: False
+  - TITLE: DUE_DATE
+    TYPE: String
+    REQUIRED: False
+  - TITLE: COMMENT
+    TYPE: String
+    REQUIRED: False
+  RELATIONS:
+  - TYPE: Parent

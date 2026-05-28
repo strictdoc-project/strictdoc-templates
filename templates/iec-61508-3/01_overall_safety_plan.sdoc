@@ -1,0 +1,295 @@
+[DOCUMENT]
+TITLE: Overall safety plan
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Overall Safety Plan (OSP) for the E/E/PE safety-related system
+identified below. It is prepared in accordance with IEC 61508-1:2010, Clause 6.2
+(Overall safety management) and references the applicable sub-plans for each safety
+lifecycle phase.
+
+Instructions for use:
+- Replace all placeholder text in angle brackets <...> with project-specific information.
+- Assign UIDs following the project numbering convention, e.g. OSP-001, OSP-002, ...
+- Set STATUS of each requirement to "Draft" during development, "Active" once approved.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+System:          <E/E/PE safety-related system name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Scope and purpose
+
+[TEXT]
+STATEMENT: >>>
+IEC 61508-1:2010, Clause 6.2.1 requires the Overall Safety Plan to define the
+management and technical activities required to achieve functional safety throughout
+the safety lifecycle. This document covers:
+
+- Definition of the overall safety lifecycle and its phases (IEC 61508-1 Figure 2).
+- Identification of responsible persons and organisations for each phase.
+- Planning of verification and validation activities.
+- Planning of functional safety assessment activities.
+- Configuration management and documentation control strategy.
+<<<
+
+[REQUIREMENT]
+UID: OSP-001
+STATUS: Draft
+TITLE: Overall safety lifecycle adoption
+STATEMENT: >>>
+The project shall implement the overall safety lifecycle as defined in
+IEC 61508-1:2010, Figure 2, covering all phases from concept through
+to decommissioning.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: >>>
+IEC 61508-1:2010, Clause 6.2.1: the overall safety lifecycle provides the
+framework for all functional safety activities.
+<<<
+
+[REQUIREMENT]
+UID: OSP-002
+STATUS: Draft
+TITLE: Functional safety management responsibility
+STATEMENT: >>>
+A competent person or organisation shall be assigned responsibility for
+overall functional safety management for the project, with defined authority
+to ensure compliance with this plan.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: >>>
+IEC 61508-1:2010, Clause 6.2.1.3: overall safety management responsibility
+shall be assigned.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Safety lifecycle definition
+
+[TEXT]
+STATEMENT: >>>
+Define the phases of the safety lifecycle applicable to this project, mapping them
+to IEC 61508-1:2010 Figure 2. Identify which phases are within scope and which are
+excluded (with justification).
+<<<
+
+[REQUIREMENT]
+UID: OSP-010
+STATUS: Draft
+TITLE: Safety lifecycle phase definition
+STATEMENT: >>>
+The Overall Safety Plan shall identify each safety lifecycle phase applicable
+to this project, with entry and exit criteria, deliverables, and responsible
+organisations for each phase.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+COMMENT: >>>
+Phases to address: Concept, Overall Scope Definition, Hazard and Risk Analysis,
+Overall Safety Requirements, Safety Requirements Allocation, Overall Planning,
+Realisation, Overall Installation, Overall Safety Validation,
+Overall Operation and Maintenance, Decommissioning.
+<<<
+
+[REQUIREMENT]
+UID: OSP-011
+STATUS: Draft
+TITLE: Sub-plans reference
+STATEMENT: >>>
+The Overall Safety Plan shall reference the following sub-plans applicable
+to the realisation phase:
+- Software Safety Plan (IEC 61508-3, Clause 6.2)
+- Hardware Safety Plan (IEC 61508-2, Clause 6.2)
+- Functional Safety Assessment Plan (IEC 61508-1, Clause 8)
+- Verification Plan
+- Validation Plan
+- Configuration Management Plan
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Responsibilities and competence
+
+[REQUIREMENT]
+UID: OSP-020
+STATUS: Draft
+TITLE: Competence requirements
+STATEMENT: >>>
+Persons assigned to functional safety activities shall have the necessary
+competence, as demonstrated by education, training, and/or experience,
+appropriate to the SIL of the safety function(s) for which they are
+responsible.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: >>>
+IEC 61508-1:2010, Clause 6.2.1.4 and Annex C.
+<<<
+
+[REQUIREMENT]
+UID: OSP-021
+STATUS: Draft
+TITLE: Independence of verification and assessment
+STATEMENT: >>>
+Functional safety verification activities and the Functional Safety Assessment
+shall be carried out by persons or organisations that are independent from
+the design activities, at the level of independence required by the target SIL.
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: >>>
+IEC 61508-1:2010, Clause 8 and Table 4: independence requirements are
+graduated by SIL. For SIL 3/4, full independence (different organisation or
+independent body) is Highly Recommended.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Functional safety assessment planning
+
+[TEXT]
+STATEMENT: >>>
+Define the strategy for conducting the Functional Safety Assessment (FSA) in
+accordance with IEC 61508-1:2010, Clause 8. Identify the assessment phases,
+independence level, and the assessor or assessment body.
+<<<
+
+[REQUIREMENT]
+UID: OSP-030
+STATUS: Draft
+TITLE: FSA phases
+STATEMENT: >>>
+A Functional Safety Assessment shall be planned and performed at the following
+lifecycle points:
+a) After the Hazard and Risk Analysis is complete.
+b) After the Overall Safety Requirements Specification is complete.
+c) After design and realisation is complete and prior to operation.
+d) After overall safety validation is complete.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: >>>
+IEC 61508-1:2010, Clause 8.2.2: the FSA shall consider all relevant safety
+lifecycle phases.
+<<<
+
+[REQUIREMENT]
+UID: OSP-031
+STATUS: Draft
+TITLE: FSA independence level
+STATEMENT: >>>
+The independence level of the Functional Safety Assessor shall meet or exceed
+the level defined in IEC 61508-1:2010, Table 4 for the target SIL of the
+highest SIL safety function in scope.
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Configuration management and documentation control
+
+[REQUIREMENT]
+UID: OSP-040
+STATUS: Draft
+TITLE: Configuration management plan
+STATEMENT: >>>
+A Configuration Management Plan shall be established and maintained, covering
+identification, version control, change control, and status accounting for all
+safety lifecycle deliverables.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: >>>
+IEC 61508-1:2010, Clause 6.2.1.5.
+<<<
+
+[REQUIREMENT]
+UID: OSP-041
+STATUS: Draft
+TITLE: Documentation retention
+STATEMENT: >>>
+All safety lifecycle documentation shall be retained for a period consistent
+with the operational life of the system and applicable regulatory requirements,
+and shall remain retrievable and traceable.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-1:2010, Functional safety of E/E/PE safety-related systems –
+    Part 1: General requirements.
+[2] IEC 61508-2:2010, Functional safety of E/E/PE safety-related systems –
+    Part 2: Requirements for E/E/PE safety-related systems.
+[3] IEC 61508-3:2010, Functional safety of E/E/PE safety-related systems –
+    Part 3: Software requirements.
+[4] <Project-specific references>
+<<<
+
+[[/SECTION]]

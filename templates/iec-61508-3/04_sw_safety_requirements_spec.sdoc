@@ -1,0 +1,415 @@
+[DOCUMENT]
+TITLE: Software safety requirements specification
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Safety Requirements Specification (SSRS) for the
+software element of the E/E/PE safety-related system identified below. It is
+prepared in accordance with IEC 61508-3:2010, Clause 7.2.
+
+The SSRS defines the software safety requirements derived from the Overall Safety
+Requirements Specification (SRS). It is the primary input to the Software Design
+Specification (SDS) and the Software Test Specification (STS).
+
+SIL_1 through SIL_4 fields classify each requirement as:
+  HR = Highly Recommended (IEC 61508-3 Tables A.x)
+  R  = Recommended
+  NR = Not Recommended
+  -- = Not applicable at this SIL level
+
+Instructions for use:
+- UIDs follow convention: SSRS-xxx.
+- Traceability to SRS requirements is established via RELATIONS (Parent: SRS-xxx).
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+System:          <E/E/PE safety-related system name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+SRS Reference:   <Document ID of Safety Requirements Specification>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software overview
+
+[TEXT]
+STATEMENT: >>>
+Describe the software item in the context of the overall safety-related system:
+- Purpose and role of the software in the safety function(s)
+- Software classification per IEC 61508-3:2010, Clause 7.1 (embedded / non-embedded)
+- Target hardware platform and operating environment
+- Programming language(s)
+- Run-time environment / RTOS (if applicable)
+- Known constraints and assumptions
+
+Software description: <Describe the software item>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Functional software safety requirements
+
+[TEXT]
+STATEMENT: >>>
+Software safety requirements derived from the SRS safety functions.
+Each requirement shall be unambiguous, verifiable, complete, and consistent.
+<<<
+
+[REQUIREMENT]
+UID: SSRS-010
+STATUS: Draft
+TITLE: <Software safety function 1>
+SAFETY_FUNCTION: SF-1
+STATEMENT: >>>
+The software shall <describe the software behaviour required to realise
+the safety function, including: inputs monitored, logic applied, outputs
+commanded, timing constraints>.
+
+Input signals: <list>
+Output signals: <list>
+Response time: < <value> ms from input detection to output activation.
+Safe output state: <define>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: >>>
+Derived from SRS-010. This requirement implements safety function SF-1.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-010
+
+[REQUIREMENT]
+UID: SSRS-011
+STATUS: Draft
+TITLE: <Software safety function 2>
+SAFETY_FUNCTION: SF-2
+STATEMENT: >>>
+The software shall <describe the software behaviour for safety function 2>.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-011
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software integrity requirements
+
+[[SECTION]]
+TITLE: Software development process requirements
+
+[REQUIREMENT]
+UID: SSRS-020
+STATUS: Draft
+TITLE: Software development lifecycle
+STATEMENT: >>>
+The software shall be developed in accordance with a defined software
+development lifecycle, covering requirements, design, implementation,
+testing, and validation phases, consistent with IEC 61508-3:2010, Figure 2.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.1.
+
+[REQUIREMENT]
+UID: SSRS-021
+STATUS: Draft
+TITLE: Software configuration management
+STATEMENT: >>>
+All software items, including source code, compiled artefacts, tools,
+test cases, and documentation, shall be placed under configuration
+management with version identification and change control.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 6.2.
+
+[REQUIREMENT]
+UID: SSRS-022
+STATUS: Draft
+TITLE: Bi-directional traceability
+STATEMENT: >>>
+Bi-directional traceability shall be maintained between:
+- Software safety requirements and system safety requirements (SRS).
+- Software safety requirements and software design elements.
+- Software safety requirements and test cases.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.2.2.6.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software architecture requirements
+
+[REQUIREMENT]
+UID: SSRS-030
+STATUS: Draft
+TITLE: Modular software architecture
+STATEMENT: >>>
+The software architecture shall be structured into well-defined modules
+with clearly specified interfaces, minimising coupling between modules
+and maximising cohesion within each module.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.3 – Software architecture design.
+
+[REQUIREMENT]
+UID: SSRS-031
+STATUS: Draft
+TITLE: Data flow and control flow definition
+STATEMENT: >>>
+The software architecture shall explicitly define all data flows and
+control flows between software modules, including timing and sequencing
+of safety-relevant operations.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+
+[REQUIREMENT]
+UID: SSRS-032
+STATUS: Draft
+TITLE: Error detection at architectural level
+STATEMENT: >>>
+The software architecture shall incorporate mechanisms for detection and
+handling of errors, including:
+- Input data range and plausibility checks
+- Internal state consistency checks
+- Output monitoring / output cross-checking (if applicable)
+- Watchdog supervision
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: IEC 61508-3:2010, Table A.3 – Error detection and correction.
+
+[REQUIREMENT]
+UID: SSRS-033
+STATUS: Draft
+TITLE: Diverse software redundancy
+STATEMENT: >>>
+Where software redundancy is used to achieve the required SIL, the
+redundant software channels shall be developed independently (different
+design team, different tools, or diverse design methods) to avoid
+systematic common cause failures.
+<<<
+SIL_1: --
+SIL_2: NR
+SIL_3: R
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.4.7 and Table A.3.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software design and coding requirements
+
+[REQUIREMENT]
+UID: SSRS-040
+STATUS: Draft
+TITLE: Structured programming
+STATEMENT: >>>
+The software shall be implemented using structured programming techniques.
+The use of unrestricted recursion, dynamic memory allocation after
+initialisation, and unrestricted use of pointers shall be prohibited.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.4 – Software design and coding standards.
+
+[REQUIREMENT]
+UID: SSRS-041
+STATUS: Draft
+TITLE: Coding standard
+STATEMENT: >>>
+A defined coding standard appropriate to the target SIL shall be applied
+throughout the software implementation. Deviations from the coding standard
+shall be documented and justified.
+
+Applicable standard: <e.g. MISRA C:2012, CERT C, project-specific standard>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.4.
+
+[REQUIREMENT]
+UID: SSRS-042
+STATUS: Draft
+TITLE: Use of language subset
+STATEMENT: >>>
+A defined, restricted subset of the programming language shall be used,
+excluding language features that are prone to ambiguity, implementation-
+defined or undefined behaviour, or difficult to verify.
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.4 – Language subset.
+
+[REQUIREMENT]
+UID: SSRS-043
+STATUS: Draft
+TITLE: Defensive programming
+STATEMENT: >>>
+Defensive programming techniques shall be applied, including:
+- Validation of all external inputs (range, type, plausibility)
+- Assertion-based checks on preconditions and postconditions
+  of safety-relevant functions
+- Safe defaults for initialisation of all variables
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: IEC 61508-3:2010, Table A.4 – Defensive programming.
+
+[REQUIREMENT]
+UID: SSRS-044
+STATUS: Draft
+TITLE: Formal methods for specification and design
+STATEMENT: >>>
+Formal methods (e.g. Z, VDM, B-Method, or equivalent) shall be applied
+to the specification and/or design of safety-critical software modules,
+where practicable, to provide mathematical proof of properties.
+<<<
+SIL_1: --
+SIL_2: NR
+SIL_3: R
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Table A.4 – Formal methods.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software verification requirements
+
+[REQUIREMENT]
+UID: SSRS-050
+STATUS: Draft
+TITLE: Static analysis
+STATEMENT: >>>
+Static analysis shall be applied to the software source code to detect
+defects including: unreachable code, uninitialised variables, stack
+overflow potential, coding standard violations.
+Tool: <specify tool>
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis
+RATIONALE: IEC 61508-3:2010, Table A.8 – Software module testing and integration.
+
+[REQUIREMENT]
+UID: SSRS-051
+STATUS: Draft
+TITLE: Structural test coverage
+STATEMENT: >>>
+Structural test coverage analysis shall demonstrate the following coverage
+levels for safety-relevant software modules:
+- SIL 1/2: Statement coverage (MC/DC not required).
+- SIL 3:   Branch coverage (decision coverage).
+- SIL 4:   Modified Condition / Decision Coverage (MC/DC).
+
+Coverage tool: <specify tool>
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: IEC 61508-3:2010, Table A.8.
+
+[REQUIREMENT]
+UID: SSRS-052
+STATUS: Draft
+TITLE: Software integration testing
+STATEMENT: >>>
+Software integration testing shall verify the correct interaction between
+software modules and between software and hardware, including:
+- Interface testing
+- Timing and performance testing
+- Error handling under fault injection
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+RATIONALE: IEC 61508-3:2010, Clause 7.7.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1] IEC 61508-3:2010, Clause 7.2 – Software safety requirements specification.
+[2] IEC 61508-3:2010, Tables A.1–A.10 – Techniques and measures.
+[3] <Document ID> – Safety Requirements Specification (SRS).
+[4] <Project-specific references>
+<<<
+
+[[/SECTION]]
