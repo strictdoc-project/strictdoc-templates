@@ -1,5 +1,5 @@
 [DOCUMENT]
-TITLE: Software Safety Requirements Specification
+TITLE: Software safety requirements specification
 OPTIONS:
   MARKUP: Text
 
@@ -29,7 +29,7 @@ Instructions for use:
 <<<
 
 [[SECTION]]
-TITLE: Document Information
+TITLE: Document information
 
 [TEXT]
 STATEMENT: >>>
@@ -49,7 +49,7 @@ SRS Reference:   <Document ID of Safety Requirements Specification>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Overview
+TITLE: Software overview
 
 [TEXT]
 STATEMENT: >>>
@@ -67,7 +67,7 @@ Software description: <Describe the software item>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Functional Software Safety Requirements
+TITLE: Functional software safety requirements
 
 [TEXT]
 STATEMENT: >>>
@@ -122,10 +122,10 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Integrity Requirements
+TITLE: Software integrity requirements
 
 [[SECTION]]
-TITLE: Software Development Process Requirements
+TITLE: Software development process requirements
 
 [REQUIREMENT]
 UID: SSRS-020
@@ -179,7 +179,7 @@ RATIONALE: IEC 61508-3:2010, Clause 7.2.2.6.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Architecture Requirements
+TITLE: Software architecture requirements
 
 [REQUIREMENT]
 UID: SSRS-030
@@ -251,7 +251,7 @@ RATIONALE: IEC 61508-3:2010, Clause 7.4.7 and Table A.3.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Design and Coding Requirements
+TITLE: Software design and coding requirements
 
 [REQUIREMENT]
 UID: SSRS-040
@@ -340,7 +340,7 @@ RATIONALE: IEC 61508-3:2010, Table A.4 – Formal methods.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Verification Requirements
+TITLE: Software verification requirements
 
 [REQUIREMENT]
 UID: SSRS-050

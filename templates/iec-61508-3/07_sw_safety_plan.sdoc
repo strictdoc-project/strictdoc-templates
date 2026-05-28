@@ -1,5 +1,5 @@
 [DOCUMENT]
-TITLE: Software Safety Plan
+TITLE: Software safety plan
 OPTIONS:
   MARKUP: Text
 
@@ -32,7 +32,7 @@ Instructions for use:
 <<<
 
 [[SECTION]]
-TITLE: Document Information
+TITLE: Document information
 
 [TEXT]
 STATEMENT: >>>
@@ -51,7 +51,7 @@ OSP Reference:   <Document ID of Overall Safety Plan>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Safety Lifecycle
+TITLE: Software safety lifecycle
 
 [REQUIREMENT]
 UID: SSP-010
@@ -102,7 +102,7 @@ VERIFICATION_METHOD: Inspection
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Responsibilities and Competence
+TITLE: Responsibilities and competence
 
 [REQUIREMENT]
 UID: SSP-020
@@ -180,7 +180,7 @@ RATIONALE: IEC 61508-3:2010, Clause 6.2.4 and Table 4.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Development Environment and Tools
+TITLE: Development environment and tools
 
 [REQUIREMENT]
 UID: SSP-030
@@ -261,7 +261,7 @@ RATIONALE: IEC 61508-3:2010, Table A.4.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Configuration Management
+TITLE: Configuration management
 
 [REQUIREMENT]
 UID: SSP-040
@@ -333,7 +333,7 @@ VERIFICATION_METHOD: Inspection
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Problem Reporting and Resolution
+TITLE: Problem reporting and resolution
 
 [REQUIREMENT]
 UID: SSP-050
@@ -365,7 +365,7 @@ RATIONALE: IEC 61508-3:2010, Clause 6.2.1.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Software Safety Reviews
+TITLE: Software safety reviews
 
 [REQUIREMENT]
 UID: SSP-060

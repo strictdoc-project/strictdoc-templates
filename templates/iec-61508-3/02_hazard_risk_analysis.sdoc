@@ -1,5 +1,5 @@
 [DOCUMENT]
-TITLE: Hazard and Risk Analysis
+TITLE: Hazard and risk analysis
 OPTIONS:
   MARKUP: Text
 
@@ -36,7 +36,7 @@ Instructions for use:
 <<<
 
 [[SECTION]]
-TITLE: Document Information
+TITLE: Document information
 
 [TEXT]
 STATEMENT: >>>
@@ -53,7 +53,7 @@ Classification:  <Confidential / Restricted / Public>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: System and EUC Description
+TITLE: System and EUC description
 
 [TEXT]
 STATEMENT: >>>
@@ -73,7 +73,7 @@ Operational Modes: <Normal, Test, Maintenance, Emergency>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Hazard Identification Method
+TITLE: Hazard identification method
 
 [TEXT]
 STATEMENT: >>>
@@ -92,7 +92,7 @@ Reference documents: <List applicable drawings, P&IDs, functional specs>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Hazard Register
+TITLE: Hazard register
 
 [TEXT]
 STATEMENT: >>>
@@ -156,7 +156,7 @@ MITIGATION: >>>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Summary of SIL Requirements
+TITLE: Summary of SIL requirements
 
 [TEXT]
 STATEMENT: >>>

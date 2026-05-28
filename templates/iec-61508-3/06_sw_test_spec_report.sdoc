@@ -1,5 +1,5 @@
 [DOCUMENT]
-TITLE: Software Test Specification and Report
+TITLE: Software test specification and report
 OPTIONS:
   MARKUP: Text
 
@@ -34,7 +34,7 @@ Instructions for use:
 <<<
 
 [[SECTION]]
-TITLE: Document Information
+TITLE: Document information
 
 [TEXT]
 STATEMENT: >>>
@@ -54,7 +54,7 @@ Test Environment: <Hardware platform, OS, toolchain, test framework version>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Test Strategy
+TITLE: Test strategy
 
 [TEXT]
 STATEMENT: >>>
@@ -72,7 +72,7 @@ Coverage target per SIL (IEC 61508-3:2010 Table A.8):
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Unit Tests
+TITLE: Unit tests
 
 [TEST_CASE]
 UID: TC-001
@@ -163,7 +163,7 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Integration Tests
+TITLE: Integration tests
 
 [TEST_CASE]
 UID: TC-100
@@ -226,7 +226,7 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: HW-SW Integration Tests
+TITLE: HW-SW integration tests
 
 [TEST_CASE]
 UID: TC-200
@@ -292,7 +292,7 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Test Coverage Summary
+TITLE: Test coverage summary
 
 [TEXT]
 STATEMENT: >>>
@@ -308,7 +308,7 @@ Uncovered items: <None / describe with justification>
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Outstanding Issues
+TITLE: Outstanding issues
 
 [ACTION_ITEM]
 UID: NCR-001
