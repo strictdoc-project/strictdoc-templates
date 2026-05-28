@@ -1,0 +1,1030 @@
+[DOCUMENT]
+TITLE: Overall software testing and validation
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Overall Software Testing and Final Validation phase
+for the software element of the railway control and protection system identified
+below. It is prepared in accordance with EN 50716:2023, Clause 7.7 (Overall
+software testing / final validation), and collects four output deliverables
+from Table A.1:
+
+  24. Overall Software Test Report
+  25. Software Validation Report
+  26. Tools Validation Report
+  27. Release Note
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (docs 24, 25, 27): BASIC=HR, SIL_1–4=HR.
+- Table A.1 (doc 26):           BASIC=--, SIL_1–4=HR.
+- Table A.7 (overall analysis and testing techniques):
+    Dynamic analysis (A.13):    BASIC=HR, SIL_1=HR, SIL_2=HR, SIL_3=M, SIL_4=M.
+    Performance testing (A.18): BASIC=--, SIL_1=HR, SIL_2=HR, SIL_3=M, SIL_4=M.
+    Modelling:                  BASIC=--, SIL_1=R,  SIL_2=R,  SIL_3=R, SIL_4=R.
+
+VTR-xxx are executed SW validation test cases; each is the executed counterpart
+of a validation test case specification entry in the Software Validation Test
+Specification.
+
+Instructions for use:
+- UIDs follow convention: VAL-xxx (requirements), VTR-xxx (validation test cases).
+- Duplicate VTR entries for each executed validation test case.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Validator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+SRS Reference:        <Document ID of Software Requirements Specification>
+SAD Reference:        <Document ID of Software Architecture and Design>
+Source Code Baseline: <SW-BL-xxx from 05_component_impl_test, CI-010>
+SW Integration Test Report:     <Document ID, 06_integration.sdoc, INT-010 series>
+HW-SW Integration Test Report:  <Document ID, 06_integration.sdoc, INT-040 series>
+SW Integration Verification Report: <Document ID, 06_integration.sdoc, INT-070>
+Validation Test Specification:  <Document ID and revision>
+Test environment (overall SW testing): <host platform, OS, test framework, version>
+Test environment (target / operational): <target hardware, revision, support equipment>
+Tool list reference:  <Document ID of software tool list>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Overall Software Test Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Overall Software Test Report as required by
+EN 50716:2023, Clause 7.7 and Table A.1 (document 24). It records the results
+of executing the software validation test cases defined in the Software
+Validation Test Specification against the source code baseline identified in
+05_component_impl_test.sdoc (CI-010), on the target or representative platform
+used for final system-level testing.
+<<<
+
+[[SECTION]]
+TITLE: Overall test execution summary
+
+[REQUIREMENT]
+UID: VAL-010
+STATUS: Draft
+TITLE: Overall software test execution summary
+STATEMENT: >>>
+Overall software tests were executed against source code baseline <SW-BL-xxx>
+(CI-010) on the test environment specified in the Validation Test Specification.
+
+Test execution period:
+  Start date:        <YYYY-MM-DD>
+  End date:          <YYYY-MM-DD>
+  Executed by:       <Name, Role>
+  Witnessed by:      <Name, Role (Validator)>
+
+Test environment (as used):
+  Host / target:     <host PC / target board, revision>
+  OS / RTOS:         <name, version>
+  Compiler:          <vendor, version — matches CI-040>
+  Test framework:    <name, version>
+  Deviations from operational target:
+    <None / describe deviations and impact assessment>
+
+Overall results:
+
+  Test group              | Test cases run | PASS | FAIL | BLOCKED | NOT_RUN
+  ------------------------|----------------|------|------|---------|--------
+  Functional safety       | <n>            | <n>  | 0    | 0       | 0
+  Safety integrity        | <n>            | <n>  | 0    | 0       | 0
+  Fault injection / FMEA  | <n>            | <n>  | 0    | 0       | 0
+  Performance             | <n>            | <n>  | 0    | 0       | 0
+  <Other group>           | <n>            | <n>  | 0    | 0       | 0
+  TOTAL                   | <n>            | <n>  | 0    | 0       | 0
+
+Anomalies encountered: <None / list anomalies with reference to PR-VAL-xxx>
+Overall software test result: <PASS / FAIL>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 24 – Overall Software Test Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Requirements-based test coverage
+
+[REQUIREMENT]
+UID: VAL-020
+STATUS: Draft
+TITLE: Requirements-based test coverage at system level
+STATEMENT: >>>
+All functional and safety requirements in the Software Requirements
+Specification shall be covered by at least one executed validation test case
+(VTR-xxx series) in accordance with EN 50716:2023, Clause 7.7.
+
+Requirements coverage results:
+
+  Requirement series   | Total | Covered by VTR | Coverage (%) | Status
+  ---------------------|-------|----------------|--------------|--------
+  SRS-010 (general)    | <n>   | <n>            | 100          | PASS
+  SRS-020 (safety)     | <n>   | <n>            | 100          | PASS
+  SRS-030 (HW-SW IF)   | <n>   | <n>            | 100          | PASS
+  SRS-040 (timing)     | <n>   | <n>            | 100          | PASS
+  SRS-050 (functional) | <n>   | <n>            | 100          | PASS
+  TOTAL                | <n>   | <n>            | 100          | PASS
+
+Requirements not covered at this level:
+  <None / list with justification for coverage at another level>
+
+Traceability matrix location: <document ID or tool reference>
+All SRS requirements exercised by at least one PASS VTR test case: <Yes>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 24 – Overall Software Test Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation test cases executed
+
+[TEXT]
+STATEMENT: >>>
+The following VTR-xxx entries are executed validation test cases. Each VTR
+entry corresponds to a specification entry in the Software Validation Test
+Specification. Duplicate for each executed test case; populate ACTUAL_RESULT
+and set VERDICT upon execution.
+<<<
+
+[TEST_CASE]
+UID: VTR-001
+STATUS: Active
+TITLE: <Safety function> end-to-end response: nominal activation scenario
+TEST_TYPE: Validation
+PRECONDITIONS: >>>
+- Complete integrated software loaded on target hardware from baseline <SW-BL-xxx>.
+- System in normal operating state; all start-up self-tests passed.
+- All external interfaces (IF-EXT-01 through IF-EXT-03) connected to test stimuli.
+- No active fault flags; fault log empty at test start.
+- Test environment deviations from operational target documented and assessed.
+<<<
+STEPS: >>>
+1. Set system to steady-state operational mode; confirm via status output.
+2. Apply nominal activation stimulus for <safety function> at IF-EXT-<n>.
+3. Measure elapsed time from stimulus to controlled output change at IF-EXT-<m>.
+4. Read system state, output values, and fault log after activation.
+5. Remove stimulus; confirm system returns to normal operating state.
+<<<
+EXPECTED_RESULT: >>>
+- System response time from stimulus to output: < <n> ms (SRS-041).
+- Controlled output state achieved as specified in SRS-050.
+- No spurious fault log entries generated during nominal activation.
+- System returns to normal operating state after stimulus removed: < <n> s.
+<<<
+ACTUAL_RESULT: >>>
+- Response time: <measured_time> ms (limit: <n> ms). WITHIN LIMIT. PASS.
+- Output state: <observed_state> (expected: <expected_state>). PASS.
+- Fault log entries: 0 spurious entries. PASS.
+- Recovery time: <measured_recovery> s (limit: <n> s). WITHIN LIMIT. PASS.
+All SRS-041 and SRS-050 criteria met. End-to-end nominal scenario confirmed.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-050
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: VTR-002
+STATUS: Active
+TITLE: <Safety function> — fault detection and safe state transition
+TEST_TYPE: Validation
+PRECONDITIONS: >>>
+- Complete integrated software loaded on target hardware from baseline <SW-BL-xxx>.
+- System in normal operating state; all start-up self-tests passed.
+- All external interfaces connected; test rig capable of injecting fault
+  stimulus on IF-EXT-<n>.
+- No active fault flags at test start.
+<<<
+STEPS: >>>
+1. Confirm system in normal operating state; record output state.
+2. Inject fault stimulus simulating <failure mode> at IF-EXT-<n>.
+3. Measure elapsed time from fault stimulus to safe state application.
+4. Read system outputs, fault log, and system state.
+5. Attempt normal operation command while fault active; record response.
+6. Remove fault stimulus; observe system recovery sequence.
+<<<
+EXPECTED_RESULT: >>>
+- Safe state applied within <n> ms of fault detection (SRS-041).
+- Fault code <FC-xx> logged with correct timestamp and category.
+- All outputs commanded to safe (de-energised / fail-safe) state.
+- Normal operation command rejected while fault active.
+- Step 6: system enters recovery sequence; safe state maintained until fault
+  cleared and manual reset applied.
+<<<
+ACTUAL_RESULT: >>>
+- Safe state time: <measured_time> ms (limit: <n> ms). WITHIN LIMIT. PASS.
+- Fault log: code <FC-xx>, timestamp <HH:MM:SS.mmm>, category <Safety>. PASS.
+- All outputs: safe state confirmed on logic analyser channels <n–m>. PASS.
+- Normal operation command: rejected (ERR_FAULT_ACTIVE returned). PASS.
+- Step 6: system entered recovery sequence; manual reset required before
+  resuming operation. Safe state maintained throughout. PASS.
+Fault detection, logging, and safe-state transition all confirmed.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Dynamic analysis results at overall level
+
+[REQUIREMENT]
+UID: VAL-030
+STATUS: Draft
+TITLE: Dynamic analysis results at overall software level
+STATEMENT: >>>
+Dynamic analysis was applied at the overall software level in accordance with
+EN 50716:2023, Table A.7 (Dynamic analysis, reference Table A.13).
+
+Techniques applied and results:
+
+  Technique                      | Applied | Scope                     | Result
+  -------------------------------|---------|---------------------------|--------
+  End-to-end data-flow testing   | Yes     | All SRS data flows        | PASS
+  Fault injection at system IF   | Yes     | IF-EXT-01 to IF-EXT-03    | PASS
+  State machine coverage         | Yes     | System-level state model  | PASS
+  Boundary value analysis        | Yes     | All SRS-020 safety ranges | PASS
+  Error guessing (FMEA-driven)   | Yes     | Top-<n> FMEA failure modes| PASS
+  Modelling (overall behaviour)  | Yes     | <model reference>         | PASS
+
+System-level code coverage under the validation test suite:
+
+  Coverage metric        | Required (SRS) | Achieved | Status
+  -----------------------|----------------|----------|--------
+  Statement coverage     | > <n> %        | <n> %    | PASS
+  Branch coverage        | > <n> %        | <n> %    | PASS
+  MC/DC coverage         | > <n> %        | <n> %    | PASS
+
+Residual uncovered branches: <None / list with justification>
+Coverage tool: <name, version, certificate reference>
+
+Error propagation: fault conditions injected at each external interface
+boundary propagated correctly through the complete software without causing
+uncontrolled exceptions or incorrect output states. No unhandled errors
+observed. All safe-state transitions confirmed within the required time
+budget (SRS-041).
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.7 – Dynamic analysis (Table A.13).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Performance results at system level
+
+[REQUIREMENT]
+UID: VAL-031
+STATUS: Draft
+TITLE: Performance test results at system level
+STATEMENT: >>>
+Performance tests were executed at system level to confirm that end-to-end
+timing requirements (SRS-040, SRS-041) are met under representative operational
+conditions, in accordance with EN 50716:2023, Table A.7 (Performance testing,
+reference Table A.18).
+
+Measurement method: <instrumented measurement via logic analyser / on-chip
+timer capture / WCET static analysis tool / system-level profiling>
+Worst-case conditions: all safety functions active at maximum stimulus rate;
+all communication links loaded per SRS-032 maximum message rate.
+
+End-to-end safety function response times (complete system, SRS-041):
+
+  Safety function / event        | Requirement  | Measured (WCET) | Margin | Status
+  -------------------------------|--------------|-----------------|--------|--------
+  <Safety function 1> response   | < <n> ms     | <n> ms          | <n> %  | PASS
+  <Safety function 2> response   | < <n> ms     | <n> ms          | <n> %  | PASS
+  Safe state activation time     | < <n> ms     | <n> ms          | <n> %  | PASS
+  Fault detection latency        | < <n> ms     | <n> ms          | <n> %  | PASS
+  Start-up and self-test time    | < <n> s      | <n> s           | <n> %  | PASS
+
+System load and resource utilisation (SRS-040):
+
+  Resource           | Limit (SRS-040)  | Measured (peak)  | Margin | Status
+  -------------------|------------------|------------------|--------|--------
+  CPU utilisation    | < <n> %          | <n> %            | <n> %  | PASS
+  RAM usage (static) | < <n> kB         | <n> kB           | <n> %  | PASS
+  Stack usage (peak) | < <n> kB         | <n> kB           | <n> %  | PASS
+  Flash usage        | < <n> kB         | <n> kB           | <n> %  | PASS
+
+All system-level performance requirements met with positive margin under
+worst-case operational conditions.
+Full measurement log: <document ID or tool output path>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.7 – Performance testing (Table A.18).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Problem reports and open items
+
+[REQUIREMENT]
+UID: VAL-040
+STATUS: Draft
+TITLE: Overall software testing problem report summary
+STATEMENT: >>>
+All defects and anomalies discovered during overall software testing shall be
+recorded as Problem Reports (PRs) and tracked per the process in SP-050.
+
+Problem report summary at close of overall software testing:
+
+  PR ID        | Title                          | Severity | Status  | Resolution
+  -------------|--------------------------------|----------|---------|------------------
+  <PR-VAL-001> | <brief description>            | Major    | Closed  | <code fix, re-tested>
+  <no further open PRs>
+
+All Critical and Major PRs shall be closed before this report is approved.
+Open PRs at time of this report: <0 / list PR-VAL-xxx>
+
+PR tracking system: <tool / document reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 24 – Overall Software Test Report.
+
+[ACTION_ITEM]
+UID: PR-VAL-001
+STATUS: Closed
+TITLE: <Safety function 1>: response time exceeded limit under simultaneous multi-function activation
+STATEMENT: >>>
+Defect found during VTR-001 extended load scenario. When three safety functions
+were activated simultaneously with all communication links at maximum message
+rate, the end-to-end response time for <safety function 1> was measured at
+<n+x> ms, exceeding the SRS-041 limit of <n> ms by <x> ms.
+Impact: timing requirement exceeded; safety impact assessed as Major because
+the response time budget does not allow for margin below the hazardous event
+reaction time specified in the hazard log.
+Fix applied: task scheduling optimised to reduce jitter in the safety-critical
+execution path; message processing task yielding policy revised; SAD-021
+(scheduling analysis) updated to reflect new task configuration.
+Re-test: VTR-001 re-executed after fix under same conditions; PASS.
+<<<
+OWNER: <Developer Name>
+DUE_DATE: <YYYY-MM-DD>
+COMMENT: >>>
+Fixed in source revision <hash>. Scheduling analysis document re-issued.
+WCET measurements (VAL-031) repeated after change; all timing within budget.
+Response time confirmed at <measured_final> ms under simultaneous activation.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Validation Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Validation Report as required by
+EN 50716:2023, Clause 7.7 and Table A.1 (document 25). It records the
+independent validation of the entire software lifecycle, confirming that
+the software as built correctly and completely addresses all requirements
+of the Software Requirements Specification and the applicable safety
+integrity level.
+<<<
+
+[[SECTION]]
+TITLE: Validation scope and objectives
+
+[REQUIREMENT]
+UID: VAL-050
+STATUS: Draft
+TITLE: Validation scope and objectives
+STATEMENT: >>>
+The Software Validation shall confirm:
+
+  a) The software as built correctly implements the Software Requirements
+     Specification (SRS) in its entirety.
+  b) All verification activities have been performed in accordance with the
+     Software Quality Assurance Plan (SQAP) and EN 50716:2023.
+  c) All lifecycle outputs are complete, consistent, and traceable.
+  d) The software is suitable for deployment at the target SIL.
+
+Validation scope:
+  Software baseline reviewed:  <SW-BL-xxx> (CI-010)
+  SRS revision reviewed:        <Rev. X, YYYY-MM-DD>
+  SAD revision reviewed:        <Rev. X, YYYY-MM-DD>
+  Validation Test Spec:         <Rev. X, YYYY-MM-DD>
+  Overall SW Test Report:       Section 2 of this document
+  Component Test Reports:       05_component_impl_test.sdoc
+  Integration Test Reports:     06_integration.sdoc
+  Tools Validation Report:      Section 4 of this document
+
+Validator:
+  Name:                <Name>
+  Organisation:        <Organisation>
+  Independence level:  <In accordance with SP-021 — assessed as independent /
+                        partially independent>
+  Evidence of competence: <Reference to CV or qualification record>
+
+Validation method: Structured review per EN 50716:2023, Clause 7.7, using a
+checklist derived from Table A.1 (docs 24–27) and SQAP SP-030.
+Checklist reference: <document ID or tool reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 25 – Software Validation Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Lifecycle deliverables review summary
+
+[REQUIREMENT]
+UID: VAL-060
+STATUS: Draft
+TITLE: Lifecycle deliverables review summary
+STATEMENT: >>>
+All software lifecycle deliverables required by EN 50716:2023 and the SQAP
+were reviewed by the Validator prior to issuing the validation verdict.
+
+Deliverable review results:
+
+  Deliverable                          | Document ID   | Revision | Review result
+  -------------------------------------|---------------|----------|---------------
+  Software Quality Assurance Plan      | <SQAP>        | <Rev.>   | Satisfactory
+  Software Requirements Spec. (SRS)    | <SRS>         | <Rev.>   | Satisfactory
+  SW Architecture and Design (SAD)     | <SAD>         | <Rev.>   | Satisfactory
+  Component Impl. and Test Report      | <CITR>        | <Rev.>   | Satisfactory
+  SW Integration Test Report           | <SITR>        | <Rev.>   | Satisfactory
+  HW-SW Integration Test Report        | <HWSITR>      | <Rev.>   | Satisfactory
+  SW Integration Verification Report   | <SIVR>        | <Rev.>   | Satisfactory
+  Overall SW Test Report               | This doc, §2  | <Rev.>   | Satisfactory
+  Tools Validation Report              | This doc, §4  | <Rev.>   | Satisfactory
+  Release Note                         | This doc, §5  | <Rev.>   | Satisfactory
+
+Findings from deliverable review:
+  <None / list findings with reference to action item register>
+
+All deliverables reviewed and found satisfactory: <Yes / No — if No, list
+outstanding items and their resolution status>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 25 – Software Validation Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Traceability completeness confirmation
+
+[REQUIREMENT]
+UID: VAL-061
+STATUS: Draft
+TITLE: Traceability completeness confirmation
+STATEMENT: >>>
+Bidirectional traceability shall be confirmed from requirements to test results
+and from test results back to requirements, covering the full software lifecycle.
+
+Traceability chain verified:
+
+  Hazard / safety function
+      → SRS requirement (SRS-xxx)
+          → Architecture / design element (SAD-xxx)
+              → Component implementation (CI-xxx)
+                  → Component test (CTR-xxx, 05_component_impl_test.sdoc)
+                      → Integration test (ITR-xxx / HITR-xxx, 06_integration.sdoc)
+                          → Validation test (VTR-xxx, this document §2)
+
+Traceability completeness check:
+
+  Level                       | Forward traceability | Backward traceability
+  ----------------------------|---------------------|----------------------
+  SRS → Architecture          | Complete            | Complete
+  Architecture → Component    | Complete            | Complete
+  Component → Test (unit)     | Complete            | Complete
+  SRS → Integration test      | Complete            | Complete
+  SRS → Validation test       | Complete            | Complete
+
+Orphan requirements (SRS requirements with no VTR coverage):
+  <None / list with justification>
+
+Orphan test cases (VTR entries with no SRS parent):
+  <None / list>
+
+Traceability tool / document reference: <tool name or document ID>
+Traceability completeness confirmed: <Yes>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 25 – Software Validation Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation verdict and sign-off
+
+[REQUIREMENT]
+UID: VAL-070
+STATUS: Draft
+TITLE: Validation verdict and sign-off
+STATEMENT: >>>
+The Software Validation Report shall include the formal validation verdict and
+sign-off by the Validator, confirming that the software is suitable for
+deployment at the target safety integrity level.
+
+Validation checklist summary:
+
+  Item                                            | Result   | Reference
+  ------------------------------------------------|----------|------------------
+  All SRS requirements covered by VTR tests       | PASS     | <see VAL-020>
+  All VTR test cases show PASS verdict            | PASS     | <see §2.3>
+  Dynamic analysis completed (Table A.7/A.13)     | PASS     | <see VAL-030>
+  Performance requirements met (Table A.7/A.18)   | PASS     | <see VAL-031>
+  All lifecycle deliverables reviewed             | PASS     | <see VAL-060>
+  Traceability chain complete                     | PASS     | <see VAL-061>
+  All Critical/Major PRs closed                   | PASS     | <see VAL-040>
+  Tools validation completed (doc 26)             | PASS     | <see §4>
+  Release note prepared (doc 27)                  | PASS     | <see §5>
+
+Findings from validation:
+  <None / list findings with severity, action, and resolution>
+
+Validation verdict: <Approved / Approved with conditions / Not approved>
+
+Conditions (if applicable): <None / describe conditions to be resolved before
+  release and their expected closure dates>
+
+Validator sign-off:
+  Name:          <Name>
+  Organisation:  <Organisation>
+  Date:          <YYYY-MM-DD>
+  Signature:     <Signature / electronic approval reference>
+
+The software baseline <SW-BL-xxx> at target SIL <n> is hereby declared
+<approved / not approved> for deployment in accordance with EN 50716:2023.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 25 – Software Validation Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Tools Validation Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Tools Validation Report as required by
+EN 50716:2023, Clause 7.7 and Table A.1 (document 26). It records the
+qualification of all software tools used in the development and verification
+lifecycle that may affect the safety of the software product. Tools are
+classified as T1, T2, or T3 in accordance with EN 50716:2023 tool
+classification criteria:
+
+  T1 — No output used directly or indirectly in software delivered to site;
+       no influence on safety function (no qualification required).
+  T2 — Output used in the software or verification process, but errors can
+       be detected independently (reduced qualification evidence required).
+  T3 — Output forms part of the safety case and cannot be fully verified
+       independently (full qualification required).
+<<<
+
+[[SECTION]]
+TITLE: Tool qualification summary (T1/T2/T3 classification)
+
+[REQUIREMENT]
+UID: VAL-080
+STATUS: Draft
+TITLE: Software tool qualification summary
+STATEMENT: >>>
+All software tools used in the development, verification, and validation
+lifecycle were classified and qualified in accordance with EN 50716:2023
+tool classification criteria.
+
+Tool inventory and classification:
+
+  Tool name              | Version     | Class | Purpose / usage
+  -----------------------|-------------|-------|--------------------------------------------
+  <Compiler>             | <version>   | T3    | Source code compilation; output executed
+  <Linker>               | <version>   | T3    | Linking; produces deployed binary
+  <RTOS>                 | <version>   | T3    | Runtime kernel; executes on target
+  <Static analysis tool> | <version>   | T2    | MISRA-C analysis; errors detected by review
+  <Unit test framework>  | <version>   | T2    | Executes component tests; results reviewed
+  <Coverage tool>        | <version>   | T2    | Measures test coverage; results reviewed
+  <Requirements tool>    | <version>   | T1    | Requirement management only; no code output
+  <CI tool>              | <version>   | T1    | Build automation; no safety function output
+
+Total tools: <n>  (T1: <n>, T2: <n>, T3: <n>)
+Qualified tools (T2 + T3): <n>
+
+All T2 and T3 tools require qualification evidence per EN 50716:2023. All T3
+tools require full qualification, including error seeding or anomaly insertion
+testing where applicable.
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 26 – Tools Validation Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Qualification evidence per tool
+
+[REQUIREMENT]
+UID: VAL-081
+STATUS: Draft
+TITLE: Qualification evidence per tool
+STATEMENT: >>>
+Qualification evidence was collected and reviewed for all T2 and T3 tools.
+The following summarises the evidence provided for each qualified tool.
+
+T3 tool qualification evidence:
+
+  <Compiler> <version>:
+    a) Compiler validation test suite results: <reference, pass/fail>
+    b) Anomaly insertion test results: <reference — verifies that compiler
+       errors and warnings are correctly reported>
+    c) Certificate or third-party validation report: <reference, date>
+    d) Known anomalies (compiler notices / CNs) reviewed and assessed:
+       <None affecting project / list CN references and mitigations>
+    e) Scope of use limited to: <language subset, compiler options — matches CI-040>
+    Qualification verdict: <Qualified / Not qualified>
+
+  <Linker> <version>:
+    a) Linker output integrity verification: <method — map file inspection,
+       binary hash comparison>
+    b) Memory map confirmed to match SAD-030 (memory partitioning): <Yes>
+    c) Known anomaly review: <None / reference>
+    Qualification verdict: <Qualified>
+
+  <RTOS> <version>:
+    a) RTOS vendor qualification documentation: <reference, standard>
+    b) Timing and scheduling validation on target hardware (VAL-031): PASS
+    c) Known anomaly review: <None affecting safety functionality>
+    d) Safety manual review and deviations recorded: <document reference>
+    Qualification verdict: <Qualified>
+
+T2 tool qualification evidence:
+
+  <Static analysis tool> <version>:
+    a) Rule set configured: MISRA-C:2012; rules applied: <full / selective, ref.>
+    b) False positive analysis performed: <n> FPs identified and justified
+    c) Tool vendor qualification data: <reference, date>
+    Qualification verdict: <Qualified>
+
+  <Unit test framework> <version>:
+    a) Test framework self-test results: <reference>
+    b) Framework correctness verified on known-good and known-defective code
+    Qualification verdict: <Qualified>
+
+  <Coverage tool> <version>:
+    a) Coverage measurement validated against manual inspection for sample:
+       <n> source files; coverage delta < <n> %
+    b) Tool vendor data: <reference>
+    Qualification verdict: <Qualified>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 26 – Tools Validation Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Tools validation verdict
+
+[REQUIREMENT]
+UID: VAL-090
+STATUS: Draft
+TITLE: Tools validation verdict
+STATEMENT: >>>
+All software tools with class T2 or T3 have been reviewed and their
+qualification evidence assessed.
+
+Qualification summary:
+
+  Tool name               | Class | Qualification evidence  | Verdict
+  ------------------------|-------|-------------------------|----------
+  <Compiler>              | T3    | <document ref.>         | Qualified
+  <Linker>                | T3    | <document ref.>         | Qualified
+  <RTOS>                  | T3    | <document ref.>         | Qualified
+  <Static analysis tool>  | T2    | <document ref.>         | Qualified
+  <Unit test framework>   | T2    | <document ref.>         | Qualified
+  <Coverage tool>         | T2    | <document ref.>         | Qualified
+
+Unqualified tools: <None / list with justification or remediation plan>
+
+Restrictions on tool usage: <None / describe any restrictions imposed during
+qualification and how compliance is enforced>
+
+Tools Validation Report verdict: <All required tools qualified>
+Date of tools qualification completion: <YYYY-MM-DD>
+Reviewed by: <Name, Role>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 26 – Tools Validation Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Release Note
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Release Note as required by EN 50716:2023,
+Clause 7.7 and Table A.1 (document 27). It uniquely identifies the software
+release being delivered, records known limitations and constraints, provides
+a reference to installation and deployment instructions, and records the
+formal release approval.
+<<<
+
+[[SECTION]]
+TITLE: Software release identification
+
+[REQUIREMENT]
+UID: VAL-100
+STATUS: Draft
+TITLE: Software release identification
+STATEMENT: >>>
+The software release is uniquely identified by the following attributes:
+
+Release identifier:          <SW-REL-xxx>
+Software item name:          <Software item / component name>
+Version / build number:      <vM.N.P-buildNNN>
+Release date:                <YYYY-MM-DD>
+Source code baseline:        <SW-BL-xxx> (CI-010, 05_component_impl_test.sdoc)
+Binary / firmware artefact:  <filename.hex or filename.bin>
+File hash (SHA-256):         <hash value>
+Signing certificate:         <reference if code-signed>
+
+Target hardware:
+  Platform:           <hardware platform name, revision>
+  Bootloader version: <version>
+  Memory layout:      <reference to SAD-030 memory map; confirmed to match>
+
+Configuration items included in release:
+
+  Item                       | Filename / ID          | Hash / Rev.
+  ---------------------------|------------------------|-------------
+  Executable binary          | <filename.hex>         | <SHA-256>
+  RTOS configuration         | <rtos_config.h>        | <hash>
+  Communication configuration| <comm_config.xml>      | <hash>
+  Parameter data file        | <params_vX.Y.bin>      | <SHA-256>
+  Documentation set          | <DOC-REL-xxx>          | <Rev.>
+
+The above artefacts collectively constitute the releasable software item.
+Baseline tag in version control system: <tag name, VCS URL>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 27 – Release Note.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Known limitations and constraints
+
+[REQUIREMENT]
+UID: VAL-110
+STATUS: Draft
+TITLE: Known limitations and constraints
+STATEMENT: >>>
+The following limitations and constraints are known at the time of release.
+Each item has been assessed for safety impact and a disposition recorded.
+
+Limitations and constraints:
+
+  ID      | Description                       | Safety impact   | Disposition
+  --------|-----------------------------------|-----------------|---------------------------
+  LIM-001 | <describe limitation>             | <None / Minor>  | <Accepted / Mitigated>
+  LIM-002 | <describe operational constraint> | <None>          | Operational constraint —
+           |                                   |                 | see deployment guide
+  <No further known limitations>
+
+Open problem reports at release:
+  <None / list PR-VAL-xxx items remaining open with justification for
+   release with known defect, including safety assessment>
+
+Deviations from requirements: <None / reference approved derogation records>
+
+Operational constraints imposed on deployment:
+  <List any operational constraints that must be respected during system
+   commissioning and operation, with cross-reference to the deployment
+   instructions document>
+
+The items above shall be reviewed and dispositioned at each maintenance
+release to confirm continued acceptability.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 27 – Release Note.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Installation and deployment instructions reference
+
+[REQUIREMENT]
+UID: VAL-120
+STATUS: Draft
+TITLE: Installation and deployment instructions reference
+STATEMENT: >>>
+Detailed procedures for installing and deploying the software release are
+provided in the Software Installation and Deployment Guide referenced below.
+
+Deployment guide reference: <Document ID and revision>
+
+The deployment guide covers:
+  a) Pre-installation checks and prerequisites.
+  b) Hardware readiness verification (target hardware revision, bootloader
+     version, and peripheral configuration).
+  c) Software loading procedure (file transfer method, programmer tool,
+     version, and configuration).
+  d) Post-installation verification: CRC / hash check of loaded binary.
+  e) Commissioning tests to be performed on-site before go-live.
+  f) Rollback procedure in case of failed installation.
+  g) Applicable safety constraints during installation and commissioning.
+
+Safety-critical installation steps:
+
+  Step | Description                                | Verification method
+  -----|--------------------------------------------|------------------------------
+  <1>  | Verify hardware platform revision = <rev>  | Visual inspection, part number
+  <2>  | Load binary <filename.hex> using <tool>    | SHA-256 hash comparison
+  <3>  | Execute post-load CRC check                | Automated (tool output)
+  <4>  | Verify parameter file version = <v>        | File header check
+  <5>  | Execute commissioning test sequence        | Test record sign-off
+
+Installation must not proceed if any of the above checks fail.
+Responsible person for installation approval: <Name, Role>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 27 – Release Note.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Release approval
+
+[REQUIREMENT]
+UID: VAL-130
+STATUS: Draft
+TITLE: Release approval
+STATEMENT: >>>
+The software release identified in VAL-100 is submitted for formal approval
+prior to distribution and deployment.
+
+Release approval checklist:
+
+  Item                                              | Result       | Reference
+  --------------------------------------------------|--------------|------------------
+  Validation verdict Approved (VAL-070)             | PASS         | §3.4
+  All lifecycle deliverables reviewed (VAL-060)     | PASS         | §3.2
+  Traceability complete (VAL-061)                   | PASS         | §3.3
+  All Critical/Major PRs closed (VAL-040)           | PASS         | §2.6
+  Tools validation complete (VAL-090)               | PASS         | §4.3
+  Known limitations assessed (VAL-110)              | PASS         | §5.2
+  Deployment guide available (VAL-120)              | PASS         | §5.3
+  Software artefact hash verified (VAL-100)         | PASS         | §5.1
+  Export / regulatory approvals (if applicable)     | <Pass / N/A> | <reference>
+
+Release decision: <Approved for release / Hold — reasons to be stated>
+
+Approved by:
+  Project Manager:       <Name> — <Date> — <Signature / electronic ref.>
+  Safety Manager:        <Name> — <Date> — <Signature / electronic ref.>
+  Quality Manager:       <Name> — <Date> — <Signature / electronic ref.>
+  Independent Validator: <Name> — <Date> — <Signature / electronic ref.>
+
+Software release <SW-REL-xxx> is hereby approved for distribution and
+deployment to <project / site name> in accordance with EN 50716:2023.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.7 and Table A.1, doc 27 – Release Note.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 7.7 – Overall software testing / final validation.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.7 – Techniques and measures (overall analysis
+     and testing).
+[5]  EN 50716:2023, Table A.13 – Dynamic analysis.
+[6]  EN 50716:2023, Table A.18 – Performance testing.
+[7]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[8]  <Document ID> – Software Requirements Specification (SRS-xxx series).
+[9]  <Document ID> – Software Architecture and Design (SAD-xxx / SWIT / HWIT series).
+[10] <Document ID> – Software Component Implementation and Testing (CI-xxx series).
+[11] <Document ID> – Software Integration (06_integration.sdoc, INT / ITR / HITR series).
+[12] <Document ID> – Software Validation Test Specification (SVTS-xxx series).
+[13] <Document ID> – Software Installation and Deployment Guide.
+[14] <Document ID> – Hardware Specification / Platform Technical Manual.
+[15] <Project-specific references>
+<<<
+
+[[/SECTION]]
