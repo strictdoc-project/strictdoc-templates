@@ -1,0 +1,739 @@
+[DOCUMENT]
+TITLE: Software planning
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Planning package for the software element of
+the railway control and protection system identified below. It is prepared in
+accordance with EN 50716:2023, Clause 5.3 (Lifecycle issues and documentation),
+and collects the five planning deliverables listed in Table A.1:
+
+  1. Software Quality Assurance Plan (SQAP)
+  2. Software Planning Verification Report
+  3. Software Configuration Management Plan (SCMP)
+  4. Software Verification Plan (SVP)
+  5. Software Validation Plan (SValP)
+
+BASIC, SIL_1 through SIL_4 fields classify requirements as M / HR / R / NR / --
+per EN 50716:2023 Table A.1. M = Mandatory, HR = Highly Recommended,
+R = Recommended, NR = Not Recommended, -- = Not applicable at this level.
+
+Instructions for use:
+- UIDs follow convention: SP-xxx.
+- Replace every <...> placeholder with project-specific content.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+EN 50716 Applicability: <Full / Partial – state scope>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Quality Assurance Plan (SQAP)
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Quality Assurance Plan as required by
+EN 50716:2023, Clause 5.3.1. The SQAP defines the software lifecycle,
+documentation strategy, organisational structure, and personnel competence
+requirements that govern all software activities on this project.
+<<<
+
+[[SECTION]]
+TITLE: Software lifecycle definition
+
+[REQUIREMENT]
+UID: SP-010
+STATUS: Draft
+TITLE: Software lifecycle model
+STATEMENT: >>>
+The software shall be developed in accordance with a defined software lifecycle
+conforming to EN 50716:2023, Clause 5.3.2. The lifecycle comprises the following
+phases:
+
+  1. Software Requirements Specification
+  2. Software Architecture and Design
+  3. Software Component Design and Implementation
+  4. Software Component Testing
+  5. Software Integration and Integration Testing
+  6. Overall Software Testing (Validation)
+  7. Software Assessment (if required by the applicable CENELEC role)
+
+Each phase shall have documented entry criteria, activities, deliverables,
+and exit criteria. Phase completion shall be confirmed by a formal review
+before the subsequent phase commences.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3.2 – Software lifecycle.
+
+[REQUIREMENT]
+UID: SP-011
+STATUS: Draft
+TITLE: Software lifecycle deliverables
+STATEMENT: >>>
+The following documents shall be produced as software lifecycle deliverables
+and placed under configuration management:
+
+  - Software Quality Assurance Plan (this document, section 2)
+  - Software Planning Verification Report (this document, section 3)
+  - Software Configuration Management Plan (this document, section 4)
+  - Software Verification Plan (this document, section 5)
+  - Software Validation Plan (this document, section 6)
+  - Software Requirements Specification (SRS)
+  - Software Architecture Specification (SAS)
+  - Software Component Design Specification (SCDS)
+  - Software Component Test Specification and Report
+  - Software Integration Test Specification and Report
+  - Software Validation Report
+  - Problem Reporting and Resolution Records
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3.3 – Documentation requirements.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Organisation and independence of roles
+
+[REQUIREMENT]
+UID: SP-020
+STATUS: Draft
+TITLE: Organisational roles and responsibilities
+STATEMENT: >>>
+The following roles are defined for software activities in accordance with
+EN 50716:2023, Clause 5.1:
+
+Software Manager:
+  <Name>
+  Responsibilities: Overall software management; approval of lifecycle
+  deliverables; liaison with the system safety assessor and CENELEC assessor.
+
+Software Architect:
+  <Name>
+  Responsibilities: Software requirements specification; architecture design;
+  architecture verification.
+
+Software Developer(s):
+  <Name(s)>
+  Responsibilities: Component design, implementation, and unit testing.
+
+Software Verifier:
+  <Name / Organisation>
+  Responsibilities: Independent verification of requirements, design, code,
+  and test results at all lifecycle phases.
+
+Software Validator:
+  <Name / Organisation>
+  Responsibilities: Independent validation of the integrated software against
+  the software requirements specification.
+
+CENELEC Assessor (if applicable):
+  <Name / Organisation>
+  Responsibilities: Independent assessment of software activities and
+  deliverables per EN 50716:2023, Clause 5.1.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.1 – Organisation.
+
+[REQUIREMENT]
+UID: SP-021
+STATUS: Draft
+TITLE: Independence of the verifier
+STATEMENT: >>>
+The Software Verifier shall be independent of the development activities
+at the level required by the target SIL per EN 50716:2023, Clause 5.1:
+
+  SIL 1: The verifier shall be a different person from the author of the
+          artefact under review; independence within the same team is acceptable.
+
+  SIL 2: The verifier shall belong to a different group or team within the
+          same organisation.
+
+  SIL 3: The verifier shall be from an independent organisational unit with
+          no line-management authority over the development team.
+
+  SIL 4: The verifier shall be from a fully independent organisation.
+
+The designated Software Verifier for this project is: <Name / Organisation>.
+Independence evidence: <describe reporting lines and contractual separation>
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: M
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.1 – Independence of roles.
+
+[REQUIREMENT]
+UID: SP-022
+STATUS: Draft
+TITLE: Independence of the validator
+STATEMENT: >>>
+The Software Validator shall be independent of the development activities
+at the level required by the target SIL per EN 50716:2023, Clause 5.1.
+The same independence levels as SP-021 apply.
+
+The designated Software Validator for this project is: <Name / Organisation>.
+Independence evidence: <describe reporting lines and contractual separation>
+
+The validator shall not have participated in the design or implementation of
+the software under validation.
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: M
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.1 – Independence of roles.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Personnel competence
+
+[REQUIREMENT]
+UID: SP-030
+STATUS: Draft
+TITLE: Competence requirements for software roles
+STATEMENT: >>>
+All persons assigned to software safety activities shall possess competence
+appropriate to their role and to the target SIL, as required by
+EN 50716:2023, Clause 5.2. Competence shall be evidenced by:
+
+  a) Relevant education or professional qualifications in software engineering
+     or a related discipline.
+  b) Demonstrable experience in safety-related software development for
+     railway or equivalent high-integrity domains.
+  c) Knowledge of EN 50716:2023 and any applicable sector standards.
+  d) Familiarity with the tools and methods mandated by this plan.
+  e) Completion of project-specific induction and training.
+
+Competence records shall be maintained by the Software Manager and shall
+be available for review by the CENELEC assessor.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.2 – Personnel competence.
+
+[REQUIREMENT]
+UID: SP-031
+STATUS: Draft
+TITLE: Competence of the verifier and validator
+STATEMENT: >>>
+The Software Verifier and Software Validator shall additionally demonstrate:
+
+  a) Experience in performing independent software verification or validation
+     in railway or equivalent safety-critical domains.
+  b) Knowledge of applicable verification and validation techniques
+     (static analysis, test design, formal methods as appropriate to the SIL).
+  c) Independence from the development team as specified in SP-021 and SP-022.
+
+Assessors shall meet the competence requirements of EN 50716:2023, Clause 5.2,
+and any applicable national or operator requirements.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.2 – Personnel competence.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Documentation strategy
+
+[REQUIREMENT]
+UID: SP-040
+STATUS: Draft
+TITLE: Document control and traceability
+STATEMENT: >>>
+All software lifecycle documents shall be subject to document control
+per EN 50716:2023, Clause 5.3.3:
+
+  a) Each document shall carry a unique identifier, revision number, date,
+     author, and approval signature.
+  b) Changes to released documents shall follow the change control process
+     defined in SP-061.
+  c) Bidirectional traceability shall be maintained between:
+       - System requirements and software requirements.
+       - Software requirements and design artefacts.
+       - Design artefacts and source code.
+       - Source code and test cases.
+       - Test cases and test results.
+  d) Traceability evidence shall be included in the Software Validation Plan
+     and reported in the Software Validation Report.
+
+Document management system: <tool / shared drive reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3.3 – Documentation.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Planning Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Planning Verification Report as required
+by EN 50716:2023, Clause 5.3. The planning verification confirms that the
+planning documents are complete, consistent, and compliant with the standard
+before development activities commence.
+<<<
+
+[REQUIREMENT]
+UID: SP-050
+STATUS: Draft
+TITLE: Scope of planning verification
+STATEMENT: >>>
+The planning verification shall cover all planning documents produced for this
+project:
+
+  - Software Quality Assurance Plan (SQAP, section 2)
+  - Software Configuration Management Plan (SCMP, section 4)
+  - Software Verification Plan (SVP, section 5)
+  - Software Validation Plan (SValP, section 6)
+
+For each planning document, the verification shall check:
+
+  a) Compliance with the requirements of EN 50716:2023 Clause 5.3.
+  b) Internal consistency of the plan contents.
+  c) Consistency between the individual plans (e.g. the verification methods
+     in the SVP are supported by the tools listed in the SCMP).
+  d) Adequacy of the independence arrangements for the target SIL.
+  e) Completeness: all required plan elements are present.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Review, Inspection
+RATIONALE: EN 50716:2023, Clause 5.3 – Planning verification.
+
+[REQUIREMENT]
+UID: SP-051
+STATUS: Draft
+TITLE: Planning verification records
+STATEMENT: >>>
+The outcome of the planning verification shall be recorded and shall include:
+
+  - Date and revision of each planning document reviewed.
+  - Name and role of the verifier.
+  - List of findings and their severity.
+  - Action items raised, with reference to the action item register.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+Planning verification shall be conducted by the Software Verifier (SP-021).
+Development activities for which a plan is required shall not commence until
+the corresponding plan has been approved.
+
+Planning Verification Record reference: <document ID>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Review, Inspection
+RATIONALE: EN 50716:2023, Clause 5.3 – Planning verification.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Configuration Management Plan (SCMP)
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Configuration Management Plan as required
+by EN 50716:2023, Clause 5.3. The SCMP defines the strategy for identifying,
+controlling, recording, and auditing software configuration items throughout
+the lifecycle, and addresses change and modification control per Clause 6.6.
+<<<
+
+[REQUIREMENT]
+UID: SP-060
+STATUS: Draft
+TITLE: Configuration management system and items
+STATEMENT: >>>
+All software configuration items (SCIs) shall be managed using
+<version control system, e.g. Git>. The following items shall be
+placed under configuration management:
+
+  - Software source code and header files
+  - Build scripts, makefiles, and CI/CD pipeline definitions
+  - Software lifecycle documents (all sections of this package)
+  - Test cases, test scripts, and test data
+  - Tool qualification records and licences
+  - Problem reports and resolution records
+  - External libraries and third-party components
+
+Repository location:  <URL or path>
+Branching strategy:   <describe branching model>
+Access control:       <describe who may commit, review, and merge>
+Backup frequency:     <describe backup and recovery procedure>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3 – Configuration management.
+
+[REQUIREMENT]
+UID: SP-061
+STATUS: Draft
+TITLE: Change and modification control
+STATEMENT: >>>
+All changes to software configuration items after the initial baseline shall
+follow the change and modification control process defined in EN 50716:2023,
+Clause 6.6:
+
+  1. Change Request (CR) raised, assigned a unique identifier, and recorded.
+  2. Impact analysis performed: technical, safety, and schedule impact assessed.
+  3. Safety impact classification assigned: Safety-Critical / Non-Safety-Critical.
+  4. CR reviewed and approved by the Software Manager; safety-critical CRs
+     also reviewed by the Software Verifier.
+  5. Change implemented, tested, and verified in accordance with the SVP.
+  6. New software baseline created, documented, and released.
+  7. CR closed and resolution recorded.
+
+Regression testing scope shall be commensurate with the safety impact of the
+change.
+
+Change request tracking system: <tool / document reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 6.6 – Modification of software.
+
+[REQUIREMENT]
+UID: SP-062
+STATUS: Draft
+TITLE: Baseline management
+STATEMENT: >>>
+A software configuration baseline shall be established at the completion of
+each lifecycle phase and at each formal release. Each baseline shall be
+identified by:
+
+  - Unique baseline identifier (e.g. SW-BL-001)
+  - Date and the exact revision of each SCI included
+  - Reference to the phase exit review record or release note
+  - Hash or checksum of the released artefacts (where applicable)
+
+The software validation baseline shall be the sole basis for the released
+software product. Any deviation from the validated baseline shall be treated
+as a change under SP-061.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3 – Configuration management baselines.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Verification Plan (SVP)
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Verification Plan as required by
+EN 50716:2023, Clause 5.3. The SVP defines the scope, objectives, methods,
+and independence arrangements for software verification activities at each
+lifecycle phase.
+<<<
+
+[REQUIREMENT]
+UID: SP-070
+STATUS: Draft
+TITLE: Verification scope and objectives
+STATEMENT: >>>
+Software verification shall be performed at each lifecycle phase to confirm
+that the outputs of that phase are correct, complete, and consistent with
+the phase inputs. Verification shall cover:
+
+  Phase 1 – Requirements Verification:
+    Confirm the Software Requirements Specification is complete, unambiguous,
+    testable, and consistent with system requirements.
+
+  Phase 2 – Architecture Verification:
+    Confirm the software architecture satisfies safety requirements and is
+    amenable to the chosen design and testing methods.
+
+  Phase 3 – Component Verification:
+    Confirm detailed design is consistent with architecture; confirm source
+    code conforms to design and coding standard.
+
+  Phase 4 – Test Verification:
+    Confirm test specifications cover all requirements; confirm test results
+    are complete and correct.
+
+Verification activities and their results shall be documented in phase-specific
+Verification Reports.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3 – Software verification plan.
+
+[REQUIREMENT]
+UID: SP-071
+STATUS: Draft
+TITLE: Verification independence
+STATEMENT: >>>
+Verification activities shall be performed with independence from development
+activities at the level required by SP-021. The verifier shall not verify
+artefacts they authored.
+
+For SIL 3 and SIL 4, verification of safety-critical components shall be
+conducted using formal review (inspection or structured walk-through) with
+at least two independent participants in addition to the author.
+
+Verification records shall include the name and independence evidence for
+each verifier.
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: M
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.1 – Independence requirements.
+
+[REQUIREMENT]
+UID: SP-072
+STATUS: Draft
+TITLE: Verification methods
+STATEMENT: >>>
+The following verification methods shall be applied, selected according to
+the lifecycle phase and target SIL per EN 50716:2023, Table A.1:
+
+  Inspection:         Review of documents and artefacts against checklists.
+                      Applied at all phases and all SIL levels.
+
+  Walk-through:       Author-led structured review with independent
+                      participants. Applied at SIL 2 and above for
+                      architecture and design.
+
+  Formal review:      Structured inspection per defined procedure.
+                      Applied at SIL 3 and above for safety-critical items.
+
+  Static analysis:    Automated analysis of source code (coding standard
+                      compliance, control flow, data flow, metrics).
+                      Applied at SIL 2 and above.
+
+  Simulation:         Model-based or rapid-prototype verification of
+                      requirements or architecture behaviour.
+                      Applied where formal analysis is impractical.
+
+  Formal proof:       Mathematical proof of correctness for critical
+                      algorithms or properties.
+                      Applied at SIL 4 where HR or M per Table A.1.
+
+The selection and rationale for each method applied shall be documented in
+the phase verification report.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Table A.1 – Verification techniques.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Validation Plan (SValP)
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Validation Plan as required by
+EN 50716:2023, Clause 5.3. The SValP defines the scope, objectives,
+independence arrangements, and support tool strategy for software validation.
+<<<
+
+[REQUIREMENT]
+UID: SP-080
+STATUS: Draft
+TITLE: Validation scope and objectives
+STATEMENT: >>>
+Software validation shall confirm that the integrated software, on the target
+hardware or a representative test environment, satisfies the Software
+Requirements Specification and is fit for its intended railway application.
+
+Validation shall include:
+
+  a) Review of all lifecycle deliverables for completeness and consistency.
+  b) Confirmation of full bidirectional traceability from system requirements
+     to test evidence (as defined in SP-040).
+  c) Execution of the validation test suite defined in the Software Validation
+     Test Specification on the target or equivalent environment.
+  d) Evaluation of all open problem reports and confirmation that none remain
+     open that could affect safety or fitness for purpose.
+  e) Confirmation that all software lifecycle activities have been performed
+     in accordance with the applicable plans.
+
+Validation results shall be documented in the Software Validation Report.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.3 – Software validation plan.
+
+[REQUIREMENT]
+UID: SP-081
+STATUS: Draft
+TITLE: Validation independence
+STATEMENT: >>>
+Validation shall be performed with independence from development activities
+at the level required by SP-022. The validator shall not have authored the
+software requirements, design, or implementation being validated.
+
+The validation environment (hardware, operating system, communication
+interfaces) shall be representative of the operational target environment.
+Any deviations shall be documented and their impact on validity assessed.
+
+Validation environment description: <hardware platform, OS, interfaces>
+Deviations from operational environment: <none / list deviations>
+Impact assessment reference: <document ID or "N/A">
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: M
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 5.1 – Independence of validation.
+
+[REQUIREMENT]
+UID: SP-082
+STATUS: Draft
+TITLE: Support tools strategy
+STATEMENT: >>>
+Support tools used during software development, verification, and validation
+shall be managed in accordance with EN 50716:2023, Clause 6.7. Tools are
+classified as follows:
+
+  Class T1: Tool output is not used directly in the executable software and
+            tool errors cannot affect software safety.
+  Class T2: Tool validates requirements, design, or test results; errors
+            could cause an undetected unsafe failure.
+  Class T3: Tool output is included in the safety-related executable; errors
+            could directly cause a failure.
+
+Tool classification and qualification status:
+
+  Tool                      | Version   | Class | Qualification
+  --------------------------|-----------|-------|---------------------------
+  <Compiler>                | <x.y.z>   | T3    | Required – per Cl. 6.7
+  <Static analysis tool>    | <x.y.z>   | T2    | Required – per Cl. 6.7
+  <Test execution framework>| <x.y.z>   | T2    | Required – per Cl. 6.7
+  <Coverage measurement>    | <x.y.z>   | T2    | Required – per Cl. 6.7
+  <Model checker / prover>  | <x.y.z>   | T2    | Required – per Cl. 6.7
+  <Requirements tool>       | <x.y.z>   | T2    | Required – per Cl. 6.7
+  <Version control>         | <x.y.z>   | T1    | Not required
+
+T3 and T2 tools shall be qualified before use in safety-related activities.
+Qualification shall be performed using one or more of:
+  a) Vendor-supplied certificate of tool qualification.
+  b) Execution of a tool validation test suite against known inputs.
+  c) Cross-checking by a diverse independent tool.
+
+Tool qualification records shall be maintained under configuration management
+(SP-060) and referenced from the Software Validation Report.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 6.7 – Support tools.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 5.1 – Organisation.
+[3]  EN 50716:2023, Clause 5.2 – Personnel competence.
+[4]  EN 50716:2023, Clause 5.3 – Lifecycle issues and documentation.
+[5]  EN 50716:2023, Clause 6.6 – Modification of software.
+[6]  EN 50716:2023, Clause 6.7 – Support tools.
+[7]  EN 50716:2023, Table A.1 – Techniques and measures.
+[8]  <Document ID> – System Safety Requirements Specification.
+[9]  <Document ID> – Software Requirements Specification.
+[10] <Project-specific references>
+<<<
+
+[[/SECTION]]
