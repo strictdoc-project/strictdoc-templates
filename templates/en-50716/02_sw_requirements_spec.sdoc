@@ -1,0 +1,840 @@
+[DOCUMENT]
+TITLE: Software requirements specification
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Software Requirements Specification (SRS) phase
+for the software element of the railway control and protection system
+identified below. It is prepared in accordance with EN 50716:2023,
+Clause 7.2 (Software requirements), and collects three output deliverables
+from Table A.1:
+
+  6. Software Requirements Specification (SRS)
+  7. Overall Software Test Specification
+  8. Software Requirements Verification Report
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 values (BASIC=HR, SIL_1–4=HR) for document-level requirements
+  (docs 6 and 7) and technique requirements classified as HR.
+- Table A.1 values (BASIC=R, SIL_1–4=HR) for verification report
+  requirements (doc 8).
+- Table A.2 values (BASIC=R, SIL_1=R, SIL_2=R, SIL_3=HR, SIL_4=HR) for
+  specification techniques: modelling, structured methodology, decision tables.
+
+Instructions for use:
+- UIDs follow convention: SRS-xxx.
+- Replace every <...> placeholder with project-specific content.
+- SRS-020 and SRS-021 are sample functional requirement entries; duplicate
+  as needed for each software function and remove placeholders.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+System SRS Reference: <Document ID of System Safety Requirements Specification>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software requirements specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Requirements Specification (SRS) as
+required by EN 50716:2023, Clause 7.2. The SRS defines all functional,
+interface, performance, and constraint requirements on the software item,
+derived from system-level requirements and the operating environment.
+
+The SRS is the primary input to the Software Architecture Specification
+and to the Overall Software Test Specification (section 3 of this document).
+<<<
+
+[[SECTION]]
+TITLE: System context and software scope
+
+[REQUIREMENT]
+UID: SRS-010
+STATUS: Draft
+TITLE: System context and software boundary
+STATEMENT: >>>
+The software item addressed by this specification is:
+
+  Software item name:   <Software item name>
+  System:               <Railway control / protection system name>
+  Platform:             <Target hardware / processor>
+  Operating system:     <RTOS / bare-metal / OS name and version>
+  Programming language: <Language and applicable standard>
+
+The software item performs the following role in the railway system:
+  <Describe the safety and operational role of the software, e.g. "the
+  Vital Application Software (VAS) executes the interlocking logic that
+  controls train movements within the station area.">
+
+External interfaces (summarised; detailed in section 2.3):
+  - <Interface 1: e.g. field element controllers via a proprietary fieldbus>
+  - <Interface 2: e.g. control centre supervisory system via TCP/IP>
+  - <Interface 3: e.g. adjacent interlocking via a safety-critical link>
+
+Known assumptions and exclusions:
+  - <Assumption 1>
+  - <Exclusion 1: what is out of scope of this software item>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2.2 – Software requirements scope.
+
+[REQUIREMENT]
+UID: SRS-011
+STATUS: Draft
+TITLE: Software SIL classification and applicability
+STATEMENT: >>>
+The safety integrity level applicable to this software item is: SIL <n>.
+
+The SIL has been derived from the system hazard and risk analysis in
+accordance with EN 50716:2023, Clause 4 (system level) and is documented
+in: <Reference to system RAMS / hazard analysis document>.
+
+The following software components are classified at the stated SIL:
+  - <Component / module name>: SIL <n>
+  - <Component / module name>: Non-safety (SIL 0)
+
+Non-safety components that interface with safety components shall be treated
+as potential sources of common cause failure and shall be subject to the
+interface requirements in section 2.3.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2.2 – SIL applicability.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Functional requirements
+
+[TEXT]
+STATEMENT: >>>
+Functional requirements are derived from the system safety requirements
+specification and from operational needs. Safety-related requirements are
+identified by their traceability to a system safety function. Each requirement
+shall be unambiguous, complete, verifiable, and consistent with all other
+requirements in this specification.
+
+Duplicate the sample entries SRS-020 and SRS-021 for each function;
+remove placeholder text and populate with project-specific content.
+<<<
+
+[REQUIREMENT]
+UID: SRS-020
+STATUS: Draft
+TITLE: <Safety-related function 1 – short name>
+STATEMENT: >>>
+The software shall <describe the required behaviour: what the software
+monitors, the logic applied, and the resulting action or output>.
+
+Input signals / data:
+  - <Input 1>: <type, range, source>
+  - <Input 2>: <type, range, source>
+
+Output signals / data:
+  - <Output 1>: <type, range, destination>
+  - <Output 2>: <type, range, destination>
+
+Response time:    < <value> ms from detection of <trigger> to <output>.
+Safe output state: <define the output state on detected failure or loss of input>
+Fail-safe behaviour: <describe what the software does when a failure is detected>
+
+Traceability: derived from system requirement <System-SRS-xxx>.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Clause 7.2 – Software requirements.
+
+[REQUIREMENT]
+UID: SRS-021
+STATUS: Draft
+TITLE: <Non-safety function 1 – short name>
+STATEMENT: >>>
+The software shall <describe the required non-safety behaviour>.
+
+Input signals / data:
+  - <Input 1>: <type, range, source>
+
+Output signals / data:
+  - <Output 1>: <type, range, destination>
+
+Performance constraints: <if any>
+Note: this function is classified non-safety (SIL 0). Any failure of this
+function shall not compromise the safety-related functions listed above.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 – Software requirements.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Interface requirements
+
+[REQUIREMENT]
+UID: SRS-030
+STATUS: Draft
+TITLE: Software/hardware interface requirements
+STATEMENT: >>>
+The software shall interface with the following hardware components.
+Each interface shall be fully specified including signal types, electrical
+characteristics, timing, and error handling.
+
+  Interface     | HW component         | Type        | Protocol / standard
+  --------------|----------------------|-------------|---------------------
+  <IF-HW-01>    | <e.g. CPU watchdog>  | Digital out | <WDT register write>
+  <IF-HW-02>    | <e.g. I/O module>    | Digital I/O | <e.g. SPI, I²C>
+  <IF-HW-03>    | <e.g. NV memory>     | R/W         | <e.g. SPI flash>
+  <IF-HW-04>    | <e.g. comms ASIC>    | Serial      | <e.g. UART>
+
+For each interface, the software shall:
+  a) Initialise the hardware before use and verify correct initialisation.
+  b) Detect and report communication faults within <n> ms.
+  c) Apply the defined safe state on detected hardware failure.
+  d) Handle all error responses defined in the hardware specification.
+
+Hardware specification reference: <document ID>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 – Interface requirements.
+
+[REQUIREMENT]
+UID: SRS-031
+STATUS: Draft
+TITLE: Software/software interface requirements
+STATEMENT: >>>
+The software item shall exchange data with the following software components
+or tasks. All interfaces shall be defined in terms of data structure, timing,
+and error handling.
+
+  Interface     | Remote SW component  | Direction   | Data / protocol
+  --------------|----------------------|-------------|---------------------
+  <IF-SW-01>    | <Vital kernel>       | Bidirect.   | <Shared memory / API>
+  <IF-SW-02>    | <Diagnostics module> | Output      | <Log record struct>
+  <IF-SW-03>    | <Comms driver>       | Bidirect.   | <Message queue>
+
+For safety-critical inter-component interfaces:
+  a) Data consistency shall be guaranteed (e.g. by mutual exclusion or
+     double-buffer mechanisms).
+  b) Stale or missing data shall be detected and handled within <n> ms.
+  c) The API contract (preconditions, postconditions) shall be formally
+     specified or verified by the supplier of each component.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: EN 50716:2023, Clause 7.2 – Interface requirements.
+
+[REQUIREMENT]
+UID: SRS-032
+STATUS: Draft
+TITLE: External interface requirements
+STATEMENT: >>>
+The software shall communicate with the following external systems via
+defined communication links.
+
+  Interface     | External system         | Protocol            | SIL/safety
+  --------------|-------------------------|---------------------|------------
+  <IF-EXT-01>   | <Control centre>        | <e.g. IEC 60870-5>  | Non-safety
+  <IF-EXT-02>   | <Adjacent interlocking> | <e.g. RSSP-I>       | SIL <n>
+  <IF-EXT-03>   | <Train detection>       | <e.g. proprietary>  | SIL <n>
+
+For safety-critical external interfaces, the software shall:
+  a) Implement the error-detection and error-correction mechanisms defined
+     by the applicable communication protocol standard.
+  b) Detect loss of communication within <n> ms and apply the defined
+     safe state.
+  c) Authenticate the source of safety-critical messages (if required by
+     the protocol or by the hazard analysis).
+
+Communication protocol specifications: <document IDs>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 – Interface requirements.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Performance and timing requirements
+
+[REQUIREMENT]
+UID: SRS-040
+STATUS: Draft
+TITLE: Processing performance requirements
+STATEMENT: >>>
+The software shall execute within the following performance constraints
+under worst-case load and environmental conditions:
+
+  Parameter                | Limit          | Applies to
+  -------------------------|----------------|-----------------------------
+  Cyclic execution time     | < <n> ms       | All safety-critical tasks
+  CPU utilisation (average) | < <n> %        | System under full operational load
+  CPU utilisation (peak)    | < <n> %        | Transient peak
+  Stack usage               | < <n> % of max | Per-task stack depth
+  Memory usage (RAM)        | < <n> %        | Static + dynamic allocation
+  Memory usage (ROM/flash)  | < <n> %        | Code + read-only data
+
+Performance shall be verified on the target hardware by measurement under
+the worst-case operational scenario defined in the test specification.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Clause 7.2 – Software requirements.
+
+[REQUIREMENT]
+UID: SRS-041
+STATUS: Draft
+TITLE: Timing and response time requirements
+STATEMENT: >>>
+The software shall meet the following timing requirements, derived from
+the system-level timing analysis.
+
+  Function / event                | Required response time | Reference
+  --------------------------------|------------------------|------------------
+  <Safety function 1 response>    | < <n> ms               | System-SRS-<xxx>
+  <Safety function 2 response>    | < <n> ms               | System-SRS-<xxx>
+  <Watchdog refresh period>       | Every <n> ms           | HW spec §<n>
+  <External comms cycle>          | < <n> ms               | IF-EXT-<xx>
+
+All timing requirements shall be verified by worst-case execution time
+(WCET) analysis and confirmed by testing on target hardware. The WCET
+analysis method and tool shall be specified in the Software Verification Plan.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+RATIONALE: EN 50716:2023, Clause 7.2 – Software requirements.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Constraints and standards
+
+[REQUIREMENT]
+UID: SRS-050
+STATUS: Draft
+TITLE: Applicable standards and regulatory constraints
+STATEMENT: >>>
+The software shall be developed in compliance with the following standards
+and constraints, as mandated by the applicable national rules, customer
+requirements, and this project's SQAP:
+
+  Standard / regulation              | Applicability
+  -----------------------------------|-------------------------------------------
+  EN 50716:2023                      | Software lifecycle and safety management
+  EN 50128:2011 (if contractual)     | <Yes / No – state if dual compliance required>
+  <National railway technical rule>  | <e.g. NeTEx / national ERTMS supplement>
+  <Customer-specific standard>       | <document ID>
+  <Coding standard, e.g. MISRA C>    | Source code compliance
+  <Communication protocol standard>  | As referenced in SRS-032
+
+Deviations from any mandatory standard shall be documented, justified,
+and approved per the change control process defined in the SQAP.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 – Software requirements.
+
+[REQUIREMENT]
+UID: SRS-051
+STATUS: Draft
+TITLE: Programming and environment constraints
+STATEMENT: >>>
+The following constraints apply to the programming environment and shall
+be carried forward as requirements into the Software Architecture
+Specification:
+
+  a) Programming language: <Language, version, and applicable standard>
+  b) Compiler / tool chain: <Vendor, version — subject to tool qualification
+     per SQAP section 5.6 (SP-082)>
+  c) Memory model: <flat / segmented; static allocation only after init>
+  d) Concurrency model: <single-task / RTOS scheduler; list tasks>
+  e) Prohibited language features:
+       - Dynamic memory allocation after system initialisation
+       - Unbounded recursion
+       - Implementation-defined or undefined behaviour
+       - <Additional project-specific prohibitions>
+  f) Floating-point arithmetic: <Permitted / Prohibited — if permitted,
+     state rounding and precision requirements>
+  g) Third-party libraries: <List permitted libraries and version identifiers;
+     state tool-qualification status for each>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 – Software requirements.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Requirements specification methods
+
+[REQUIREMENT]
+UID: SRS-060
+STATUS: Draft
+TITLE: Requirements modelling
+STATEMENT: >>>
+Formal or semi-formal modelling shall be used to describe the functional
+behaviour of safety-related requirements where textual description alone
+is insufficient for unambiguous specification. Applicable modelling
+notations include:
+
+  - State machines (e.g. UML state charts, SDL)
+  - Data flow diagrams
+  - Petri nets or timed automata (for timing-critical behaviour)
+  - <Project-specific modelling notation>
+
+Models shall be:
+  a) Consistent with the textual requirements in this specification.
+  b) Subject to the same document control as the SRS.
+  c) Verified against system-level requirements (SRS-063).
+  d) Traceable to the design elements they constrain.
+
+Modelling tool: <tool name and version>
+<<<
+BASIC: R
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.2 – Modelling.
+
+[REQUIREMENT]
+UID: SRS-061
+STATUS: Draft
+TITLE: Structured specification methodology
+STATEMENT: >>>
+A structured methodology shall be applied to the derivation and
+organisation of software requirements from system-level inputs. The
+methodology shall ensure:
+
+  a) Systematic decomposition of system functions into software functions.
+  b) Identification and explicit documentation of all safety-related
+     requirements as distinct from non-safety requirements.
+  c) Consistency checks between requirements at each decomposition level.
+  d) Review of requirements for completeness, testability, and
+     freedom from ambiguity before baseline.
+
+Methodology applied: <e.g. SADT / IDEF0 / structured analysis / EARS>
+Reference: <methodology document or standard>
+<<<
+BASIC: R
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.2 – Structured methodology.
+
+[REQUIREMENT]
+UID: SRS-062
+STATUS: Draft
+TITLE: Decision tables for complex logic
+STATEMENT: >>>
+Decision tables shall be used to specify functional behaviour wherever
+multiple input conditions determine the output, to ensure completeness
+and freedom from ambiguity. Decision tables shall:
+
+  a) Cover all combinations of input conditions relevant to safety.
+  b) Specify the required output or action for each combination.
+  c) Explicitly address the "don't care" and default cases.
+  d) Be reviewed for consistency and completeness before baseline.
+
+Decision tables form part of the SRS baseline and shall be subject to
+the same version control and verification as the textual requirements.
+
+Example table structure:
+  Condition 1 | Condition 2 | Condition 3 | Required output
+  ------------|-------------|-------------|------------------
+  True        | True        | Any         | <output A>
+  True        | False       | True        | <output B>
+  ...         | ...         | ...         | ...
+<<<
+BASIC: R
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.2 – Decision tables.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Requirements verification method
+
+[REQUIREMENT]
+UID: SRS-063
+STATUS: Draft
+TITLE: Requirements verification approach
+STATEMENT: >>>
+All software requirements in this specification shall be verified against
+the system-level requirements in accordance with EN 50716:2023, Clause 7.2,
+and the Software Verification Plan (SP-070). Verification shall confirm:
+
+  a) Completeness: all system safety functions have been addressed in the SRS.
+  b) Consistency: no conflicting requirements exist within the SRS or between
+     the SRS and the system-level specification.
+  c) Correctness: each requirement accurately reflects the system-level intent.
+  d) Testability: each requirement can be verified by inspection, analysis,
+     simulation, or test (as specified in the VERIFICATION_METHOD field).
+  e) Traceability: each SRS requirement traces to at least one system
+     requirement and to at least one test case in the Overall Software
+     Test Specification (section 3).
+
+Verification shall be conducted using the techniques specified in SRS-060
+through SRS-062, and formally reviewed by the Software Verifier (SP-021)
+before the SRS is baselined.
+
+Verification report reference: section 4 of this document (SRS-080, SRS-081).
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.2 – Requirements verification.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Overall software test specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Overall Software Test Specification as required
+by EN 50716:2023, Clause 7.2 and Table A.1 (document 7). The test specification
+defines the strategy, environment, and coverage objectives for testing the
+software against the requirements of section 2. Detailed test cases are recorded
+in individual test records and referenced from the Software Validation Report.
+<<<
+
+[[SECTION]]
+TITLE: Test strategy and scope
+
+[REQUIREMENT]
+UID: SRS-070
+STATUS: Draft
+TITLE: Software test strategy
+STATEMENT: >>>
+The software test strategy for this project comprises four test levels,
+executed in the order stated:
+
+  Level 1 – Software component testing (unit testing):
+    Scope: individual software components / modules.
+    Objective: verify each component against its component specification.
+    Technique: structural testing (coverage objectives per SRS-073).
+    Responsibility: <Software Developer / Verifier>.
+
+  Level 2 – Software integration testing:
+    Scope: integrated software modules on host or target.
+    Objective: verify correct interaction between components and with
+    the software/hardware interface (SRS-030, SRS-031).
+    Technique: interface testing, error injection.
+    Responsibility: <Software Verifier>.
+
+  Level 3 – Software/hardware integration testing:
+    Scope: integrated software on target hardware.
+    Objective: verify software behaviour in the hardware environment,
+    including timing (SRS-040, SRS-041) and HW interfaces (SRS-030).
+    Technique: functional testing, timing measurement.
+    Responsibility: <Software Verifier>.
+
+  Level 4 – Software validation testing (overall software testing):
+    Scope: complete software item on target or representative environment.
+    Objective: verify all SRS requirements (section 2) are satisfied.
+    Technique: black-box functional testing, requirements-based testing.
+    Responsibility: <Software Validator (SP-081)>.
+
+Exit criteria for each level shall be defined in the corresponding test
+specification and reported in the phase verification report.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 and Table A.1, doc 7 – Overall software test specification.
+
+[REQUIREMENT]
+UID: SRS-071
+STATUS: Draft
+TITLE: Test scope and requirements traceability
+STATEMENT: >>>
+The test scope shall cover all software requirements specified in section 2
+of this document. A requirements-to-test traceability matrix shall be
+maintained and shall demonstrate:
+
+  a) Every functional requirement (SRS-020 series) is addressed by at
+     least one test case at Level 4 (validation testing).
+  b) Every interface requirement (SRS-030 series) is addressed by at
+     least one test case at Level 2 or Level 3.
+  c) Every performance and timing requirement (SRS-040 series) is addressed
+     by at least one measurement at Level 3 or Level 4.
+  d) Traceability from each test case back to the requirement(s) it verifies.
+
+Requirements not covered by dynamic testing shall be verified by analysis
+or inspection, with the method and rationale recorded in the traceability
+matrix.
+
+Traceability matrix location: <document ID or tool reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 – Requirements traceability.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test environment
+
+[REQUIREMENT]
+UID: SRS-072
+STATUS: Draft
+TITLE: Test environment definition
+STATEMENT: >>>
+The test environment for each test level shall be defined before testing
+commences and shall be documented in the applicable test specification.
+
+  Test level | Hardware                  | SW configuration          | Stimuli source
+  -----------|---------------------------|---------------------------|------------------
+  Level 1    | <Host PC / CI server>     | <Unit test framework>     | <Automated / manual>
+  Level 2    | <Host or target board>    | <Integrated modules>      | <Test harness>
+  Level 3    | <Target hardware>         | <Full SW, HW interfaces>  | <Test equipment>
+  Level 4    | <Target or HIL rig>       | <Release candidate>       | <Test specification>
+
+For safety-related test levels (Level 3 and Level 4), the test environment
+shall be qualified and its qualification records maintained under
+configuration management (SQAP, SP-060).
+
+Deviations of the test environment from the operational target environment
+shall be documented, assessed for impact on test validity, and approved
+by the Software Validator before test execution.
+
+HIL / simulation rig specification: <document ID or "not applicable">
+Test equipment calibration records: <reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.2 and Table A.1, doc 7 – Test environment.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test coverage objectives
+
+[REQUIREMENT]
+UID: SRS-073
+STATUS: Draft
+TITLE: Test coverage objectives
+STATEMENT: >>>
+Structural test coverage shall be measured for all safety-related software
+components and shall meet the following minimum objectives, in accordance
+with EN 50716:2023, Table A.21:
+
+  SIL 1:  Statement coverage (SC): 100 % of executable statements.
+  SIL 2:  Branch coverage (BC): 100 % of branches (decision coverage).
+  SIL 3:  Branch coverage (BC): 100 %; Modified Condition / Decision
+          Coverage (MC/DC): HR – apply to safety-critical modules.
+  SIL 4:  MC/DC: 100 % of safety-critical modules.
+
+In addition, requirements-based test coverage shall demonstrate that every
+software requirement in section 2 is exercised by at least one test case
+at Level 4 (SRS-071).
+
+Coverage measurement tool: <tool name and version – subject to tool
+qualification per SP-082>
+
+Residual coverage gaps (statements / branches not achievable by dynamic
+test) shall be justified and supplemented by static analysis or inspection,
+with evidence recorded in the Software Validation Report.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+RATIONALE: EN 50716:2023, Table A.21 – Test coverage.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software requirements verification report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Requirements Verification Report as
+required by EN 50716:2023, Clause 7.2 and Table A.1 (document 8). It records
+the outcome of the independent verification of the Software Requirements
+Specification (section 2) and the Overall Software Test Specification
+(section 3) before those documents are baselined.
+<<<
+
+[REQUIREMENT]
+UID: SRS-080
+STATUS: Draft
+TITLE: Verification scope and method
+STATEMENT: >>>
+The verification of the SRS and the Overall Software Test Specification
+shall cover:
+
+  a) Compliance with EN 50716:2023, Clause 7.2 requirements.
+  b) Completeness and correctness of all requirements in section 2 relative
+     to the system-level specification (<System SRS reference>).
+  c) Internal consistency of the SRS: no conflicting or duplicate requirements.
+  d) Adequacy of interface definitions (SRS-030 to SRS-032).
+  e) Correctness of the modelling and decision tables (SRS-060 to SRS-062).
+  f) Completeness and adequacy of the test strategy and coverage objectives
+     (SRS-070 to SRS-073): every SRS requirement has at least one test case.
+  g) Adequacy of independence arrangements for the target SIL (SP-021).
+
+Verification method: structured inspection by the Software Verifier (SP-021)
+using a checklist derived from EN 50716:2023, Clause 7.2 requirements.
+
+Checklist reference: <document ID or tool reference>
+Verifier: <Name, Organisation, independence evidence>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.2 and Table A.1, doc 8 – SRS verification report.
+
+[REQUIREMENT]
+UID: SRS-081
+STATUS: Draft
+TITLE: Verification records and verdict
+STATEMENT: >>>
+The Software Requirements Verification Report shall include:
+
+  - Date and revision of the SRS and test specification reviewed.
+  - Name and role of the verifier and independence evidence.
+  - Checklist results: each checklist item marked Pass / Fail / N/A
+    with observations.
+  - List of findings: unique identifier, description, severity
+    (Critical / Major / Minor / Observation), and status.
+  - Action items raised, with reference to the action item register.
+  - Resolution evidence for all Critical and Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+The SRS shall not be baselined and the subsequent design phase shall not
+commence until the verification report records an Approved verdict.
+
+Verification Report reference: <document ID>
+Verdict: <to be completed upon review>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.2 and Table A.1, doc 8 – SRS verification report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 7.2 – Software requirements.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.2 – Techniques and measures (requirements methods).
+[5]  EN 50716:2023, Table A.21 – Techniques and measures (test coverage).
+[6]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[7]  <Document ID> – System Safety Requirements Specification.
+[8]  <Document ID> – Hardware Specification / Platform Technical Manual.
+[9]  <Document ID> – Communication protocol specification(s).
+[10] <Project-specific references>
+<<<
+
+[[/SECTION]]
