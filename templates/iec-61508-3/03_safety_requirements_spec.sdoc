@@ -82,7 +82,6 @@ UID: SRS-010
 STATUS: Draft
 TITLE: <Safety Function 1 name>
 STATEMENT: >>>
-SAFETY_FUNCTION: SF-1
 The <system name> shall perform <describe the safety function: action> upon
 detection of <describe the initiating condition / process demand> within
 <response time> milliseconds, bringing the EUC to the safe state defined as
@@ -93,6 +92,7 @@ Target failure measure: PFH < <value> h⁻¹ (continuous mode) /
                          PFD_avg < <value> (demand mode)
 Proof test interval: <value> hours (if applicable)
 <<<
+SAFETY_FUNCTION: SF-1
 SIL_1: HR
 SIL_2: HR
 SIL_3: HR
@@ -111,12 +111,12 @@ UID: SRS-011
 STATUS: Draft
 TITLE: <Safety Function 2 name>
 STATEMENT: >>>
-SAFETY_FUNCTION: SF-2
 The <system name> shall <describe safety function 2>.
 
 Required SIL: <SIL x>
 Target failure measure: PFH < <value> h⁻¹
 <<<
+SAFETY_FUNCTION: SF-2
 SIL_1: HR
 SIL_2: HR
 SIL_3: HR
