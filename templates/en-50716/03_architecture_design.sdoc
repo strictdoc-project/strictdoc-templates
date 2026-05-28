@@ -1,0 +1,1189 @@
+[DOCUMENT]
+TITLE: Software architecture and design
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Architecture and Design phase for the software
+element of the railway control and protection system identified below.
+It is prepared in accordance with EN 50716:2023, Clause 7.3 (Architecture
+and design), and collects six output deliverables from Table A.1:
+
+   9. Software Architecture Specification
+  10. Software Design Specification
+  11. Software Interface Specifications
+  12. Software Integration Test Specification
+  13. Software/Hardware Integration Test Specification
+  14. Software Architecture and Design Verification Report
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (doc 9, 10, 12, 13, 14): BASIC=R, SIL_1–4=HR.
+- Table A.1 (doc 11, interface specifications): BASIC=HR, SIL_1–4=HR.
+- Table A.3 (architecture techniques): values vary per technique.
+- Table A.4 (design and implementation techniques): values vary per technique.
+
+Instructions for use:
+- UIDs follow convention: SAD-xxx (requirements) and SWIT-xxx / HWIT-xxx
+  (integration test cases).
+- Duplicate SAD-050/051/052 for each software module.
+- Duplicate SWIT-001/HWIT-001 entries for each integration test case.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+SRS Reference:        <Document ID of Software Requirements Specification>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Architecture Specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Architecture Specification (SAS) as
+required by EN 50716:2023, Clause 7.3 and Table A.1 (document 9). The SAS
+defines the top-level structure of the software, the allocation of requirements
+to components, the data and control flows, and the architectural techniques
+applied to achieve the required safety integrity level.
+
+The SAS is the primary input to the Software Design Specification (section 3)
+and to the Software Interface Specifications (section 4).
+<<<
+
+[[SECTION]]
+TITLE: Architectural overview and decomposition
+
+[REQUIREMENT]
+UID: SAD-010
+STATUS: Draft
+TITLE: Architecture overview and partitioning
+STATEMENT: >>>
+The software shall be structured as a <layered / component-based /
+partition-based> architecture comprising the following top-level partitions:
+
+  Partition                  | SIL   | Responsibility
+  ---------------------------|-------|------------------------------------------
+  <Safety kernel>            | SIL n | <Core safety logic, output commands>
+  <Application layer>        | SIL n | <Function-specific application logic>
+  <HW abstraction layer>     | SIL n | <Device drivers, BSP>
+  <Diagnostics & monitoring> | SIL n | <Built-in self-test, health monitoring>
+  <Non-safety services>      | SIL 0 | <Logging, HMI, maintenance interface>
+
+Freedom from interference between SIL partitions and between safety and
+non-safety partitions shall be demonstrated by analysis or test. The analysis
+method is described in: <document ID or section reference>.
+
+Architecture diagram reference: <figure number or attached diagram>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 9 – Software Architecture Specification.
+
+[REQUIREMENT]
+UID: SAD-011
+STATUS: Draft
+TITLE: Architectural decomposition into modules
+STATEMENT: >>>
+The software architecture shall be decomposed into a defined set of modules.
+Each module shall have:
+  a) A unique name and identifier.
+  b) A single, well-defined responsibility (single-responsibility principle).
+  c) Clearly specified inputs, outputs, and dependencies.
+  d) An assigned SIL classification consistent with the functions it implements.
+
+Module decomposition:
+
+  Module ID | Module name              | SIL   | Depends on
+  ----------|--------------------------|-------|------------------
+  <MOD-01>  | <Safety kernel>          | SIL n | <MOD-03, MOD-04>
+  <MOD-02>  | <Application logic>      | SIL n | <MOD-01>
+  <MOD-03>  | <HW abstraction>         | SIL n | <none>
+  <MOD-04>  | <Communication stack>    | SIL n | <MOD-03>
+  <MOD-05>  | <Diagnostics>            | SIL n | <MOD-03>
+  <MOD-06>  | <Non-safety services>    | SIL 0 | <MOD-03>
+
+Coupling between modules shall be minimised and restricted to well-defined
+interfaces (see section 4). No direct access to the internal state of another
+module is permitted. Cohesion within each module shall be maximised.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 9 – Software Architecture Specification.
+
+[REQUIREMENT]
+UID: SAD-012
+STATUS: Draft
+TITLE: Structured methodology for architecture design
+STATEMENT: >>>
+The software architecture shall be derived from the SRS using a defined
+structured methodology that ensures systematic coverage of all requirements.
+
+Methodology applied: <e.g. SADT / IDEF0 / UML / EAST-ADL / SA-SD>
+Reference document:  <methodology guide or standard>
+
+The methodology shall provide:
+  a) A top-down, systematic derivation of the software structure from the
+     SRS functional and interface requirements.
+  b) Documented design decisions with rationale, including rejected
+     alternatives and their justification.
+  c) Traceability from each architectural element to the SRS requirement(s)
+     it satisfies.
+  d) A defined architecture review checkpoint (see SAD-090) before detailed
+     design commences.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.3 – Structured methodology.
+
+[REQUIREMENT]
+UID: SAD-013
+STATUS: Draft
+TITLE: Architecture modelling
+STATEMENT: >>>
+Architectural models shall be used to describe the software structure and
+behaviour at the component level. The following modelling notations shall
+be applied as appropriate to the design:
+
+  - Component and connector diagrams (e.g. UML component or SysML BDD/IBD)
+    showing modules, interfaces, and data flows.
+  - Deployment diagrams showing the mapping of software to hardware.
+  - State machine diagrams for modules with complex reactive behaviour.
+  - Sequence / timing diagrams for safety-critical interaction sequences.
+
+Models shall be:
+  a) Consistent with the textual architecture description in SAD-010/SAD-011.
+  b) Subject to the same version control as the SAS.
+  c) Verified for consistency with the SRS (SAD-090).
+  d) Used as input to detailed design (section 3) and interface specifications
+     (section 4).
+
+Modelling tool: <tool name and version>
+<<<
+BASIC: R
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.3 – Modelling.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data flow and control flow
+
+[REQUIREMENT]
+UID: SAD-020
+STATUS: Draft
+TITLE: Data flow specification
+STATEMENT: >>>
+The architecture shall define all data exchanged between software modules.
+A data dictionary shall be maintained as part of the SAS baseline and shall
+specify for each data item:
+
+  Data item        | Type   | Range / valid values | Producer  | Consumer(s)
+  -----------------|--------|----------------------|-----------|---------------
+  <DataItem_1>     | <type> | <min..max / enum>    | <MOD-01>  | <MOD-02>
+  <DataItem_2>     | <type> | <min..max / enum>    | <MOD-03>  | <MOD-01>
+
+Shared data accessed by more than one task shall be identified and a mutual
+exclusion mechanism specified (e.g. disabling of interrupts, semaphore,
+double-buffer copy). The mechanism shall be described in SAD-021.
+
+Data flow across partition boundaries (safety to non-safety or vice versa)
+shall be explicitly identified and the measures taken to prevent interference
+shall be described.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Clause 7.3 – Architecture and design.
+
+[REQUIREMENT]
+UID: SAD-021
+STATUS: Draft
+TITLE: Control flow and task scheduling
+STATEMENT: >>>
+The architecture shall define the control flow structure of the software,
+including the task model and scheduling policy. The following shall be
+specified:
+
+  Task name       | Type        | Period / trigger | Priority | Stack (bytes)
+  ----------------|-------------|------------------|----------|---------------
+  <Safety_Task>   | Cyclic      | <n> ms           | Highest  | <n>
+  <Comms_Task>    | Event       | <message recv>   | High     | <n>
+  <Diag_Task>     | Cyclic      | <n> ms           | Medium   | <n>
+  <NonSafety_Task>| Background  | Idle             | Lowest   | <n>
+
+Scheduling policy: <fixed-priority preemptive / cooperative / rate-monotonic>
+RTOS / kernel: <name, version>
+
+Critical regions protecting shared data (from SAD-020) shall be identified
+and their maximum duration bounded. The impact on worst-case response times
+for higher-priority tasks shall be analysed (priority inversion analysis).
+Interrupt latency and interrupt service routine (ISR) execution time shall
+be bounded and documented.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Clause 7.3 – Architecture and design.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Error handling and fault tolerance
+
+[TEXT]
+STATEMENT: >>>
+The following requirements specify the fault-tolerance and error-handling
+techniques to be applied in the software architecture, per EN 50716:2023,
+Table A.3. The techniques are selected and applied according to the target SIL.
+<<<
+
+[REQUIREMENT]
+UID: SAD-030
+STATUS: Draft
+TITLE: Defensive programming
+STATEMENT: >>>
+Defensive programming techniques shall be applied at all module boundaries
+and at all external interfaces (SRS-030 to SRS-032). The following measures
+shall be implemented:
+
+  a) Input validation: all inputs received from external sources, other modules,
+     or hardware shall be range-checked and plausibility-checked before use.
+  b) Return-value checking: return values and error codes from all function
+     and API calls shall be checked; unexpected values shall be handled.
+  c) No assumption about caller behaviour: each module shall enforce its own
+     preconditions rather than relying on callers to guarantee them.
+  d) Initialisation: all variables, buffers, and data structures shall be
+     explicitly initialised to a defined safe value before use.
+  e) Safe defaults: in the absence of valid input, the module shall adopt
+     the defined safe state (SRS-020 series, fail-safe behaviour field).
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.3 – Defensive programming.
+
+[REQUIREMENT]
+UID: SAD-031
+STATUS: Draft
+TITLE: Fault detection and diagnosis
+STATEMENT: >>>
+The software architecture shall incorporate mechanisms for detecting and
+diagnosing faults at runtime. The following shall be specified and implemented:
+
+  a) Built-in self-test (BIST): a self-test sequence shall be executed at
+     startup and, where feasible, periodically during operation. The BIST
+     shall cover: RAM check, ROM/flash CRC check, CPU register check, and
+     <project-specific checks>.
+  b) Runtime monitoring: the safety kernel shall monitor the execution time
+     and sequence of safety-critical tasks; deviations shall trigger a
+     safe-state transition.
+  c) Diagnostic coverage objective: <state the target DC, e.g. ≥ 90 % for
+     SIL 3; the diagnostic coverage shall be estimated during design and
+     confirmed by analysis>.
+  d) Fault logging: detected faults shall be logged to non-volatile storage
+     with a timestamp, fault code, and context data.
+
+Diagnostic architecture reference: <module / document section>
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Table A.3 – Fault detection and diagnosis.
+
+[REQUIREMENT]
+UID: SAD-032
+STATUS: Draft
+TITLE: Error detecting codes
+STATEMENT: >>>
+Error detecting codes shall be applied to protect safety-critical data
+from corruption due to hardware faults, memory errors, or communication
+errors. The following shall be specified:
+
+  a) Memory integrity: CRC-<n> or equivalent shall be applied to ROM/flash
+     code and data images; checked at startup (BIST) and cyclically during
+     operation at interval < <n> ms.
+  b) RAM integrity: a defined pattern (e.g. walk-bit test or checkerboard)
+     shall be applied to safety-critical RAM areas; interval < <n> ms.
+  c) Communication data integrity: all safety-critical messages exchanged
+     via external interfaces (SRS-032) shall carry a CRC or safety code
+     defined by the applicable communication protocol.
+  d) Inter-module data integrity: where safety-critical data is passed via
+     shared memory between modules, an integrity check (CRC or inverted copy)
+     shall be applied.
+
+Error detecting code specifications: <document / section reference>
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: EN 50716:2023, Table A.3 – Error detecting codes.
+
+[REQUIREMENT]
+UID: SAD-033
+STATUS: Draft
+TITLE: Failure assertion programming
+STATEMENT: >>>
+Assertion-based programming shall be used throughout the safety-critical
+software to document and enforce invariants. Assertions shall be:
+
+  a) Placed at the preconditions and postconditions of all safety-critical
+     functions (pre/post assertions).
+  b) Placed at key state transitions to verify that the system state is
+     consistent with expectations (state invariant assertions).
+  c) Always active in safety-critical code (assertions shall NOT be compiled
+     out in release builds).
+  d) Implemented so that assertion failure triggers an immediate safe-state
+     transition via the defined error-handling path, not an uncontrolled
+     exception.
+
+Assertion macro / library: <e.g. SAFETY_ASSERT(condition, fault_code)>
+Safe-state handler: <module name / function name>
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.3 – Failure assertion programming.
+
+[REQUIREMENT]
+UID: SAD-034
+STATUS: Draft
+TITLE: Diverse programming
+STATEMENT: >>>
+Where software diversity is required to achieve the target SIL or to
+satisfy the hazard analysis (SRS-011), independently developed diverse
+software channels shall be specified. Diversity shall be achieved by:
+
+  a) Independent development teams with no shared design artefacts between
+     channels at the detailed design level.
+  b) Use of different algorithms or design approaches for each channel.
+  c) Use of different compilers or tool chains for each channel, or
+     cross-compilation with diverse verification.
+  d) Independent test teams verifying each channel.
+
+Diversity scope for this project: <describe which functions use diverse
+channels, or state "Not applied – diversity not required at this SIL level">
+
+If not applied: state the justification and confirm this is consistent with
+the hazard analysis and applicable national technical rules.
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.3 – Diverse programming.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Design principles and constraints
+
+[TEXT]
+STATEMENT: >>>
+The following requirements specify the design and implementation principles
+to be applied throughout the architecture and detailed design phases, per
+EN 50716:2023, Table A.4.
+<<<
+
+[REQUIREMENT]
+UID: SAD-040
+STATUS: Draft
+TITLE: Modular approach
+STATEMENT: >>>
+The software shall be designed and implemented using a modular approach.
+The following constraints apply to all safety-related modules:
+
+  a) Maximum module size: < <n> lines of source code (executable statements);
+     modules exceeding this limit shall be decomposed.
+  b) Each module shall implement a single, clearly identified function or
+     abstraction (single-responsibility principle).
+  c) Module interfaces shall be the only communication path between modules;
+     use of global variables shared between modules is prohibited unless
+     explicitly justified and documented.
+  d) The module hierarchy shall not exceed <n> levels of nesting.
+  e) Each module shall have a dedicated module test specification entry,
+     enabling it to be tested independently of other modules.
+
+The module decomposition defined in SAD-011 shall be maintained throughout
+detailed design. Any restructuring of modules shall be subject to the
+architectural change control process (SP-061).
+<<<
+BASIC: HR
+SIL_1: M
+SIL_2: M
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Table A.4 – Modular approach.
+
+[REQUIREMENT]
+UID: SAD-041
+STATUS: Draft
+TITLE: Design and coding standards
+STATEMENT: >>>
+A defined design standard and coding standard shall be applied throughout
+the architecture, design, and implementation phases.
+
+  Design standard: <e.g. project-specific design rule document, reference>
+  Coding standard: <e.g. MISRA C:2012, CERT C, or project-specific standard>
+
+Compliance requirements:
+  a) All safety-related design artefacts shall conform to the design standard.
+     Deviations shall be documented, justified, and approved by the Software
+     Verifier before the affected design is baselined.
+  b) All safety-related source code shall comply with the coding standard.
+     Compliance shall be verified by automated static analysis (<tool name>)
+     and by code review (SP-072, SP-021).
+  c) Coding standard deviations shall be recorded in the deviation register
+     (<document ID or tool reference>) with justification and approval.
+  d) The coding standard shall prohibit, at minimum: dynamic memory allocation
+     after initialisation, unbounded recursion, use of goto / setjmp / longjmp,
+     and reliance on undefined or implementation-defined language behaviour.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Table A.4 – Design and coding standards.
+
+[REQUIREMENT]
+UID: SAD-042
+STATUS: Draft
+TITLE: Structured programming
+STATEMENT: >>>
+All safety-related software shall be implemented using structured programming
+techniques. The following rules shall be enforced:
+
+  a) Single-entry, single-exit for all functions and control structures.
+  b) Only defined structured control constructs shall be used: sequence,
+     selection (if/else, switch/case), iteration (for, while, do-while).
+  c) The following constructs are prohibited in safety-critical code:
+       - goto (unconditional branch)
+       - setjmp / longjmp
+       - Multiple return points within a function (except via unified exit)
+       - Recursion (direct or indirect) unless bounded depth can be proven
+         and stack usage is statically determined
+  d) Nesting depth of control structures shall not exceed <n> levels; deeper
+     nesting shall be refactored into sub-functions.
+
+Compliance shall be verified by static analysis and code inspection (SAD-041).
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Table A.4 – Structured programming.
+
+[REQUIREMENT]
+UID: SAD-043
+STATUS: Draft
+TITLE: Suitable programming languages
+STATEMENT: >>>
+The programming language(s) used for safety-related software shall be
+suitable for the required SIL and shall support the verification methods
+applied. The following shall be specified and justified:
+
+  Language:         <Language name and version standard, e.g. C99 / C11>
+  Standard:         <ISO/IEC reference>
+  Justification:    <Why this language is suitable for the target SIL>
+  Subset applied:   <Coding standard / language restriction — reference SAD-041>
+  Compiler:         <Vendor, version — subject to tool qualification SP-082>
+  Compiler flags:   <Warning level, optimisation level, ABI settings>
+
+The language subset (SAD-041) shall be defined such that all used language
+features have well-defined behaviour under the applicable language standard.
+Implementation-defined and undefined behaviour shall be prohibited by the
+coding standard and enforced by static analysis.
+
+For mixed-language software (e.g. C and assembler): the boundary between
+language domains shall be formally specified and the interface shall be
+verified to be safe.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Table A.4 – Suitable programming languages.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Design Specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Design Specification (SDS) as required
+by EN 50716:2023, Clause 7.3 and Table A.1 (document 10). The SDS provides
+the detailed design of each software module identified in the architecture
+(SAD-011). Duplicate the subsection below for each module.
+<<<
+
+[[SECTION]]
+TITLE: Module detailed design
+
+[REQUIREMENT]
+UID: SAD-050
+STATUS: Draft
+TITLE: Module design record – <Module name>
+STATEMENT: >>>
+Module:    <Module ID and name from SAD-011>
+SIL:       <SIL classification>
+Implements: <list of SRS-xxx requirements satisfied by this module>
+
+Purpose and description:
+  <Describe the responsibility of the module in one to three sentences.>
+
+Inputs:
+  Name              | Type   | Range / valid values | Source module
+  ------------------|--------|----------------------|------------------
+  <input_param_1>   | <type> | <min..max>           | <caller / MOD-xx>
+  <input_param_2>   | <type> | <enum>               | <caller / MOD-xx>
+
+Outputs:
+  Name              | Type   | Range / valid values | Consumer module
+  ------------------|--------|----------------------|------------------
+  <output_param_1>  | <type> | <min..max>           | <MOD-xx>
+  <return_code>     | <enum> | OK / ERR_RANGE / ERR_HW | <caller>
+
+Internal state (persistent variables between calls):
+  Name              | Type   | Initial value | Description
+  ------------------|--------|---------------|-----------------------------
+  <state_var_1>     | <type> | <value>       | <description>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 10 – Software Design Specification.
+
+[REQUIREMENT]
+UID: SAD-051
+STATUS: Draft
+TITLE: Module logic and algorithm – <Module name>
+STATEMENT: >>>
+Module: <Module ID and name>
+
+Preconditions (caller guarantees / assertions checked on entry):
+  - <precondition 1, e.g. "input_param_1 in [0..100]">
+  - <precondition 2>
+
+Algorithm / processing logic:
+  Step 1: <validate inputs per SAD-030>
+  Step 2: <core algorithm description; reference state machine diagram
+           or pseudo-code if complex>
+  Step 3: <update internal state>
+  Step 4: <compute outputs>
+  Step 5: <apply failure assertions (SAD-033) before exit>
+
+Postconditions (guaranteed by the module on successful return):
+  - <postcondition 1, e.g. "output_param_1 is within [0..100]">
+  - <postcondition 2>
+
+Error handling:
+  Condition           | Detected by     | Response
+  --------------------|-----------------|------------------------------
+  <Input out of range>| Range check     | Return ERR_RANGE; log fault
+  <HW read failure>   | Return code     | Return ERR_HW; trigger safe state
+
+Decision tables or state machine diagrams: <figure reference or "not required">
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 10 – Software Design Specification.
+
+[REQUIREMENT]
+UID: SAD-052
+STATUS: Draft
+TITLE: Module timing and resource budget – <Module name>
+STATEMENT: >>>
+Module: <Module ID and name>
+
+Execution timing:
+  Worst-case execution time (WCET):  < <n> µs
+  WCET analysis method:              <measurement on target / static analysis tool>
+  WCET tool:                         <tool name and version>
+
+Stack usage:
+  Maximum stack depth:               <n> bytes
+  Stack usage analysis method:       <static analysis / instrumented measurement>
+
+Memory footprint:
+  Code size (ROM):                   <n> bytes
+  Read-only data (ROM):              <n> bytes
+  RAM (static allocation):           <n> bytes
+
+Calling context:
+  Called from task / ISR:            <task name, period>
+  Maximum calls per period:          <n>
+  Re-entrant:                        <Yes / No>
+
+If re-entrancy is not applicable (module called from a single task only),
+state so explicitly. If re-entrant, describe the mechanism used to ensure
+correctness under concurrent calls.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 10 – Software Design Specification.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Interface Specifications
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Interface Specifications as required
+by EN 50716:2023, Clause 7.3 and Table A.1 (document 11). All internal
+software-to-software interfaces and software-to-hardware interfaces shall
+be fully defined such that no undefined or implementation-assumed behaviour
+exists at any interface boundary.
+<<<
+
+[[SECTION]]
+TITLE: Internal software interfaces
+
+[REQUIREMENT]
+UID: SAD-060
+STATUS: Draft
+TITLE: Fully defined internal software interfaces
+STATEMENT: >>>
+All internal software interfaces (function APIs, shared data structures,
+message queues, and inter-task communication mechanisms) shall be fully
+defined. A fully defined interface specification shall include:
+
+  a) Interface identifier and version.
+  b) Producer module and consumer module(s).
+  c) Data types: precise type definition with size, endianness, and encoding.
+  d) Valid value ranges or enumeration members for each field or parameter.
+  e) Pre-conditions the caller must satisfy before invoking the interface.
+  f) Post-conditions the provider guarantees upon return.
+  g) Timing constraints: maximum latency from call to response.
+  h) Error returns: all possible error codes and their meaning.
+  i) Thread-safety: whether the interface is re-entrant, and the
+     synchronisation mechanism used if it is not.
+
+No interface may rely on implementation-defined behaviour, compiler-specific
+assumptions, or undocumented side effects. Interfaces between SIL-classified
+partitions and non-safety (SIL 0) partitions shall be explicitly identified
+and verified to prevent upward interference.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.3 – Fully defined interface.
+
+[REQUIREMENT]
+UID: SAD-061
+STATUS: Draft
+TITLE: Internal interface register
+STATEMENT: >>>
+A register of all internal software interfaces shall be maintained as part
+of the SAS/SDS baseline. The register shall include one entry per interface:
+
+  IF ID    | Producer  | Consumer(s) | Type              | Defined in
+  ---------|-----------|-------------|-------------------|------------------
+  <IF-S-01>| <MOD-01>  | <MOD-02>   | Function call API | SAD-050 / header
+  <IF-S-02>| <MOD-03>  | <MOD-01>   | Shared data struct| Data dictionary
+  <IF-S-03>| <MOD-01>  | <MOD-05>   | Message queue     | Comms spec §<n>
+  <IF-S-04>| <MOD-01>  | <MOD-06>   | Non-safety API    | Partition spec §<n>
+
+For each interface, the "Defined in" column shall reference the design
+document section or header file (under configuration management) that
+contains the fully defined interface specification (SAD-060).
+
+Changes to any interface in the register shall follow the change control
+process (SP-061) and shall trigger a review of all affected modules.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 11 – Software Interface Specifications.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software/hardware interfaces
+
+[REQUIREMENT]
+UID: SAD-062
+STATUS: Draft
+TITLE: Software/hardware interface specification
+STATEMENT: >>>
+All software/hardware interfaces shall be fully specified in accordance with
+SAD-060 principles and with the hardware interface requirements (SRS-030).
+
+A register of all SW/HW interfaces shall be maintained:
+
+  IF ID     | HW component          | Driver module  | Protocol / register map
+  ----------|-----------------------|----------------|------------------------
+  <IF-HW-01>| <CPU watchdog timer>  | <MOD-03>       | <WDT register spec §n>
+  <IF-HW-02>| <Digital I/O module>  | <MOD-03>       | <SPI driver spec §n>
+  <IF-HW-03>| <NV memory>           | <MOD-03>       | <Flash driver spec §n>
+  <IF-HW-04>| <Comms ASIC>          | <MOD-04>       | <UART / comms spec §n>
+
+For each SW/HW interface, the driver or BSP module shall specify:
+  a) Hardware register map or API used (reference to HW specification).
+  b) Initialisation sequence and verified state on completion.
+  c) Error detection and reporting (link to SAD-031).
+  d) Timing: maximum delay from request to hardware response.
+  e) Interrupt handling: ISR entry, exit, re-entrancy, and latency bounds.
+
+HW specification reference: <document ID and version>
+BSP / driver specification reference: <document ID or section>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 11 – Software Interface Specifications.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software integration test specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Integration Test Specification as
+required by EN 50716:2023, Clause 7.3 and Table A.1 (document 12). It
+defines the strategy and sample test cases for verifying the integration
+of software modules on the host or target platform. Duplicate the sample
+test case entry for each integration test case.
+<<<
+
+[[SECTION]]
+TITLE: SW integration test strategy and test cases
+
+[REQUIREMENT]
+UID: SAD-070
+STATUS: Draft
+TITLE: Software integration test strategy
+STATEMENT: >>>
+Software integration testing shall verify the correct interaction between
+software modules and the correct realisation of all internal interfaces
+(SAD-060, SAD-061). The following strategy shall be applied:
+
+Integration order: <top-down / bottom-up / big-bang / incremental>
+Integration sequence:
+  Step 1: Integrate <MOD-01> with <MOD-03>; verify SW/HW interface (SRS-030).
+  Step 2: Integrate <MOD-02> with <MOD-01>; verify functional data flow.
+  Step 3: Integrate <MOD-04> with <MOD-01>; verify communication interface.
+  Step 4: Integrate <MOD-05> (diagnostics); verify fault injection scenarios.
+  Step 5: Integrate <MOD-06> (non-safety); verify partition isolation.
+
+Stubs and drivers: list stubs used to replace not-yet-integrated modules at
+each integration step; confirm stubs do not mask real integration defects.
+
+Test execution environment: <host / target hardware – reference SAD-072 equivalent>
+
+Entry criteria: SAS and SDS baselined and verified (SAD-090); all module-level
+tests (Level 1) passed with the required coverage (SRS-073).
+
+Exit criteria:
+  a) All integration test cases executed.
+  b) All interface requirements (SAD-060, SAD-061) covered by at least one test.
+  c) All Critical and Major findings resolved; residual findings assessed.
+  d) Test results reviewed and approved by the Software Verifier (SP-021).
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 12 – SW Integration Test Specification.
+
+[TEST_CASE]
+UID: SWIT-001
+STATUS: Draft
+TITLE: <Module A – Module B interface: nominal data exchange>
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+- <Module A> and <Module B> are integrated and initialised.
+- Input data <DataItem_1> is set to a valid value within range [<min>..<max>].
+- No fault flags are active.
+<<<
+STEPS: >>>
+1. Set <DataItem_1> = <nominal value>.
+2. Trigger one execution cycle of <Module A>.
+3. Read <output_param_1> from <Module B>'s interface.
+4. Check return code from <Module B>.
+<<<
+EXPECTED_RESULT: >>>
+- <output_param_1> equals <expected computed value> ± <tolerance>.
+- Return code is OK.
+- No assertions triggered; no fault log entries generated.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-031
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: SWIT-002
+STATUS: Draft
+TITLE: <Module A – Module B interface: out-of-range input rejection>
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+- <Module A> and <Module B> are integrated and initialised.
+- System is in normal operating state.
+<<<
+STEPS: >>>
+1. Set <DataItem_1> = <value outside valid range, e.g. max + 1>.
+2. Trigger one execution cycle of <Module A>.
+3. Read return code and fault log from <Module B>.
+4. Read system state after one additional execution cycle.
+<<<
+EXPECTED_RESULT: >>>
+- Return code is ERR_RANGE (not OK).
+- A fault log entry is created with the correct fault code and timestamp.
+- <Module B> adopts the defined safe-output state (SRS-020, fail-safe field).
+- No uncontrolled exception or watchdog timeout occurs.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-031
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software/hardware integration test specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software/Hardware Integration Test Specification
+as required by EN 50716:2023, Clause 7.3 and Table A.1 (document 13). It
+defines the strategy and sample test cases for verifying the correct operation
+of the software on the target hardware platform. Duplicate the sample test
+case entry for each HW-SW integration test case.
+<<<
+
+[[SECTION]]
+TITLE: HW-SW integration test strategy and test cases
+
+[REQUIREMENT]
+UID: SAD-080
+STATUS: Draft
+TITLE: Software/hardware integration test strategy
+STATEMENT: >>>
+HW-SW integration testing shall verify that the software operates correctly
+on the target hardware, including all hardware interfaces (SRS-030), timing
+requirements (SRS-040, SRS-041), and hardware-dependent fault detection
+mechanisms (SAD-031, SAD-032).
+
+Test environment: target hardware board as defined in SRS-072.
+  Platform:             <hardware platform name and revision>
+  Support equipment:    <oscilloscope, logic analyser, fault injector>
+  Calibration records:  <reference>
+
+Test scope:
+  - Verify all SW/HW interfaces listed in SAD-062 on target hardware.
+  - Measure and confirm worst-case execution times (SRS-040, SAD-052).
+  - Verify watchdog refresh and timeout behaviour.
+  - Verify memory integrity checks (SAD-032) on real hardware.
+  - Verify hardware fault detection and safe-state transition (SAD-031).
+  - Verify communication interfaces (SRS-032) with real or simulated
+    external systems.
+
+Entry criteria: SW integration tests (Level 2) passed; target hardware
+available and verified against hardware specification.
+
+Exit criteria:
+  a) All HW-SW integration test cases executed.
+  b) All hardware interface requirements (SRS-030) and timing requirements
+     (SRS-040, SRS-041) covered and met.
+  c) All Critical and Major findings resolved.
+  d) Test results reviewed and approved by the Software Verifier (SP-021).
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 13 – SW/HW Integration Test Specification.
+
+[TEST_CASE]
+UID: HWIT-001
+STATUS: Draft
+TITLE: <Watchdog timer: refresh and timeout behaviour>
+TEST_TYPE: HW-SW-Integration
+PRECONDITIONS: >>>
+- Target hardware is powered and the software is initialised.
+- Watchdog timer is enabled and configured to <n> ms timeout.
+- System is in normal operating state (safety task executing cyclically).
+<<<
+STEPS: >>>
+1. Allow software to operate normally for <n> cycles; confirm no watchdog
+   timeout occurs and no reset is generated.
+2. Using a debug probe or test hook, inhibit the watchdog refresh call in
+   the safety task for one cycle.
+3. Observe system behaviour for up to <n + margin> ms.
+4. Restore normal watchdog refresh; observe recovery behaviour.
+<<<
+EXPECTED_RESULT: >>>
+- During normal operation: no watchdog-induced reset.
+- After one missed refresh: watchdog timeout fires within <n> ms; system
+  transitions to safe state (hardware reset or fail-safe output activation).
+- Recovery: system re-initialises and enters safe state; a fault log entry
+  records the watchdog event.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-030
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: HWIT-002
+STATUS: Draft
+TITLE: <Digital I/O interface: output command and readback>
+TEST_TYPE: HW-SW-Integration
+PRECONDITIONS: >>>
+- Target hardware is powered and software is initialised.
+- Digital output channel <n> is wired to digital input channel <m>
+  via a loopback connection on the test rig.
+- Output is in the de-energised (safe) state.
+<<<
+STEPS: >>>
+1. Software commands output channel <n> to the energised state.
+2. Read back the state of input channel <m> after <n> ms.
+3. Software commands output channel <n> back to the de-energised state.
+4. Read back input channel <m> after <n> ms.
+5. Disconnect the loopback; allow one execution cycle; check response.
+<<<
+EXPECTED_RESULT: >>>
+- Step 2: input channel <m> reads ENERGISED; no fault logged.
+- Step 4: input channel <m> reads DE-ENERGISED; no fault logged.
+- Step 5: output-readback mismatch detected within one cycle; fault logged
+  with correct code; output commanded to safe (de-energised) state.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-030
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software architecture and design verification report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Architecture and Design Verification
+Report as required by EN 50716:2023, Clause 7.3 and Table A.1 (document 14).
+It records the outcome of the independent verification of the architecture and
+design deliverables produced in sections 2 through 6 before those documents
+are baselined and detailed implementation commences.
+<<<
+
+[REQUIREMENT]
+UID: SAD-090
+STATUS: Draft
+TITLE: Verification scope and method
+STATEMENT: >>>
+The architecture and design verification shall cover all deliverables
+produced in this document:
+
+  a) Software Architecture Specification (section 2):
+       - Completeness: all SRS requirements (doc 6) are allocated to one or
+         more architectural components.
+       - Consistency of the architecture with the SRS.
+       - Correct application of Table A.3 and Table A.4 techniques at the
+         level required for the target SIL (SAD-030 through SAD-043).
+       - Adequacy of data flow (SAD-020), control flow (SAD-021), and
+         partitioning (SAD-010) for freedom from interference.
+
+  b) Software Design Specification (section 3):
+       - Completeness: a design record exists for each module in SAD-011.
+       - Consistency with the architecture.
+       - Adequacy of error handling (SAD-033) and timing budgets (SAD-052).
+
+  c) Software Interface Specifications (section 4):
+       - All interfaces fully defined per SAD-060.
+       - Interface register (SAD-061, SAD-062) complete and consistent with
+         the architecture.
+
+  d) Integration Test Specifications (sections 5 and 6):
+       - Coverage of all interface requirements (SAD-060 to SAD-062).
+       - Adequacy of test strategy and entry/exit criteria.
+
+Verification method: structured inspection using a checklist derived from
+EN 50716:2023, Clause 7.3 requirements.
+Verifier: <Name, Organisation, independence evidence — see SP-021>
+Checklist reference: <document ID or tool reference>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 14 – Architecture and Design Verification Report.
+
+[REQUIREMENT]
+UID: SAD-091
+STATUS: Draft
+TITLE: Verification records and verdict
+STATEMENT: >>>
+The Software Architecture and Design Verification Report shall include:
+
+  - Date and revision of each design deliverable reviewed.
+  - Name, role, and independence evidence of the verifier.
+  - Checklist results: each item marked Pass / Fail / N/A with observations.
+  - List of findings: unique identifier, description, severity
+    (Critical / Major / Minor / Observation), and status.
+  - Action items raised, with reference to the action item register.
+  - Resolution evidence for all Critical and Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+Architecture and design documents shall not be baselined and the software
+implementation phase (EN 50716:2023, Clause 7.4) shall not commence until
+an Approved verdict is recorded.
+
+Verification Report reference: <document ID>
+Verdict: <to be completed upon review>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.3 and Table A.1, doc 14 – Architecture and Design Verification Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 7.3 – Architecture and design.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.3 – Techniques and measures (architecture).
+[5]  EN 50716:2023, Table A.4 – Techniques and measures (design and implementation).
+[6]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[7]  <Document ID> – Software Requirements Specification (SRS-xxx series).
+[8]  <Document ID> – Hardware Specification / Platform Technical Manual.
+[9]  <Document ID> – Coding standard (e.g. MISRA C:2012).
+[10] <Project-specific references>
+<<<
+
+[[/SECTION]]
