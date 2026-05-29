@@ -666,7 +666,7 @@ VERIFICATION_METHOD: Inspection
 RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 19 – Component Test Report.
 
 [ACTION_ITEM]
-UID: PR-001
+UID: PR-CI-001
 STATUS: Closed
 TITLE: <COMP-01>: boundary check missing for <param_2> when <param_1> = 0
 STATEMENT: >>>
