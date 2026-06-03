@@ -18,6 +18,8 @@ IEC 61508-3:2010 and the overall safety management activities of IEC 61508-1:201
 | `05_sw_design_spec.sdoc` | Software Design Specification (SDS) | IEC 61508-3:2010, §7.3–7.4 |
 | `06_sw_test_spec_report.sdoc` | Software Test Specification and Report (STS/STR) | IEC 61508-3:2010, §7.7–7.8 |
 | `07_sw_safety_plan.sdoc` | Software Safety Plan (SSP / SQAP) | IEC 61508-3:2010, §6.2 |
+| `08_sw_validation_plan.sdoc` | Software Validation Plan (SVP) | IEC 61508-3:2010, §7.9 |
+| `09_sw_validation_report.sdoc` | Software Validation Report (SVR) | IEC 61508-3:2010, §7.9 |
 
 The shared grammar is in `iec_61508_grammar.sgra` and is imported by all
 document templates.
@@ -51,19 +53,40 @@ Or in the web UI: use the **Search** panel with the expression above.
 
 ### Traceability
 
-The templates are designed with the full traceability chain in mind:
+The templates are designed with the full traceability chain in mind.
+
+**Requirements and design chain** (`RELATIONS: TYPE: Parent`):
 
 ```
 HARA (HAZ-xxx)
   └─▶ SRS (SRS-xxx)
         └─▶ SSRS (SSRS-xxx)
               ├─▶ SDS (SDS-xxx)
-              └─▶ STS (STS-xxx)
+              └─▶ STS (TC-xxx)  ── ROLE: Verifies ──▶ SSRS (SSRS-xxx)
 ```
 
 Each `REQUIREMENT` node uses `RELATIONS: TYPE: Parent` to establish
-upward traceability. StrictDoc generates the bidirectional traceability
-matrix automatically.
+upward traceability. `TEST_CASE` nodes in the STS additionally carry
+`ROLE: Verifies` to make the verification relationship explicit and
+queryable separately from the parent-child hierarchy. StrictDoc generates
+the bidirectional traceability matrix automatically.
+
+**Validation governance chain** (SVP):
+
+```
+SVP (SVP-xxx)
+  ├─▶ governs ──▶ STS (TC-xxx, TEST_TYPE: Validation)
+  │                 └── ROLE: Verifies ──▶ SSRS (SSRS-xxx)
+  └─▶ confirms coverage of every SSRS safety function requirement
+        via the compliance matrix in the Validation Report
+```
+
+The SVP is a planning and governance document: its requirements
+(SVP-xxx) do not carry `Parent` relations in StrictDoc. Instead,
+SVP-080 mandates that every SSRS safety function requirement is
+allocated to at least one STS validation test case with a `Verifies`
+role, so the coverage evidence lives in the traceability matrix that
+StrictDoc generates from the STS.
 
 ### Risk Graph (HARA)
 
