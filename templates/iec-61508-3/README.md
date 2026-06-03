@@ -19,6 +19,7 @@ IEC 61508-3:2010 and the overall safety management activities of IEC 61508-1:201
 | `06_sw_test_spec_report.sdoc` | Software Test Specification and Report (STS/STR) | IEC 61508-3:2010, §7.7–7.8 |
 | `07_sw_safety_plan.sdoc` | Software Safety Plan (SSP / SQAP) | IEC 61508-3:2010, §6.2 |
 | `08_sw_validation_plan.sdoc` | Software Validation Plan (SVP) | IEC 61508-3:2010, §7.9 |
+| `09_sw_validation_report.sdoc` | Software Validation Report (SVR) | IEC 61508-3:2010, §7.9 |
 
 The shared grammar is in `iec_61508_grammar.sgra` and is imported by all
 document templates.

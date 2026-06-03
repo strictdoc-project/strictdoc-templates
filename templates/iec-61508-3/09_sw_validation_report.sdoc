@@ -1,0 +1,569 @@
+[DOCUMENT]
+TITLE: Software validation report
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Validation Report (SVR) for the software element
+of the E/E/PE safety-related system identified below. It is prepared in
+accordance with IEC 61508-3:2010, Clause 7.9 (Software validation), and records
+the evidence that all activities planned in the Software Validation Plan (SVP)
+have been completed and that the safety-related software satisfies its
+specified requirements.
+
+The SVR covers:
+- Confirmation of the software baseline and EUC operating modes validated.
+- Verification of the test environment and tool/equipment calibration status.
+- Static analysis results and verdict.
+- Validation test execution summary and results.
+- Confirmation of safety function compliance against SSRS requirements.
+- Deviations and outstanding issues.
+- Overall validation verdict and approval.
+
+Each SVR requirement traces to the corresponding SVP planning requirement via
+RELATIONS: TYPE: Parent.
+
+SIL_1 through SIL_4 fields classify entries as HR/R/NR/--
+per IEC 61508-3:2010.
+
+Instructions for use:
+- UIDs follow convention: SVR-xxx.
+- Replace all placeholder text in angle brackets <...> with project-specific
+  information.
+- Set STATUS to "Draft" during preparation, "Active" once approved.
+- Fill ACTUAL results and set verdict fields after validation execution.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+SVP Reference:   <Document ID of Software Validation Plan>
+STS Reference:   <Document ID of Software Test Specification and Report>
+SSRS Reference:  <Document ID of Software Safety Requirements Specification>
+SSP Reference:   <Document ID of Software Safety Plan>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validated baseline and scope
+
+[REQUIREMENT]
+UID: SVR-010
+STATUS: Draft
+TITLE: Software baseline confirmation
+STATEMENT: >>>
+The software validated in this report is:
+
+Software Item        | Version     | Baseline ID   | Build date    | Build hash / checksum
+---------------------|-------------|---------------|---------------|----------------------
+<Safety module 1>    | <x.y.z>     | <BL-nn>       | <YYYY-MM-DD>  | <SHA-256 / CRC>
+<Safety module 2>    | <x.y.z>     | <BL-nn>       | <YYYY-MM-DD>  | <SHA-256 / CRC>
+<Diagnostics>        | <x.y.z>     | <BL-nn>       | <YYYY-MM-DD>  | <SHA-256 / CRC>
+
+The baseline identifier above matches the validation baseline locked in the
+configuration management system on <YYYY-MM-DD> by <Configuration Manager>.
+
+Confirmation: The binary loaded onto the validation hardware was produced from
+the baseline above without modification. The checksum of the loaded image was
+verified against the CM record before validation began.
+
+Result: <CONFIRMED / NOT CONFIRMED – describe deviation if applicable>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(a).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-011
+
+[REQUIREMENT]
+UID: SVR-011
+STATUS: Draft
+TITLE: EUC operating mode coverage confirmation
+STATEMENT: >>>
+The following EUC operating modes were validated, as planned in SVP-010:
+
+Mode              | Validated | Test cases      | Notes
+------------------|-----------|-----------------|----------------------------
+<Preparation>     | <Yes/No>  | <TC-3xx, ...>   | <—>
+<Start-up>        | <Yes/No>  | <TC-3xx, ...>   | <—>
+<Automatic>       | <Yes/No>  | <TC-3xx, ...>   | <—>
+<Manual>          | <Yes/No>  | <TC-3xx, ...>   | <—>
+<Maintenance>     | <Yes/No>  | <TC-3xx, ...>   | <—>
+<Abnormal>        | <Yes/No>  | <TC-3xx, ...>   | <—>
+
+Any mode not validated shall be justified below:
+<No missing modes / Describe omitted mode and formal justification>
+
+Result: <ALL MODES COVERED / PARTIAL – see justification above>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(a).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-010
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test environment and tools verification
+
+[REQUIREMENT]
+UID: SVR-020
+STATUS: Draft
+TITLE: Test environment verification
+STATEMENT: >>>
+The validation was performed in the following environment:
+
+Hardware platform:        <MCU / PLC model, board revision, S/N>
+Firmware baseline:        <Baseline identifier, confirmed against CM>
+I/O interface:            <PT100 simulator / signal generator, model, S/N>
+Communication network:    <Fieldbus type and node configuration>
+
+Comparison against SVP-050 specification:
+
+Item                    | SVP-050 requirement       | Actual used           | Match
+------------------------|---------------------------|-----------------------|------
+Hardware platform       | <spec>                    | <actual>              | <Y/N>
+Firmware baseline       | <spec>                    | <actual>              | <Y/N>
+I/O interface           | <spec>                    | <actual>              | <Y/N>
+
+Deviations from SVP-050 specification:
+<None / Describe deviation and impact assessment signed by Validation Lead>
+
+Result: <ENVIRONMENT CONFIRMED / DEVIATION – see above>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(e).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-050
+
+[REQUIREMENT]
+UID: SVR-021
+STATUS: Draft
+TITLE: Tools and equipment calibration verification
+STATEMENT: >>>
+The following tools and measurement equipment were used during validation.
+Calibration and qualification status was verified before validation began.
+
+Item                   | Version / ID    | Cal. / Qual. expiry | Status at start
+-----------------------|-----------------|---------------------|------------------
+<Oscilloscope>         | <Model, S/N>    | <YYYY-MM-DD>        | <Valid / Expired>
+<Signal generator>     | <Model, S/N>    | <YYYY-MM-DD>        | <Valid / Expired>
+<Test automation tool> | <Name, x.y.z>   | Qual: <YYYY-MM-DD>  | <Valid / Expired>
+<Coverage tool>        | <Name, x.y.z>   | Qual: <YYYY-MM-DD>  | <Valid / Expired>
+<Fault injection tool> | <Name, x.y.z>   | Qual: <YYYY-MM-DD>  | <Valid / Expired>
+
+Any item with expired calibration or qualification at the time of validation
+shall be listed as a deviation in Section 7 (Deviations and outstanding issues)
+with an impact assessment.
+
+Result: <ALL ITEMS VALID / DEVIATION – see Section 7>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(e).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-051
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Static analysis results
+
+[REQUIREMENT]
+UID: SVR-030
+STATUS: Draft
+TITLE: Static analysis verdict
+STATEMENT: >>>
+Static analysis was performed in accordance with SVP-021 using
+<static analysis tool, version> on the validated baseline <BL-nn>.
+
+Analysis scope:
+
+Module             | Standard       | Deviations found | Deviations resolved | Verdict
+-------------------|----------------|------------------|---------------------|--------
+<Safety module 1>  | <MISRA C:2012> | <n>              | <n>                 | <PASS/FAIL>
+<Safety module 2>  | <MISRA C:2012> | <n>              | <n>                 | <PASS/FAIL>
+<Other module>     | <MISRA C:2012> | <n>              | <n>                 | <PASS/FAIL>
+
+Unresolved deviations:
+<None / List each unresolved deviation with written justification approved
+by the Software Safety Manager. Reference the corresponding Problem Report.>
+
+Result: <PASS – zero unresolved deviations in safety-critical modules /
+         FAIL – see unresolved deviations above>
+<<<
+SIL_1: R
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis
+RATIONALE: IEC 61508-3:2010, Table A.6 – Static analysis (HR at SIL 2–4).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-021
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation test execution summary
+
+[TEXT]
+STATEMENT: >>>
+Validation test cases are recorded in the Software Test Specification and
+Report (reference STS document). The table below provides the execution
+summary across all validation test cases (TEST_TYPE: Validation).
+
+Test case ID | Title (abbreviated)              | SSRS covered  | Verdict  | Date       | Tester
+-------------|----------------------------------|---------------|----------|------------|--------
+<TC-3xx>     | <Safety function – normal op>    | <SSRS-xxx>    | <PASS>   | <YYYY-MM-DD> | <Name>
+<TC-3xx>     | <Safety function – boundary>     | <SSRS-xxx>    | <PASS>   | <YYYY-MM-DD> | <Name>
+<TC-3xx>     | <Fault injection – sensor fault> | <SSRS-xxx>    | <PASS>   | <YYYY-MM-DD> | <Name>
+<TC-3xx>     | <Watchdog – safe state on fail>  | <SSRS-xxx>    | <PASS>   | <YYYY-MM-DD> | <Name>
+
+Summary:
+  Total test cases planned:   <n>
+  Executed:                   <n>
+  PASS:                       <n>
+  FAIL:                       <n>  (see Section 7 for problem reports)
+  BLOCKED:                    <n>  (see Section 7)
+  NOT_RUN:                    <n>  (see Section 7 for deferral justification)
+<<<
+
+[REQUIREMENT]
+UID: SVR-040
+STATUS: Draft
+TITLE: Overall test execution verdict
+STATEMENT: >>>
+All validation test cases planned in the SVP have been executed and their
+results recorded in <STS Document ID>.
+
+Execution completeness:
+- All planned test cases executed: <Yes / No – justify any NOT_RUN items>
+- All FAIL verdicts resolved and retested: <Yes / No – see Section 7>
+- All BLOCKED items resolved or rescheduled: <Yes / No – see Section 7>
+
+Overall test execution result: <PASS / FAIL>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.3.
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-070
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Safety function compliance
+
+[REQUIREMENT]
+UID: SVR-050
+STATUS: Draft
+TITLE: Functional correctness confirmation
+STATEMENT: >>>
+The following safety functions have been confirmed to perform correctly in
+all validated EUC operating modes under both normal and foreseeable abnormal
+input conditions:
+
+Safety function | SSRS req.  | Modes validated           | Evidence (TC)   | Result
+----------------|------------|---------------------------|-----------------|-------
+<SF-1: name>    | <SSRS-xxx> | <Normal, Manual, ...>     | <TC-3xx, 3xx>   | <PASS>
+<SF-2: name>    | <SSRS-xxx> | <Normal, Manual, ...>     | <TC-3xx>        | <PASS>
+<SF-n: name>    | <SSRS-xxx> | <All modes>               | <TC-3xx>        | <PASS>
+
+Any safety function for which full conformance could not be demonstrated
+shall be listed in Section 7 with severity classification and resolution.
+
+Result: <ALL SAFETY FUNCTIONS CONFIRMED / PARTIAL – see Section 7>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+RATIONALE: IEC 61508-3:2010, Clause 7.9.3(a).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-080
+
+[REQUIREMENT]
+UID: SVR-051
+STATUS: Draft
+TITLE: Timing compliance confirmation
+STATEMENT: >>>
+Response time measurements were performed per SVP-061 using calibrated
+instrumentation. Results:
+
+Safety function / timing requirement | SSRS limit | Measured (worst case) | Result
+-------------------------------------|------------|----------------------|--------
+<SF-1 response time>                 | <= <n> ms  | <n> ms               | <PASS>
+<SF-2 response time>                 | <= <n> ms  | <n> ms               | <PASS>
+<Safety task WCET>                   | <= <n> ms  | <n> ms               | <PASS>
+<Watchdog response>                  | <= <n> ms  | <n> ms               | <PASS>
+
+Measurement method: <oscilloscope model, trigger configuration>
+Measurement uncertainty: ±<n> ms (instrument time-base accuracy)
+
+Result: <ALL TIMING REQUIREMENTS MET / VIOLATION – see Section 7>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: IEC 61508-3:2010, Clause 7.9.3(b).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-080
+
+[REQUIREMENT]
+UID: SVR-052
+STATUS: Draft
+TITLE: Systematic capability confirmation
+STATEMENT: >>>
+The software development lifecycle activities contributing to systematic
+capability have been completed as planned in the Software Safety Plan (SSP):
+
+Activity                          | Planned in SSP | Completed | Evidence reference
+----------------------------------|----------------|-----------|-------------------
+Coding standard compliance        | SSP-032        | <Yes/No>  | <PC-lint report ref>
+Design and code reviews           | SSP-061        | <Yes/No>  | <Review record ref>
+Phase exit reviews                | SSP-060        | <Yes/No>  | <Review record ref>
+Configuration management          | SSP-040        | <Yes/No>  | <CM baseline ref>
+Problem reporting and resolution  | SSP-050        | <Yes/No>  | <PR system ref>
+
+Code coverage achieved:
+
+Module             | Statements | Branches | MC/DC  | Target (SIL) | Result
+-------------------|------------|----------|--------|--------------|-------
+<Safety module 1>  | <xx%>      | <xx%>    | N/A    | <100% branch>| <PASS>
+<Safety module 2>  | <xx%>      | <xx%>    | <xx%>  | <MC/DC>      | <PASS>
+
+Result: <SYSTEMATIC CAPABILITY CONFIRMED / SHORTFALL – see Section 7>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: IEC 61508-3:2010, Clause 7.9.3(c).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-080
+
+[REQUIREMENT]
+UID: SVR-053
+STATUS: Draft
+TITLE: Requirements coverage confirmation
+STATEMENT: >>>
+Traceability from SSRS safety function requirements to validation test cases
+has been verified in StrictDoc via RELATIONS: TYPE: Parent / ROLE: Verifies.
+
+SSRS requirement | Description (abbreviated)    | Test case(s)    | Verdict
+-----------------|------------------------------|-----------------|--------
+<SSRS-xxx>       | <Safety function 1>          | <TC-3xx, 3xx>   | <PASS>
+<SSRS-xxx>       | <Safety function 2>          | <TC-3xx>        | <PASS>
+<SSRS-xxx>       | <Integrity requirement>      | <TC-3xx>        | <PASS>
+
+Requirements with no validation test case:
+<None / List with justification (e.g. requirement verified by static analysis
+or covered by integration test; include cross-reference)>
+
+Coverage: <n> / <n> SSRS safety function requirements covered (100%).
+
+Result: <FULL COVERAGE ACHIEVED / GAP – see above>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.3(d).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-080
+
+[REQUIREMENT]
+UID: SVR-054
+STATUS: Draft
+TITLE: Diagnostic coverage confirmation
+STATEMENT: >>>
+The self-diagnostic functions have been confirmed to achieve the diagnostic
+coverage declared in the SSRS for the target SIL.
+
+Diagnostic function         | SSRS claim     | Validation evidence (TC)  | Result
+----------------------------|----------------|---------------------------|-------
+<Sensor range check>        | <DC xx%>       | <TC-3xx – fault injection> | <PASS>
+<Sensor cross-check>        | <DC xx%>       | <TC-3xx – fault injection> | <PASS>
+<Watchdog>                  | <DC xx%>       | <TC-3xx – WD timeout>      | <PASS>
+<Communication monitoring>  | <DC xx%>       | <TC-3xx – timeout inject>  | <PASS>
+
+Result: <DIAGNOSTIC COVERAGE CONFIRMED / SHORTFALL – see Section 7>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing
+RATIONALE: IEC 61508-3:2010, Clause 7.9.3(e).
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-080
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Deviations and outstanding issues
+
+[ACTION_ITEM]
+UID: NCR-001
+STATUS: Open
+TITLE: <Short description of deviation or outstanding issue>
+STATEMENT: >>>
+Type:            <Deviation from SVP / Test failure / Calibration issue>
+Severity:        <Safety-Critical / Major / Minor>
+Description:     <Describe the deviation or failure in detail>
+Safety impact:   <Describe the impact on the validation evidence and safety case>
+Root cause:      <Describe root cause where identified>
+Resolution:      <Describe the corrective action taken or planned>
+Retest required: <Yes / No>
+<<<
+OWNER: <Name>
+DUE_DATE: <YYYY-MM-DD>
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Overall validation verdict
+
+[REQUIREMENT]
+UID: SVR-090
+STATUS: Draft
+TITLE: Overall validation verdict
+STATEMENT: >>>
+Based on the evidence recorded in this report:
+
+  SVR-010 – Baseline confirmation:              <PASS / FAIL>
+  SVR-011 – EUC mode coverage:                  <PASS / FAIL>
+  SVR-020 – Test environment verification:      <PASS / FAIL>
+  SVR-021 – Tools and calibration:              <PASS / FAIL>
+  SVR-030 – Static analysis:                    <PASS / FAIL>
+  SVR-040 – Test execution completeness:        <PASS / FAIL>
+  SVR-050 – Functional correctness:             <PASS / FAIL>
+  SVR-051 – Timing compliance:                  <PASS / FAIL>
+  SVR-052 – Systematic capability:              <PASS / FAIL>
+  SVR-053 – Requirements coverage:              <PASS / FAIL>
+  SVR-054 – Diagnostic coverage:                <PASS / FAIL>
+
+Open deviations (from Section 7):              <n> Safety-Critical,
+                                                <n> Major, <n> Minor
+
+OVERALL VALIDATION VERDICT: <PASS / FAIL / CONDITIONAL PASS>
+
+Conditions (if CONDITIONAL PASS):
+<None / List conditions that must be resolved before commissioning.
+Each condition shall reference an ACTION_ITEM in Section 7.>
+
+The software element of <System name> at baseline <BL-nn> is declared
+<suitable / not suitable> for commissioning at <target SIL>.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.3.
+RELATIONS:
+- TYPE: Parent
+  VALUE: SVP-070
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Approval and signatures
+
+[TEXT]
+STATEMENT: >>>
+The undersigned confirm that the validation activities described in this report
+have been completed as planned and that the evidence is sufficient to support
+the overall validation verdict stated in SVR-090.
+
+Validation Lead
+  Name:      <Name>
+  Role:      <Role>
+  Signature: ___________________________  Date: <YYYY-MM-DD>
+
+Software Safety Manager
+  Name:      <Name>
+  Role:      <Role>
+  Signature: ___________________________  Date: <YYYY-MM-DD>
+
+Independent Validator
+  Name:      <Name>
+  Role:      <Role / Organisation>
+  Signature: ___________________________  Date: <YYYY-MM-DD>
+
+Functional Safety Assessor (SIL 2–4)
+  Name:      <Name>
+  Organisation: <Name / Accreditation>
+  Signature: ___________________________  Date: <YYYY-MM-DD>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  IEC 61508-3:2010, Clause 7.9 – Software validation.
+[2]  IEC 61508-3:2010, Clause 7.9.3 – Software validation requirements.
+[3]  IEC 61508-3:2010, Clause 8 – Functional Safety Assessment.
+[4]  <Document ID> – Software Validation Plan (SVP).
+[5]  <Document ID> – Software Test Specification and Report (STS/STR).
+[6]  <Document ID> – Software Safety Requirements Specification (SSRS).
+[7]  <Document ID> – Software Safety Plan (SSP).
+[8]  <Document ID> – Software Design Specification (SDS).
+[9]  <Document ID> – Overall Safety Plan (OSP).
+[10] <Document ID> – Functional Safety Assessment Report (FSA Report).
+<<<
+
+[[/SECTION]]
