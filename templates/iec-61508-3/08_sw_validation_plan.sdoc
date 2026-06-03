@@ -1,0 +1,733 @@
+[DOCUMENT]
+TITLE: Software validation plan
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: iec_61508_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document is the Software Validation Plan (SVP) for the software element
+of the E/E/PE safety-related system identified below. It is prepared in
+accordance with IEC 61508-3:2010, Clause 7.9 (Software validation), and
+defines all planned activities to confirm that the safety-related software
+meets its specified requirements in the intended operational environment.
+
+The SVP covers:
+- Validation scope: EUC operating modes and software items under validation.
+- Technical strategy: selection and rationale for validation techniques.
+- Validation team roles and independence requirements.
+- Validation schedule within the software safety lifecycle.
+- Test environment, tools, and equipment.
+- Pass/fail criteria: inputs, expected outputs, and other acceptance criteria.
+- Evaluation of results and failure management.
+- Confirmation of safety function compliance and agreement with the FSA.
+
+SIL_1 through SIL_4 fields classify plan requirements as HR/R/NR/--
+per IEC 61508-3:2010.
+
+Instructions for use:
+- UIDs follow convention: SVP-xxx.
+- Replace all placeholder text in angle brackets <...> with project-specific
+  information.
+- Set STATUS to "Draft" during development, "Active" once approved.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:         <Project name>
+Software Item:   <Software item / component name>
+Document ID:     <DOC-ID>
+Revision:        <Rev. A>
+Date:            <YYYY-MM-DD>
+Author:          <Name, Role>
+Approved by:     <Name, Role>
+Classification:  <Confidential / Restricted / Public>
+Target SIL:      <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+SSRS Reference:  <Document ID of Software Safety Requirements Specification>
+SDS Reference:   <Document ID of Software Design Specification>
+STS Reference:   <Document ID of Software Test Specification and Report>
+SSP Reference:   <Document ID of Software Safety Plan>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation scope and EUC operating modes
+
+[REQUIREMENT]
+UID: SVP-010
+STATUS: Draft
+TITLE: EUC operating modes
+STATEMENT: >>>
+The following operating modes of the Equipment Under Control (EUC) have been
+identified as requiring software validation before commissioning:
+
+Mode              | Description
+------------------|------------------------------------------------------------
+Preparation       | <Pre-operational checks, initialisation sequences>
+Start-up          | <Transition from safe state to normal operation>
+Automatic         | <Normal closed-loop control operation>
+Manual            | <Direct operator control, safety functions still active>
+Maintenance       | <Reduced-functionality mode for service activities>
+<Abnormal>        | <Foreseeable abnormal conditions: e.g. partial failure,
+                  |  degraded mode, external disturbance>
+
+Each mode shall be validated separately unless a formal justification is
+provided that a subset of modes is sufficient to demonstrate full coverage.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(a).
+
+[REQUIREMENT]
+UID: SVP-011
+STATUS: Draft
+TITLE: Software items under validation
+STATEMENT: >>>
+The following safety-related software items shall be validated for each
+applicable EUC operating mode prior to commissioning:
+
+Software Item                | Version / Baseline  | Applicable Modes
+-----------------------------|---------------------|---------------------------
+<Safety function module 1>   | <x.y.z / BL-nn>     | <All / Automatic, Manual>
+<Safety function module 2>   | <x.y.z / BL-nn>     | <All>
+<Diagnostics / watchdog>     | <x.y.z / BL-nn>     | <All>
+<Communication layer>        | <x.y.z / BL-nn>     | <Automatic, Manual>
+
+Software items classified as non-safety-related are excluded from the scope
+of this plan. The exclusion rationale for each excluded item shall be
+documented and retained in the configuration management system.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(a).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation strategy
+
+[REQUIREMENT]
+UID: SVP-020
+STATUS: Draft
+TITLE: Manual versus automated validation techniques
+STATEMENT: >>>
+The following strategy is adopted for the selection between manual and
+automated validation techniques:
+
+Automated validation shall be used for:
+- <Regression tests executed on each software build>
+- <Performance and timing measurements requiring precise instrumentation>
+- <Boundary-value and combinatorial test sequences impractical to run manually>
+
+Manual validation shall be used for:
+- <Operational scenario walk-throughs requiring human judgement>
+- <Evaluation of human-machine interface behaviour>
+- <Inspections and structured walk-throughs of safety function behaviour>
+
+Rationale: <Describe the factors driving the choice, e.g. SIL level, available
+tooling, repeatability requirements, coverage objectives.>
+
+Where automated tools are used, their qualification class (T1/T2/T3 per
+IEC 61508-3:2010, Clause 7.4.4) shall be confirmed and records maintained
+before validation begins (see SVP-051).
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(b).
+
+[REQUIREMENT]
+UID: SVP-021
+STATUS: Draft
+TITLE: Static versus dynamic validation techniques
+STATEMENT: >>>
+The following mix of static and dynamic techniques is selected for software
+validation:
+
+Static techniques (no execution of the software under test):
+- Formal review and inspection of safety function logic against the SSRS.
+- Static analysis of the software in the target configuration using
+  <static analysis tool, version>.
+- Formal proof or abstract interpretation for <specific modules>, if
+  required at the target SIL.
+
+Dynamic techniques (execution-based):
+- Functional testing on target hardware covering all EUC operating modes.
+- Fault injection testing to verify diagnostic coverage.
+- Performance and timing testing under representative load profiles.
+
+Rationale: <Describe why this combination is appropriate for the target SIL
+and the nature of the safety functions. Note: IEC 61508-3:2010 Table A.6
+lists static analysis as HR at SIL 2-4; dynamic testing on target hardware
+is HR at all SIL levels.>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(b) and Table A.6.
+
+[REQUIREMENT]
+UID: SVP-022
+STATUS: Draft
+TITLE: Analytical versus statistical validation methods
+STATEMENT: >>>
+The basis for generating validation test cases shall be:
+
+Analytical (deterministic) methods — primary approach:
+- Requirements-based testing: each safety function requirement in the SSRS
+  shall have at least one validation test case demonstrating correct behaviour.
+- Boundary-value analysis for all numeric inputs and outputs.
+- Equivalence partitioning for input domains with defined valid/invalid ranges.
+- Cause-effect analysis for safety function logic with multiple input
+  conditions.
+
+Statistical methods (where applicable):
+- <Describe if statistical testing (e.g. operational profile testing per
+  IEC 61508-7:2010 Annex B) is planned. State the operational profile source
+  and the confidence level target.>
+- <If not applicable, state: "Statistical testing methods are not used in
+  this validation; all test cases are derived analytically from the SSRS.">
+
+Rationale: <Explain why the chosen methods are appropriate for the safety
+functions and the target SIL.>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(b).
+
+[REQUIREMENT]
+UID: SVP-023
+STATUS: Draft
+TITLE: Acceptance criteria basis
+STATEMENT: >>>
+Validation acceptance criteria shall be based primarily on objective,
+measurable factors:
+- Exact match of output values to expected values within defined tolerances.
+- Timing and response-time constraints derived from the SSRS.
+- Memory and resource usage within specified limits.
+- Zero unresolved safety-critical failures at the completion of validation.
+
+Expert judgement may be used as an acceptance basis only when objective
+criteria cannot be defined, and shall be:
+a) Exercised by a person with demonstrated competence in the relevant domain.
+b) Documented in sufficient detail to allow independent review.
+c) Approved by the Software Safety Manager before the result is accepted.
+
+For SIL 3 and SIL 4 projects, the threshold for using expert judgement and
+the identity of the expert shall be agreed with the FSA in advance
+(see SVP-081).
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(d).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation team and independence
+
+[REQUIREMENT]
+UID: SVP-030
+STATUS: Draft
+TITLE: Validation team roles and responsibilities
+STATEMENT: >>>
+The following roles are assigned to software validation activities:
+
+Validation Lead:          <Name>
+  Responsibilities: Overall planning, coordination, and reporting of
+  validation activities; liaison with the FSA; sign-off on the Validation
+  Report.
+
+Validation Engineer(s):   <Name(s)>
+  Responsibilities: Design and execution of validation test cases; recording
+  of actual results and verdicts; maintenance of the test environment.
+
+Independent Validator:    <Name / Organisation>
+  Responsibilities: Independent review of validation procedures and results;
+  witnessing of selected tests per the FSA arrangements in SVP-081.
+
+Configuration Manager:    <Name>
+  Responsibilities: Maintenance of the validation baseline; recording of all
+  software versions, tool versions, and calibration records used during
+  validation.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.1 and Clause 6.2.4.
+
+[REQUIREMENT]
+UID: SVP-031
+STATUS: Draft
+TITLE: Independence of validation activities
+STATEMENT: >>>
+Software validation shall be performed by persons independent from the
+software development activities at the following levels:
+
+SIL 1 / SIL 2:
+  Validation may be performed by a person from the same project team,
+  provided that person was not the author of the software under validation.
+  Minimum independence: different individual.
+
+SIL 3:
+  Validation shall be performed by a person or group independent from the
+  software development team within the same organisation.
+  Minimum independence: different department or functional group.
+
+SIL 4:
+  Validation shall be performed by an organisation fully independent from
+  both the development team and the procuring organisation.
+  Minimum independence: separate company or accredited certification body.
+
+The designated independent validator for this project is:
+  <Name / Department / Organisation>
+
+Justification for the independence level achieved: <Describe>
+<<<
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.1 and Table 4 (Clause 6.2.4).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Validation schedule
+
+[REQUIREMENT]
+UID: SVP-040
+STATUS: Draft
+TITLE: Validation schedule within the safety lifecycle
+STATEMENT: >>>
+Software validation shall be performed as a distinct phase following the
+completion of software integration testing (IEC 61508-3:2010, Clause 7.8)
+and before commissioning. The following schedule applies:
+
+Milestone                            | Planned Date   | Responsible
+-------------------------------------|----------------|-------------------
+Validation Plan issued (this doc)    | <YYYY-MM-DD>   | <Name>
+Validation Plan approved by FSA      | <YYYY-MM-DD>   | <Name / FSA>
+Validation environment ready         | <YYYY-MM-DD>   | <Name>
+Validation execution start           | <YYYY-MM-DD>   | <Name>
+Validation execution complete        | <YYYY-MM-DD>   | <Name>
+Validation Report issued             | <YYYY-MM-DD>   | <Name>
+Validation Report approved           | <YYYY-MM-DD>   | <Name>
+Commissioning release                | <YYYY-MM-DD>   | <Name>
+
+Entry criteria for validation:
+- All integration tests completed with PASS verdict.
+- All Safety-Critical problem reports resolved or formally accepted.
+- Validation environment verified and tool calibration records current.
+- Software validation baseline established in the configuration management
+  system.
+
+Exit criteria for validation:
+- All SVP test cases executed and results recorded.
+- All Safety-Critical and Major failures resolved (see SVP-071).
+- Validation Report reviewed and approved by the Validation Lead and FSA.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(c).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test environment and equipment
+
+[REQUIREMENT]
+UID: SVP-050
+STATUS: Draft
+TITLE: Test environment description
+STATEMENT: >>>
+Software validation shall be performed in the following environment:
+
+Environment type: <e.g. Target hardware with representative I/O interface /
+                   Hardware-in-the-loop simulator / Equivalent validated
+                   simulation environment>
+
+Hardware platform:        <MCU / PLC model, board revision>
+Operating system / RTOS:  <Name, version>
+Firmware / SW baseline:   <Baseline identifier from CM system>
+I/O interface:            <Hardware simulator / actual plant I/O / signal
+                           generator model and serial number>
+Communication network:    <Fieldbus type and test node configuration>
+
+Justification for environment representativeness:
+<Describe how the validation environment is equivalent to the final installed
+environment, or document any known differences and their impact on the
+validity of the validation results. IEC 61508-3:2010 Clause 7.9.2.2(e)
+requires that the environment be representative of the target environment.>
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(e).
+
+[REQUIREMENT]
+UID: SVP-051
+STATUS: Draft
+TITLE: Validation tools and equipment calibration
+STATEMENT: >>>
+The following tools and measurement equipment shall be used during validation.
+All items subject to calibration or qualification shall be verified before
+validation begins; records shall be maintained in the configuration management
+system.
+
+Item                     | Version / ID      | Class | Calibration / Qual. due
+-------------------------|-------------------|-------|------------------------
+<Oscilloscope>           | <Model, S/N>      | —     | <YYYY-MM-DD>
+<Signal generator>       | <Model, S/N>      | —     | <YYYY-MM-DD>
+<Test automation tool>   | <Name, x.y.z>     | T2    | Qualified: <YYYY-MM-DD>
+<Data logger>            | <Model, S/N>      | —     | <YYYY-MM-DD>
+<Coverage tool>          | <Name, x.y.z>     | T2    | Qualified: <YYYY-MM-DD>
+<Fault injection tool>   | <Name, x.y.z>     | T2    | Qualified: <YYYY-MM-DD>
+
+Tool classification (T1/T2/T3) is per IEC 61508-3:2010, Clause 7.4.4.
+Calibration intervals are per the applicable metrology procedure or the
+instrument manufacturer's specification.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(e).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Pass/fail criteria
+
+[REQUIREMENT]
+UID: SVP-060
+STATUS: Draft
+TITLE: Input signal specification
+STATEMENT: >>>
+For each validation test case, the input signals shall be fully defined prior
+to test execution, including:
+
+a) Signal identification: name, type (digital / analogue / serial data),
+   engineering units, and the physical channel or interface used.
+
+b) Nominal sequence: the ordered sequence of input states or values applied
+   during the test, with timing information (ramp rates, step times, dwell
+   periods) where relevant.
+
+c) Boundary values: inputs at the lower and upper limits of the valid
+   operating range, and at least one value outside the valid range (fault
+   injection) for each input with defined limits.
+
+d) Transient and disturbance inputs: simultaneous changes, signal noise
+   levels, and foreseeable abnormal input conditions (e.g. sensor
+   short-circuit, open-circuit, communication loss).
+
+e) Tolerance on applied values: the accuracy with which each input value
+   shall be set, traceable to the calibration of the signal source.
+
+The PRECONDITIONS and STEPS fields of TEST_CASE nodes in the associated
+Software Test Specification and Report shall document the complete input
+specification for each validation test case.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(f).
+
+[REQUIREMENT]
+UID: SVP-061
+STATUS: Draft
+TITLE: Expected output signal specification
+STATEMENT: >>>
+For each validation test case, the expected outputs shall be fully defined
+prior to test execution, including:
+
+a) Signal identification: name, type, engineering units, and measurement
+   channel.
+
+b) Expected value or state: the precise value, state, or sequence of states
+   expected from each safety-related output.
+
+c) Timing constraints: the maximum allowable response time from input
+   stimulus to output change, traceable to the SSRS timing requirement.
+
+d) Tolerance: the acceptable deviation from the expected value, expressed
+   as an absolute value or percentage, with the basis for the tolerance
+   documented and traceable to equipment calibration.
+
+e) Forbidden outputs: any output state that must NOT occur during the test
+   (e.g. spurious actuator activation in the absence of a valid trip demand).
+
+The EXPECTED_RESULT field of each TEST_CASE node shall document the complete
+output specification for each validation test case.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(f).
+
+[REQUIREMENT]
+UID: SVP-062
+STATUS: Draft
+TITLE: Additional acceptance criteria
+STATEMENT: >>>
+In addition to input/output signal criteria, the following quantitative
+acceptance criteria shall be met for the validation to be considered passed:
+
+Memory usage:
+- RAM usage during worst-case execution shall not exceed <XX>% of available
+  RAM (reserve <YY>% headroom for stack growth).
+- Flash / ROM usage shall not exceed <XX>% of available program memory.
+
+Timing and response:
+- Safety task WCET shall not exceed <value> ms under full CPU load, measured
+  by <timing measurement method, e.g. hardware timer, trace tool>.
+- System response time (input stimulus to safe-state output) shall not exceed
+  <value> ms for any safety function in any EUC operating mode.
+- No watchdog timeout shall occur during any validation test run.
+
+Requirements coverage:
+- 100% of SSRS safety function requirements shall be exercised by at least
+  one validation test case with a PASS verdict.
+
+Diagnostic coverage:
+- <XX>% of the diagnostic test list shall be verified by fault injection,
+  consistent with the diagnostic coverage declared in the SSRS.
+
+Numerical tolerances:
+- Analogue measurements: ±<value> <unit> or ±<value>% FS (whichever is
+  greater), traceable to calibration of measurement equipment.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.2(f).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Evaluation of validation results
+
+[REQUIREMENT]
+UID: SVP-070
+STATUS: Draft
+TITLE: Results evaluation policy
+STATEMENT: >>>
+Validation results shall be evaluated against the pass/fail criteria defined
+in SVP-060 to SVP-062 and the EXPECTED_RESULT field of each TEST_CASE node
+in the associated Software Test Specification and Report.
+
+The following verdicts are used:
+
+PASS     - Actual result matches expected result within all defined criteria.
+FAIL     - One or more acceptance criteria not met.
+BLOCKED  - Test could not be executed due to an environmental or
+           infrastructure fault unrelated to the software under test.
+NOT_RUN  - Test has not yet been executed.
+
+A validation cycle is deemed complete only when:
+- All test cases have been executed (no NOT_RUN verdicts remain, unless
+  formally deferred with documented justification).
+- All FAIL verdicts have been resolved per the failure management procedure
+  (SVP-071).
+- All BLOCKED items have been investigated and either rescheduled or
+  resolved.
+
+The Validation Lead shall issue a signed validation summary confirming the
+overall pass/fail status before the Validation Report is submitted for
+approval.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.3.
+
+[REQUIREMENT]
+UID: SVP-071
+STATUS: Draft
+TITLE: Failure management procedure
+STATEMENT: >>>
+When a validation test case results in a FAIL verdict, the following
+procedure shall be followed:
+
+1. Record: Raise a Problem Report (PR) per SSP-050 within one working day
+   of failure observation, including the test case ID, the observed output,
+   and any available diagnostic data.
+
+2. Classify severity:
+   Safety-Critical: The failure indicates that a safety function does not
+     perform as required, or that a dangerous failure mode exists.
+   Major: The failure causes incorrect behaviour that is not directly
+     safety-critical but requires resolution before release.
+   Minor: The failure is a non-safety-related cosmetic or usability issue.
+
+3. Analyse: Perform root-cause analysis. Determine whether the failure
+   indicates a software defect, a test-case error, or an environmental
+   issue.
+
+4. Resolve:
+   Safety-Critical and Major: Software shall be corrected, a new CM
+     baseline established, and the affected test case(s) re-executed.
+     Regression testing scope shall be determined by impact analysis.
+   Minor: May be deferred with Software Safety Manager approval and, for
+     SIL 3/4, prior notification to the FSA.
+
+5. Retest: All corrected failures shall be retested before validation is
+   declared complete.
+
+6. Notify FSA: For SIL 3 and SIL 4 projects, the FSA shall be notified of
+   all Safety-Critical failures and of the proposed resolution before
+   retesting begins.
+
+Validation shall not be declared complete while any Safety-Critical or
+Major PRs remain open.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2.3 and Clause 6.2.1.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Compliance confirmation and FSA agreement
+
+[REQUIREMENT]
+UID: SVP-080
+STATUS: Draft
+TITLE: Safety function compliance confirmation
+STATEMENT: >>>
+The validation shall confirm, for each safety function identified in the SSRS:
+
+a) Functional correctness: The software correctly performs the safety function
+   in all defined EUC operating modes under both normal and foreseeable
+   abnormal conditions.
+
+b) Timing compliance: The safety function meets all response-time requirements
+   derived from the safety requirements specification.
+
+c) Systematic capability: The software development lifecycle, coding standards,
+   and verification activities have been executed as planned in the SSP,
+   providing the required systematic capability for the target SIL.
+
+d) Requirement coverage: Every safety function requirement in the SSRS is
+   allocated to at least one validation test case, and full traceability from
+   SSRS requirements to test cases is maintained in StrictDoc via
+   RELATIONS: TYPE: Parent / ROLE: Verifies.
+
+e) Diagnostic coverage: The self-diagnostic functions achieve the diagnostic
+   coverage declared in the SSRS for the target SIL.
+
+The Validation Report shall include a compliance matrix mapping each SSRS
+safety function requirement to the test case(s) that verified it and their
+respective verdicts.
+<<<
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 7.9.2 and Clause 7.9.3.
+
+[REQUIREMENT]
+UID: SVP-081
+STATUS: Draft
+TITLE: Functional Safety Assessor agreement and involvement
+STATEMENT: >>>
+The scope and content of this Software Validation Plan shall be agreed with
+the Functional Safety Assessor (FSA) before validation activities commence.
+
+Agreement process:
+1. The draft SVP shall be submitted to the FSA for review at least <N>
+   working days before the planned start of validation execution.
+2. The FSA shall review the SVP for completeness and adequacy relative to
+   the target SIL and the safety functions under validation.
+3. Any FSA comments shall be resolved and the SVP updated before approval.
+4. Formal approval of the SVP by the FSA shall be documented and referenced
+   from the Validation Report.
+
+FSA presence during testing:
+SIL 2:   FSA presence during test execution is at FSA discretion; FSA shall
+         review and approve the Validation Report before sign-off.
+SIL 3:   FSA shall be present or represented during execution of all
+         Safety-Critical test cases.
+SIL 4:   FSA shall be present during all validation test execution and shall
+         countersign all test records.
+
+FSA details:
+  Name / Organisation:   <FSA name / organisation>
+  Accreditation:         <Certification body and scope, if applicable>
+  Agreement date:        <YYYY-MM-DD>
+  FSA report reference:  <Document ID of FSA assessment report>
+<<<
+SIL_1: NR
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: IEC 61508-3:2010, Clause 8 (Functional Safety Assessment) and
+Clause 7.9.2.1.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  IEC 61508-3:2010, Clause 7.9 – Software validation.
+[2]  IEC 61508-3:2010, Clause 6.2 – Software safety management.
+[3]  IEC 61508-3:2010, Clause 7.4.4 – Software tools.
+[4]  IEC 61508-3:2010, Table A.6 – Techniques and measures: static analysis.
+[5]  IEC 61508-3:2010, Clause 8 – Functional Safety Assessment.
+[6]  IEC 61508-7:2010, Annex B – Statistical testing techniques.
+[7]  <Document ID> – Software Safety Requirements Specification (SSRS).
+[8]  <Document ID> – Software Design Specification (SDS).
+[9]  <Document ID> – Software Test Specification and Report (STS/STR).
+[10] <Document ID> – Software Safety Plan (SSP).
+[11] <Document ID> – Overall Safety Plan (OSP).
+<<<
+
+[[/SECTION]]
