@@ -25,9 +25,9 @@ from planning through deployment and maintenance.
 
 The shared grammar is in `en_50716_grammar.sgra` and is imported by all document templates.
 
-## Key Features
+## Key features
 
-### Software Integrity Levels
+### Software integrity levels
 
 EN 50716:2023 defines five integrity levels: **Basic Integrity**, **SIL 1**, **SIL 2**,
 **SIL 3**, and **SIL 4**. The `BASIC` field captures applicability at the Basic
@@ -35,7 +35,7 @@ Integrity level, which is new compared to IEC 61508. Basic Integrity applies to
 software that does not perform safety functions but is part of a safety-related
 system.
 
-### SIL Applicability Fields
+### SIL applicability fields
 
 Every `REQUIREMENT` node carries five fields encoding the applicability of the
 corresponding requirement or technique per EN 50716:2023 Table A.1:
@@ -64,13 +64,13 @@ strictdoc export . --filter "SIL_4 == 'M'"
 
 Or in the web UI: use the **Search** panel with the expression above.
 
-### TEST_CASE Nodes
+### TEST_CASE nodes
 
 Test specifications use `TEST_CASE` nodes with `RELATIONS: TYPE: Parent, ROLE: Verifies`
 to establish explicit traceability from test cases to the requirements they verify.
 StrictDoc renders these as a separate "verified by" link in the traceability matrix.
 
-### Dual Spec/Report Format
+### Dual spec/report format
 
 Some documents cover both specification and result sides within a single file.
 For example, `08_application_data.sdoc` covers docs 30/33 (Application Test
@@ -78,7 +78,7 @@ Specification and Application Test Report) and docs 36/37 (Application Integrati
 Test Specification and Application Integration Test Report). Placeholder sections
 separate spec from report content.
 
-### ACTION_ITEM Nodes
+### ACTION_ITEM nodes
 
 `ACTION_ITEM` nodes are used for problem reports and change records (DCR-xxx).
 Each `ACTION_ITEM` has `STATUS` (Open / Closed / Deferred), `OWNER`, and `DUE_DATE`
@@ -86,7 +86,7 @@ fields, and can be linked to the requirement or test case that triggered it.
 In `09_deployment_maintenance.sdoc`, DCR-xxx entries document approved software
 changes from request through implementation and verification closure.
 
-## Traceability Chain
+## Traceability chain
 
 The templates are designed with the full lifecycle traceability chain in mind:
 
@@ -105,7 +105,7 @@ SP (planning, SP-xxx)
 Each `REQUIREMENT` node uses `RELATIONS: TYPE: Parent` to establish upward
 traceability. StrictDoc generates the bidirectional traceability matrix automatically.
 
-## Getting Started
+## Getting started
 
 1. Install StrictDoc:
    ```
@@ -135,7 +135,7 @@ traceability. StrictDoc generates the bidirectional traceability matrix automati
    strictdoc export . --formats=html,html2pdf
    ```
 
-## Relationship to IEC 61508 Templates
+## Relationship to IEC 61508 templates
 
 EN 50716:2023 uses its own self-contained grammar (`en_50716_grammar.sgra`),
 which is **not** compatible with or dependent on the IEC 61508 grammar
