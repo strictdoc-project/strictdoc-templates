@@ -1,0 +1,1123 @@
+[DOCUMENT]
+TITLE: Software component design
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Component Design phase for the software element of
+the railway control and protection system identified below. It is prepared in
+accordance with EN 50716:2023, Clause 7.4 (Component design), and collects
+three output deliverables from Table A.1:
+
+  15. Software Component Design Specification
+  16. Software Component Test Specification
+  17. Software Component Design Verification Report
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (docs 15, 16, 17): BASIC=--, SIL_1–4=HR.
+- Table A.4 (design techniques): values vary per technique.
+- Table A.20 (component techniques): values vary per technique.
+- Table A.5 (analysis and test techniques): values vary per technique.
+
+Instructions for use:
+- UIDs follow convention: CD-xxx (requirements) and CT-xxx (test cases).
+- Sections 2.1, 2.2, and 2.3 constitute one entry per software component.
+  Duplicate all three sub-sections for each component listed in the
+  architecture (SAD-011) and update the component identifier throughout.
+- Duplicate CT-001 through CT-004 for each test case; assign a unique
+  CT-xxx UID and set the RELATIONS VALUE to the SRS or CD requirement
+  being verified.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+SRS Reference:        <Document ID of Software Requirements Specification>
+SAS/SDS Reference:    <Document ID of Software Architecture and Design>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Component Design Specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Component Design Specification as
+required by EN 50716:2023, Clause 7.4 and Table A.1 (document 15). The
+specification provides the detailed design of each software component,
+including its interface contract, internal logic, state behaviour, and
+data structures, at the level of granularity required for implementation
+and independent verification.
+
+One complete set of sub-sections 2.1 through 2.3 shall be produced for
+each software component listed in the architecture (SAD-011). The component
+identifier <COMP-ID> shall be replaced with the actual module identifier
+throughout each set.
+<<<
+
+[[SECTION]]
+TITLE: Component overview
+
+[TEXT]
+STATEMENT: >>>
+Duplicate this sub-section for each software component. Replace <COMP-ID>
+and all placeholder text with component-specific content.
+<<<
+
+[REQUIREMENT]
+UID: CD-010
+STATUS: Draft
+TITLE: Component description – <COMP-ID>
+STATEMENT: >>>
+Component:       <COMP-ID>  (from architecture decomposition SAD-011)
+Component name:  <descriptive name>
+SIL:             <SIL n / SIL 0>
+Parent module:   <MOD-xx from SAD-011>
+Implements:      <list of SRS-xxx requirements allocated to this component>
+Language:        <Programming language — must match SAD-043>
+
+Purpose:
+  <One to three sentences describing the single responsibility of this
+  component. State what it computes, monitors, or controls, and what
+  it does not do (exclusions).>
+
+Allocated requirements:
+  SRS-xxx: <requirement title — brief>
+  SRS-xxx: <requirement title — brief>
+
+Constraints and assumptions:
+  a) <Any assumption about the execution context (task, period, priority)>
+  b) <Any constraint inherited from the architecture (e.g. shared memory
+     protected by a specific mutex)>
+  c) <Platform or compiler assumptions, if any>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 15 – Component Design Specification.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Component interface specification
+
+[REQUIREMENT]
+UID: CD-020
+STATUS: Draft
+TITLE: Component interface – fully defined – <COMP-ID>
+STATEMENT: >>>
+Component: <COMP-ID>
+
+The component interface shall be fully defined in accordance with SAD-060
+(fully defined interface principle) and EN 50716:2023, Table A.20. The
+following tables constitute the complete interface contract; no interface
+element may rely on implementation-defined or undocumented behaviour.
+
+Function / entry point: <function_name>
+
+  Parameter     | Direction | Type     | Range / valid values | Unit
+  --------------|-----------|----------|---------------------|------
+  <param_1>     | IN        | <type>   | [<min>..<max>]      | <unit>
+  <param_2>     | IN        | <enum>   | {VAL_A, VAL_B, VAL_C}| –
+  <param_3>     | OUT       | <type>   | [<min>..<max>]      | <unit>
+  <return_code> | RETURN    | <enum>   | {OK, ERR_RANGE, ERR_HW} | –
+
+Preconditions (caller shall ensure):
+  - <param_1> is within [<min>..<max>] before the call.
+  - <precondition 2>
+
+Postconditions (component guarantees on return OK):
+  - <param_3> is within [<min>..<max>].
+  - Internal state variable <state_var_1> is updated.
+  - <postcondition 3>
+
+Error returns and their meaning:
+  ERR_RANGE : <param_1> or <param_2> outside valid range; output unchanged.
+  ERR_HW    : hardware read/write failed; safe state applied to output.
+
+Side effects: <none / describe any persistent state changes>
+Re-entrancy:  <Not re-entrant — single caller only / Re-entrant — protected by <mechanism>>
+Maximum execution time: < <n> µs (WCET budget from SAD-052)
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.20 – Fully defined interface.
+
+[REQUIREMENT]
+UID: CD-021
+STATUS: Draft
+TITLE: Information hiding and encapsulation – <COMP-ID>
+STATEMENT: >>>
+Component: <COMP-ID>
+
+The component shall apply information hiding: all internal state variables,
+data structures, and implementation details shall be encapsulated and not
+accessible to other components except through the defined interface (CD-020).
+
+Specifically:
+  a) All internal variables shall be declared with the minimum necessary
+     scope (file-scope static where possible; no external linkage for
+     internal data).
+  b) Internal data structures shall not be exposed in public headers.
+     Only opaque handles or defined interface types may appear in the
+     public interface.
+  c) No other component may modify the internal state of <COMP-ID> except
+     by calling its published interface functions.
+  d) Configuration constants and calibration values used only internally
+     shall be defined within the component translation unit, not in
+     shared headers.
+
+The header file(s) published by <COMP-ID>: <header file name(s)>
+Internal (private) source files: <source file name(s)>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Table A.20 – Information hiding and encapsulation.
+
+[REQUIREMENT]
+UID: CD-022
+STATUS: Draft
+TITLE: Parameter number limit – <COMP-ID>
+STATEMENT: >>>
+Component: <COMP-ID>
+
+The number of parameters for each function or procedure in the component
+shall be limited to support readability, testability, and static analysis.
+
+  Maximum number of parameters per function: <n> (recommended: ≤ 6)
+
+Functions that appear to require more parameters shall be refactored by:
+  a) Grouping logically related parameters into a well-defined structure,
+     with the structure fully specified per CD-020.
+  b) Splitting the function into smaller, more focused sub-functions.
+
+Current parameter counts:
+  <function_name_1> : <n> parameters
+  <function_name_2> : <n> parameters
+
+Any function exceeding the limit shall require documented justification
+approved by the Software Verifier.
+<<<
+BASIC: R
+SIL_1: R
+SIL_2: R
+SIL_3: R
+SIL_4: R
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Table A.20 – Parameter number limit.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Component internal design
+
+[REQUIREMENT]
+UID: CD-030
+STATUS: Draft
+TITLE: Algorithm and processing logic – <COMP-ID>
+STATEMENT: >>>
+Component: <COMP-ID>
+
+The processing logic of the component shall be described at sufficient
+detail for an independent implementer to produce a conforming implementation
+without reference to any other document.
+
+Processing sequence:
+
+  Step 1 – Input validation (SAD-030):
+    Validate <param_1>: if outside [<min>..<max>], return ERR_RANGE.
+    Validate <param_2>: if not in {VAL_A, VAL_B, VAL_C}, return ERR_RANGE.
+
+  Step 2 – Core computation:
+    <Describe the algorithm in plain language or structured pseudocode.
+    Reference any applicable standard algorithm, formula, or look-up table.
+    Identify any numerical precision or rounding requirements.>
+
+    Example:
+      result = f(<param_1>, <param_2>)
+      where f is defined as: <formula or reference to Annex>
+
+  Step 3 – Output assignment:
+    Assign computed result to <param_3>.
+    Apply saturation / clamping to [<min>..<max>] before assignment.
+
+  Step 4 – Post-assertion (SAD-033):
+    Assert: <param_3> is within [<min>..<max>].
+    Assert: internal state is self-consistent.
+
+Look-up tables or formulae: <figure reference / attached table / "N/A">
+Numerical precision: <floating-point / fixed-point, precision required>
+Known edge cases and their handling:
+  <Edge case 1>: <handling>
+  <Edge case 2>: <handling>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 15 – Component Design Specification.
+
+[REQUIREMENT]
+UID: CD-031
+STATUS: Draft
+TITLE: State machine specification – <COMP-ID>
+STATEMENT: >>>
+Component: <COMP-ID>
+
+If the component implements state-dependent behaviour, the complete state
+machine shall be specified below. If the component is stateless, state
+"Stateless: this component holds no persistent state between calls."
+
+States:
+  State        | Entry action          | Exit action
+  -------------|----------------------|------------------
+  <STATE_INIT> | Initialise variables  | –
+  <STATE_IDLE> | –                     | –
+  <STATE_RUN>  | Start processing      | Record last output
+  <STATE_FAIL> | Apply safe state      | Log fault
+
+Transitions:
+  From state    | Event / condition       | Guard               | To state
+  --------------|-------------------------|---------------------|-------------
+  <STATE_INIT>  | Initialisation complete | No faults detected  | <STATE_IDLE>
+  <STATE_IDLE>  | Activation command      | Input valid         | <STATE_RUN>
+  <STATE_RUN>   | Fault detected          | –                   | <STATE_FAIL>
+  <STATE_FAIL>  | Reset command           | Fault cleared       | <STATE_INIT>
+
+State diagram reference: <figure number or "see attached diagram">
+
+All states and all transitions shall be reachable (no dead states or
+unreachable transitions). This shall be verified by review (CD-060).
+The safe state <STATE_FAIL> shall always be reachable from any state
+upon detection of a fault condition.
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 15 – Component Design Specification.
+
+[REQUIREMENT]
+UID: CD-032
+STATUS: Draft
+TITLE: Data structures and type definitions – <COMP-ID>
+STATEMENT: >>>
+Component: <COMP-ID>
+
+All data types, structures, and enumerations used by the component shall
+be explicitly defined. No use of implicit types, magic numbers, or
+platform-dependent type sizes is permitted.
+
+Internal data types:
+
+  Type name       | Base type     | Range / members                | Used for
+  ----------------|---------------|--------------------------------|------------------
+  <CompState_t>   | enum (uint8)  | STATE_INIT=0, IDLE=1, ...      | Component state
+  <CompInput_t>   | struct        | {field1: int16, field2: uint8} | Input bundle
+  <CompOutput_t>  | struct        | {result: int32, code: uint8}   | Output bundle
+  <CompConfig_t>  | const struct  | {min: int16, max: int16, ...}  | Configuration
+
+Memory allocation:
+  All data structures used by <COMP-ID> shall be statically allocated.
+  Dynamic memory allocation is prohibited (SAD-042 / SRS-051).
+
+  Static RAM footprint: <n> bytes (matches SAD-052 budget)
+  ROM footprint (code + const data): <n> bytes
+
+Shared data items (if any):
+  <data_item>: shared with <COMP-ID> via <mechanism>; consistency guaranteed
+  by <mutex name / interrupt disable scope>.
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 15 – Component Design Specification.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Design constraints
+
+[TEXT]
+STATEMENT: >>>
+The following requirements specify the design and implementation constraints
+applicable at component level, taken from EN 50716:2023, Tables A.4 and A.20.
+These requirements apply to every component in the Component Design Specification
+and complement the architecture-level constraints in SAD-040 through SAD-044.
+<<<
+
+[REQUIREMENT]
+UID: CD-040
+STATUS: Draft
+TITLE: Modular approach at component level
+STATEMENT: >>>
+Each software component shall embody the modular approach mandated by the
+architecture (SAD-040). At the component level this means:
+
+  a) Each source file implements exactly one component; no component spans
+     multiple source files unless a defined split (e.g. public/private header)
+     is explicitly specified in the component interface (CD-020).
+  b) Component size limit: < <n> lines of source code (executable statements),
+     consistent with the architecture limit in SAD-040.
+  c) Each sub-function within the component shall have a single, identifiable
+     purpose; sub-functions exceeding <n> lines shall be decomposed further.
+  d) The set of functions exported by the component shall be the minimum
+     necessary to satisfy the allocated SRS requirements; no internal helpers
+     shall be exported.
+
+Compliance shall be verified by static analysis (CD-052) and code inspection
+(CD-060).
+<<<
+BASIC: HR
+SIL_1: M
+SIL_2: M
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Table A.4 – Modular approach.
+
+[REQUIREMENT]
+UID: CD-041
+STATUS: Draft
+TITLE: Component design principles (Table A.20)
+STATEMENT: >>>
+The design of each component shall conform to the component design principles
+of EN 50716:2023, Table A.20, as implemented by CD-020 (fully defined
+interface), CD-021 (information hiding), and CD-022 (parameter number limit).
+The following additional principles apply:
+
+  a) Each component shall be independently testable: it shall be possible to
+     instantiate and exercise the component in isolation using a test harness,
+     without linking to any component it does not directly use.
+  b) The component shall have no hidden dependencies: all dependencies on
+     other components, hardware drivers, or global state shall be explicitly
+     declared in the interface (CD-020) or passed as parameters.
+  c) The component shall not use global variables that are also modified by
+     other components; any shared state shall be mediated via the defined
+     interface or a dedicated shared-resource manager.
+  d) Component configurations (calibration constants, timeout values, limits)
+     shall be parameterisable through the interface or a defined configuration
+     structure (CD-032), not hardcoded within the implementation.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.4 – Components (Table A.20).
+
+[REQUIREMENT]
+UID: CD-042
+STATUS: Draft
+TITLE: Design and coding standards at component level
+STATEMENT: >>>
+The design and coding standards defined in SAD-041 apply in full to all
+components. At the component level, the following additional requirements
+apply:
+
+  a) Every function shall have a header comment block stating: purpose,
+     parameters (type, range, direction), return values, preconditions,
+     postconditions, and SIL classification. The header shall be the
+     authoritative source for the component's interface contract.
+  b) Magic numbers are prohibited: all numerical constants shall be defined
+     as named constants or enumeration members with a descriptive name and
+     unit annotation (where applicable).
+  c) All static analysis warnings generated by the project's static analysis
+     tool configuration (CD-052) shall be resolved before the component
+     design record is baselined. Each suppressed warning shall be documented
+     with a justification record.
+  d) The component source file shall include the applicable coding standard
+     compliance header or comment block referencing the applicable version of
+     the coding standard.
+
+Coding standard: <reference to SAD-041 entry>
+Static analysis tool: <reference to CD-052>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Table A.4 – Design and coding standards.
+
+[REQUIREMENT]
+UID: CD-043
+STATUS: Draft
+TITLE: Structured programming at component level
+STATEMENT: >>>
+All safety-related components shall be implemented using structured
+programming as specified in SAD-042. The following component-level
+metrics shall be tracked and reported in the verification report (CD-060):
+
+  Cyclomatic complexity (McCabe): ≤ <n> per function (recommended ≤ 10).
+  Control flow nesting depth:     ≤ <n> levels per function.
+  Maximum function length:        ≤ <n> executable statements.
+
+Functions exceeding any threshold shall be refactored or, if a justified
+exception is granted, documented in the design deviation register with
+the Verifier's approval.
+
+Measurement tool: <static analysis tool from CD-052>
+Results location: <report reference or tool output path>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Table A.4 – Structured programming.
+
+[REQUIREMENT]
+UID: CD-044
+STATUS: Draft
+TITLE: Analysable programs
+STATEMENT: >>>
+Each component shall be designed to be amenable to static analysis and
+formal verification. The following design rules support analysability:
+
+  a) Control flow shall be bounded: all loops shall have a statically
+     determinable upper bound on the number of iterations; the bound shall
+     be annotated in the source code and enforced by a static analysis rule.
+  b) Recursion is prohibited in safety-critical components (consistent with
+     SAD-042 and SRS-051).
+  c) Pointer arithmetic shall be restricted to array indexing with
+     bounds-checked indices; arbitrary pointer arithmetic is prohibited.
+  d) Function pointers, if used, shall be restricted to a statically known
+     set of targets; calls via function pointer shall be verified to point
+     only to type-compatible functions within the permitted set.
+  e) All data flow paths through each function shall be finitely enumerable
+     for purposes of test coverage analysis (CD-053).
+
+The static analysis tool configuration (CD-052) shall include rules that
+enforce items (a) through (d) automatically.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Table A.4 – Analysable programs.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Component Test Specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Component Test Specification as
+required by EN 50716:2023, Clause 7.4 and Table A.1 (document 16). It
+defines the strategy and sample test cases for verifying each software
+component against its Component Design Specification (section 2).
+
+Analysis and test techniques are selected per EN 50716:2023, Table A.5.
+Duplicate the sample test case entries (CT-001 through CT-004) for each
+actual test case and assign a unique CT-xxx UID.
+<<<
+
+[[SECTION]]
+TITLE: Component test strategy
+
+[REQUIREMENT]
+UID: CD-050
+STATUS: Draft
+TITLE: Component test strategy overview
+STATEMENT: >>>
+Component testing (Level 1 in the overall test strategy, SRS-070) shall
+verify each component against:
+  a) Its interface specification (CD-020).
+  b) Its processing logic and state machine (CD-030, CD-031).
+  c) Its allocated SRS requirements (listed in CD-010).
+
+Test scope: all software components with SIL ≥ 1 listed in the architecture
+(SAD-011). Non-safety (SIL 0) components shall be tested to a level
+commensurate with their interface to safety-critical components.
+
+Test execution environment:
+  Host / target:    <host PC with test framework / target hardware>
+  Test framework:   <framework name and version — tool class T2, SP-082>
+  Coverage tool:    <tool name and version — tool class T2, SP-082>
+
+Entry criteria:
+  - Component Design Specification (section 2) is baselined and verified
+    (CD-060).
+  - Test environment is set up and qualified.
+  - Static analysis (CD-052) has been completed with no unresolved defects.
+
+Exit criteria:
+  - All test cases executed with PASS verdict.
+  - Coverage objectives (CD-053) are met.
+  - All Critical and Major findings resolved; residual findings assessed.
+  - Test results reviewed and approved by the Software Verifier (SP-021).
+
+Test traceability: each test case (CT-xxx) shall reference the SRS or
+CD requirement it verifies via the RELATIONS / ROLE: Verifies field.
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 16 – Component Test Specification.
+
+[REQUIREMENT]
+UID: CD-051
+STATUS: Draft
+TITLE: Dynamic analysis
+STATEMENT: >>>
+Dynamic analysis (black-box and white-box testing) shall be applied to
+all safety-related components in accordance with EN 50716:2023, Table A.5
+(Dynamic analysis, reference Table A.13).
+
+Black-box test techniques applied:
+  - Equivalence partitioning: partition each input domain into classes of
+    equivalent behaviour; test at least one value per class.
+  - Boundary value analysis: test at the boundary values and immediately
+    adjacent values for each equivalence class.
+  - Decision table testing (where applicable, per SRS-062): exercise each
+    combination of conditions in the decision tables (CD-030).
+  - State transition testing (where applicable, per CD-031): exercise all
+    defined state transitions and verify that undefined transitions do not
+    occur.
+
+White-box test techniques applied:
+  - Path testing: exercise all feasible control flow paths through each
+    function; report unfeasible paths with justification.
+  - Data flow testing: exercise definition-use pairs for safety-critical
+    variables.
+
+The combination of black-box and white-box techniques shall achieve the
+coverage objectives in CD-053.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Dynamic analysis (Table A.13).
+
+[REQUIREMENT]
+UID: CD-056
+STATUS: Draft
+TITLE: Formal proof
+STATEMENT: >>>
+Formal mathematical proof shall be applied to verify critical properties
+of safety-related components where testing alone is insufficient to achieve
+the required confidence at the target SIL. Formal proof shall be applied
+in accordance with EN 50716:2023, Table A.5.
+
+Scope of formal proof for this project:
+  <Describe which components or properties are subject to formal proof.
+  If not applied, state: "Formal proof is not applied at this SIL level;
+  the combination of dynamic analysis (CD-051), static analysis (CD-052),
+  and coverage (CD-053) is sufficient to achieve the required confidence."
+  Ensure consistency with the hazard analysis and SVP (SP-072).>
+
+Properties to be proved (if applicable):
+  - <Property 1, e.g. "Output is always within [min..max] for any valid input">
+  - <Property 2, e.g. "The component always terminates in finite time">
+
+Proof method / tool: <e.g. Frama-C / SPARK / Coq / manual proof>
+Proof artefacts location: <document ID or repository path>
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Formal proof.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Static analysis requirements
+
+[REQUIREMENT]
+UID: CD-052
+STATUS: Draft
+TITLE: Static analysis configuration and execution
+STATEMENT: >>>
+Static analysis shall be applied to the source code of all safety-related
+components in accordance with EN 50716:2023, Table A.5 (Static analysis,
+reference Table A.19) and the tool qualification requirements in SP-082.
+
+Tool and configuration:
+  Tool name:        <static analysis tool>
+  Tool version:     <version>
+  Rule set:         <e.g. MISRA C:2012 mandatory + required rules; project
+                    rule set document ID>
+  Additional rules: <project-specific rules, e.g. banned functions,
+                    complexity limits per CD-043>
+
+Execution requirements:
+  a) Static analysis shall be executed on the complete translation unit for
+     each component (not individual functions in isolation).
+  b) All analysis warnings shall be reviewed; each warning shall be either:
+       - Resolved by correcting the source code, or
+       - Documented with a justified deviation approved by the Verifier.
+  c) The analysis shall be re-executed after any change to the source code
+     until the component baseline is established.
+  d) The analysis report shall be included in the component baseline under
+     configuration management (SP-060).
+
+Checks performed (minimum):
+  - Coding standard compliance (CD-042)
+  - Cyclomatic complexity per function (CD-043)
+  - Control flow bounds (CD-044)
+  - Uninitialised variables, unreachable code, stack usage estimation
+  - Banned function usage (e.g. gets, sprintf, malloc after init)
+
+Analysis report reference: <document ID or tool output location>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Static analysis (Table A.19).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test coverage objectives
+
+[REQUIREMENT]
+UID: CD-053
+STATUS: Draft
+TITLE: Test coverage objectives
+STATEMENT: >>>
+Structural test coverage shall be measured for all safety-related components
+and shall meet the following minimum objectives in accordance with
+EN 50716:2023, Table A.5 (Test coverage, reference Table A.21), consistent
+with the project-level objectives defined in SRS-073:
+
+  SIL 1: Statement coverage (SC):        100 % of executable statements.
+  SIL 2: Branch coverage (BC):           100 % of branches (decisions).
+  SIL 3: Branch coverage (BC):           100 %;
+          MC/DC:                          HR – apply to safety-critical components.
+  SIL 4: Modified Condition / Decision
+          Coverage (MC/DC):               100 % of safety-critical components.
+
+Coverage measurement:
+  Tool:         <coverage tool name and version — tool class T2, SP-082>
+  Granularity:  per-function and per-component coverage reported separately.
+  Exclusions:   defensive-programming error handlers that cannot be exercised
+                without hardware fault injection shall be excluded and
+                documented with justification; compensated by static analysis.
+
+Coverage gaps (statements or branches not reachable by dynamic test) shall
+be justified and compensated by static analysis (CD-052) or formal proof
+(CD-056), with evidence recorded in the verification report (CD-061).
+
+Coverage results location: <report reference or tool output path>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+RATIONALE: EN 50716:2023, Table A.5 – Test coverage (Table A.21).
+
+[REQUIREMENT]
+UID: CD-054
+STATUS: Draft
+TITLE: Performance testing
+STATEMENT: >>>
+Performance testing shall be applied to all safety-related components to
+confirm that timing budgets and resource limits defined in the component
+design (SAD-052) are met, in accordance with EN 50716:2023, Table A.5
+(Performance testing, reference Table A.18).
+
+Measurements required per component:
+
+  Metric                  | Limit           | Method
+  ------------------------|-----------------|-----------------------------
+  WCET                    | < <n> µs        | Measurement on target or
+                          |                 | static WCET tool (see below)
+  Stack depth (max)       | < <n> bytes     | Instrumented or static
+  RAM usage (static)      | < <n> bytes     | Linker map file
+  ROM / code size         | < <n> bytes     | Linker map file
+
+WCET measurement method:
+  <Instrumented measurement on target hardware under worst-case stimulus /
+  Static WCET analysis tool — reference tool qualification SP-082>
+
+Conditions for WCET measurement:
+  Worst-case input values as identified by the algorithm analysis (CD-030).
+  Worst-case concurrent task load per SAD-021.
+
+Performance test results location: <report reference or tool output path>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Performance testing (Table A.18).
+
+[REQUIREMENT]
+UID: CD-055
+STATUS: Draft
+TITLE: Interface testing
+STATEMENT: >>>
+Interface testing shall be applied to verify the correct behaviour of each
+component at its interface boundary, in accordance with EN 50716:2023,
+Table A.5 (Interface testing).
+
+Interface test requirements:
+
+  a) All input parameters shall be tested at:
+       - Nominal values (representative of normal operation).
+       - Boundary values (minimum, maximum, and values immediately outside
+         the valid range — per CD-020 and CD-022).
+       - Invalid / out-of-range values (verify ERR_RANGE is returned and
+         the output is not corrupted).
+       - Combinations of parameters that trigger distinct processing paths
+         (equivalence classes, per CD-051).
+
+  b) All error return codes defined in the interface specification (CD-020)
+     shall be exercised by at least one test case.
+
+  c) Pre-condition violations shall be injected (within the test harness)
+     to verify that the component's defensive checks detect them (SAD-030).
+
+  d) For components with state (CD-031): the interface shall be tested in
+     each relevant state, and invalid calls in wrong states shall be verified
+     to be rejected.
+
+Interface test cases are included in the sample test cases (CT-xxx) below.
+Interface test coverage shall be included in the coverage report (CD-053).
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Inspection
+RATIONALE: EN 50716:2023, Table A.5 – Interface testing.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Sample test cases
+
+[TEXT]
+STATEMENT: >>>
+The following test cases are template entries. Duplicate for each actual
+test case, assign a unique CT-xxx UID, and set the RELATIONS VALUE to the
+SRS or CD requirement being verified. Set VERDICT to NOT_RUN before
+execution; update ACTUAL_RESULT and VERDICT after execution.
+<<<
+
+[TEST_CASE]
+UID: CT-001
+STATUS: Draft
+TITLE: <COMP-ID> – nominal operation – <brief description>
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> is initialised (state = STATE_IDLE or equivalent).
+- Input <param_1> is set to a nominal value within [<min>..<max>].
+- Input <param_2> is set to VAL_A (valid enumeration member).
+- No fault flags are active; no previous error state.
+<<<
+STEPS: >>>
+1. Set <param_1> = <nominal value>.
+2. Set <param_2> = VAL_A.
+3. Call <function_name>(<param_1>, <param_2>, &<param_3>).
+4. Record return code and <param_3>.
+5. Record component state and any fault log entries.
+<<<
+EXPECTED_RESULT: >>>
+- Return code: OK.
+- <param_3> = <expected computed value> ± <tolerance>.
+- Component state: <STATE_RUN> (or unchanged if stateless).
+- No fault log entries generated.
+- Execution time: < <n> µs (performance budget from SAD-052).
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: CT-002
+STATUS: Draft
+TITLE: <COMP-ID> – boundary values – <brief description>
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> is initialised (state = STATE_IDLE or equivalent).
+- No fault flags are active.
+<<<
+STEPS: >>>
+For each boundary value combination:
+  a) <param_1> = <min>: call <function_name> and record result.
+  b) <param_1> = <max>: call <function_name> and record result.
+  c) <param_1> = <min - 1> (below range): call and record result.
+  d) <param_1> = <max + 1> (above range): call and record result.
+Record return code, <param_3>, state, and fault log for each case.
+<<<
+EXPECTED_RESULT: >>>
+a) <param_1> = <min>: OK; <param_3> = <expected minimum output>.
+b) <param_1> = <max>: OK; <param_3> = <expected maximum output>.
+c) <param_1> = <min - 1>: ERR_RANGE; <param_3> unchanged; fault logged.
+d) <param_1> = <max + 1>: ERR_RANGE; <param_3> unchanged; fault logged.
+No uncontrolled exception, watchdog timeout, or memory corruption in any case.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: CT-003
+STATUS: Draft
+TITLE: <COMP-ID> – fault injection – safe state on hardware error
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> is initialised and in STATE_RUN.
+- A fault injection mechanism is available to simulate a hardware read
+  failure (e.g. stub returning ERR_HW from the HW abstraction layer).
+<<<
+STEPS: >>>
+1. Configure fault injection: next call to <hw_read_function> returns ERR_HW.
+2. Call <function_name> with valid inputs.
+3. Record return code, <param_3>, component state, and fault log.
+4. Remove fault injection; call <function_name> again with valid inputs.
+5. Record return code and state after fault removal.
+<<<
+EXPECTED_RESULT: >>>
+Step 3:
+  - Return code: ERR_HW.
+  - <param_3> is set to the defined safe default value.
+  - Component state transitions to STATE_FAIL.
+  - Fault log entry created with correct fault code and timestamp.
+
+Step 5:
+  - Component remains in STATE_FAIL (fault must be explicitly cleared).
+  - Return code: ERR_HW or a "fault active" code.
+  - No further processing of outputs until fault is cleared via reset.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: CT-004
+STATUS: Draft
+TITLE: <COMP-ID> – interface test – precondition violation detection
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> is initialised.
+- Test harness can supply NULL pointers or invalid parameter combinations.
+<<<
+STEPS: >>>
+1. Call <function_name> with <param_3> = NULL (null output pointer).
+2. Record return code, component state, and fault log.
+3. Call <function_name> with <param_1> valid but <param_2> = invalid enum
+   value (a value not in {VAL_A, VAL_B, VAL_C}).
+4. Record return code, <param_3>, and fault log.
+5. Call <function_name> with all parameters valid after the above failures.
+6. Record return code and <param_3>.
+<<<
+EXPECTED_RESULT: >>>
+Step 2: Return code ERR_RANGE or equivalent; no write through NULL pointer;
+        no memory corruption; fault logged.
+Step 4: Return code ERR_RANGE; <param_3> not written; fault logged.
+Step 6: Return code OK; component returns to normal operation;
+        <param_3> = <expected value>.
+<<<
+ACTUAL_RESULT: >>>
+<To be completed upon test execution>
+<<<
+VERDICT: NOT_RUN
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-031
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Component Design Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Component Design Verification Report
+as required by EN 50716:2023, Clause 7.4 and Table A.1 (document 17). It
+records the outcome of independent verification of the Component Design
+Specification (section 2) and the Component Test Specification (section 3)
+before those documents are baselined and implementation commences.
+<<<
+
+[REQUIREMENT]
+UID: CD-060
+STATUS: Draft
+TITLE: Verification scope and method
+STATEMENT: >>>
+The component design verification shall cover all deliverables in this document:
+
+  a) Component Design Specification (section 2), for each component:
+       - Completeness: the component design covers all SRS requirements
+         allocated to it (CD-010).
+       - Interface correctness: the interface specification (CD-020) is
+         fully defined per SAD-060 and Table A.20.
+       - Logic correctness: the algorithm (CD-030), state machine (CD-031),
+         and data structures (CD-032) are internally consistent and
+         consistent with the SRS requirements.
+       - Correct application of Table A.4 and A.20 constraints (CD-040
+         through CD-044): complexity metrics within limits, encapsulation
+         verified, parameter counts within limits.
+
+  b) Component Test Specification (section 3):
+       - Coverage: every requirement in section 2 has at least one test case
+         (CT-xxx) with ROLE: Verifies traceability.
+       - Adequacy: the test strategy (CD-050) and techniques (CD-051 through
+         CD-056) are appropriate to the target SIL.
+       - Static analysis configuration (CD-052) is complete and correct.
+       - Coverage objectives (CD-053) are achievable and consistent with
+         the project-level objectives (SRS-073).
+
+Verification method: structured inspection by the Software Verifier (SP-021)
+using a checklist derived from EN 50716:2023, Clause 7.4 and Table A.20.
+Verifier: <Name, Organisation, independence evidence — see SP-021>
+Checklist reference: <document ID or tool reference>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 17 – Component Design Verification Report.
+
+[REQUIREMENT]
+UID: CD-061
+STATUS: Draft
+TITLE: Verification records and verdict
+STATEMENT: >>>
+The Software Component Design Verification Report shall include:
+
+  - Date and revision of the Component Design Specification and Component
+    Test Specification reviewed (one entry per document).
+  - Name, role, and independence evidence of the verifier (per SP-021).
+  - Checklist results: each checklist item marked Pass / Fail / N/A
+    with observations recorded.
+  - List of findings: unique identifier, description, severity
+    (Critical / Major / Minor / Observation), and status.
+  - Metrics summary:
+      - Cyclomatic complexity: maximum and average per component.
+      - Code size: actual vs budget (SAD-052) per component.
+      - Parameter counts: all within limit (CD-022).
+  - Action items raised, with reference to the action item register.
+  - Resolution evidence for all Critical and Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+The Component Design Specification shall not be baselined and
+implementation shall not commence until an Approved verdict is recorded.
+
+Verification Report reference: <document ID>
+Verdict: <to be completed upon review>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.4 and Table A.1, doc 17 – Component Design Verification Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 7.4 – Component design.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.4 – Techniques and measures (design and implementation).
+[5]  EN 50716:2023, Table A.5 – Techniques and measures (analysis and testing).
+[6]  EN 50716:2023, Table A.20 – Techniques and measures (components).
+[7]  EN 50716:2023, Table A.21 – Techniques and measures (test coverage).
+[8]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[9]  <Document ID> – Software Requirements Specification (SRS-xxx series).
+[10] <Document ID> – Software Architecture and Design (SAD-xxx series).
+[11] <Project-specific references>
+<<<
+
+[[/SECTION]]

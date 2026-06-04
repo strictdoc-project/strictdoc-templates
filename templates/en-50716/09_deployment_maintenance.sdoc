@@ -1,0 +1,1405 @@
+[DOCUMENT]
+TITLE: Software deployment and maintenance
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Software Deployment and Maintenance phases for the
+railway control and protection system identified below. It is prepared in
+accordance with EN 50716:2023, Clauses 9.1 (Software deployment) and 9.2
+(Software maintenance), and collects seven output deliverables from Table A.1:
+
+  39. Software Deployment Manual
+  40. Deployment Records
+  41. Deployment Verification Report
+  42. Software Maintenance Plan
+  43. Software Change Records
+  44. Software Maintenance Records
+  45. Software Maintenance Verification Report
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (doc 43):                          BASIC=HR, SIL_1–4=HR.
+- Table A.1 (docs 39, 40, 41, 42, 44, 45):     BASIC=R,  SIL_1–4=HR.
+- Table A.10 (software maintenance techniques, Clause 9.2):
+    Impact analysis:             BASIC=R,  SIL_1=HR, SIL_2=HR, SIL_3=M, SIL_4=M.
+    Data recording and analysis: BASIC=HR, SIL_1=HR, SIL_2=HR, SIL_3=M, SIL_4=M.
+
+DCR-xxx are software change records; each DCR entry documents a single approved
+change from request through implementation and verification closure.
+
+Instructions for use:
+- UIDs follow convention: DM-xxx (requirements), DCR-xxx (change records).
+- Duplicate DCR entries for each software change.
+- Duplicate deployment record blocks in §3 for each deployment instance.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Maintainer / Operator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+Software Release Note: <Document ID, 07_overall_testing_validation.sdoc, APP-REL-xxx>
+Deployment Tool:       <Tool name, version, qualification reference>
+Maintenance Process:   <Document ID of SP-061 – Change Control Procedure>
+Configuration Management System: <VCS system / configuration database reference>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Deployment Manual
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Deployment Manual as required by
+EN 50716:2023, Clause 9.1 and Table A.1 (document 39). It defines the
+procedures and constraints for deploying the software release to the
+operational target system, covering pre-deployment checks, loading, post-load
+verification, and rollback.
+<<<
+
+[[SECTION]]
+TITLE: Pre-deployment checks and prerequisites
+
+[REQUIREMENT]
+UID: DM-010
+STATUS: Draft
+TITLE: Pre-deployment checks and prerequisites
+STATEMENT: >>>
+The following checks shall be completed and recorded before commencing
+software deployment at any site.
+
+Authorisation prerequisites:
+  a) Deployment authorisation obtained from <System Owner / Safety Manager>
+     for site <site identifier> (reference: <authorisation record ID>).
+  b) Maintenance window agreed with operations control: start <HH:MM>,
+     end <HH:MM>, date <YYYY-MM-DD>.
+  c) Adjacent systems and interfaces notified of planned outage per
+     operating procedures <ref>.
+  d) The system to be updated is confirmed out of operational service and
+     in maintenance mode; no trains or movements permitted in affected area.
+
+Hardware and platform verification:
+  e) Target hardware platform: <name, revision> — confirmed to match the
+     hardware specification in the release note (VAL-100 / APP-140).
+  f) Bootloader version: <version> — confirmed compatible with the software
+     release being deployed.
+  g) Available non-volatile memory: <n> kB free — sufficient for release
+     <SW-REL-xxx / APP-REL-xxx> (requires <n> kB per APP-140 / VAL-100).
+  h) Hardware self-test: all on-board diagnostics pass; no active hardware
+     faults recorded.
+
+Backup of existing software:
+  i) Current software version on target: <version, SHA-256 hash>.
+  j) Backup copy saved to <removable medium / server path> and verified
+     by hash comparison.
+  k) Backup recovery procedure tested on an identical non-live unit:
+     <reference to test record>.
+
+Software package integrity:
+  l) Deployment package received: <filename>, SHA-256: <hash>.
+  m) Hash verified against the release note (<SW-REL-xxx>): <Match confirmed>.
+  n) Package is the approved release; no modifications since release sign-off.
+
+Personnel:
+  o) Deployment engineer: <Name, qualification reference>.
+  p) Supervising safety engineer: <Name, qualification reference>.
+
+Pre-deployment checklist reference: <document ID>
+All items above shall be checked and signed off before loading commences.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 39 – Software Deployment Manual.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software loading procedure
+
+[REQUIREMENT]
+UID: DM-020
+STATUS: Draft
+TITLE: Software loading procedure
+STATEMENT: >>>
+The following procedure shall be followed to load the software onto the target
+system. All steps are mandatory; no step may be skipped.
+
+Loading procedure:
+
+  Step 1 — Connect deployment tool:
+    Connect <deployment tool name, version> to target via <interface type>.
+    Confirm tool reports target hardware identifier <HW-ID> and current
+    software version <version>.
+
+  Step 2 — Initiate loading sequence:
+    Select deployment package <filename> (hash verified in DM-010, step l).
+    Initiate loading via <tool menu path / command>.
+    Tool displays progress; do not interrupt or power-cycle during loading.
+    Expected loading duration: approximately <n> minutes.
+
+  Step 3 — Verify loading completion:
+    Tool reports: "Loading complete. <n> bytes written."
+    Tool performs automatic post-write readback CRC; result shall be PASS.
+    If readback CRC fails: do not commission; execute rollback (DM-040).
+
+  Step 4 — Apply parameter file (if separate):
+    Load parameter file <params_vX.Y.bin> (hash: <SHA-256>) using
+    <parameter loading command>.
+    Tool confirms: parameter file applied; parameter checksum PASS.
+
+  Step 5 — Power cycle target:
+    Remove deployment tool connection.
+    Apply controlled power cycle to target: power off for <n> s, then on.
+    Observe start-up sequence; confirm no error codes on local display.
+
+  Step 6 — Record loading results:
+    Record in deployment record (DM-060): tool output log reference,
+    post-write CRC result, parameter file hash, power-cycle timestamp.
+
+Expected duration (all steps): <n> minutes.
+Tool output log shall be archived with the deployment record.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 39 – Software Deployment Manual.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Post-load verification procedure
+
+[REQUIREMENT]
+UID: DM-030
+STATUS: Draft
+TITLE: Post-load verification procedure
+STATEMENT: >>>
+Post-load verification shall be performed immediately after loading (DM-020)
+and before returning the system to operational service.
+
+Verification steps:
+
+  Step 1 — Software version check:
+    Query target software version via <diagnostic interface / local display>.
+    Confirmed version: <vM.N.P-buildNNN> (matches SW-REL-xxx / APP-REL-xxx).
+    If version mismatch: execute rollback (DM-040).
+
+  Step 2 — Binary hash verification:
+    Read back software binary from target using <deployment tool>.
+    Compute SHA-256 hash of read-back binary.
+    Compare against release note hash (<hash value>): shall match exactly.
+    If hash mismatch: execute rollback (DM-040).
+
+  Step 3 — Start-up self-test:
+    Observe target start-up sequence; all on-board self-tests shall report PASS.
+    Self-test results visible on <local display / diagnostic port>.
+    Any FAIL result: halt commissioning; investigate and execute rollback if
+    the cause cannot be resolved.
+
+  Step 4 — Commissioning tests:
+    Execute the commissioning test sequence defined in the deployment guide
+    reference (VAL-120 / APP-140).
+    Required tests:
+
+      Test ID | Description                              | Pass criterion
+      --------|------------------------------------------|-------------------
+      CT-001  | <System start-up and mode transition>    | <mode: OPERATIONAL>
+      CT-002  | <External interface IF-EXT-01 handshake> | <LINK-UP within n s>
+      CT-003  | <Safety function: output state at start> | <fail-safe state>
+      CT-004  | <Watchdog refresh cycle>                 | <no reset in n cycles>
+      CT-005  | <Diagnostic read-back>                   | <version = vM.N.P>
+
+    All commissioning tests shall show PASS before the system is returned
+    to operational service. Any FAIL: halt; investigate; execute rollback if
+    required.
+
+  Step 5 — Notify control and restore service:
+    Notify operations control that commissioning is complete and system is
+    ready for return to service.
+    Record time of service restoration in deployment record (DM-060).
+
+Post-load verification checklist reference: <document ID>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 39 – Software Deployment Manual.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Rollback procedure
+
+[REQUIREMENT]
+UID: DM-040
+STATUS: Draft
+TITLE: Rollback procedure
+STATEMENT: >>>
+The rollback procedure shall be executed whenever a deployment step fails
+or any post-load verification check (DM-030) cannot be resolved. Rollback
+restores the system to the previously verified operational software version.
+
+Rollback triggers:
+  - Post-write CRC fails (DM-020, Step 3).
+  - Software version mismatch (DM-030, Step 1).
+  - Binary hash mismatch after read-back (DM-030, Step 2).
+  - Start-up self-test FAIL that cannot be resolved (DM-030, Step 3).
+  - Any commissioning test FAIL that cannot be resolved (DM-030, Step 4).
+  - Deployment engineer or supervising safety engineer judgement.
+
+Rollback procedure:
+
+  Step 1 — Confirm system is in maintenance mode and out of service.
+
+  Step 2 — Load backup software from the backup medium created in DM-010
+    (step j) using <deployment tool>.
+    Backup file: <filename>, SHA-256: <hash from DM-010, step i>.
+    Follow loading steps DM-020 (Steps 1–5) using the backup package.
+
+  Step 3 — Perform post-load verification (DM-030) on the restored backup
+    version.
+
+  Step 4 — If backup restoration is successful:
+    Record rollback in deployment record (DM-060): trigger, steps taken,
+    backup version restored, post-load verification result.
+    Notify deployment engineering team; raise incident report <IR-xxx>.
+    Do not return system to service until incident reviewed and resolved.
+
+  Step 5 — If backup restoration also fails:
+    System shall remain out of service.
+    Escalate immediately to <Safety Manager / System Engineer>.
+    Hardware fault investigation may be required.
+
+The failed deployment package shall be quarantined pending investigation.
+No re-attempt of the original deployment package without engineering
+approval and root-cause analysis.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 39 – Software Deployment Manual.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Safety constraints during deployment
+
+[REQUIREMENT]
+UID: DM-050
+STATUS: Draft
+TITLE: Safety constraints during deployment
+STATEMENT: >>>
+The following safety constraints are mandatory during all deployment activities
+and shall be included in site safety briefings.
+
+System state constraints:
+  a) The system under deployment shall be confirmed out of operational service
+     before any software loading activity commences.
+  b) No partial deployment is permitted: the complete software release package
+     shall be loaded in a single operation; loading of individual files or
+     modules separately is not allowed.
+  c) The system shall not be returned to operational service until all post-load
+     verification steps (DM-030) are completed with PASS results.
+  d) If deployment is interrupted for any reason, rollback (DM-040) shall be
+     executed before leaving the site; no system shall be left in an
+     indeterminate software state.
+
+Personnel constraints:
+  e) Deployment shall be performed only by personnel holding the deployment
+     authorisation qualification <qualification code>.
+  f) A supervising safety engineer independent of the deployment engineer
+     shall be present at site for all deployments at SIL ≥ 2.
+  g) Both deployment engineer and supervising engineer shall sign the
+     deployment record (DM-060) before the system is returned to service.
+
+Environmental and operational constraints:
+  h) Deployment shall not be commenced during adverse environmental conditions
+     that could cause power interruption (e.g., lightning storm).
+  i) Deployment tool laptop / workstation shall be powered from a stable supply
+     with UPS backup or battery power during loading.
+  j) Communications shall be maintained with operations control throughout
+     the deployment window.
+
+Constraint reference: <document ID of site safety plan / operating procedures>
+These constraints supersede any contradictory site-specific instructions.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 39 – Software Deployment Manual.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Deployment Records
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Deployment Records as required by EN 50716:2023,
+Clause 9.1 and Table A.1 (document 40). One deployment record shall be
+completed for each deployment instance at each site. Copy the record template
+(DM-060) and populate all fields; retain the completed record as a permanent
+lifecycle document.
+<<<
+
+[[SECTION]]
+TITLE: Deployment record template
+
+[REQUIREMENT]
+UID: DM-060
+STATUS: Draft
+TITLE: Deployment record template
+STATEMENT: >>>
+One instance of the following record shall be completed for each software
+deployment. All fields are mandatory; leave none blank.
+
+──────────────────────────────────────────────────────────────────
+DEPLOYMENT RECORD
+──────────────────────────────────────────────────────────────────
+Record ID:              <DR-SITE-yyyymmdd-nn>
+Site / system ID:       <site name or geographic identifier>
+Date:                   <YYYY-MM-DD>
+Maintenance window:     <HH:MM> – <HH:MM>
+
+Software release deployed:
+  Release ID:           <SW-REL-xxx / APP-REL-xxx>
+  Version:              <vM.N.P-buildNNN>
+  Binary filename:      <filename.hex / filename.adb>
+  SHA-256 (release):    <hash from release note>
+
+Previous software version (backed up):
+  Version:              <vM.N.P-buildNNN (or "none" if first deployment)>
+  SHA-256 (backup):     <hash>
+  Backup location:      <removable medium label / server path>
+
+Pre-deployment checks (DM-010):
+  Hardware platform confirmed:    <Yes / No — if No, describe>
+  Bootloader version confirmed:   <Yes / No>
+  Memory sufficient:              <Yes / No>
+  Hardware self-test PASS:        <Yes / No>
+  Backup created and verified:    <Yes / No>
+  Package hash verified:          <Yes / No>
+  Maintenance window authorised:  <Yes / No — authorisation ref.>
+  System confirmed out of service: <Yes / No>
+
+Loading (DM-020):
+  Tool used:                  <tool name, version>
+  Tool connection confirmed:  <Yes>
+  Post-write CRC result:      <PASS / FAIL>
+  Parameter file loaded:      <Yes / N/A>
+  Parameter file hash:        <hash / N/A>
+  Loading log reference:      <filename or tool session ID>
+
+Post-load verification (DM-030):
+  Version check:              <PASS / FAIL>
+  Binary hash read-back:      <PASS / FAIL>
+  Start-up self-test:         <PASS / FAIL>
+  Commissioning test CT-001:  <PASS / FAIL>
+  Commissioning test CT-002:  <PASS / FAIL>
+  Commissioning test CT-003:  <PASS / FAIL>
+  Commissioning test CT-004:  <PASS / FAIL>
+  Commissioning test CT-005:  <PASS / FAIL>
+  <Additional site-specific tests as required>
+
+Rollback executed:    <Yes / No — if Yes, reference incident report IR-xxx>
+Service restored at:  <HH:MM>
+
+Sign-off:
+  Deployment engineer:        <Name> — <Date> — <Signature>
+  Supervising safety engineer: <Name> — <Date> — <Signature>
+  Operations control notified: <Name, Time>
+──────────────────────────────────────────────────────────────────
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 40 – Deployment Records.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Deployment verification evidence
+
+[REQUIREMENT]
+UID: DM-070
+STATUS: Draft
+TITLE: Deployment verification evidence
+STATEMENT: >>>
+The following evidence items shall be collected and archived for each
+deployment instance, in addition to the signed deployment record (DM-060).
+
+Evidence items:
+
+  Evidence item                        | Retention location        | Retention period
+  -------------------------------------|---------------------------|------------------
+  Completed deployment record (DM-060) | <document archive>        | Lifetime of system
+  Deployment tool output log           | <log archive>             | Lifetime of system
+  Post-write CRC result (tool report)  | <log archive>             | Lifetime of system
+  Binary hash read-back confirmation   | <log archive>             | Lifetime of system
+  Commissioning test records           | <document archive>        | Lifetime of system
+  Backup medium label / server record  | <configuration database>  | Until next deployment
+  Maintenance window authorisation     | <document archive>        | Lifetime of system
+
+Evidence completeness check (performed by Deployment Verifier, DM-080):
+  - All mandatory evidence items present and legible.
+  - Deployment record fully completed and signed by both personnel.
+  - No unexplained gaps or corrections without counter-signature.
+  - Commissioning tests all show PASS; any FAIL has documented resolution.
+
+Evidence retention is managed under configuration control per SP-061.
+All evidence for SIL ≥ 2 deployments shall be retained in a tamper-evident
+archive accessible to the safety assessor.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 40 – Deployment Records.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Deployment Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Deployment Verification Report as required by
+EN 50716:2023, Clause 9.1 and Table A.1 (document 41). It records the results
+of independent verification of the deployment activities, confirming that the
+deployment was performed in accordance with the Software Deployment Manual
+(§2) and that all required evidence is complete.
+<<<
+
+[[SECTION]]
+TITLE: Verification scope and method
+
+[REQUIREMENT]
+UID: DM-080
+STATUS: Draft
+TITLE: Deployment verification scope and method
+STATEMENT: >>>
+Independent verification of the deployment shall be performed for each
+deployment instance after the deployment engineer's sign-off of the
+deployment record (DM-060).
+
+Verification scope:
+
+  a) Deployment record (DM-060):
+       - All mandatory fields completed.
+       - Signed by both deployment engineer and supervising safety engineer.
+       - Pre-deployment checks all confirmed satisfactory.
+       - Post-write CRC and commissioning tests all PASS.
+       - No unresolved deviations.
+
+  b) Evidence completeness (DM-070):
+       - All evidence items present, legible, and archived.
+       - Tool output log consistent with the deployment record entries.
+
+  c) Software version on target:
+       - Query target system remotely or via diagnostic interface.
+       - Confirm reported version matches the deployed release (SW-REL-xxx).
+
+  d) Consistency with release note:
+       - Release note (VAL-100 / APP-140) hash matches the hash recorded
+         in DM-060.
+       - Target hardware and bootloader versions match the release note
+         prerequisites.
+
+Verification method: structured inspection by the Deployment Verifier,
+independent of the deployment engineer, using a checklist derived from
+EN 50716:2023, Clause 9.1 and this Deployment Manual.
+Verifier: <Name, Organisation, independence evidence>
+Checklist reference: <document ID>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 41 – Deployment Verification Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Verification records and verdict
+
+[REQUIREMENT]
+UID: DM-090
+STATUS: Draft
+TITLE: Deployment verification records and verdict
+STATEMENT: >>>
+The Deployment Verification Report shall include the following for each
+verified deployment instance:
+
+  - Deployment record ID and site identifier reviewed.
+  - Date and name of verifier.
+  - Checklist results: each item marked Pass / Fail / N/A with observations.
+  - Target software version confirmed on system.
+  - List of findings: identifier, description, severity, and status.
+  - Resolution evidence for any Critical or Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+Verification results (per deployment instance):
+
+  Deployment record:       <DR-SITE-yyyymmdd-nn>
+  Site / system:           <site identifier>
+  Deployed release:        <SW-REL-xxx / APP-REL-xxx>
+  Date of verification:    <YYYY-MM-DD>
+  Verifier:                <Name, Role>
+
+  Item                                        | Result      | Observations
+  --------------------------------------------|-------------|--------------------
+  Deployment record fully completed           | <Pass / N/A>| <none / ref.>
+  Both engineers signed                       | <Pass>      |
+  Pre-deployment checks all satisfactory      | <Pass>      |
+  Post-write CRC PASS                         | <Pass>      |
+  Commissioning tests all PASS               | <Pass>      |
+  Evidence items complete (DM-070)            | <Pass>      |
+  Version confirmed on target                 | <Pass>      |
+  Release note hash matches                   | <Pass>      |
+
+Findings: <None / list with reference>
+Verdict: <Approved / Approved with conditions / Not approved>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.1 and Table A.1, doc 41 – Deployment Verification Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Maintenance Plan
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Maintenance Plan as required by
+EN 50716:2023, Clause 9.2 and Table A.1 (document 42). It defines the
+strategy, processes, and techniques governing all post-deployment changes
+to the software throughout the operational lifetime of the system.
+<<<
+
+[[SECTION]]
+TITLE: Maintenance scope and objectives
+
+[REQUIREMENT]
+UID: DM-100
+STATUS: Draft
+TITLE: Maintenance scope and objectives
+STATEMENT: >>>
+The Software Maintenance Plan covers all post-deployment changes to the
+software for the system identified in the document information section,
+throughout its operational lifetime.
+
+Maintenance categories:
+
+  Corrective maintenance: resolution of defects and anomalies discovered
+    during operation, including safety-related and non-safety defects.
+
+  Adaptive maintenance: modifications required due to changes in the
+    operational environment — hardware obsolescence, operating system
+    updates, changes to adjacent systems or external interfaces.
+
+  Perfective maintenance: improvements to performance, maintainability,
+    or functionality that do not arise from a defect or external change.
+
+  Emergency maintenance: urgent corrective action required to address a
+    safety-critical defect or failure in the operational system.
+
+Maintenance objectives:
+  a) Ensure the software continues to meet its safety requirements
+     throughout its operational lifetime.
+  b) Ensure all changes are controlled, verified, and documented in
+     accordance with EN 50716:2023, Clause 9.2.
+  c) Ensure the integrity of the safety case is maintained after each change.
+  d) Prevent the introduction of new defects through the maintenance process.
+
+Responsible parties:
+  Maintenance Manager:     <Name, Organisation>
+  Safety Manager:          <Name, Organisation>
+  Change Authority:        <Name / Role — approves change requests>
+  Maintenance Implementer: <Name / team>
+  Maintenance Verifier:    <Name, Organisation — independent of implementer>
+
+Maintenance period: from initial deployment through to system decommissioning.
+This plan shall be reviewed at least every <n> years or following any Major
+modification.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 42 – Software Maintenance Plan.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Modification classification
+
+[REQUIREMENT]
+UID: DM-110
+STATUS: Draft
+TITLE: Major and minor modification classification
+STATEMENT: >>>
+Every proposed change shall be classified as Major or Minor before
+implementation. The classification determines the required lifecycle activities
+and the extent of re-verification and re-validation.
+
+Major modification — definition:
+  A modification is Major if it meets any of the following criteria:
+  a) Changes to safety-critical software requirements (SRS-xxx).
+  b) Changes to safety-critical source code or data structures.
+  c) Changes to the software architecture or inter-module interfaces.
+  d) Introduction of new safety functions or removal of existing ones.
+  e) Changes to timing parameters that affect the safety response time budget.
+  f) Changes to the generic software platform version or configuration.
+  g) Changes that require re-assessment of the hazard log or safety case.
+  h) Any change for which the impact analysis (DM-140) cannot confirm
+     isolation to non-safety components.
+
+  Required lifecycle activities for Major modifications:
+    - Full impact analysis (DM-140).
+    - Update of all affected lifecycle documents (SRS, SAD, source, tests).
+    - Re-execution of all affected test cases; full regression test suite.
+    - Re-verification per EN 50716:2023, Clause 7.6 (as applicable).
+    - Re-validation per EN 50716:2023, Clause 7.7 (as applicable).
+    - Issue of new release note; new deployment cycle per §2.
+
+Minor modification — definition:
+  A change is Minor if it meets all of the following criteria:
+  a) Does not affect any safety-critical requirement, function, or parameter.
+  b) Does not affect any safety-critical source code path.
+  c) Change is limited to non-safety components or documentation.
+  d) Impact analysis (DM-140) confirms no effect on safety functions.
+  Examples: correction of non-safety text or comments, update of non-safety
+  configuration parameters within approved bounds, documentation corrections.
+
+  Required lifecycle activities for Minor modifications:
+    - Impact analysis confirming Minor classification.
+    - Update of affected documents.
+    - Targeted regression tests covering the modified component.
+    - Verification inspection (no full re-validation required).
+    - Update of maintenance records (DM-170).
+
+Classification disputes: if the classification is disputed or uncertain,
+the change shall be treated as Major.
+Classification authority: <Name / Role of Change Authority (DM-100)>.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 42 – Software Maintenance Plan.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Change control process
+
+[REQUIREMENT]
+UID: DM-120
+STATUS: Draft
+TITLE: Change control process
+STATEMENT: >>>
+All changes to the software shall follow the change control process defined
+in SP-061 (Change Control Procedure). The process is summarised below.
+
+Change control lifecycle:
+
+  Step 1 — Change Request (CR):
+    A Change Request is raised by any stakeholder using form <CR-form ref>.
+    CR fields: description, reason, category (corrective / adaptive /
+    perfective / emergency), priority, and submitter.
+    CR registered in the change management system: <system reference>.
+
+  Step 2 — Impact analysis (DM-140):
+    Impact analysis performed by Maintenance Implementer and reviewed by
+    Maintenance Verifier. Results documented in the DCR (DM-160).
+    Classification determined per DM-110.
+
+  Step 3 — Change authorisation:
+    Change Authority reviews CR, impact analysis, and classification.
+    Approves, rejects, or defers the change.
+    For emergency maintenance: abbreviated authorisation with retrospective
+    full review within <n> working days.
+
+  Step 4 — Implementation:
+    Implementer carries out the change per the approved scope.
+    All modified source files committed to version control with reference
+    to the DCR ID.
+    Compilation and static analysis re-run on modified components.
+
+  Step 5 — Testing:
+    Test suite re-executed per DM-130 (regression strategy for the
+    applicable modification class).
+    All affected test cases shall show PASS before proceeding.
+    Problem reports (PR-DCR-xxx) raised for any failures.
+
+  Step 6 — Verification:
+    Maintenance Verifier performs verification inspection per DM-190.
+    Verdict recorded in DCR (DM-160) and Maintenance Verification Report (§8).
+
+  Step 7 — Release:
+    For Major modifications: new release note issued; deployment cycle per §2.
+    For Minor modifications: update maintenance records (DM-170); no new
+    deployment cycle required if change does not affect deployed binary.
+
+  Step 8 — Closure:
+    DCR status set to Closed; maintenance records updated (DM-170, DM-180).
+
+Reference: SP-061 — Change Control Procedure.
+Emergency maintenance: additional escalation path per SP-062.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 42 – Software Maintenance Plan.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Re-validation and regression testing strategy
+
+[REQUIREMENT]
+UID: DM-130
+STATUS: Draft
+TITLE: Re-validation and regression testing strategy
+STATEMENT: >>>
+The extent of re-verification and re-validation required after a modification
+is determined by the modification classification (DM-110) and the scope of
+the impact analysis (DM-140).
+
+Re-validation strategy by modification class:
+
+  Major modification:
+    a) All test cases covering modified requirements shall be re-executed.
+    b) Full regression test suite shall be re-executed (all VTR-xxx and
+       ATR-xxx test cases as applicable).
+    c) Integration tests (ITR-xxx, HITR-xxx) shall be re-executed for any
+       modified interfaces.
+    d) Performance tests (VAL-031, INT-050) shall be re-executed if timing
+       parameters are changed.
+    e) Re-validation verdict (DM-200) shall be issued before new release.
+    f) Updated release note required (new SW-REL-xxx / APP-REL-xxx).
+
+  Minor modification:
+    a) Targeted test cases covering the modified component shall be re-executed.
+    b) Regression tests selected by impact analysis (DM-140) shall be executed.
+    c) No full re-validation required; verification inspection (DM-190) suffices.
+
+Regression test selection — minimum scope:
+  All test cases whose parent requirement is affected by the change (via
+  traceability, DM-140) shall be included in the regression set regardless
+  of modification class.
+
+Test baseline for regression: test cases from the most recent PASS
+validation run (VTR-xxx series, 07_overall_testing_validation.sdoc, or
+ATR-xxx series, 08_application_data.sdoc) shall be used as the baseline.
+
+Re-validation authority: same as the original validation authority unless
+the Safety Manager approves an alternative verifier.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 42 – Software Maintenance Plan.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Impact analysis requirements (Table A.10)
+
+[REQUIREMENT]
+UID: DM-140
+STATUS: Draft
+TITLE: Impact analysis requirements
+STATEMENT: >>>
+Impact analysis shall be performed for every proposed change in accordance
+with EN 50716:2023, Table A.10 (Clause 9.2).
+
+Impact analysis scope — the analysis shall determine:
+
+  a) Which safety requirements (SRS-xxx) are affected by the change.
+  b) Which software components and modules contain the change.
+  c) Which interfaces (internal and external) may be affected.
+  d) Whether the change affects any safety function or safety integrity
+     level claim.
+  e) Whether the change classification is Major or Minor per DM-110.
+  f) Which test cases must be re-executed (regression set per DM-130).
+  g) Whether the hazard log or safety case requires updating.
+  h) Whether any tool qualification evidence requires updating.
+
+Impact analysis method:
+  1. Traceability traversal: starting from the changed item, traverse the
+     traceability chain (forward and backward) to identify all affected
+     requirements, design elements, and test cases.
+  2. Dependency check: review inter-module dependencies (APP-070 / SAD)
+     for any indirect effects.
+  3. Interface check: review all interfaces (internal and external) of
+     the modified component for potential propagation of the change.
+  4. Safety function check: confirm whether any safety function or its
+     contributing components are in the affected set.
+
+Impact analysis documentation (recorded in DCR, DM-160):
+  - List of affected requirements (SRS-xxx, APP-xxx, or "none").
+  - List of affected components and source files.
+  - List of affected test cases (regression set).
+  - Classification verdict (Major / Minor) with rationale.
+  - Safety function impact: <None / describe>
+  - Hazard log update required: <Yes / No>
+
+Impact analysis shall be reviewed and approved by the Maintenance Verifier
+before implementation proceeds.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Table A.10 – Impact analysis (Clause 9.2).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data recording and analysis requirements (Table A.10)
+
+[REQUIREMENT]
+UID: DM-150
+STATUS: Draft
+TITLE: Data recording and analysis requirements
+STATEMENT: >>>
+Operational data from deployed systems shall be systematically collected and
+analysed throughout the maintenance lifetime, in accordance with EN 50716:2023,
+Table A.10 (Clause 9.2).
+
+Data to be recorded:
+
+  a) Fault log data: all fault codes, timestamps, and frequencies extracted
+     from the target system diagnostic interface at each scheduled maintenance
+     visit or on demand following a reported anomaly.
+  b) Event counters: safety-relevant event counters (watchdog resets,
+     communication timeouts, safe-state activations) read and recorded.
+  c) Anomaly reports: field reports from operations and maintenance staff,
+     including descriptions, dates, and conditions of occurrence.
+  d) Performance data: cycle time measurements and resource utilisation
+     readings (if supported by platform diagnostics).
+  e) Environmental records: temperature, humidity, and power quality logs
+     from on-board or external monitoring equipment (if available).
+
+Recording frequency:
+  Scheduled: <every n months / at each planned maintenance visit>
+  Triggered: following any reported anomaly, safe-state activation, or
+    watchdog reset within <n> working days.
+  Emergency: immediately following any safety-related incident.
+
+Data storage and retention:
+  Data stored in: <configuration database / maintenance management system>
+  Retention period: lifetime of system.
+  Format: <CSV / XML / proprietary tool format — reference>.
+
+Analysis requirements:
+  Recorded data shall be analysed to:
+  - Detect trends indicating degradation or ageing of hardware or software.
+  - Identify patterns of recurring faults that may indicate a systematic
+    software defect requiring corrective maintenance.
+  - Confirm that no safety-relevant events have exceeded their expected
+    frequency or changed in character.
+  - Feed into the periodic safety review per <SP-070 reference>.
+
+Analysis reporting: data analysis summary shall be included in each
+periodic maintenance record (DM-170) and reviewed by the Safety Manager.
+Analysis tool: <tool name, version — for fault log extraction and trending>.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Table A.10 – Data recording and analysis (Clause 9.2).
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Change Records
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Change Records as required by
+EN 50716:2023, Clause 9.2 and Table A.1 (document 43). One DCR-xxx entry
+shall be completed for each approved change, from change request through to
+verification closure. Duplicate the change record template for each change.
+<<<
+
+[[SECTION]]
+TITLE: Change record template
+
+[REQUIREMENT]
+UID: DM-160
+STATUS: Draft
+TITLE: Change record (DCR) mandatory content
+STATEMENT: >>>
+Each change record (DCR-xxx) shall be an ACTION_ITEM node containing the
+following information in its STATEMENT field:
+
+  Change Request reference:  <CR-xxx>
+  Change description:        <brief description of what is changed>
+  Reason / trigger:          <defect ID / regulatory requirement / obsolescence /
+                              field anomaly report / other>
+  Maintenance category:      <Corrective / Adaptive / Perfective / Emergency>
+  Classification:            <Major / Minor — per DM-110>
+  Safety function affected:  <None / describe>
+
+  Impact analysis summary (DM-140):
+    Affected requirements:   <SRS-xxx, APP-xxx list / none>
+    Affected components:     <component / file list>
+    Regression test set:     <test case ID list>
+    Hazard log update:       <Required / Not required>
+
+  Implementation:
+    Source files modified:   <filename, commit hash>
+    Documents updated:       <document ID, revision>
+    Compilation result:      <PASS — zero errors, zero warnings>
+    Static analysis result:  <PASS / findings addressed>
+
+  Testing:
+    Test cases re-executed:  <ATR-xxx, VTR-xxx list>
+    All tests PASS:          <Yes / No — if No, reference PR-DCR-xxx>
+    Open problem reports:    <None / PR-DCR-xxx>
+
+  Verification:
+    Verifier:                <Name, Organisation>
+    Verdict:                 <Approved / Not approved>
+    Date:                    <YYYY-MM-DD>
+
+The OWNER field shall name the Maintenance Implementer.
+The DUE_DATE field shall be the agreed implementation completion date.
+The COMMENT field shall record closure details: new release reference
+(if Major) or maintenance record reference (if Minor).
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 43 – Software Change Records.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Change records
+
+[TEXT]
+STATEMENT: >>>
+The following DCR-xxx entries are the software change records for this
+software item. Add one entry per approved change; set STATUS to Active during
+implementation and Closed upon verification acceptance.
+<<<
+
+[ACTION_ITEM]
+UID: DCR-001
+STATUS: Closed
+TITLE: Adaptive maintenance: update points response timeout for <station> following infrastructure upgrade
+STATEMENT: >>>
+Change Request reference:  CR-001
+Change description:        The electromechanical points at <station> have been
+  replaced with new motorised units (type <Mxx>) as part of an infrastructure
+  upgrade. The new units have a faster verified response time of <n> ms,
+  replacing the previous <n+x> ms units. The points timeout parameter in the
+  application data must be updated to reflect the new infrastructure; the
+  existing value is valid but overly conservative, and operational staff have
+  reported unnecessary safe-state activations when the new points move faster
+  than the existing timeout window triggers.
+Reason / trigger:          Infrastructure upgrade; field anomaly report
+  <FAR-012> citing spurious safe-state activations at <station>.
+Maintenance category:      Adaptive
+Classification:            Minor — affects a non-safety timing parameter
+  within the permitted range (APP-C-004); no safety function behaviour
+  changes; the new timeout value is less than the original and remains
+  within the platform's verified range.
+
+Impact analysis summary (DM-140):
+  Affected requirements:   APP-C-004 (parameter range constraint); APP-F-003
+    (approach locking logic — timeout is an input; confirmed: approach
+    locking outcome unchanged within new timeout range).
+  Affected components:     <parameters.dsl> (parameter table module, APP-070).
+  Regression test set:     ATR-001 (route setting, covers points behaviour);
+    ATR-xxx (approach locking release test — to be re-run).
+  Hazard log update:       Not required — change is within analysed parameter
+    range; no new hazard identified.
+
+Implementation:
+  Source files modified:   <parameters.dsl>, source revision <hash>.
+  Documents updated:       APP-130 (baseline record) — Rev. B.
+  Compilation result:      PASS — zero errors, zero warnings.
+  Static analysis result:  PASS — no new MISRA violations.
+
+Testing:
+  Test cases re-executed:  ATR-001, ATR-xxx (approach locking).
+  All tests PASS:          Yes.
+  Open problem reports:    None.
+
+Verification:
+  Verifier:                <Name, Organisation>
+  Verdict:                 Approved
+  Date:                    <YYYY-MM-DD>
+<<<
+OWNER: <Maintenance Implementer Name>
+DUE_DATE: <YYYY-MM-DD>
+COMMENT: >>>
+Change implemented in application data source revision <hash>. New compiled
+baseline <APP-BL-yyy> generated and validated. Minor modification: no new
+release note required; maintenance records updated in DM-170 (revision B of
+APP-130). Deployed to <station> on <YYYY-MM-DD> per deployment record
+<DR-STATION-yyyymmdd-01>. Spurious safe-state activations ceased following
+deployment; confirmed by operations staff after <n> days of observation.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Maintenance Records
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Maintenance Records as required by
+EN 50716:2023, Clause 9.2 and Table A.1 (document 44). It provides a
+per-release maintenance record summarising all changes applied since the
+previous release, and the configuration history of the deployed software.
+<<<
+
+[[SECTION]]
+TITLE: Maintenance record template
+
+[REQUIREMENT]
+UID: DM-170
+STATUS: Draft
+TITLE: Maintenance record per release
+STATEMENT: >>>
+One maintenance record shall be maintained per software release. It is
+updated incrementally as changes are applied and closed DCRs are accumulated.
+
+──────────────────────────────────────────────────────────────────
+MAINTENANCE RECORD
+──────────────────────────────────────────────────────────────────
+Software release:         <SW-REL-xxx / APP-REL-xxx>
+Version:                  <vM.N.P-buildNNN>
+Release date:             <YYYY-MM-DD>
+Previous release:         <SW-REL-yyy / "Initial release">
+
+Changes applied since previous release:
+
+  DCR ID  | Classification | Category    | Description (brief)        | Closed
+  ---------|----------------|-------------|----------------------------|----------
+  DCR-001  | Minor          | Adaptive    | Points timeout update      | <date>
+  <DCR-nn> | <Major/Minor>  | <category>  | <brief description>        | <date>
+  <No further changes in this release>
+
+Major changes requiring new release: <None / list DCR-xxx>
+Minor changes applied to this baseline: <n>
+
+Cumulative change summary since initial release:
+  Total DCRs closed:         <n>
+  Major modifications:       <n>
+  Minor modifications:       <n>
+  Emergency maintenance:     <n>
+  Open change requests:      <n (list CR-xxx)>
+
+Data recording and analysis summary (DM-150):
+  Period covered:            <YYYY-MM-DD to YYYY-MM-DD>
+  Fault log entries reviewed: <n>
+  Recurring fault patterns:  <None identified / describe>
+  Safety-relevant events:    <None / describe>
+  Trend analysis conclusion: <No degradation / describe>
+  Analysis reviewed by Safety Manager: <Name, Date>
+
+Periodic safety review:
+  Last review date:          <YYYY-MM-DD>
+  Next scheduled review:     <YYYY-MM-DD>
+  Review reference:          <document ID per SP-070>
+
+Record maintained by: <Name, Role>
+Last updated:         <YYYY-MM-DD>
+──────────────────────────────────────────────────────────────────
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 44 – Software Maintenance Records.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Configuration history
+
+[REQUIREMENT]
+UID: DM-180
+STATUS: Draft
+TITLE: Configuration history
+STATEMENT: >>>
+The configuration history provides a complete version history of the software
+from initial release through to the current deployed state at each site.
+
+Software version history:
+
+  Version       | Release date | Type     | Key changes (DCR refs)     | Sites deployed
+  --------------|--------------|----------|----------------------------|-----------------
+  <vM.0.0>      | <YYYY-MM-DD> | Initial  | Initial release            | <site list>
+  <vM.0.1>      | <YYYY-MM-DD> | Minor    | DCR-001                    | <site list>
+  <vM.N.P>      | <YYYY-MM-DD> | Major    | DCR-<nn>                   | <site list>
+  <Current>     | <YYYY-MM-DD> | <type>   | <DCR refs>                 | <site list>
+
+Per-site deployment status:
+
+  Site ID         | Current version   | Deployment date | Deployment record
+  ----------------|-------------------|-----------------|-------------------
+  <SITE-001>      | <vM.N.P>          | <YYYY-MM-DD>    | <DR-SITE-001-yyyymmdd>
+  <SITE-002>      | <vM.N.P>          | <YYYY-MM-DD>    | <DR-SITE-002-yyyymmdd>
+  <Add row per site>
+
+Baseline identifiers:
+
+  Version     | Source baseline     | Compiled baseline  | SHA-256 (binary)
+  ------------|---------------------|--------------------|-----------------
+  <vM.0.0>    | <APP-SRC-001>       | <APP-BL-001>       | <hash>
+  <vM.0.1>    | <APP-SRC-002>       | <APP-BL-002>       | <hash>
+  <vM.N.P>    | <APP-SRC-xxx>       | <APP-BL-xxx>       | <hash>
+
+The configuration history shall be updated whenever a new software version
+is released or deployed at any site.
+Configuration history is the authoritative record for determining which
+software version is currently deployed at each site.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 44 – Software Maintenance Records.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Maintenance Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Maintenance Verification Report as
+required by EN 50716:2023, Clause 9.2 and Table A.1 (document 45). It records
+the results of independent verification of each maintenance cycle, confirming
+that changes were implemented and tested in accordance with the Software
+Maintenance Plan (§5) and that the safety integrity of the software is
+maintained.
+<<<
+
+[[SECTION]]
+TITLE: Verification scope and method
+
+[REQUIREMENT]
+UID: DM-190
+STATUS: Draft
+TITLE: Maintenance verification scope and method
+STATEMENT: >>>
+Independent verification shall be performed for each change record (DCR-xxx)
+before it is closed, and a consolidated verification report issued at each
+software release.
+
+Per-change verification scope (for each DCR):
+
+  a) Impact analysis (DM-140):
+       - Impact analysis reviewed and found complete.
+       - Classification (Major / Minor) is correct per DM-110.
+       - Regression test set is consistent with affected requirements.
+
+  b) Implementation:
+       - Source changes are limited to the scope agreed in the DCR.
+       - All modified source files committed to version control.
+       - Compilation result: zero errors, zero warnings.
+       - Static analysis results acceptable.
+
+  c) Testing:
+       - All regression test cases from the impact analysis set executed.
+       - All executed test cases show PASS verdict.
+       - No open Critical or Major problem reports.
+
+  d) Documentation:
+       - All affected lifecycle documents updated.
+       - Traceability maintained from changed requirements to modified source
+         to re-executed test cases.
+
+Per-release consolidated verification scope (for Major modifications):
+
+  e) All DCRs in the release are closed with Approved verdict.
+  f) Re-validation evidence is complete (DM-130).
+  g) Maintenance records (DM-170, DM-180) are up to date.
+  h) New release note is issued and consistent with the software baseline.
+
+Verification method: structured inspection by the Maintenance Verifier,
+independent of the Maintenance Implementer, using a checklist derived from
+EN 50716:2023, Clause 9.2.
+Verifier: <Name, Organisation, independence evidence>
+Checklist reference: <document ID>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 45 – Software Maintenance Verification Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Verification records and verdict
+
+[REQUIREMENT]
+UID: DM-200
+STATUS: Draft
+TITLE: Maintenance verification records and verdict
+STATEMENT: >>>
+The Software Maintenance Verification Report shall include the following:
+
+  - Reference to the DCR(s) or release covered by this verification instance.
+  - Date and name of the Maintenance Verifier.
+  - Checklist results: each item marked Pass / Fail / N/A with observations.
+  - List of findings: identifier, description, severity, and status.
+  - Resolution evidence for any Critical or Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+Verification results:
+
+  DCR / release covered:  <DCR-xxx / SW-REL-xxx>
+  Modification class:     <Major / Minor>
+  Date of verification:   <YYYY-MM-DD>
+  Verifier:               <Name, Role>
+
+  Item                                          | Result       | Observations
+  ----------------------------------------------|--------------|----------------
+  Impact analysis complete and reviewed         | <Pass / N/A> | <none / ref.>
+  Classification correct per DM-110             | <Pass>       |
+  Implementation within agreed scope            | <Pass>       |
+  Compilation: zero errors                      | <Pass>       |
+  All regression test cases PASS                | <Pass>       |
+  No open Critical/Major PRs                    | <Pass>       |
+  Affected documents updated                    | <Pass>       |
+  Traceability maintained                       | <Pass>       |
+  Maintenance records updated (DM-170, DM-180)  | <Pass>       |
+  Release note issued (Major only)              | <Pass / N/A> |
+
+Findings: <None / list with reference>
+Verdict: <Approved / Approved with conditions / Not approved>
+Date of approval: <YYYY-MM-DD>
+
+The software shall not be deployed following a Major modification until an
+Approved verdict is recorded in this report.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 9.2 and Table A.1, doc 45 – Software Maintenance Verification Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 9.1 – Software deployment.
+[3]  EN 50716:2023, Clause 9.2 – Software maintenance.
+[4]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[5]  EN 50716:2023, Table A.10 – Techniques and measures (software maintenance).
+[6]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[7]  <Document ID> – SP-061 Change Control Procedure.
+[8]  <Document ID> – SP-062 Emergency Maintenance Procedure.
+[9]  <Document ID> – SP-070 Periodic Safety Review Procedure.
+[10] <Document ID> – Overall Software Testing and Validation
+     (07_overall_testing_validation.sdoc – VAL-xxx, VTR-xxx series).
+[11] <Document ID> – Application Data Development
+     (08_application_data.sdoc – APP-xxx, ATR-xxx series).
+[12] <Document ID> – Software Release Note (SW-REL-xxx).
+[13] <Document ID> – <Deployment Tool> User Manual and Qualification Report.
+[14] <Document ID> – Hardware Specification / Platform Technical Manual.
+[15] <Project-specific references>
+<<<
+
+[[/SECTION]]

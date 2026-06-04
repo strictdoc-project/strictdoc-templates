@@ -1,0 +1,967 @@
+[DOCUMENT]
+TITLE: Software component implementation and testing
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Component Implementation and Testing phase for
+the software element of the railway control and protection system identified
+below. It is prepared in accordance with EN 50716:2023, Clause 7.5
+(Component implementation and testing), and collects three output deliverables
+from Table A.1:
+
+  18. Software Source Code and supporting documentation
+  19. Software Component Test Report
+  20. Software Source Code Verification Report
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (doc 18, source code): BASIC=HR, SIL_1–4=HR.
+- Table A.1 (docs 19, 20, test report and verification report): BASIC=--, SIL_1–4=HR.
+- Table A.4 (implementation techniques): values vary per technique.
+- Table A.5 (analysis and test results): values vary per technique.
+
+Instructions for use:
+- UIDs follow convention: CI-xxx (requirements) and CTR-xxx (test cases).
+- CTR-xxx test cases are executed records: VERDICT and ACTUAL_RESULT shall
+  be populated upon test execution. The sample entries below show the expected
+  format for a completed test report.
+- Duplicate CTR entries for each test case executed against the component
+  test specification (04_component_design.sdoc, CT-xxx series).
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+SRS Reference:        <Document ID of Software Requirements Specification>
+SAD/SDS Reference:    <Document ID of Software Architecture and Design>
+CD Reference:         <Document ID of Software Component Design (04_component_design)>
+Test environment:     <Hardware platform, OS, compiler, test framework, version>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software source code and supporting documentation
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Source Code and supporting documentation
+as required by EN 50716:2023, Clause 7.5 and Table A.1 (document 18). It
+records the source code baseline, coding standard compliance evidence, static
+analysis results, and build configuration for the implemented software components.
+<<<
+
+[[SECTION]]
+TITLE: Source code configuration and baseline
+
+[REQUIREMENT]
+UID: CI-010
+STATUS: Draft
+TITLE: Source code baseline record
+STATEMENT: >>>
+The source code baseline for this component implementation shall be identified
+and recorded as follows:
+
+  Baseline identifier:    <SW-BL-xxx>
+  Baseline date:          <YYYY-MM-DD>
+  Repository:             <URL or path>
+  Commit / tag:           <hash or tag name>
+  Branch:                 <branch name>
+
+Components included in this baseline:
+
+  Component ID | Source file(s)               | Revision / hash | SIL
+  -------------|------------------------------|-----------------|------
+  <COMP-01>    | <comp01.c>, <comp01.h>       | <hash>          | SIL n
+  <COMP-02>    | <comp02.c>, <comp02.h>       | <hash>          | SIL n
+  <COMP-03>    | <comp03.c>, <comp03.h>       | <hash>          | SIL 0
+
+Supporting documentation included in the baseline:
+  - Component Design Specification (04_component_design.sdoc, <revision>)
+  - Component Test Specification (CT-xxx series, <revision>)
+  - Static analysis configuration file: <filename, revision>
+  - Coding standard rule set file: <filename, revision>
+  - Build scripts: <filename(s), revision>
+
+The source code baseline shall be verified for integrity against the
+configuration management system (SP-060) before release.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 18 – Source code and supporting documentation.
+
+[REQUIREMENT]
+UID: CI-011
+STATUS: Draft
+TITLE: Source code annotations and inline documentation
+STATEMENT: >>>
+Each source file in the baseline shall contain the following annotations
+as part of the supporting documentation required by EN 50716:2023, doc 18:
+
+  File header (mandatory for every source file):
+    Component:    <COMP-ID>
+    Description:  <one-line description of the component responsibility>
+    SIL:          <SIL n>
+    Author:       <Name>
+    Date created: <YYYY-MM-DD>
+    Revision:     <matches configuration management revision>
+    SRS refs:     <SRS-xxx, SRS-xxx>
+    CD ref:       <CD-xxx>
+    Coding std:   <SAD-041 coding standard reference>
+
+  Function header (mandatory for every exported function):
+    Purpose, parameters (name, type, direction, range), return values,
+    preconditions, postconditions, and SIL classification.
+    As specified in CD-042.
+
+Compliance of source code annotations shall be verified by the static
+analysis tool configuration (CI-030) and confirmed during code review (CI-090).
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 18 – Source code and supporting documentation.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Coding standard compliance evidence
+
+[REQUIREMENT]
+UID: CI-020
+STATUS: Draft
+TITLE: Coding standard compliance summary
+STATEMENT: >>>
+Compliance with the coding standard defined in SAD-041 and CD-042 shall be
+demonstrated for all safety-related components in the baseline. The compliance
+summary shall record:
+
+  Component ID | Warnings raised | Deviations justified | Deviations approved | Status
+  -------------|-----------------|----------------------|---------------------|--------
+  <COMP-01>    | <n>             | <n>                  | <n>                 | COMPLIANT
+  <COMP-02>    | <n>             | <n>                  | <n>                 | COMPLIANT
+  <COMP-03>    | N/A             | N/A                  | N/A                 | SIL 0
+
+Coding standard applied:    <reference to SAD-041>
+Enforcement tool:           <static analysis tool, version>
+Analysis report reference:  <document ID or tool output path>
+Deviation register:         <document ID or tool reference>
+
+All warnings classified as safety-relevant shall be resolved by code
+correction before the baseline is established. Suppressed warnings shall
+each have a unique deviation record with justification approved by the
+Software Verifier (SP-021).
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Table A.4 – Design and coding standards.
+
+[REQUIREMENT]
+UID: CI-021
+STATUS: Draft
+TITLE: Modular approach and structured programming evidence
+STATEMENT: >>>
+Evidence that the modular approach (CD-040) and structured programming
+(CD-043) constraints have been met shall be provided for all safety-related
+components. The following metrics shall be recorded per component, as
+measured by the static analysis tool:
+
+  Component / function     | Cyclomatic | Nesting | LOC  | Status
+                           | complexity | depth   |      |
+  -------------------------|------------|---------|------|----------
+  <COMP-01 / func_1>       | <n>        | <n>     | <n>  | WITHIN LIMIT
+  <COMP-01 / func_2>       | <n>        | <n>     | <n>  | WITHIN LIMIT
+  <COMP-02 / func_1>       | <n>        | <n>     | <n>  | WITHIN LIMIT
+
+Limits (from CD-043):
+  Cyclomatic complexity: ≤ <n> per function
+  Nesting depth:         ≤ <n> levels
+  Function length (LOC): ≤ <n> executable statements
+
+Functions exceeding any limit and approved by the Verifier:
+  <function_name>: <metric> = <value> (limit <n>); Deviation ref: <DEV-xxx>
+
+Prohibited constructs check (from SAD-042 / SRS-051):
+  goto:              0 occurrences
+  setjmp / longjmp:  0 occurrences
+  Unbounded recursion: 0 occurrences
+  Dynamic allocation (post-init): 0 occurrences
+<<<
+BASIC: HR
+SIL_1: M
+SIL_2: M
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Table A.4 – Modular approach and structured programming.
+
+[REQUIREMENT]
+UID: CI-022
+STATUS: Draft
+TITLE: Analysable programs and language compliance evidence
+STATEMENT: >>>
+Evidence that the analysable programs (CD-044) and suitable programming
+language (CD-043, SAD-043) requirements are met shall be recorded.
+
+Loop bounds compliance (CD-044 item a):
+  All loops in safety-related components have a statically determinable
+  upper bound. Bounded annotations are present in source code.
+
+  Component | Loop identifier | Bound annotation   | Verified by
+  ----------|-----------------|--------------------|--------------
+  <COMP-01> | <loop_label_1>  | /* BOUND: n */      | Static analysis
+  <COMP-01> | <loop_label_2>  | /* BOUND: n */      | Static analysis
+  <COMP-02> | <loop_label_1>  | /* BOUND: n */      | Static analysis
+
+Pointer arithmetic compliance (CD-044 item c):
+  Pointer arithmetic is restricted to array indexing with bounds-checked
+  indices. 0 instances of unrestricted pointer arithmetic detected.
+
+Function pointer compliance (CD-044 item d):
+  Function pointers used: <Yes / No>
+  If yes: permitted target set defined at: <source file / constant table>
+
+Language and compiler compliance:
+  Language standard:  <e.g. ISO/IEC 9899:2011 (C11)>
+  Compiler:           <vendor, version — tool qualification: SP-082>
+  Compiler flags:     <list of flags — consistent with SAD-043>
+  Warnings treated as errors: <Yes — list of -Werror flags>
+  Language extensions used: <None / list with justification>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Table A.4 – Analysable programs and suitable programming languages.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Static analysis results summary
+
+[REQUIREMENT]
+UID: CI-030
+STATUS: Draft
+TITLE: Static analysis results per component
+STATEMENT: >>>
+Static analysis was performed on all safety-related components in accordance
+with CD-052 using the configured tool and rule set. Results are summarised
+below. The full analysis report is at the reference listed.
+
+Analysis tool:     <tool name and version>
+Rule set:          <rule set name and version>
+Analysis date:     <YYYY-MM-DD>
+Analysis performed by: <Name, Role>
+
+Results summary:
+
+  Component | Rules checked | Warnings | Errors | Suppressed | Resolved | Status
+  ----------|---------------|----------|--------|------------|----------|--------
+  <COMP-01> | <n>           | <n>      | 0      | <n>        | <n>      | PASS
+  <COMP-02> | <n>           | <n>      | 0      | <n>        | <n>      | PASS
+  <COMP-03> | N/A           | –        | –      | –          | –        | SIL 0
+
+No safety-relevant errors remain open. All suppressions are justified in
+the deviation register (<document ID / tool reference>).
+
+Checks confirmed (minimum per CD-052):
+  Coding standard compliance:    PASS
+  Cyclomatic complexity limits:  PASS (all within CD-043 thresholds)
+  Loop bound annotations:        PASS (all loops annotated per CD-044)
+  Uninitialised variable check:  PASS (0 uninitialised variables detected)
+  Unreachable code check:        PASS (0 unreachable statements, excluding
+                                       documented defensive dead branches)
+  Banned function check:         PASS (0 uses of banned functions)
+  Stack usage estimation:        PASS (all within SAD-052 budgets)
+
+Full analysis report: <document ID or tool output path>
+Deviation register:   <document ID or tool reference>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Static analysis (Table A.19).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Build configuration and reproducibility
+
+[REQUIREMENT]
+UID: CI-040
+STATUS: Draft
+TITLE: Build configuration record
+STATEMENT: >>>
+The build configuration used to produce the baselined executable shall be
+fully documented and placed under configuration management (SP-060):
+
+  Build system:         <e.g. CMake, Make, IDE project>
+  Build script:         <filename, revision>
+  Compiler:             <vendor, version — matches SAD-043 and CI-022>
+  Linker:               <vendor, version>
+  Target architecture:  <e.g. ARM Cortex-M4, little-endian>
+
+Compiler flags (full set):
+  Optimisation: <e.g. -O0 / -O1 — justification for level chosen>
+  Warnings:     <e.g. -Wall -Wextra -Werror>
+  Language:     <e.g. -std=c11>
+  Safety:       <e.g. -fstack-usage, -ffreestanding>
+  Other:        <project-specific flags>
+
+Linker configuration:
+  Linker script:    <filename, revision>
+  Memory layout:    <code: 0x<addr>–0x<addr>; RAM: 0x<addr>–0x<addr>>
+  Map file:         <output path — placed under CM>
+
+Output artefacts (baselined):
+  Executable:  <filename, size in bytes, CRC-32: 0x<xxxxxxxx>>
+  Map file:    <filename>
+  HEX / S-rec: <filename>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 18 – Source code and supporting documentation.
+
+[REQUIREMENT]
+UID: CI-041
+STATUS: Draft
+TITLE: Build reproducibility
+STATEMENT: >>>
+The build shall be reproducible: re-executing the build script on the
+baselined source code with the baselined tool chain shall produce a
+bit-identical executable.
+
+Reproducibility test:
+  Performed by:     <Name>
+  Date:             <YYYY-MM-DD>
+  Method:           <Describe how reproducibility was verified, e.g. two
+                     independent builds on the same machine / two machines
+                     of the same type; diff of binary outputs>
+  Result:           <PASS: bit-identical binaries produced / FAIL: see PR-xxx>
+  CRC-32 build 1:   0x<xxxxxxxx>
+  CRC-32 build 2:   0x<xxxxxxxx>
+  Match:            <YES / NO>
+
+If builds are not bit-identical (e.g. due to embedded timestamps):
+  Difference:       <describe what differs>
+  Mitigation:       <describe how functional equivalence is assured despite
+                     the non-identical output>
+  Approval:         <Verifier name, reference to deviation record>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Testing
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 18 – Source code and supporting documentation.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Component Test Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Component Test Report as required by
+EN 50716:2023, Clause 7.5 and Table A.1 (document 19). It records the
+results of executing the component test cases defined in the Component Test
+Specification (04_component_design.sdoc, CT-xxx series) against the baselined
+source code (CI-010).
+
+CTR-xxx entries are the executed counterparts of the CT-xxx specification
+entries. Each CTR-xxx entry carries the actual result and final verdict.
+<<<
+
+[[SECTION]]
+TITLE: Test execution summary
+
+[REQUIREMENT]
+UID: CI-050
+STATUS: Draft
+TITLE: Test execution summary
+STATEMENT: >>>
+Component tests were executed against baseline <SW-BL-xxx> (CI-010) on
+the test environment specified in CD-050.
+
+Test execution period:
+  Start date:        <YYYY-MM-DD>
+  End date:          <YYYY-MM-DD>
+  Executed by:       <Name, Role>
+  Witnessed by:      <Name, Role (Verifier)>
+
+Test environment (as used):
+  Host / target:     <hardware platform, revision>
+  OS / RTOS:         <name, version>
+  Compiler:          <vendor, version — matches CI-040>
+  Test framework:    <name, version>
+  Coverage tool:     <name, version>
+
+Overall results:
+
+  Component | Test cases run | PASS | FAIL | BLOCKED | NOT_RUN
+  ----------|----------------|------|------|---------|--------
+  <COMP-01> | <n>            | <n>  | 0    | 0       | 0
+  <COMP-02> | <n>            | <n>  | 0    | 0       | 0
+  TOTAL     | <n>            | <n>  | 0    | 0       | 0
+
+Anomalies encountered during test execution:
+  <None / list anomalies with reference to problem reports PR-xxx>
+
+Overall test execution result: <PASS / FAIL — pending resolution of PR-xxx>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 19 – Component Test Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Test coverage results
+
+[REQUIREMENT]
+UID: CI-060
+STATUS: Draft
+TITLE: Structural test coverage results
+STATEMENT: >>>
+Structural test coverage was measured using <coverage tool, version> against
+the objectives defined in CD-053 (per EN 50716:2023, Table A.5 / Table A.21).
+
+Coverage measurement date: <YYYY-MM-DD>
+Coverage tool configuration: <rule set / instrumentation mode>
+
+Results per component:
+
+  Component    | Function | Statement | Branch  | MC/DC   | Target     | Status
+               | coverage | coverage  | coverage| coverage| (from CD-053)|
+  -------------|----------|-----------|---------|---------|------------|--------
+  <COMP-01>    | 100 %    | 100 %     | 100 %   | <n> %   | SIL n req  | PASS
+  <COMP-02>    | 100 %    | 100 %     | 100 %   | <n> %   | SIL n req  | PASS
+
+Coverage gaps (branches / statements not exercised by dynamic test):
+
+  Component | Uncovered item   | Reason                     | Compensated by
+  ----------|------------------|----------------------------|------------------
+  <COMP-01> | <defensive check>| HW fault required; no fault injection | Static analysis (CI-030)
+  <COMP-01> | <dead branch>    | Logically unreachable      | Inspection (CD-060)
+
+All coverage gaps have been assessed and compensated. No safety-relevant
+gaps remain without an approved compensation measure.
+
+Full coverage report: <document ID or tool output path>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Testing
+RATIONALE: EN 50716:2023, Table A.5 – Test coverage (Table A.21).
+
+[REQUIREMENT]
+UID: CI-061
+STATUS: Draft
+TITLE: Dynamic analysis results
+STATEMENT: >>>
+Dynamic analysis techniques (CD-051, EN 50716:2023, Table A.5 / Table A.13)
+were applied during component test execution. Results are recorded below.
+
+Equivalence partitioning and boundary value analysis:
+  All equivalence classes identified in the component test specification
+  (CD-051) were exercised. Boundary values at minimum, maximum, and
+  immediately outside-range were tested for all input parameters (CD-055).
+
+  Components covered:     <COMP-01>, <COMP-02>
+  Partitions exercised:   <n> of <n> identified (100 %)
+  Boundary values tested: <n> of <n> identified (100 %)
+
+State transition testing (where applicable, CD-031):
+  All defined state transitions were exercised.
+  All states reached during test: <STATE_INIT, STATE_IDLE, STATE_RUN, STATE_FAIL>
+  Undefined transitions tested:   None triggered during nominal or fault tests.
+
+Decision table coverage:
+  All combinations in decision tables (CD-030, SRS-062) exercised: <Yes / N/A>
+
+Fault injection results:
+  All fault injection test cases (CTR-003 series): <n> PASS, 0 FAIL.
+  Safe state reached correctly in all fault scenarios.
+  No uncontrolled exceptions or memory corruption detected.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Dynamic analysis (Table A.13).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Performance measurement results
+
+[REQUIREMENT]
+UID: CI-070
+STATUS: Draft
+TITLE: Performance measurement results
+STATEMENT: >>>
+Performance tests were executed to verify timing and resource budgets per
+CD-054 (EN 50716:2023, Table A.5 / Table A.18). All measurements were taken
+on the target hardware under worst-case stimulus conditions.
+
+Measurement method: <instrumented measurement on target / WCET static tool>
+Worst-case stimulus: <description of input conditions that maximise execution time>
+
+WCET and resource results:
+
+  Component / function  | WCET measured | Budget (SAD-052)| Margin | Status
+  ----------------------|---------------|-----------------|--------|--------
+  <COMP-01 / func_1>    | <n> µs        | <n> µs          | <n> %  | PASS
+  <COMP-01 / func_2>    | <n> µs        | <n> µs          | <n> %  | PASS
+  <COMP-02 / func_1>    | <n> µs        | <n> µs          | <n> %  | PASS
+
+Stack depth results:
+
+  Component         | Stack measured | Budget (SAD-052) | Margin | Status
+  ------------------|----------------|-----------------|--------|--------
+  <COMP-01>         | <n> bytes      | <n> bytes        | <n> %  | PASS
+  <COMP-02>         | <n> bytes      | <n> bytes        | <n> %  | PASS
+
+Memory footprint results:
+
+  Component | ROM actual | ROM budget | RAM actual | RAM budget | Status
+  ----------|------------|------------|------------|------------|--------
+  <COMP-01> | <n> bytes  | <n> bytes  | <n> bytes  | <n> bytes  | PASS
+  <COMP-02> | <n> bytes  | <n> bytes  | <n> bytes  | <n> bytes  | PASS
+
+All measurements are within the budgets defined in SAD-052.
+Full performance test log: <document ID or tool output path>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.5 – Performance testing (Table A.18).
+
+[REQUIREMENT]
+UID: CI-071
+STATUS: Draft
+TITLE: Interface testing results
+STATEMENT: >>>
+Interface testing was performed per CD-055 (EN 50716:2023, Table A.5) to
+verify the correct behaviour at each component interface boundary (CD-020).
+
+Summary of interface test results:
+
+  Component | Interface tests | PASS | FAIL | Coverage of CD-020 entries
+  ----------|-----------------|------|------|----------------------------
+  <COMP-01> | <n>             | <n>  | 0    | 100 %
+  <COMP-02> | <n>             | <n>  | 0    | 100 %
+
+Interface conditions exercised:
+  Nominal inputs:                    PASS (all equivalence classes)
+  Boundary values (min/max):         PASS
+  Out-of-range inputs (ERR_RANGE):   PASS — ERR_RANGE returned correctly;
+                                     output not corrupted in any case.
+  NULL output pointer (where applicable): PASS — error returned; no crash.
+  Invalid enumeration values:        PASS — ERR_RANGE returned.
+  Precondition violations:           PASS — defensive checks triggered (SAD-030).
+  All error return codes:            PASS — every defined code exercised.
+  State-dependent behaviour:         PASS — interface tested in each state.
+
+No interface defect remained open at the close of component testing.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Inspection
+RATIONALE: EN 50716:2023, Table A.5 – Interface testing.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Problem reports and open items
+
+[REQUIREMENT]
+UID: CI-080
+STATUS: Draft
+TITLE: Problem reporting record
+STATEMENT: >>>
+All defects, anomalies, and non-conformances discovered during component
+implementation and testing shall be recorded as Problem Reports (PRs) and
+tracked to closure per the process defined in the SQAP (SP-050).
+
+Problem report summary at close of component testing:
+
+  PR ID   | Title                         | Severity | Status  | Resolution
+  --------|-------------------------------|----------|---------|------------------
+  <PR-001>| <brief description>           | Major    | Closed  | <code fix, re-tested>
+  <PR-002>| <brief description>           | Minor    | Closed  | <coding standard deviation approved>
+  <no further open PRs>
+
+All Critical and Major PRs shall be closed before the Component Test Report
+is approved. Open Minor PRs shall be assessed for safety impact; those with
+potential safety impact shall also be closed before approval.
+
+PRs remaining open at time of this report: <0 / list PR-xxx>
+Safety impact assessment of open PRs:     <N/A — no open PRs>
+
+PR tracking system: <tool / document reference>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 19 – Component Test Report.
+
+[ACTION_ITEM]
+UID: PR-CI-001
+STATUS: Closed
+TITLE: <COMP-01>: boundary check missing for <param_2> when <param_1> = 0
+STATEMENT: >>>
+Defect found during test CTR-004 (interface test, precondition violation).
+When <param_1> = 0, the range check for <param_2> was skipped due to an
+early-exit condition that bypassed the validation block.
+Impact: ERR_RANGE not returned for an invalid <param_2> value in this case;
+output was indeterminate. Potential safety impact: <assess>.
+Fix applied: added validation of <param_2> before the early exit.
+Re-test: CTR-004 re-executed after fix; PASS.
+<<<
+OWNER: <Developer Name>
+DUE_DATE: <YYYY-MM-DD>
+COMMENT: >>>
+Resolved in source revision <hash>. Re-test evidence in CTR-004 ACTUAL_RESULT.
+Static analysis rule added to detect similar patterns.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Sample executed test cases
+
+[TEXT]
+STATEMENT: >>>
+The following CTR-xxx entries are sample executed test cases corresponding to
+the CT-xxx specification entries in 04_component_design.sdoc. Each entry
+shows the format with ACTUAL_RESULT and VERDICT populated. Replace the
+placeholder measured values with actual test data upon execution.
+<<<
+
+[TEST_CASE]
+UID: CTR-001
+STATUS: Active
+TITLE: <COMP-ID> – nominal operation – <brief description>
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> initialised (state = STATE_IDLE).
+- <param_1> set to nominal value <nominal_value> (within [<min>..<max>]).
+- <param_2> set to VAL_A.
+- No fault flags active.
+<<<
+STEPS: >>>
+1. Set <param_1> = <nominal_value>.
+2. Set <param_2> = VAL_A.
+3. Call <function_name>(<param_1>, <param_2>, &<param_3>).
+4. Record return code and <param_3>.
+5. Record component state and fault log.
+<<<
+EXPECTED_RESULT: >>>
+- Return code: OK.
+- <param_3> = <expected_value> ± <tolerance>.
+- Component state: STATE_RUN.
+- No fault log entries.
+- Execution time: < <n> µs.
+<<<
+ACTUAL_RESULT: >>>
+- Return code: OK. PASS.
+- <param_3> = <measured_value> (<expected_value> ± <tolerance>). WITHIN LIMIT.
+- Component state: STATE_RUN. PASS.
+- Fault log entries: 0. PASS.
+- Execution time: <measured_time> µs (budget: <n> µs). WITHIN LIMIT.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: CTR-002
+STATUS: Active
+TITLE: <COMP-ID> – boundary values – <brief description>
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> initialised (state = STATE_IDLE).
+- No fault flags active.
+<<<
+STEPS: >>>
+a) <param_1> = <min>: call and record.
+b) <param_1> = <max>: call and record.
+c) <param_1> = <min - 1>: call and record.
+d) <param_1> = <max + 1>: call and record.
+<<<
+EXPECTED_RESULT: >>>
+a) OK; <param_3> = <min_output>.
+b) OK; <param_3> = <max_output>.
+c) ERR_RANGE; <param_3> unchanged; fault logged.
+d) ERR_RANGE; <param_3> unchanged; fault logged.
+<<<
+ACTUAL_RESULT: >>>
+a) <param_1> = <min>: return OK; <param_3> = <measured_min_output>. PASS.
+b) <param_1> = <max>: return OK; <param_3> = <measured_max_output>. PASS.
+c) <param_1> = <min - 1>: return ERR_RANGE; <param_3> = <unchanged>; fault logged (code <FC-xx>). PASS.
+d) <param_1> = <max + 1>: return ERR_RANGE; <param_3> = <unchanged>; fault logged (code <FC-xx>). PASS.
+No exception or memory corruption in any case. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: CTR-003
+STATUS: Active
+TITLE: <COMP-ID> – fault injection – safe state on hardware error
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> in STATE_RUN.
+- Fault injection available to make <hw_read_function> return ERR_HW.
+<<<
+STEPS: >>>
+1. Inject fault: <hw_read_function> returns ERR_HW.
+2. Call <function_name> with valid inputs.
+3. Record return code, <param_3>, state, fault log.
+4. Remove injection; call again with valid inputs.
+5. Record return code and state.
+<<<
+EXPECTED_RESULT: >>>
+Step 3: ERR_HW; safe default on <param_3>; STATE_FAIL; fault log entry.
+Step 5: Component in STATE_FAIL; fault must be cleared via reset.
+<<<
+ACTUAL_RESULT: >>>
+Step 3: Return ERR_HW. PASS. <param_3> = <safe_default>. PASS.
+        State = STATE_FAIL. PASS.
+        Fault log entry: code <FC-xx>, timestamp <HH:MM:SS.mmm>. PASS.
+Step 5: Return ERR_HW (fault active). PASS. State = STATE_FAIL. PASS.
+        No further output computed. PASS.
+No watchdog timeout or memory corruption. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: CTR-004
+STATUS: Active
+TITLE: <COMP-ID> – interface test – precondition violation detection
+TEST_TYPE: Unit
+PRECONDITIONS: >>>
+- <COMP-ID> initialised.
+- Fault corrected per PR-001; source revision <hash> in use.
+<<<
+STEPS: >>>
+1. Call with <param_3> = NULL.
+2. Call with <param_2> = invalid enum value (outside {VAL_A, VAL_B, VAL_C}).
+3. Call with all parameters valid.
+<<<
+EXPECTED_RESULT: >>>
+Step 1: ERR_RANGE; no NULL dereference; fault logged.
+Step 2: ERR_RANGE; <param_3> not written; fault logged.
+Step 3: OK; <param_3> = <expected_value>.
+<<<
+ACTUAL_RESULT: >>>
+Step 1: Return ERR_RANGE. PASS. No NULL write; memory check clean. PASS.
+        Fault log entry code <FC-xx>. PASS.
+Step 2: Return ERR_RANGE. PASS. <param_3> = <unchanged>. PASS.
+        Fault log entry code <FC-xx>. PASS.
+Step 3: Return OK. PASS. <param_3> = <measured_value>
+        (<expected_value> ± <tolerance>). WITHIN LIMIT.
+PR-001 fix confirmed effective. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-031
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Source Code Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Source Code Verification Report as
+required by EN 50716:2023, Clause 7.5 and Table A.1 (document 20). It
+records the outcome of independent verification of the source code baseline
+(section 2) and the Component Test Report (section 3) before both documents
+are formally released.
+<<<
+
+[REQUIREMENT]
+UID: CI-090
+STATUS: Draft
+TITLE: Verification scope and method
+STATEMENT: >>>
+The source code verification shall cover all deliverables in this document:
+
+  a) Source Code and supporting documentation (section 2):
+       - Baseline integrity: all files listed in CI-010 are present and
+         match their registered revisions in the CM system (SP-060).
+       - Annotation completeness: all source files carry the mandatory file
+         and function header annotations (CI-011).
+       - Coding standard compliance: compliance summary (CI-020) is complete
+         and all deviations are justified and approved.
+       - Modular and structured programming metrics: all within limits (CI-021);
+         exceptions documented and approved.
+       - Analysable programs: loop bounds annotated, pointer arithmetic
+         restricted, language compliance confirmed (CI-022).
+       - Static analysis: all safety-relevant warnings resolved (CI-030).
+       - Build reproducibility: confirmed (CI-041).
+
+  b) Component Test Report (section 3):
+       - All test cases (CTR-xxx) executed with PASS verdict.
+       - Coverage objectives (CI-060) met for all components.
+       - Dynamic analysis techniques (CI-061) applied correctly.
+       - Performance budgets (CI-070) not exceeded.
+       - All interface tests (CI-071) PASS.
+       - All PRs closed or safety-assessed (CI-080).
+
+Verification method: structured inspection by the Software Verifier (SP-021)
+using a checklist derived from EN 50716:2023, Clause 7.5.
+Verifier: <Name, Organisation, independence evidence — see SP-021>
+Checklist reference: <document ID or tool reference>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 20 – Source Code Verification Report.
+
+[REQUIREMENT]
+UID: CI-091
+STATUS: Draft
+TITLE: Verification records and verdict
+STATEMENT: >>>
+The Software Source Code Verification Report shall include:
+
+  - Date and revision of the source code baseline, test report, and all
+    supporting evidence reviewed.
+  - Name, role, and independence evidence of the verifier (per SP-021).
+  - Checklist results: each item marked Pass / Fail / N/A with observations.
+  - Metrics confirmation:
+      - All structural metrics within limits (CI-021): confirmed.
+      - Coverage objectives met (CI-060): confirmed.
+      - Performance budgets met (CI-070): confirmed.
+  - List of findings: unique identifier, description, severity, and status.
+  - Action items raised, with reference to the action item register.
+  - Resolution evidence for all Critical and Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+The source code baseline and Component Test Report shall not be released and
+integration testing (EN 50716:2023, Clause 7.6) shall not commence until an
+Approved verdict is recorded.
+
+Verification Report reference: <document ID>
+Verdict: <to be completed upon review>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.5 and Table A.1, doc 20 – Source Code Verification Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 7.5 – Component implementation and testing.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.4 – Techniques and measures (design and implementation).
+[5]  EN 50716:2023, Table A.5 – Techniques and measures (analysis and testing).
+[6]  EN 50716:2023, Table A.13 – Dynamic analysis.
+[7]  EN 50716:2023, Table A.18 – Performance testing.
+[8]  EN 50716:2023, Table A.19 – Static analysis.
+[9]  EN 50716:2023, Table A.21 – Test coverage.
+[10] <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[11] <Document ID> – Software Requirements Specification (SRS-xxx series).
+[12] <Document ID> – Software Architecture and Design (SAD-xxx series).
+[13] <Document ID> – Software Component Design (CD-xxx / CT-xxx series).
+[14] <Project-specific references>
+<<<
+
+[[/SECTION]]

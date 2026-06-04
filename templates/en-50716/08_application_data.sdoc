@@ -1,0 +1,1402 @@
+[DOCUMENT]
+TITLE: Application data development
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Development of Application Data phase for the railway
+control and protection system identified below. It is prepared in accordance
+with EN 50716:2023, Clause 8 (Development of application data: systems
+configured by application data), and collects eleven output deliverables from
+Table A.1:
+
+  28. Application Requirements Specification
+  29. Application Preparation Plan
+  30. Application Test Specification
+  31. Application Architecture and Design
+  32. Application Preparation Verification Report
+  33. Application Test Report
+  34. Source Code of Application Data
+  35. Application Data Verification Report
+  36. Application Integration Test Specification
+  37. Application Integration Test Report
+  38. Application Release Note
+
+"Application data" refers to site-specific configuration data (geographic
+topology, routing logic, parameter tables) prepared in a domain-specific
+language (DSL) or tabular form and compiled for the generic software platform
+identified below. This document covers both the specification and execution
+result sides of documents 30/33 (Application Test Specification / Report) and
+36/37 (Application Integration Test Specification / Report).
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (docs 28, 30, 33, 34, 36, 37, 38): BASIC=HR, SIL_1–4=HR.
+- Table A.1 (docs 29, 31, 35):                 BASIC=R,  SIL_1–4=HR.
+- Table A.1 (doc 32):                           BASIC=--, SIL_1–4=HR.
+- Table A.11 (data preparation techniques, Clause 8.4):
+    Tabular specification methods: BASIC=R,  SIL_1–4=R.
+    Domain specific language:      BASIC=R,  SIL_1–4=R.
+    Simulation:                    BASIC=R,  SIL_1=HR, SIL_2=HR, SIL_3=HR, SIL_4=HR.
+    Functional testing:            BASIC=M,  SIL_1=M,  SIL_2=M,  SIL_3=M,  SIL_4=M.
+    Checklists:                    BASIC=R,  SIL_1=HR, SIL_2=HR, SIL_3=M,  SIL_4=M.
+    Fagan inspection:              BASIC=--, SIL_1=R,  SIL_2=R,  SIL_3=R,  SIL_4=R.
+    Formal design reviews:         BASIC=R,  SIL_1=HR, SIL_2=HR, SIL_3=HR, SIL_4=HR.
+    Formal proof of correctness:   BASIC=--, SIL_1=--, SIL_2=--, SIL_3=HR, SIL_4=HR.
+    Walkthrough:                   BASIC=R,  SIL_1=R,  SIL_2=R,  SIL_3=HR, SIL_4=HR.
+
+ATR-xxx are executed application test cases. Both the test specification and
+execution results are recorded in each ATR entry.
+
+Instructions for use:
+- UIDs follow convention: APP-xxx (requirements), ATR-xxx (test cases).
+- Duplicate ATR entries for each executed test case.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+Generic Software Platform: <Platform name, version, certification reference>
+Generic SW Platform Spec:  <Document ID — defines interface to application data>
+Application Scope:    <Station / line section / depot / network — geographic identifier>
+Data Preparation Tool: <Tool name, version, qualification reference>
+Simulation Environment: <Tool name, version, qualification reference>
+Source Baseline:      <APP-SRC-xxx — DSL / tabular source files, see APP-130>
+Compiled Baseline:    <APP-BL-xxx — compiled application data binary, see APP-130>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Requirements Specification
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Application Requirements Specification as required
+by EN 50716:2023, Clause 8 and Table A.1 (document 28). It defines the
+functional requirements and data constraints that the application data must
+satisfy for the specific installation identified in the document information
+section.
+<<<
+
+[[SECTION]]
+TITLE: Application context and scope
+
+[REQUIREMENT]
+UID: APP-010
+STATUS: Draft
+TITLE: Application context and scope
+STATEMENT: >>>
+Application data development context:
+
+  Generic software platform: <platform name, version>
+  Platform certification:    <certification reference, standard, SIL>
+  Application type:          <Interlocking / ETCS / ATP / CBI / other>
+  Application scope:         <station / line section / depot name and identifier>
+  SIL of application data:   <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+
+The application data configures the generic software platform for the specific
+installation described above. The scope of the application data includes:
+
+  a) <Geographic topology: track layout, points, signals, track circuits>
+  b) <Signalling principles: routes, locking conditions, approach locking>
+  c) <Interface definitions: adjacent systems, train detection, infrastructure>
+  d) <Parameter tables: timing values, speed limits, gradients>
+  e) Exclusions / not in scope: <describe any parts of the installation not
+     covered by this application data set>
+
+Source data:
+  Geographic survey:          <document ID, revision>
+  Signalling principles:      <document ID, revision>
+  Interface control document: <document ID, revision>
+
+All source data reviewed and baselined before application data development
+commenced: <Yes / reference to review record>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 28 – Application Requirements Specification.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application functional requirements
+
+[REQUIREMENT]
+UID: APP-020
+STATUS: Draft
+TITLE: Application functional requirements
+STATEMENT: >>>
+The application data shall implement the signalling functionality described in
+the signalling principles document for the installation scope defined in APP-010.
+
+Functional requirements:
+
+  APP-F-001: The application data shall correctly represent the track topology
+    (points, signals, track circuits) as defined in the geographic survey.
+    Derivation: <geographic survey ref>, sections <x>–<y>.
+
+  APP-F-002: The application data shall implement all routes defined in the
+    route register, including entry signal, route elements, destination signal,
+    and all locking conditions.
+    Derivation: <signalling principles ref>, route register.
+
+  APP-F-003: The application data shall correctly implement approach locking
+    and approach release logic for all <n> approach-locked routes.
+    Derivation: <signalling principles ref>, section <x>.
+
+  APP-F-004: The application data shall define flank and trap protection
+    conditions for all routes as specified in the signalling principles.
+    Derivation: <signalling principles ref>, section <x>.
+
+  APP-F-005: The application data shall implement all interface conditions with
+    adjacent systems (IF-EXT-01 to IF-EXT-<n>) as defined in the ICD.
+    Derivation: <interface control document ref>.
+
+  APP-F-006: The application data parameter values (timing values, speed limits)
+    shall be within the ranges defined by the generic software platform
+    specification.
+    Derivation: <generic SW platform spec ref>, section <x>.
+
+Requirements summary:
+  Total application functional requirements: <n>
+  Derived from geographic survey:            <n>
+  Derived from signalling principles:        <n>
+  Derived from interface control document:   <n>
+  Derived from platform specification:       <n>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 28 – Application Requirements Specification.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application data constraints
+
+[REQUIREMENT]
+UID: APP-030
+STATUS: Draft
+TITLE: Application data constraints
+STATEMENT: >>>
+Application data shall comply with the following constraints imposed by the
+generic software platform, safety requirements, and operational considerations.
+
+Data integrity constraints:
+  APP-C-001: All element identifiers (signals, points, track circuits) shall
+    be unique within the application data set; duplicate identifiers are not
+    permitted.
+  APP-C-002: All routes shall have a valid entry signal, at least one route
+    element, and a valid destination signal, all of which exist in the element
+    register.
+  APP-C-003: No circular dependencies shall exist in route locking conditions.
+
+Parameter range constraints:
+  APP-C-004: All timing parameter values shall lie within the ranges defined
+    in the generic software platform specification (see APP-010).
+  APP-C-005: Speed limit values shall not exceed the infrastructure maximum
+    speed as specified in the geographic survey.
+  APP-C-006: Gradient values shall be within <min>‰ to <max>‰ as constrained
+    by the platform model.
+
+Consistency constraints:
+  APP-C-007: Every element referenced in a route definition shall appear in
+    the element register; dangling references are not permitted.
+  APP-C-008: Interface element states defined in the application data shall be
+    consistent with the signal aspect table in the platform specification.
+  APP-C-009: Approach locking distances shall be consistent with the line speed
+    and stopping distance model in the signalling principles.
+
+The data preparation tool (<tool name, version>) shall enforce constraints
+APP-C-001 through APP-C-009 at compile time. Any constraint violation shall
+cause a compilation error and prevent generation of the application data binary.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 28 – Application Requirements Specification.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Preparation Plan
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Application Preparation Plan as required by
+EN 50716:2023, Clause 8 and Table A.1 (document 29). It defines the process,
+tools, and techniques used during application data development, covering
+preparation, verification, testing, and integration of the application data set.
+<<<
+
+[[SECTION]]
+TITLE: Application development process
+
+[REQUIREMENT]
+UID: APP-040
+STATUS: Draft
+TITLE: Application data development process
+STATEMENT: >>>
+Application data development follows the process defined below, in accordance
+with EN 50716:2023, Clause 8 and the project SQAP.
+
+Development phases:
+
+  Phase 1 — Requirements capture:
+    Input:  Geographic survey, signalling principles, interface control document.
+    Output: Application Requirements Specification (APP-010 to APP-030, §2).
+    Entry criterion: All source data baselined and reviewed.
+    Exit criterion:  Requirements specification reviewed and approved.
+
+  Phase 2 — Application data design:
+    Input:  Application Requirements Specification, platform data dictionary.
+    Output: Application Architecture and Design (APP-070, APP-080, §4).
+    Exit criterion:  Design reviewed per APP-090 (preparation verification).
+
+  Phase 3 — Application data preparation (source coding):
+    Input:  Approved architecture and design.
+    Output: Source code of application data in <DSL name> (APP-130, §9).
+    Exit criterion:  Source files reviewed; compilation successful with zero
+                     errors and warnings.
+
+  Phase 4 — Application testing:
+    Input:  Compiled application data, generic software platform.
+    Output: Application Test Report (ATR-001 series, §6).
+    Exit criterion:  All ATR test cases PASS; all PRs closed.
+
+  Phase 5 — Application data verification:
+    Input:  Source code, test report, design documentation.
+    Output: Application Data Verification Report (APP-110, §7).
+    Exit criterion:  Verification verdict: Approved.
+
+  Phase 6 — Application integration testing:
+    Input:  Verified application data, full system environment.
+    Output: Application Integration Test Report (ATR-101 series, §8).
+    Exit criterion:  All integration ATR test cases PASS; all PRs closed.
+
+  Phase 7 — Release:
+    Input:  Approved integration test report.
+    Output: Application Release Note (APP-140, APP-150, §10).
+
+Roles and responsibilities:
+  Application Data Preparer:  <Name, Organisation>
+  Application Data Verifier:  <Name, Organisation — independent of preparer>
+  Application Data Validator: <Name, Organisation — as applicable per SIL>
+  Project Manager:            <Name>
+
+Configuration management: application data source files under version control
+in <VCS system>; baseline tags per APP-130.
+Change control: changes after Phase 3 freeze require formal change impact
+assessment and regression testing per SP-060.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 29 – Application Preparation Plan.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Tools and preparation environment
+
+[REQUIREMENT]
+UID: APP-050
+STATUS: Draft
+TITLE: Application data tools and preparation environment
+STATEMENT: >>>
+The following tools are used in the application data development process. All
+tools with classification T2 or T3 are qualified per EN 50716:2023 before use
+in this project (see 07_overall_testing_validation.sdoc, VAL-080 series for
+the tools qualification report).
+
+Application data tools:
+
+  Tool name                  | Version   | Class | Purpose
+  ---------------------------|-----------|-------|----------------------------------
+  <DSL editor>               | <version> | T2    | Authoring DSL source files
+  <Application compiler>     | <version> | T3    | Compiling DSL source to binary
+  <Data validator>           | <version> | T2    | Enforcing APP-C-001 to APP-C-009
+  <Simulation environment>   | <version> | T2    | Functional simulation of application
+  <Test execution tool>      | <version> | T2    | Executing ATR test cases
+  <Version control system>   | <version> | T1    | Configuration management
+  <Review / diff tool>       | <version> | T1    | Source code review support
+
+Tool qualification references:
+  <Application compiler>:    <qualification document ID, date>
+  <Data validator>:          <qualification document ID, date>
+  <Simulation environment>:  <qualification document ID, date>
+  <Test execution tool>:     <qualification document ID, date>
+
+Preparation environment (as used):
+  Workstation:     <hardware spec, OS version>
+  Compiler version: <version — confirmed to match qualification evidence>
+  Reference data:   <geographic data source version, survey date>
+
+The preparation environment shall be under configuration control. Environment
+changes require a change assessment before application data re-preparation.
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 29 – Application Preparation Plan.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data preparation techniques (Table A.11)
+
+[REQUIREMENT]
+UID: APP-060
+STATUS: Draft
+TITLE: Data preparation techniques per Table A.11
+STATEMENT: >>>
+Application data preparation techniques are selected and applied in accordance
+with EN 50716:2023, Table A.11 (Clause 8.4). The techniques applied for this
+project are listed below.
+
+Techniques applied:
+
+  Technique                    | Table A.11 values              | Applied     | Scope / reference
+  -----------------------------|--------------------------------|-------------|---------------------
+  Tabular specification        | BASIC=R, SIL_1–4=R             | Yes         | APP-070: element and
+    methods                    |                                |             | route register tables
+  Domain specific language     | BASIC=R, SIL_1–4=R             | Yes         | <DSL name> for all
+                               |                                |             | source coding
+  Simulation                   | BASIC=R, SIL_1–4=HR            | Yes         | All APP-F-xxx
+                               |                                |             | requirements simulated
+  Functional testing           | BASIC=M, SIL_1–4=M             | Yes         | ATR-xxx test cases
+    (mandatory at all levels)  |                                |             | (§6)
+  Checklists                   | BASIC=R, SIL_1=HR, SIL_2=HR,  | Yes         | Review checklists
+                               | SIL_3=M, SIL_4=M              |             | <document ID>
+  Fagan inspection             | BASIC=--, SIL_1–4=R            | <Yes / N/A> | <scope if applied>
+  Formal design reviews        | BASIC=R, SIL_1–4=HR            | Yes         | Phase 2 design
+                               |                                |             | review (APP-090)
+  Formal proof of correctness  | BASIC=--, SIL_1=--, SIL_2=--,  | <Yes / N/A> | Required SIL_3–4;
+                               | SIL_3=HR, SIL_4=HR            |             | method: <ref>
+  Walkthrough                  | BASIC=R, SIL_1=R, SIL_2=R,    | Yes         | Application data
+                               | SIL_3=HR, SIL_4=HR            |             | source review (APP-090)
+
+Justification for any technique not applied:
+  <Technique: reason not applied; alternative measure; approval reference>
+
+Functional testing is mandatory at all SIL levels including BASIC. All
+functional requirements (APP-020 series) and constraints (APP-030 series)
+shall be covered by at least one ATR test case showing a PASS verdict before
+the application data may be released.
+<<<
+BASIC: M
+SIL_1: M
+SIL_2: M
+SIL_3: M
+SIL_4: M
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Table A.11 – Data preparation techniques (Clause 8.4). Functional testing is Mandatory at all integrity levels.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Architecture and Design
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Application Architecture and Design as required by
+EN 50716:2023, Clause 8 and Table A.1 (document 31). It describes the
+structural organisation of the application data and the methodology used to
+prepare it, providing the design basis for the source code of application data
+(document 34, §9).
+<<<
+
+[[SECTION]]
+TITLE: Application data structure and organisation
+
+[REQUIREMENT]
+UID: APP-070
+STATUS: Draft
+TITLE: Application data structure and organisation
+STATEMENT: >>>
+The application data for <installation scope> is structured into the following
+modules, each implemented as a separate source file in <DSL name>:
+
+Application data modules:
+
+  Module name           | Content                                 | File(s)
+  ----------------------|-----------------------------------------|-------------------
+  Element register      | All track elements with identifiers     | <elements.dsl>
+  Route register        | Route definitions and locking logic     | <routes.dsl>
+  Interface register    | External system interface conditions    | <interfaces.dsl>
+  Parameter table       | Timing values, speed limits, gradients  | <parameters.dsl>
+  Topology table        | Track topology and connectivity         | <topology.dsl>
+  <Aspect table>        | Signal aspect definitions               | <aspects.dsl>
+
+Inter-module dependencies:
+
+  Route register    → Element register: all elements referenced in routes must
+                       be declared in the element register.
+  Interface register → Element register: interface elements must be declared.
+  Parameter table:   no dependencies on other modules (standalone).
+  Topology table    → Element register: topology nodes reference element IDs.
+
+Data dictionary: all data item types, fields, and value ranges are defined
+in the platform data dictionary (<document ID, revision>). The application
+data shall use only data item types and field names defined therein.
+
+Module sizing (estimated):
+
+  Module            | Items (estimated) | Lines of source (est.)
+  ------------------|-------------------|-----------------------
+  Element register  | <n>               | <n>
+  Route register    | <n>               | <n>
+  Interface register| <n>               | <n>
+  Parameter table   | <n>               | <n>
+  Topology table    | <n>               | <n>
+  TOTAL             | <n>               | <n>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 31 – Application Architecture and Design.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data preparation methodology
+
+[REQUIREMENT]
+UID: APP-080
+STATUS: Draft
+TITLE: Application data preparation methodology
+STATEMENT: >>>
+Application data source files are prepared in <DSL name> in accordance with
+the platform data dictionary and the constraints defined in APP-030.
+
+Preparation workflow:
+
+  1. Import geographic survey data: <survey data file, version> imported into
+     <DSL editor> to create initial element and topology tables.
+  2. Author route definitions: signalling principles route register transcribed
+     into the route module using <DSL name> syntax; locking conditions coded
+     from the signalling principles document.
+  3. Define interface conditions: external system interface conditions coded
+     from the interface control document.
+  4. Set parameter values: timing values, speed limits, and gradients entered
+     from the approved source data; each value traceable to source document
+     and section.
+  5. Compile: <application compiler> run on all source modules; compilation
+     shall complete with zero errors and zero warnings.
+  6. Validate: <data validator> run on compiled output; all constraint checks
+     (APP-C-001 through APP-C-009) shall pass.
+
+Simulation (Table A.11):
+  All functional requirements (APP-020 series) shall be simulated in
+  <simulation environment> before formal testing (ATR-xxx). Simulation
+  results are recorded in the simulation log (<document ID or tool output>).
+  Simulation coverage: all routes exercised in both normal and degraded
+  operating modes.
+
+Traceability from source data to compiled output:
+  The application compiler generates a traceability report (<output file>)
+  mapping each DSL source item to its compiled binary representation.
+  Traceability chain: source requirement → DSL source item → compiled data
+  element → ATR test case.
+
+Compiler output artefacts:
+  Application data binary:  <filename.adb>, SHA-256: <hash>
+  Traceability report:      <filename.rpt>
+  Compilation log:          <filename.log> (zero errors, zero warnings)
+  Validation report:        <filename.vld> (all constraint checks PASS)
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 31 – Application Architecture and Design.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Preparation Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Application Preparation Verification Report as
+required by EN 50716:2023, Clause 8 and Table A.1 (document 32). It records
+the results of independent verification of the application data preparation
+outputs — Application Requirements Specification, Application Preparation Plan,
+and Application Architecture and Design — before application testing commences.
+<<<
+
+[[SECTION]]
+TITLE: Verification scope and results
+
+[REQUIREMENT]
+UID: APP-090
+STATUS: Draft
+TITLE: Application preparation verification scope and results
+STATEMENT: >>>
+Independent verification of the application data preparation outputs was
+performed prior to commencement of application testing (Phase 4 of APP-040).
+
+Verification scope:
+
+  a) Application Requirements Specification (APP-010 to APP-030):
+       - Completeness: all elements in scope (APP-010) have a corresponding
+         functional requirement (APP-020) or are explicitly excluded.
+       - Consistency with source data (geographic survey, signalling principles,
+         interface control document).
+       - Data constraints (APP-030) cover all platform-imposed limits.
+
+  b) Application Architecture and Design (APP-070, APP-080):
+       - Module structure is consistent with requirements (APP-020).
+       - All Table A.11 techniques required are planned (APP-060).
+       - Preparation workflow (APP-080) is complete and consistent with the
+         data dictionary and compilation process.
+       - Traceability mechanism described in APP-080 is adequate.
+
+  c) Application data source files (initial review):
+       - Syntax check: compilation with zero errors and warnings (APP-080).
+       - Spot-check of element register against geographic survey.
+       - Spot-check of route definitions against signalling principles.
+       - All constraint checks (APP-C-001 through APP-C-009) pass in
+         validation report.
+
+Verification methods applied (Table A.11):
+  Formal design review:  conducted on <YYYY-MM-DD> by <Verifier Name>.
+  Walkthrough:           source file walkthrough session on <YYYY-MM-DD>.
+  Checklists:            <checklist document ID> applied; all items addressed.
+  Fagan inspection:      <reference / N/A — required for SIL≥1>.
+
+Verifier:
+  Name:               <Name>
+  Organisation:       <Organisation>
+  Independence level: <Independent of preparer per SP-021>
+
+Verification results:
+
+  Item                              | Result       | Findings / reference
+  ----------------------------------|--------------|----------------------------
+  Requirements completeness         | Satisfactory | <None / ref. to findings>
+  Requirements–source consistency   | Satisfactory | <None / ref. to findings>
+  Architecture module structure     | Satisfactory | <None / ref. to findings>
+  Preparation workflow adequacy     | Satisfactory | <None / ref. to findings>
+  Compilation: zero errors          | PASS         | Log reference: <filename.log>
+  Constraint validation: all PASS   | PASS         | Report: <filename.vld>
+  Table A.11 techniques planned     | Satisfactory | <see APP-060>
+
+Findings: <None / list with reference to action items>
+Verification verdict: <Approved / Approved with conditions / Not approved>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: --
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 32 – Application Preparation Verification Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Test Specification and Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes both the Application Test Specification (document 30)
+and the Application Test Report (document 33) as required by EN 50716:2023,
+Clause 8 and Table A.1. The ATR-xxx entries below are executed application test
+cases; each entry records both the test specification (preconditions, steps,
+expected result) and the execution result (actual result, verdict).
+<<<
+
+[[SECTION]]
+TITLE: Test strategy
+
+[REQUIREMENT]
+UID: APP-100
+STATUS: Draft
+TITLE: Application test strategy and coverage
+STATEMENT: >>>
+The application test strategy confirms that all application functional
+requirements (APP-020 series) and data constraints (APP-030 series) are
+exercised by executed test cases, in accordance with EN 50716:2023, Clause 8
+and the mandatory functional testing requirement of Table A.11.
+
+Test environment:
+  Generic software platform: <platform name, version> (matches APP-010)
+  Compiled application data: <APP-BL-xxx> (APP-130)
+  Test execution tool:       <tool name, version>
+  Hardware target:           <target hardware / simulation host>
+
+Test coverage objective:
+  All APP-F-xxx functional requirements covered by at least one ATR entry: Yes
+  All APP-C-xxx data constraints exercised by at least one ATR entry:      Yes
+
+Test coverage results:
+
+  Requirement series    | Total | Covered by ATR | Coverage (%) | Status
+  ----------------------|-------|----------------|--------------|--------
+  APP-F-xxx (functional)| <n>   | <n>            | 100          | PASS
+  APP-C-xxx (constraints)| <n>  | <n>            | 100          | PASS
+  TOTAL                 | <n>   | <n>            | 100          | PASS
+
+Test execution summary:
+
+  Test group               | Test cases run | PASS | FAIL | BLOCKED | NOT_RUN
+  -------------------------|----------------|------|------|---------|--------
+  Route setting            | <n>            | <n>  | 0    | 0       | 0
+  Route locking and release| <n>            | <n>  | 0    | 0       | 0
+  Conflict detection       | <n>            | <n>  | 0    | 0       | 0
+  Interface conditions     | <n>            | <n>  | 0    | 0       | 0
+  Parameter verification   | <n>            | <n>  | 0    | 0       | 0
+  TOTAL                    | <n>            | <n>  | 0    | 0       | 0
+
+Overall application test result: <PASS / FAIL>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, docs 30 and 33 – Application Test Specification and Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application test cases executed
+
+[TEXT]
+STATEMENT: >>>
+The following ATR-xxx entries are executed application test cases covering
+application functional requirements (APP-020 series) and data constraints
+(APP-030 series). Duplicate for each executed test case; populate ACTUAL_RESULT
+and set VERDICT upon execution.
+<<<
+
+[TEST_CASE]
+UID: ATR-001
+STATUS: Active
+TITLE: <Route ID>: nominal route setting and clearance
+TEST_TYPE: Validation
+PRECONDITIONS: >>>
+- Generic software platform <version> loaded with compiled application data
+  <APP-BL-xxx> on <test environment>.
+- All track elements in normal state: points normal, signals at danger,
+  track circuits clear.
+- No conflicting route set or locked.
+- All external interfaces (IF-EXT-01 to IF-EXT-<n>) in nominal state.
+<<<
+STEPS: >>>
+1. Issue route-setting command for <Route ID> from entry signal <S-n> to
+   destination signal <S-m>.
+2. Observe element responses: verify points, flank protection, and trap
+   protection elements move to correct positions for <Route ID>.
+3. Verify entry signal <S-n> clears to <aspect> and destination signal
+   <S-m> remains at danger.
+4. Simulate train movement: set track circuits occupied in sequence along
+   <Route ID>; verify signals step through correct aspect sequence.
+5. Train clears destination track circuit; verify route released and all
+   elements return to normal state.
+<<<
+EXPECTED_RESULT: >>>
+- Step 2: all <n> route elements assume correct position per route table.
+          All flank and trap protection elements set per APP-F-004.
+- Step 3: entry signal <S-n> displays <aspect>; destination <S-m> at danger.
+- Step 4: signal aspects step correctly as train occupies each track circuit.
+          No unexpected locking or route cancellation.
+- Step 5: route released; all elements return to normal within <n> s.
+          Trailing route protection (if defined) set correctly.
+<<<
+ACTUAL_RESULT: >>>
+- Step 2: all <n> route elements: correct positions confirmed. PASS.
+          Flank protection elements: correct state confirmed. PASS.
+          Trap protection elements: correct state confirmed. PASS.
+- Step 3: <S-n> displaying <aspect>. PASS.  <S-m> at danger. PASS.
+- Step 4: signal aspect sequence confirmed through <n> track circuit
+          occupancies. No unexpected locking or cancellation detected. PASS.
+- Step 5: route released after <measured_time> s (limit: <n> s). PASS.
+          All elements returned to normal state. PASS.
+All APP-F-001, APP-F-002, APP-F-004 criteria met for <Route ID>. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: APP-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: ATR-002
+STATUS: Active
+TITLE: <Route ID> / <Conflicting Route ID>: conflicting route rejection
+TEST_TYPE: Validation
+PRECONDITIONS: >>>
+- Generic software platform <version> loaded with compiled application data
+  <APP-BL-xxx> on <test environment>.
+- <Route ID> set and locked; entry signal <S-n> cleared.
+- Track circuits along <Route ID> clear (route locked but not occupied).
+<<<
+STEPS: >>>
+1. Issue route-setting command for <Conflicting Route ID> which shares
+   track element <E-k> with the locked <Route ID>.
+2. Observe response: verify that <Conflicting Route ID> is rejected.
+3. Verify <Route ID> remains set, locked, and undisturbed.
+4. Cancel <Route ID>; confirm route cancellation procedure applies.
+5. Issue route-setting command for <Conflicting Route ID> again after
+   <Route ID> fully cancelled and all elements normalised.
+6. Verify <Conflicting Route ID> sets successfully.
+<<<
+EXPECTED_RESULT: >>>
+- Step 2: route-setting command for <Conflicting Route ID> rejected;
+          error code <ERR-CONFLICT> or equivalent returned.
+          No elements move to positions for <Conflicting Route ID>.
+- Step 3: <Route ID> remains set and locked; signal state unchanged.
+- Step 4: route cancellation proceeds per signalling principles timing.
+- Step 6: <Conflicting Route ID> sets successfully; all elements and signal
+          <S-p> assume correct positions and aspects.
+<<<
+ACTUAL_RESULT: >>>
+- Step 2: route-setting rejected; code <ERR-CONFLICT> returned. PASS.
+          No element movement for <Conflicting Route ID> observed. PASS.
+- Step 3: <Route ID> locked and undisturbed; <S-n> still showing <aspect>.
+          PASS.
+- Step 4: route cancellation complete after <n> s per approach locking timeout.
+          All elements normalised. PASS.
+- Step 6: <Conflicting Route ID> set successfully; all <n> elements in correct
+          positions. <S-p> displaying <aspect>. PASS.
+Conflict detection correctly enforced per APP-C-002 and APP-F-002. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: APP-030
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Problem reports and open items
+
+[REQUIREMENT]
+UID: APP-101
+STATUS: Draft
+TITLE: Application test problem report summary
+STATEMENT: >>>
+All defects and anomalies discovered during application testing shall be
+recorded as Problem Reports (PRs) and tracked per the process in SP-050.
+
+Problem report summary at close of application testing:
+
+  PR ID        | Title                          | Severity | Status  | Resolution
+  -------------|--------------------------------|----------|---------|------------------
+  <PR-APP-001> | <brief description>            | Major    | Closed  | <data fix, re-tested>
+  <no further open PRs>
+
+All Critical and Major PRs shall be closed before this report is approved.
+Open PRs at time of this report: <0 / list PR-APP-xxx>
+
+PR tracking system: <tool / document reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 33 – Application Test Report.
+
+[ACTION_ITEM]
+UID: PR-APP-001
+STATUS: Closed
+TITLE: <Route ID>: approach locking release timer exceeds platform maximum
+STATEMENT: >>>
+Defect found during approach locking release test (ATR-xxx). The approach
+locking release timer value for <Route ID> was set to <n+x> s, exceeding the
+platform maximum of <n> s defined in APP-C-004.
+Impact: parameter out of valid range; the data validator (APP-080) should have
+rejected this value at compile time but did not due to an incorrect upper-bound
+value in the validator configuration.
+Fix applied:
+  1. Application data parameter corrected to <n> s in <parameters.dsl>.
+  2. Data validator configuration updated to enforce the correct upper limit.
+  3. All parameter values re-checked against APP-C-004 ranges.
+Re-test: ATR-xxx re-executed after fix; PASS. Regression tests for all
+parameter range checks executed; all PASS. New baseline <APP-BL-yyy> generated.
+<<<
+OWNER: <Application Data Preparer Name>
+DUE_DATE: <YYYY-MM-DD>
+COMMENT: >>>
+Fixed in application data source revision <hash>. Validator configuration
+update documented in <document ID>. Re-compilation and re-validation completed;
+all constraint checks PASS in updated validation report <filename.vld>.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Data Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Application Data Verification Report as required
+by EN 50716:2023, Clause 8 and Table A.1 (document 35). It records the results
+of independent verification of the application data source code (document 34,
+§9), confirming that the prepared application data correctly and completely
+implements the Application Requirements Specification and that all lifecycle
+outputs are consistent and traceable.
+<<<
+
+[[SECTION]]
+TITLE: Data verification scope and verdict
+
+[REQUIREMENT]
+UID: APP-110
+STATUS: Draft
+TITLE: Application data verification scope and verdict
+STATEMENT: >>>
+Independent verification of the application data source code was performed
+after application testing (Phase 5 of APP-040) and before integration testing.
+
+Verification scope:
+
+  a) Source code of application data (APP-130):
+       - Completeness: all elements in scope (APP-010) represented in source.
+       - Correct implementation of all APP-F-xxx functional requirements.
+       - All APP-C-xxx constraints satisfied (validator report, APP-080).
+       - Compilation: zero errors, zero warnings (APP-080 log).
+       - Source code walkthroughs performed (Table A.11 — Walkthrough).
+
+  b) Test coverage confirmation:
+       - All APP-F-xxx requirements covered by PASS ATR test cases (APP-100).
+       - All APP-C-xxx constraints exercised by PASS ATR test cases.
+       - No open Critical or Major PRs (APP-101).
+
+  c) Traceability:
+       - Forward: APP-020 requirements → APP-070 design → APP-130 source →
+         ATR-xxx test cases.
+       - Backward: all ATR test cases trace to an APP-020 or APP-030
+         requirement.
+       - Compiler traceability report reviewed and found complete (APP-080).
+
+  d) Simulation evidence (Table A.11 — Simulation):
+       - Simulation coverage: all routes and interface conditions exercised.
+       - Simulation log reference: <document ID or tool output>.
+       - No discrepancy between simulation and formal test results.
+
+Verification methods applied (Table A.11):
+  Walkthroughs:        <n> walkthrough sessions covering all source modules.
+  Checklists:          <checklist document ID> applied to source and test evidence.
+  Formal design review: held on <YYYY-MM-DD> by <Verifier Name>.
+
+Verifier:
+  Name:               <Name>
+  Organisation:       <Organisation>
+  Independence level: <Independent of preparer per SP-021>
+
+Verification results:
+
+  Item                              | Result       | Reference
+  ----------------------------------|--------------|----------------------------
+  Source completeness               | Satisfactory | APP-130 baseline
+  Functional requirements coverage  | Satisfactory | APP-100 coverage table
+  Data constraints satisfied        | Satisfactory | Validator report (APP-080)
+  Compilation: zero errors          | PASS         | <filename.log>
+  Test coverage 100 %               | PASS         | APP-100
+  Traceability complete             | Satisfactory | Compiler traceability report
+  Simulation coverage               | Satisfactory | Simulation log
+
+Findings: <None / list with reference to action items>
+Verification verdict: <Approved / Approved with conditions / Not approved>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 35 – Application Data Verification Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Integration Test Specification and Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes both the Application Integration Test Specification
+(document 36) and the Application Integration Test Report (document 37) as
+required by EN 50716:2023, Clause 8 and Table A.1. Integration tests verify
+the application data in conjunction with the complete system environment,
+including real hardware, communication networks, and adjacent systems.
+The ATR-1xx entries below record both specification and execution results.
+<<<
+
+[[SECTION]]
+TITLE: Integration strategy
+
+[REQUIREMENT]
+UID: APP-120
+STATUS: Draft
+TITLE: Application integration test strategy
+STATEMENT: >>>
+Application integration tests verify that the application data (<APP-BL-xxx>)
+functions correctly when the generic software platform is deployed in the
+complete operational system environment.
+
+Integration test scope:
+  - Application data interfaces with adjacent systems (IF-EXT-01–IF-EXT-<n>).
+  - Application data behaviour under real hardware timing conditions.
+  - Degraded operation and failure modes at system boundary level.
+  - Application-specific parameter values under real operational conditions.
+
+Integration test environment:
+  Generic software platform:  <platform name, version>
+  Application data baseline:  <APP-BL-xxx> (APP-130)
+  Hardware target:            <target hardware, revision>
+  Adjacent system simulators: <list simulators / real adjacent systems>
+  Communication network:      <network type, configuration>
+
+Interface coverage:
+
+  Interface                  | Test cases covering      | Status
+  ---------------------------|--------------------------|--------
+  IF-EXT-01 (<system name>)  | ATR-101, ATR-102         | COVERED
+  IF-EXT-02 (<system name>)  | ATR-101                  | COVERED
+  IF-EXT-03 (<system name>)  | ATR-102                  | COVERED
+
+All application interfaces (APP-F-005): <n> total, <n> covered (100 %).
+
+Integration test execution summary:
+
+  Test group                   | Test cases run | PASS | FAIL | BLOCKED | NOT_RUN
+  -----------------------------|----------------|------|------|---------|--------
+  External interfaces (nominal)| <n>            | <n>  | 0    | 0       | 0
+  Degraded operation           | <n>            | <n>  | 0    | 0       | 0
+  End-to-end application scenarios | <n>        | <n>  | 0    | 0       | 0
+  TOTAL                        | <n>            | <n>  | 0    | 0       | 0
+
+Overall application integration test result: <PASS / FAIL>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Analysis
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, docs 36 and 37 – Application Integration Test Specification and Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application integration test cases
+
+[TEXT]
+STATEMENT: >>>
+The following ATR-1xx entries are executed application integration test cases.
+These entries serve as both the Application Integration Test Specification
+(document 36) and the Application Integration Test Report (document 37).
+Duplicate for each executed test case; populate ACTUAL_RESULT and set VERDICT
+upon execution.
+<<<
+
+[TEST_CASE]
+UID: ATR-101
+STATUS: Active
+TITLE: <Adjacent system> interface: nominal data exchange and aspect propagation
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+- Generic software platform <version> loaded with application data <APP-BL-xxx>
+  on target hardware.
+- Adjacent system <system name> (IF-EXT-01) connected via <communication link>.
+- All elements in normal state; no active faults.
+- Communication link IF-EXT-01: IN-SERVICE confirmed on both sides.
+<<<
+STEPS: >>>
+1. Verify communication link IF-EXT-01 is established; confirm IN-SERVICE
+   status in system diagnostics.
+2. Trigger a state change on adjacent system: set <boundary element> to
+   occupied state.
+3. Observe propagation in the application data: verify <local element>
+   assumes correct state per APP-F-005.
+4. Issue a route-setting command that depends on <boundary element> state.
+5. Verify signal aspects on both sides of the interface respond correctly.
+6. Restore <boundary element> to clear state; verify normalisation.
+<<<
+EXPECTED_RESULT: >>>
+- Step 1: IF-EXT-01 IN-SERVICE within <n> s of system start-up.
+- Step 3: <local element> state change propagated within <n> ms of adjacent
+          system state change (APP-F-005).
+- Step 4: route-setting proceeds / rejected as appropriate for current
+          <boundary element> state per signalling principles.
+- Step 5: signal aspects on both systems consistent with route state.
+- Step 6: <local element> returns to normal; no residual fault log entries.
+<<<
+ACTUAL_RESULT: >>>
+- Step 1: IF-EXT-01 IN-SERVICE confirmed at <measured_time> s. PASS.
+- Step 3: <local element> state change at <measured_latency> ms
+          (limit: <n> ms). WITHIN LIMIT. PASS.
+- Step 4: route setting <proceeded / rejected> correctly per signalling
+          principles. PASS.
+- Step 5: signal aspects: <observed aspects> (expected: <expected aspects>).
+          Consistent across boundary. PASS.
+- Step 6: <local element> normalised; 0 fault log entries. PASS.
+Interface behaviour correct per APP-F-005 and ICD. Propagation timing confirmed.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: APP-020
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: ATR-102
+STATUS: Active
+TITLE: Loss of <adjacent system> interface: degraded operation and recovery
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+- Generic software platform <version> loaded with application data <APP-BL-xxx>
+  on target hardware.
+- Adjacent system <system name> (IF-EXT-01) connected and IN-SERVICE.
+- All elements in normal state; a route crossing boundary IF-EXT-01 is set.
+<<<
+STEPS: >>>
+1. Disconnect communication link IF-EXT-01 at the network layer.
+2. Measure elapsed time to loss-of-communication detection.
+3. Observe system response: record element states, signal aspects, and fault
+   log entries.
+4. Attempt to set a new route crossing IF-EXT-01 while the link is lost.
+5. Restore communication link IF-EXT-01; observe recovery sequence.
+6. Verify state resynchronisation with adjacent system after link recovery.
+<<<
+EXPECTED_RESULT: >>>
+- Step 2: loss-of-communication detected within <n> ms (APP-F-005).
+- Step 3: all elements on <boundary interface> assume fail-safe state; entry
+          signals at danger; fault code <FC-LOC-xx> logged.
+- Step 4: route-setting command for boundary-crossing route rejected; code
+          <ERR-INTERFACE-LOST> or equivalent returned.
+- Step 5: link recovery acknowledged; resynchronisation sequence initiated.
+- Step 6: element states resynchronised within <n> s; fault code cleared;
+          normal operation resumes.
+<<<
+ACTUAL_RESULT: >>>
+- Step 2: loss-of-communication detected at <measured_time> ms
+          (limit: <n> ms). WITHIN LIMIT. PASS.
+- Step 3: boundary elements: fail-safe state confirmed. PASS.
+          Signals at danger confirmed. PASS.
+          Fault log: code <FC-LOC-xx>, timestamp <HH:MM:SS.mmm>. PASS.
+- Step 4: route-setting rejected; code <ERR-INTERFACE-LOST> returned. PASS.
+- Step 5: link recovery sequence initiated at <timestamp>. PASS.
+- Step 6: resynchronisation complete at <measured_time> s (limit: <n> s).
+          Fault code cleared. Normal operation confirmed. PASS.
+Degraded operation and recovery behaviour correct per APP-F-005. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: APP-020
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Integration problem reports and open items
+
+[REQUIREMENT]
+UID: APP-121
+STATUS: Draft
+TITLE: Application integration problem report summary
+STATEMENT: >>>
+All defects and anomalies discovered during application integration testing
+shall be recorded as Problem Reports (PRs) and tracked per SP-050.
+
+Problem report summary at close of application integration testing:
+
+  PR ID        | Title                          | Severity | Status  | Resolution
+  -------------|--------------------------------|----------|---------|------------------
+  <no PRs raised during application integration testing>
+
+All Critical and Major PRs shall be closed before this report is approved.
+Open PRs at time of this report: <0 / list PR-APP-xxx>
+
+PR tracking system: <tool / document reference>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 37 – Application Integration Test Report.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Source Code of Application Data
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Source Code of Application Data as required by
+EN 50716:2023, Clause 8 and Table A.1 (document 34). It uniquely identifies
+the baselined application data source files and the compiled binary artefacts
+that are subject to formal testing and release.
+<<<
+
+[[SECTION]]
+TITLE: Data baseline record
+
+[REQUIREMENT]
+UID: APP-130
+STATUS: Draft
+TITLE: Application data source baseline record
+STATEMENT: >>>
+The application data source code is uniquely identified by the following
+baseline record:
+
+Source baseline identifier: <APP-SRC-xxx>
+Application data version:   <vM.N.P>
+Baseline date:              <YYYY-MM-DD>
+Prepared by:                <Name, Role>
+
+Application data source files:
+
+  Module             | Filename              | Lines | SHA-256 (source)
+  -------------------|-----------------------|-------|-------------------
+  Element register   | <elements.dsl>        | <n>   | <hash>
+  Route register     | <routes.dsl>          | <n>   | <hash>
+  Interface register | <interfaces.dsl>      | <n>   | <hash>
+  Parameter table    | <parameters.dsl>      | <n>   | <hash>
+  Topology table     | <topology.dsl>        | <n>   | <hash>
+  <Aspect table>     | <aspects.dsl>         | <n>   | <hash>
+  TOTAL              |                       | <n>   |
+
+Compiled application data artefact:
+
+  Artefact type:      Application data binary
+  Filename:           <filename.adb>
+  SHA-256 (binary):   <hash>
+  Compiled by:        <tool name, version> (qualification ref: <ref>)
+  Compilation log:    <filename.log> — zero errors, zero warnings
+  Validation report:  <filename.vld> — all constraint checks PASS
+
+Baseline tag in version control: <tag name, VCS URL>
+
+Traceability from source to binary:
+  Compiler traceability report: <filename.rpt>
+  Confirms that all source items in the above files are present in the
+  compiled binary and that no undeclared items exist in the binary.
+
+Content summary:
+  Track elements defined:       <n>
+  Routes defined:               <n>
+  Interface conditions defined: <n>
+  Parameter items defined:      <n>
+  Total data items:             <n>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 34 – Source Code of Application Data.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Application Release Note
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Application Release Note as required by
+EN 50716:2023, Clause 8 and Table A.1 (document 38). It uniquely identifies
+the application data release, records known limitations and constraints, and
+records the formal release approval.
+<<<
+
+[[SECTION]]
+TITLE: Release identification and approval
+
+[REQUIREMENT]
+UID: APP-140
+STATUS: Draft
+TITLE: Application data release identification
+STATEMENT: >>>
+The application data release is uniquely identified by the following attributes:
+
+Release identifier:         <APP-REL-xxx>
+Application scope:          <station / line section / depot identifier>
+Version / revision:         <vM.N.P>
+Release date:               <YYYY-MM-DD>
+Source baseline:            <APP-SRC-xxx> (APP-130)
+Compiled binary artefact:   <filename.adb>, SHA-256: <hash>
+Generic software platform:  <platform name, version> (APP-010)
+Target hardware:            <hardware platform, revision>
+
+Release artefacts:
+
+  Item                         | Filename / ID          | Hash / Rev.
+  -----------------------------|------------------------|-------------
+  Application data binary      | <filename.adb>         | <SHA-256>
+  Application data source      | <APP-SRC-xxx>          | <VCS tag>
+  Compilation log              | <filename.log>         | <hash>
+  Validation report            | <filename.vld>         | <hash>
+  Application test report      | This document, §6      | <Rev.>
+  Application integration report | This document, §8    | <Rev.>
+  Application data verif. report | This document, §7    | <Rev.>
+  Documentation set            | <DOC-REL-xxx>          | <Rev.>
+
+Known limitations and constraints:
+
+  ID       | Description                        | Safety impact  | Disposition
+  ---------|------------------------------------|----------------|------------------
+  <None / describe any known limitation at time of release>
+
+Open problem reports at release:
+  <None / list PR-APP-xxx remaining open with justification and safety assessment>
+
+Operational constraints:
+  <None / list any constraints on use, e.g., maximum train headway, speed
+   restrictions pending infrastructure change>
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 38 – Application Release Note.
+
+[REQUIREMENT]
+UID: APP-150
+STATUS: Draft
+TITLE: Application data release approval
+STATEMENT: >>>
+The application data release identified in APP-140 is submitted for formal
+approval prior to site delivery and commissioning.
+
+Release approval checklist:
+
+  Item                                               | Result | Reference
+  ---------------------------------------------------|--------|------------------
+  Requirements specification approved (APP-010–030)  | PASS   | §2
+  Preparation verification approved (APP-090)        | PASS   | §5
+  Architecture and design approved (APP-070, APP-080)| PASS   | §4
+  Source code baselined (APP-130)                    | PASS   | §9
+  Application test: all ATR PASS (APP-100)           | PASS   | §6
+  Application data verification approved (APP-110)   | PASS   | §7
+  Integration test: all ATR-1xx PASS (APP-120)       | PASS   | §8
+  All Critical/Major PRs closed (APP-101, APP-121)   | PASS   | §6.3, §8.3
+  Known limitations assessed (APP-140)               | PASS   | §10
+  Binary artefact hash verified (APP-140)            | PASS   | §10
+
+Release decision: <Approved for release / Hold — reasons to be stated>
+
+Approved by:
+  Application Data Preparer: <Name> — <Date> — <Signature / electronic ref.>
+  Application Data Verifier: <Name> — <Date> — <Signature / electronic ref.>
+  Project Manager:           <Name> — <Date> — <Signature / electronic ref.>
+  Safety Manager:            <Name> — <Date> — <Signature / electronic ref.>
+
+Application data release <APP-REL-xxx> for <installation scope> is hereby
+approved for delivery and site commissioning in accordance with EN 50716:2023.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 8 and Table A.1, doc 38 – Application Release Note.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 8 – Development of application data.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.11 – Techniques and measures (data preparation).
+[5]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[6]  <Document ID> – Generic Software Platform Specification.
+[7]  <Document ID> – Platform Data Dictionary.
+[8]  <Document ID> – Geographic Survey / Track Layout Drawing.
+[9]  <Document ID> – Signalling Principles Document.
+[10] <Document ID> – Interface Control Document (ICD).
+[11] <Document ID> – Overall Software Testing and Validation
+     (07_overall_testing_validation.sdoc, VAL-080 – Tools Validation Report).
+[12] <Document ID> – <DSL name> Language Reference Manual.
+[13] <Document ID> – <Application Compiler> Tool Qualification Report.
+[14] <Document ID> – <Simulation Environment> Tool Qualification Report.
+[15] <Project-specific references>
+<<<
+
+[[/SECTION]]

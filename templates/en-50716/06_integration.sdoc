@@ -1,0 +1,771 @@
+[DOCUMENT]
+TITLE: Software integration
+OPTIONS:
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: en_50716_grammar.sgra
+
+[TEXT]
+STATEMENT: >>>
+This document covers the Integration phase for the software element of
+the railway control and protection system identified below. It is prepared
+in accordance with EN 50716:2023, Clause 7.6 (Integration), and collects
+three output deliverables from Table A.1:
+
+  21. Software Integration Test Report
+  22. Software/Hardware Integration Test Report
+  23. Software Integration Verification Report
+
+BASIC and SIL_1 through SIL_4 fields are taken from EN 50716:2023:
+- Table A.1 (docs 21, 22, 23): BASIC=R, SIL_1–4=HR.
+- Table A.6 (integration techniques):
+    Dynamic analysis (A.13): BASIC=HR, SIL_1–4=HR.
+    Performance testing (A.18): BASIC=--, SIL_1=R, SIL_2=R, SIL_3=HR, SIL_4=HR.
+
+ITR-xxx are executed SW-integration test cases; HITR-xxx are executed
+HW-SW integration test cases. Both series are the executed counterparts
+of the SWIT-xxx and HWIT-xxx specification entries in 03_architecture_design.sdoc.
+
+Instructions for use:
+- UIDs follow convention: INT-xxx (requirements), ITR-xxx (SW integration
+  test cases), HITR-xxx (HW-SW integration test cases).
+- Duplicate ITR and HITR entries for each executed test case.
+- Delete this instruction block before formal release.
+<<<
+
+[[SECTION]]
+TITLE: Document information
+
+[TEXT]
+STATEMENT: >>>
+Project:              <Project name>
+Software Item:        <Software item / component name>
+Document ID:          <DOC-ID>
+Revision:             <Rev. A>
+Date:                 <YYYY-MM-DD>
+Author:               <Name, Role>
+Approved by:          <Name, Role>
+Classification:       <Confidential / Restricted / Public>
+Target SIL:           <SIL 1 / SIL 2 / SIL 3 / SIL 4>
+CENELEC Role:         <Supplier / Assessor / Integrator>
+SQAP Reference:       <Document ID of Software Quality Assurance Plan>
+SRS Reference:        <Document ID of Software Requirements Specification>
+SAD Reference:        <Document ID of Software Architecture and Design>
+Source Code Baseline: <SW-BL-xxx from 05_component_impl_test, CI-010>
+SW Integration Test Spec: <Document ID, SAD-070 series>
+HW-SW Integration Test Spec: <Document ID, SAD-080 series>
+Test environment (SW integration): <host platform, OS, test framework, version>
+Test environment (HW-SW integration): <target hardware, revision, support equipment>
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Integration Test Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Integration Test Report as required by
+EN 50716:2023, Clause 7.6 and Table A.1 (document 21). It records the results
+of executing the SW integration test cases defined in the SW Integration Test
+Specification (03_architecture_design.sdoc, SAD-070 / SWIT-xxx series) against
+the source code baseline identified in 05_component_impl_test.sdoc (CI-010).
+<<<
+
+[[SECTION]]
+TITLE: Integration test execution summary
+
+[REQUIREMENT]
+UID: INT-010
+STATUS: Draft
+TITLE: SW integration test execution summary
+STATEMENT: >>>
+SW integration tests were executed against source code baseline <SW-BL-xxx>
+(CI-010) on the test environment specified in SAD-070.
+
+Test execution period:
+  Start date:        <YYYY-MM-DD>
+  End date:          <YYYY-MM-DD>
+  Executed by:       <Name, Role>
+  Witnessed by:      <Name, Role (Verifier)>
+
+Test environment (as used):
+  Host / target:     <host PC / target board, revision>
+  OS / RTOS:         <name, version>
+  Compiler:          <vendor, version — matches CI-040>
+  Test framework:    <name, version>
+  Integration stubs: <list any stubs used; confirm removed for final integration>
+
+Integration sequence followed:
+  Step 1: <COMP-01> + <COMP-03> — SW/HW interface (SRS-030). Result: PASS.
+  Step 2: <COMP-02> + <COMP-01> — functional data flow. Result: PASS.
+  Step 3: <COMP-04> + <COMP-01> — communication interface (SRS-032). Result: PASS.
+  Step 4: <COMP-05> (diagnostics) + integrated set — fault injection. Result: PASS.
+  Step 5: <COMP-06> (non-safety) + integrated set — partition isolation. Result: PASS.
+
+Overall results:
+
+  Integration step | Test cases run | PASS | FAIL | BLOCKED | NOT_RUN
+  -----------------|----------------|------|------|---------|--------
+  Step 1           | <n>            | <n>  | 0    | 0       | 0
+  Step 2           | <n>            | <n>  | 0    | 0       | 0
+  Step 3           | <n>            | <n>  | 0    | 0       | 0
+  Step 4           | <n>            | <n>  | 0    | 0       | 0
+  Step 5           | <n>            | <n>  | 0    | 0       | 0
+  TOTAL            | <n>            | <n>  | 0    | 0       | 0
+
+Anomalies encountered: <None / list anomalies with reference to PR-IT-xxx>
+Overall SW integration test result: <PASS / FAIL>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 21 – SW Integration Test Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: SW integration test cases executed
+
+[TEXT]
+STATEMENT: >>>
+The following ITR-xxx entries are executed counterparts of the SWIT-xxx
+specification entries in 03_architecture_design.sdoc. Duplicate for each
+executed test case; populate ACTUAL_RESULT and set VERDICT upon execution.
+<<<
+
+[TEST_CASE]
+UID: ITR-001
+STATUS: Active
+TITLE: <Module A> – <Module B> interface: nominal data exchange
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+- <Module A> and <Module B> integrated and initialised (Step 2 of sequence).
+- Input <DataItem_1> set to nominal value <nominal_value> within [<min>..<max>].
+- No fault flags active; no prior error state.
+- Integration stubs for not-yet-integrated modules in place; confirmed they
+  do not mask the interface under test.
+<<<
+STEPS: >>>
+1. Set <DataItem_1> = <nominal_value>.
+2. Trigger one execution cycle of <Module A>.
+3. Read <output_param_1> from <Module B>'s interface.
+4. Record return code from <Module B>.
+5. Check fault log and system state.
+<<<
+EXPECTED_RESULT: >>>
+- <output_param_1> = <expected_value> ± <tolerance>.
+- Return code: OK.
+- No assertions triggered; no fault log entries.
+- Execution completed within one cycle (< <n> ms).
+<<<
+ACTUAL_RESULT: >>>
+- <output_param_1> = <measured_value> (<expected_value> ± <tolerance>). WITHIN LIMIT.
+- Return code: OK. PASS.
+- Fault log entries: 0. PASS.
+- Cycle time: <measured_cycle_time> ms (limit: <n> ms). WITHIN LIMIT.
+No inter-module data corruption detected by integrity check (SAD-032). PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-031
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: ITR-002
+STATUS: Active
+TITLE: <Module A> – <Module B> interface: out-of-range input rejection
+TEST_TYPE: Integration
+PRECONDITIONS: >>>
+- <Module A> and <Module B> integrated and initialised.
+- System in normal operating state.
+<<<
+STEPS: >>>
+1. Set <DataItem_1> = <value outside valid range, max + 1>.
+2. Trigger one execution cycle of <Module A>.
+3. Read return code and fault log from <Module B>.
+4. Read system state after one additional execution cycle.
+5. Remove out-of-range stimulus; apply nominal value; trigger one cycle.
+<<<
+EXPECTED_RESULT: >>>
+- Return code: ERR_RANGE.
+- <Module B> adopts safe output state.
+- Fault log entry created with correct code and timestamp.
+- No uncontrolled exception or watchdog timeout.
+- Step 5: return OK; normal operation resumes.
+<<<
+ACTUAL_RESULT: >>>
+- Return code: ERR_RANGE. PASS.
+- <Module B> output: <safe_default_value> (safe state). PASS.
+- Fault log: 1 entry, code <FC-xx>, timestamp <HH:MM:SS.mmm>. PASS.
+- No exception or watchdog timeout detected during error state. PASS.
+- Step 5: return OK; <output_param_1> = <expected_value>. PASS.
+Recovery to normal operation confirmed within one cycle. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-031
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Coverage and dynamic analysis results at integration level
+
+[REQUIREMENT]
+UID: INT-020
+STATUS: Draft
+TITLE: Coverage results at SW integration level
+STATEMENT: >>>
+Interface coverage was assessed at the SW integration level to confirm that
+all defined internal interfaces (SAD-061) are exercised by the executed test
+cases (ITR-xxx series).
+
+Interface coverage results:
+
+  Interface ID | Interface type    | Test cases covering | Status
+  -------------|-------------------|---------------------|--------
+  <IF-S-01>    | Function call API | ITR-001, ITR-002    | COVERED
+  <IF-S-02>    | Shared data struct| ITR-001             | COVERED
+  <IF-S-03>    | Message queue     | ITR-001, ITR-002    | COVERED
+  <IF-S-04>    | Non-safety API    | ITR-002             | COVERED
+
+All interfaces in the SAD-061 register: <n> total, <n> covered (100 %).
+Uncovered interfaces: <None / list with justification>
+
+Requirements coverage at integration level:
+  All SRS interface requirements (SRS-031) exercised: <Yes>
+  All SRS SW-SW interface requirements (SRS-032) exercised: <Yes>
+  Traceability matrix location: <document ID or tool reference>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Analysis, Inspection
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 21 – SW Integration Test Report.
+
+[REQUIREMENT]
+UID: INT-021
+STATUS: Draft
+TITLE: Dynamic analysis results at SW integration level
+STATEMENT: >>>
+Dynamic analysis was applied at the SW integration level in accordance with
+EN 50716:2023, Table A.6 (Dynamic analysis, reference Table A.13).
+
+Techniques applied and results:
+
+  Technique                  | Applied | Scope                  | Result
+  ---------------------------|---------|------------------------|--------
+  Interface stress testing   | Yes     | All IF-S-xx interfaces | PASS
+  Data-flow testing across   | Yes     | All inter-module data  | PASS
+    module boundaries        |         | items in data dict.    |
+  Error propagation testing  | Yes     | ERR_RANGE, ERR_HW      | PASS
+    (fault injection at IF)  |         | injected at each IF    |
+  Concurrent-access testing  | Yes     | Shared data (SAD-020)  | PASS
+    (shared data integrity)  |         | <DataItem_2>           |
+  State transition testing   | Yes     | <Module A> state machine| PASS
+    at integration boundary  |         | (CD-031)               |
+
+Shared data integrity: All accesses to shared data items protected by the
+mechanisms defined in SAD-020 (mutual exclusion / double-buffer). No data
+corruption observed during concurrent-access tests.
+
+Error propagation: Out-of-range and hardware error conditions injected at
+each interface boundary propagated correctly through the integrated software
+without causing uncontrolled exceptions or incorrect output states.
+<<<
+BASIC: HR
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.6 – Dynamic analysis (Table A.13).
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Problem reports and open items
+
+[REQUIREMENT]
+UID: INT-030
+STATUS: Draft
+TITLE: SW integration problem report summary
+STATEMENT: >>>
+All defects and anomalies discovered during SW integration testing shall be
+recorded as Problem Reports (PRs) and tracked per the process in SP-050.
+
+Problem report summary at close of SW integration testing:
+
+  PR ID      | Title                          | Severity | Status  | Resolution
+  -----------|--------------------------------|----------|---------|------------------
+  <PR-IT-001>| <brief description>            | Major    | Closed  | <code fix, re-tested>
+  <no further open PRs>
+
+All Critical and Major PRs shall be closed before this report is approved.
+Open PRs at time of this report: <0 / list PR-IT-xxx>
+
+PR tracking system: <tool / document reference>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 21 – SW Integration Test Report.
+
+[ACTION_ITEM]
+UID: PR-IT-001
+STATUS: Closed
+TITLE: <Module A>/<Module B> shared data: stale value not detected when <Module A> skips a cycle
+STATEMENT: >>>
+Defect found during ITR-002 (concurrent-access test). When <Module A>
+failed to complete its cycle within the scheduling window, <Module B> read
+a stale copy of <DataItem_2> without triggering the staleness detector.
+Impact: output based on outdated data; potential safety impact assessed as
+<Minor / Major — state assessment>.
+Fix applied: staleness counter incremented each cycle; <Module B> checks
+counter before consuming data; ERR_STALE returned and safe state applied
+if counter exceeds threshold.
+Re-test: ITR-001 and concurrent-access test re-executed after fix; PASS.
+<<<
+OWNER: <Developer Name>
+DUE_DATE: <YYYY-MM-DD>
+COMMENT: >>>
+Fixed in source revision <hash>. Staleness detection now verified by
+dedicated test case ITR-003 (add entry for each project). Static analysis
+rule added to flag direct shared-variable reads without counter check.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software/Hardware Integration Test Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software/Hardware Integration Test Report as
+required by EN 50716:2023, Clause 7.6 and Table A.1 (document 22). It records
+the results of executing the HW-SW integration test cases defined in the HW-SW
+Integration Test Specification (03_architecture_design.sdoc, SAD-080 / HWIT-xxx
+series) on the target hardware using the source code baseline CI-010.
+<<<
+
+[[SECTION]]
+TITLE: HW-SW integration test execution summary
+
+[REQUIREMENT]
+UID: INT-040
+STATUS: Draft
+TITLE: HW-SW integration test execution summary
+STATEMENT: >>>
+HW-SW integration tests were executed on the target hardware specified in
+SAD-080, using source code baseline <SW-BL-xxx> (CI-010).
+
+Test execution period:
+  Start date:        <YYYY-MM-DD>
+  End date:          <YYYY-MM-DD>
+  Executed by:       <Name, Role>
+  Witnessed by:      <Name, Role (Verifier)>
+
+Test environment (as used):
+  Target hardware:   <hardware platform name, revision>
+  Firmware version:  <SW-BL-xxx, file hash matches CI-041>
+  Support equipment: <oscilloscope, logic analyser, fault injector — calibration ref>
+  Calibration records: <reference>
+
+Deviations of test environment from operational target:
+  <None / describe deviations and impact assessment per SP-081>
+
+Overall results:
+
+  Test group              | Test cases run | PASS | FAIL | BLOCKED | NOT_RUN
+  ------------------------|----------------|------|------|---------|--------
+  SW/HW interfaces        | <n>            | <n>  | 0    | 0       | 0
+  Watchdog and supervision| <n>            | <n>  | 0    | 0       | 0
+  Communication links     | <n>            | <n>  | 0    | 0       | 0
+  Memory integrity        | <n>            | <n>  | 0    | 0       | 0
+  TOTAL                   | <n>            | <n>  | 0    | 0       | 0
+
+Anomalies encountered: <None / list anomalies with reference to PR-HIT-xxx>
+Overall HW-SW integration test result: <PASS / FAIL>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 22 – HW-SW Integration Test Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: HW-SW integration test cases executed
+
+[TEXT]
+STATEMENT: >>>
+The following HITR-xxx entries are executed counterparts of the HWIT-xxx
+specification entries in 03_architecture_design.sdoc. Duplicate for each
+executed test case; populate ACTUAL_RESULT and set VERDICT upon execution.
+<<<
+
+[TEST_CASE]
+UID: HITR-001
+STATUS: Active
+TITLE: Watchdog timer: refresh and timeout behaviour on target hardware
+TEST_TYPE: HW-SW-Integration
+PRECONDITIONS: >>>
+- Target hardware powered; firmware loaded from baseline <SW-BL-xxx>.
+- Watchdog configured to <n> ms timeout (hardware register confirmed).
+- System in normal operating state; safety task executing cyclically.
+- Debug probe connected for step-inhibit capability.
+<<<
+STEPS: >>>
+1. Observe normal operation for <n> cycles (<n> ms); record watchdog refresh
+   calls per cycle using logic analyser channel <n>.
+2. Via debug probe, inhibit the watchdog refresh call for one cycle.
+3. Monitor system outputs and debug UART for up to <n + margin> ms.
+4. Restore normal watchdog refresh; observe recovery behaviour.
+5. Read fault log from non-volatile storage.
+<<<
+EXPECTED_RESULT: >>>
+Step 1: Watchdog refresh observed every <period> ms ± <jitter>; no reset.
+Step 3: Hardware reset or fail-safe output activation within <n> ms of
+        missed refresh; system enters safe state.
+Step 4: System re-initialises; remains in safe state pending fault clearance.
+Step 5: Fault log entry for watchdog timeout event with timestamp.
+<<<
+ACTUAL_RESULT: >>>
+Step 1: Watchdog refresh confirmed at <measured_period> ms (spec: <n> ± <jitter> ms).
+        <n> cycles observed; 0 spurious resets. PASS.
+Step 3: Hardware reset triggered at <measured_timeout> ms after missed refresh
+        (spec: < <n> ms). Fail-safe outputs activated simultaneously. PASS.
+Step 4: System re-initialised in <measured_reboot_time> ms; safe state maintained.
+        No spurious output activation during reboot. PASS.
+Step 5: Fault log entry: code WD-TIMEOUT, timestamp <HH:MM:SS.mmm>. PASS.
+All expected safe-state conditions confirmed on logic analyser and oscilloscope.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-030
+  ROLE: Verifies
+
+[TEST_CASE]
+UID: HITR-002
+STATUS: Active
+TITLE: Digital I/O interface: output command, readback, and loss-of-readback detection
+TEST_TYPE: HW-SW-Integration
+PRECONDITIONS: >>>
+- Target hardware powered; firmware loaded from baseline <SW-BL-xxx>.
+- Digital output channel <n> looped back to digital input channel <m>
+  via test rig wiring.
+- System in normal operating state; output in de-energised (safe) state.
+<<<
+STEPS: >>>
+1. Software commands output channel <n> to the energised state.
+2. After <n> ms, read back input channel <m>; record measured state.
+3. Software commands output channel <n> to the de-energised state.
+4. After <n> ms, read back input channel <m>; record measured state.
+5. Disconnect loopback wire at output terminal; allow one full cycle.
+6. Record system response: fault log, output state, system state.
+<<<
+EXPECTED_RESULT: >>>
+Step 2: Input <m> reads ENERGISED; no fault logged.
+Step 4: Input <m> reads DE-ENERGISED; no fault logged.
+Step 6: Output-readback mismatch detected within one cycle;
+        fault logged; output commanded to safe (de-energised) state.
+        No watchdog timeout or uncontrolled state change.
+<<<
+ACTUAL_RESULT: >>>
+Step 2: Input <m>: ENERGISED (measured voltage: <V> V, threshold: <V> V). PASS.
+        No fault log entries. PASS.
+Step 4: Input <m>: DE-ENERGISED (measured voltage: <V> V). PASS.
+        No fault log entries. PASS.
+Step 6: Mismatch detected after <measured_cycles> cycle(s) (limit: 1). PASS.
+        Fault log: code IO-READBACK-MISMATCH, timestamp <HH:MM:SS.mmm>. PASS.
+        Output channel <n>: DE-ENERGISED (confirmed by logic analyser). PASS.
+        System state: SAFE-STATE. No watchdog timeout. PASS.
+<<<
+VERDICT: PASS
+DATE_EXECUTED: <YYYY-MM-DD>
+TESTER: <Name>
+RELATIONS:
+- TYPE: Parent
+  VALUE: SRS-030
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Performance measurement results on target hardware
+
+[REQUIREMENT]
+UID: INT-050
+STATUS: Draft
+TITLE: Performance test results on target hardware
+STATEMENT: >>>
+Performance tests were executed on the target hardware to verify system-level
+timing requirements (SRS-040, SRS-041) in accordance with EN 50716:2023,
+Table A.6 (Performance testing, reference Table A.18).
+
+Measurement method: <instrumented measurement via logic analyser / on-chip
+timer capture / WCET static analysis tool>
+Worst-case conditions: all tasks running at maximum stimulus rate per SAD-021.
+
+End-to-end safety function response times:
+
+  Safety function / event    | Requirement    | Measured (WCET) | Margin | Status
+  ---------------------------|----------------|-----------------|--------|--------
+  <Safety function 1 resp.>  | < <n> ms       | <n> ms          | <n> %  | PASS
+  <Safety function 2 resp.>  | < <n> ms       | <n> ms          | <n> %  | PASS
+  Watchdog refresh period    | Every <n> ms   | <n> ms ± <j> ms | <n> %  | PASS
+
+Safety task timing under maximum system load:
+
+  Task            | Period  | WCET measured | Budget (SAD-021) | Margin | Status
+  ----------------|---------|---------------|-----------------|--------|--------
+  <Safety_Task>   | <n> ms  | <n> µs        | <n> µs          | <n> %  | PASS
+  <Comms_Task>    | event   | <n> µs        | <n> µs          | <n> %  | PASS
+  <Diag_Task>     | <n> ms  | <n> µs        | <n> µs          | <n> %  | PASS
+
+All timing requirements met with positive margin under worst-case conditions.
+Full measurement log: <document ID or tool output path>
+<<<
+BASIC: --
+SIL_1: R
+SIL_2: R
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Table A.6 – Performance testing (Table A.18).
+
+[REQUIREMENT]
+UID: INT-051
+STATUS: Draft
+TITLE: Interrupt latency and communication link timing
+STATEMENT: >>>
+Interrupt latency and communication link timing were measured on target
+hardware to confirm that hardware interface timing requirements (SRS-030,
+SRS-032) are met.
+
+Interrupt latency measurements:
+
+  Interrupt source         | Max latency required | Max latency measured | Status
+  -------------------------|---------------------|----------------------|--------
+  <HW fault interrupt>     | < <n> µs            | <n> µs               | PASS
+  <Comms receive ISR>      | < <n> µs            | <n> µs               | PASS
+  <Watchdog ISR>           | < <n> µs            | <n> µs               | PASS
+
+Communication link timing (external interfaces, SRS-032):
+
+  Interface   | External system      | Cycle time req. | Measured | Status
+  ------------|---------------------|-----------------|----------|--------
+  <IF-EXT-01> | <Control centre>    | < <n> ms        | <n> ms   | PASS
+  <IF-EXT-02> | <Adjacent IXL>      | < <n> ms        | <n> ms   | PASS
+  <IF-EXT-03> | <Train detection>   | < <n> ms        | <n> ms   | PASS
+
+Communication error detection verified:
+  Loss of communication detected within <measured_time> ms (requirement: < <n> ms).
+  Safe state applied correctly on loss-of-comms for all external interfaces. PASS.
+
+Measurement log reference: <document ID or tool output path>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Testing, Analysis
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 22 – HW-SW Integration Test Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Problem reports and open items
+
+[REQUIREMENT]
+UID: INT-060
+STATUS: Draft
+TITLE: HW-SW integration problem report summary
+STATEMENT: >>>
+All defects and anomalies discovered during HW-SW integration testing shall
+be recorded as Problem Reports (PRs) and tracked per the process in SP-050.
+
+Problem report summary at close of HW-SW integration testing:
+
+  PR ID       | Title                          | Severity | Status  | Resolution
+  ------------|--------------------------------|----------|---------|------------------
+  <PR-HIT-001>| <brief description>            | Major    | Closed  | <fix description>
+  <no further open PRs>
+
+All Critical and Major PRs shall be closed before this report is approved.
+Open PRs at time of this report: <0 / list PR-HIT-xxx>
+
+PR tracking system: <tool / document reference>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 22 – HW-SW Integration Test Report.
+
+[ACTION_ITEM]
+UID: PR-HIT-001
+STATUS: Closed
+TITLE: Digital output readback: mismatch detected one cycle late under maximum interrupt load
+STATEMENT: >>>
+Defect found during HITR-002 (step 6) under maximum system load (all tasks
+and ISRs running at peak rate). Readback mismatch for output channel <n>
+was detected after 2 cycles instead of the required 1 cycle when the
+diagnostics task was preempted by a burst of comms interrupts.
+Impact: <n> ms additional latency in fault detection; assessed against
+SRS-041 timing requirement — <within / exceeds> the total response time budget.
+Fix applied: diagnostics task priority raised to prevent preemption by
+non-safety comms ISR during the readback check window; scheduling analysis
+(SAD-021) updated and re-verified.
+Re-test: HITR-002 re-executed under maximum load after fix; PASS (1 cycle).
+<<<
+OWNER: <Developer Name>
+DUE_DATE: <YYYY-MM-DD>
+COMMENT: >>>
+Fixed in source revision <hash>. Task scheduling analysis document updated.
+WCET measurements (INT-050) repeated after priority change; all within budget.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Software Integration Verification Report
+
+[TEXT]
+STATEMENT: >>>
+This section constitutes the Software Integration Verification Report as
+required by EN 50716:2023, Clause 7.6 and Table A.1 (document 23). It
+records the outcome of independent verification of the SW Integration Test
+Report (section 2) and the HW-SW Integration Test Report (section 3) before
+both reports are formally released and validation (EN 50716:2023, Clause 7.7)
+commences.
+<<<
+
+[REQUIREMENT]
+UID: INT-070
+STATUS: Draft
+TITLE: Verification scope and method
+STATEMENT: >>>
+The integration verification shall cover all deliverables in this document:
+
+  a) SW Integration Test Report (section 2):
+       - Completeness: all SWIT-xxx test cases from the integration test
+         specification (SAD-070) have a corresponding executed ITR-xxx entry.
+       - All ITR-xxx test cases show PASS verdict.
+       - Interface coverage (INT-020): all interfaces in SAD-061 register
+         are exercised.
+       - Dynamic analysis results (INT-021): all required A.6 techniques
+         applied and results PASS.
+       - All PRs closed or safety-assessed (INT-030).
+
+  b) SW/HW Integration Test Report (section 3):
+       - Completeness: all HWIT-xxx specification cases have a corresponding
+         executed HITR-xxx entry.
+       - All HITR-xxx test cases show PASS verdict.
+       - Performance requirements (SRS-040, SRS-041) met with positive margin
+         in INT-050 and INT-051.
+       - Communication link timing confirmed (INT-051).
+       - All PRs closed or safety-assessed (INT-060).
+
+  c) Consistency between the two reports and with the source code baseline
+     (CI-010): the same baseline was used throughout all integration tests.
+
+Verification method: structured inspection by the Software Verifier (SP-021)
+using a checklist derived from EN 50716:2023, Clause 7.6.
+Verifier: <Name, Organisation, independence evidence — see SP-021>
+Checklist reference: <document ID or tool reference>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 23 – SW Integration Verification Report.
+
+[REQUIREMENT]
+UID: INT-071
+STATUS: Draft
+TITLE: Verification records and verdict
+STATEMENT: >>>
+The Software Integration Verification Report shall include:
+
+  - Date and revision of the SW Integration Test Report, HW-SW Integration
+    Test Report, and source code baseline reviewed.
+  - Name, role, and independence evidence of the verifier (per SP-021).
+  - Checklist results: each item marked Pass / Fail / N/A with observations.
+  - Confirmation of timing results: all performance budgets met (INT-050, INT-051).
+  - Confirmation of coverage: all integration interfaces covered (INT-020).
+  - List of findings: unique identifier, description, severity, and status.
+  - Action items raised, with reference to the action item register.
+  - Resolution evidence for all Critical and Major findings.
+  - Overall verdict: Approved / Approved with conditions / Not approved.
+
+The integration test reports shall not be released and software validation
+(EN 50716:2023, Clause 7.7) shall not commence until an Approved verdict
+is recorded.
+
+Verification Report reference: <document ID>
+Verdict: <to be completed upon review>
+Date of approval: <YYYY-MM-DD>
+<<<
+BASIC: R
+SIL_1: HR
+SIL_2: HR
+SIL_3: HR
+SIL_4: HR
+VERIFICATION_METHOD: Inspection, Review
+RATIONALE: EN 50716:2023, Clause 7.6 and Table A.1, doc 23 – SW Integration Verification Report.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: References
+
+[TEXT]
+STATEMENT: >>>
+[1]  EN 50716:2023 – Railway applications – Communication, signalling and
+     processing systems – Software for railway control and protection systems.
+[2]  EN 50716:2023, Clause 7.6 – Integration.
+[3]  EN 50716:2023, Table A.1 – Techniques and measures (document list).
+[4]  EN 50716:2023, Table A.6 – Techniques and measures (integration).
+[5]  EN 50716:2023, Table A.13 – Dynamic analysis.
+[6]  EN 50716:2023, Table A.18 – Performance testing.
+[7]  <Document ID> – Software Quality Assurance Plan (SP-xxx series).
+[8]  <Document ID> – Software Requirements Specification (SRS-xxx series).
+[9]  <Document ID> – Software Architecture and Design (SAD-xxx / SWIT / HWIT series).
+[10] <Document ID> – Software Component Implementation and Testing (CI-xxx series).
+[11] <Document ID> – Hardware Specification / Platform Technical Manual.
+[12] <Project-specific references>
+<<<
+
+[[/SECTION]]
