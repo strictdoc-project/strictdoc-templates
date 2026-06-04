@@ -9,7 +9,7 @@ requirements for both generic railway control software and application data
 systems. The templates cover the full software lifecycle defined in EN 50716,
 from planning through deployment and maintenance.
 
-## Document Set
+## Document set
 
 | File | Documents covered | Table A.1 deliverables | Clause |
 |------|-------------------|------------------------|--------|
@@ -126,9 +126,13 @@ traceability. StrictDoc generates the bidirectional traceability matrix automati
 
 5. Assign UIDs following your project's numbering convention (e.g. SP-001, SRS-001).
 
-6. Export to HTML or PDF:
+6. Export to HTML:
    ```
    strictdoc export .
+   ```
+   To export to PDF, additionally provide `--formats=html,html2pdf`:
+   ```
+   strictdoc export . --formats=html,html2pdf
    ```
 
 ## Relationship to IEC 61508 Templates
