@@ -4,9 +4,9 @@ on:
   pull_request:
     branches: [ "**" ]
 
-  # Periodic: Run every day.
+  # Periodic: Run every Friday at midnight UTC.
   schedule:
-    - cron: "00 00 * * *"
+    - cron: "00 00 * * 5"
 
 jobs:
   build:
