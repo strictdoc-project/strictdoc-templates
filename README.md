@@ -7,7 +7,7 @@ The following standards are available:
 - DO-178C (aviation industry, software)
 - ECSS (space industry, all standards)
 - ETSI EN 303 645 v2.1.1 (IOT cyber security)
-- ETSI EN 304 626 v0.11 (OS cyber security)
+- ETSI EN 304 626 V1.0.1 (OS cyber security)
 - EN 50716:2023 (railway industry, software)
 - IEC 61508 (functional safety, E/E/PE safety-related systems)
 - Template of EU Regulation 2024/2847 (EU Cyber Resilience Act)
