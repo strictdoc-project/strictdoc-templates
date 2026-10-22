@@ -1,4 +1,4 @@
-RUN: %strictdoc export %project_root/templates/DO-178C | filecheck %s --dump-input=fail
+RUN: %strictdoc --debug export %project_root/templates/DO-178C | filecheck %s --dump-input=fail
 
-CHECK: Published: Software Design Description
+CHECK: Export to HTML: Software Design Description
 CHECK: Export completed.

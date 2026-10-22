@@ -1,8 +1,12 @@
 toml
 strictdoc
 
-# Integration tests
-lit>=0.11.0.post1
+# lit>=23 rejects the truthy-string "0" workaround previously used to
+# force execute_external=True; the lit.cfg.py now relies on lit's
+# internal shell (execute_external=False), which requires lit>=23.
+# FIXME: Migrate the test suite to support the internal shell calls.
+lit==18.1.8
+
 filecheck>=0.0.20
 
 # Used by the dead links checker
